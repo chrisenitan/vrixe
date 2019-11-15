@@ -1,0 +1,135 @@
+<?php
+require("../garage/visa.php"); 
+if (isset($_COOKIE['user'])){
+ $cookie = $_COOKIE['user'];
+ $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
+ $headcook = 0;
+   while($founduser = mysqli_fetch_array($cooked)){
+    $headcook = 1;
+   $fullname = $founduser['fullname'];
+   $username = $founduser['username'];
+   $email = $founduser['email'];
+   $link = $founduser['link'];
+   $mycontacts = $founduser['contacts'];
+   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Contacts</button>";
+   $userheadimg = $founduser['picture'];
+}
+if ($headcook == 0){
+  echo "<script> document.location = '/me.php';</script>";
+}}
+else{
+ echo "<script>
+ document.location = '/index.php';
+ </script>";
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <?php
+echo "<title>Contacts | $fullname</title>";
+?>
+<link rel="manifest" href="/manifest.json">
+<meta name="description" content="Keep a list of your friends and team">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+<?php require("../garage/resources.php"); ?>
+
+<?php require("../garage/validuser.php"); ?>
+</head>
+<body>
+<?php require("../garage/absolunia.php"); ?>
+<div id="gtr" onclick="closecloseb()"></div>
+
+<?php require("../garage/deskhead.php"); ?>
+<?php require("../garage/desksearch.php");  ?>
+
+<?php require("../garage/deskpop.php"); ?>
+
+<?php require("../garage/mobilehead.php"); ?>
+<?php require("../garage/subhead.php");?>
+<?php require("../garage/thesearch.php"); ?>
+
+
+<br>
+
+<div class="postcen">
+
+<?php
+if ($mycontacts > ""){
+  echo"<div class='blfhead'>...select contacts to invite</div>
+  
+<form style='width:100%;' action='/invite.php' method='post'>
+<input class='rates' id='ua' name='ua' required>
+<input class='rates' id='pa' name='pa' required>
+<input class='rates' id='ma' name='ma' required>
+<input class='rates' id='os' name='os' required>
+<div id='clist'><button title='Create invite' class='sil'><i class='material-icons' style='vertical-align:bottom;font-size:17px;'>send</i></button></form>
+<button title='Delete list' class='sil' id='xsil' type='button' onclick='refreshtoin()'><i class='material-icons' style='vertical-align:bottom;font-size:17px;'>cancel_presentation</i></button>
+<button id='invitelist' type='button'></button>
+</div>
+
+<div id='result'></div>";
+  
+$de = mysqli_query($conne,"SELECT * FROM profiles WHERE $mycontacts ");
+
+  while ($row = mysqli_fetch_array($de)){
+
+$pushid = $row['pushid'];
+$mail = $row['email'];
+$user = $row['username'];
+$fulluser = $row['fullname'];
+$userpic = $row['picture'];
+$usercid = $row['cid'];//for delete
+
+echo "
+<script>
+var iv$usercid = 'or cid = $usercid ';
+var cu$usercid = '$username';
+var req$usercid = 'delete contact';
+var toi$usercid = '$user';
+var poi$usercid = '$userpic';
+var co$usercid = '$mail';
+var os$usercid = '$pushid';
+</script>
+
+<div id='id$user' class='cards' style='background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%);'>
+<button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
+
+
+<a href='/profile/$user'><img src='/images/profiles/profilethumbs/$userpic' class='contactphoto'>
+<b>$fulluser</b><br>
+<span style='font-size:13px'>@$user</span></a><br><br>
+
+
+<button class='allcopele' title='Add to Invite list' onclick='toin(toi$usercid, poi$usercid, co$usercid, os$usercid);'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+</div>
+
+";
+  }
+}
+
+else{
+     echo "
+ <div class='pef'><div class='blfhead'>...your contacts on vrixe</div><br>
+  <h>Know someone you'd like here?</h><br><br><br>
+   <img alt='invite' src='/images/essentials/inviteuser.png' class='everybodyimg'>
+   <br><br><button class='copele' onclick='customshare();'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Invite To Vrixe</button><br>
+ <br>
+ 
+ <div class='blfheadalt'></div>
+ </div>";
+  }
+?>
+
+  </div>
+<br><br>
+
+
+
+
+
+<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<br><br>
+</body>
+</html>

@@ -1,0 +1,49 @@
+AddType text/cache-manifest .manifest
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+RewriteRule event/(.*)\.php /event?refs=$1
+
+RewriteRule profile/(.*)\.php /profile?refs=$1
+
+RewriteRule poll/(.*)\.php /poll?id=$1
+
+# twoweeks for image files
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+Header set Cache-Control "max-age=1209600, public"
+</filesMatch>
+
+
+# One month for js
+<filesMatch ".(js)$">
+Header set Cache-Control "max-age=2628000, public"
+</filesMatch>
+
+
+# One week for css
+<filesMatch ".(css)$">
+Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+
+
+## STOP Semalt.com Crawler Spam
+RewriteCond %{HTTP_REFERER} semalt\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} uptime\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} top1\-seo\-service\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} auto\-seo\-service\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} resell\-seo\-services\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} free\-video\-tool\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} responsive\-test\.net [NC,OR]
+RewriteCond %{HTTP_REFERER} keywords\-monitoring\-your\-success\.com [NC]
+RewriteRule .* - [F]
+
+
+
+	

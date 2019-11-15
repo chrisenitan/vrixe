@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Vrixe</title>
+
+<meta http-equiv="Cache-control: no-transform">
+<link rel="manifest" href="../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+<meta name="description" content="Vrixe is available as a progressive web app. Get an immersive experience of Vrixe.">
+<meta name='theme-color' content='#ffffff'>
+<link type="text/css" rel="stylesheet" href="../app/css/pwa.css">
+<link type="stylesheet" rel="stylesheet" href="../app/fonts/gg.ttf">
+<link rel="icon" sizes="192x192" href="../app/vlogpwa.png">
+<link rel="icon" sizes="58x57" href="../app/vlog4x.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../app/vlogpwa.png">
+<link rel="apple-touch-startup-image" href="../app/vlogpwa.png">
+<link rel="apple-touch-icon" href="../app/vlog4x.png">
+<meta name="apple-mobile-web-app-title" content="Vrixe">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script type="text/javascript" async src="../app/pwascript.js"></script>
+  </script>
+
+<script>
+  
+if ('serviceWorker' in navigator){
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('../vsworker.js').then(function(registration) {
+      console.log('Service-Worker Registered', registration.scope);
+    }, function(err) {
+      console.log('Service-Worker Not Registered', err);
+    });
+    });
+  }
+
+
+</script>
+<style>
+  body{
+    margin: 0px;
+    background-image: url("../app/pwa_wall.jpg");/*https://twitter.com/darshan394*/
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+    background-color: #3e3e3ed9;
+  background-blend-mode: overlay;
+  }
+  @media screen and (max-width: 980px){
+body {
+    background-size: 361%;
+    }}
+</style>
+</head>
+<body>
+  <div id="gtr" onclick="iospathalt()"></div>
+  <div class="postcen">
+
+<div id="gnn">
+  
+  <button id="save" class="proadd"><img alt="download for android and chrome" class="facbtn" src="../app/icons/android-logo.png"><br><br><span>install on <br><span id=''>android</span></span><br><br><img alt="download for android and chrome" class="facbtn" src="../app/icons/download-logo.png"></button>
+  
+    <button id="winsave" class="proadd" onclick="document.getElementById('save').click();"><img alt="download for windows on chrome" class="facbtn" src="../app/icons/windows-logo.png"><br><br><span>install on <br><span id=''>windows</span></span><br><br><img alt="download for windows and chrome" class="facbtn" src="../app/icons/download-logo.png"></button>
+
+      <button class="proadd" onclick="iospath()"><img alt="how to download for ios" class="facbtn" src="../app/icons/apple-logo.png"><br><br><span>install on <br><span id=''>ios</span></span><br><br><img alt="how to download for ios" class="facbtn" src="../app/icons/download-logo.png"></button>
+
+</div>
+
+
+    <div id="ios" class="topef">
+      <br><div class="blfheadalt"></div>
+
+      <img alt="how to download for ios" src="../app/stap.jpeg" id="athsimg">
+      <br>
+<h> &nbsp &nbsp Hit <img src='../app/iosaction.png'> and tap Add to Home Screen icon &nbsp &nbsp </h>
+
+
+<br><br><div class="blfheadalt"></div><br>
+    </div>
+
+<div class="pef" id="aths">
+
+<img alt="pwa logo" id="avprofile" src="../app/icons/pwa.png">
+<div id="pefright">
+ <b>The Vrixe Progressive Web App</b><br>
+  Takes Vrixe out of your browser into a fast, engaging and native app experience.
+  </div>
+<br><br>
+
+<div style="clear: both;display: block;margin-top:20px">
+  <a href="/aboutvrixe.php"><button class="proaddalt">About</button></a>
+<a href="/me.php"><button class="proaddalt">My Profile</button></a>
+<a href="/help/feedbacks.php"><button class="proaddalt">Feedbacks</button></a>
+<a href="/app/allmenu.html"><button class="proaddalt">More...</button></a>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+</body>
+</html> 
