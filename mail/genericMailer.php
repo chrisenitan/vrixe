@@ -1,8 +1,5 @@
-
 <?php 
-
-
-#send draft email
+//send any email
 $subject = $customMailSubject;
 $feed = 'feedback@vrixe.com';
 $from = 'events@vrixe.com';//or could be a name

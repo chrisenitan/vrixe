@@ -645,7 +645,7 @@ else{
 ?>
 <br><a href="app/terms.html" style="color:#43ade4">Privacy Policy</a> &nbsp &nbsp &nbsp &nbsp<a href="help/feedbacks"style="color:#43ade4">Support</a><br><br>
 
-  <h>Not seeing something you want?<br> <a href='help/feedbacks?ext=uwc' style='color:#2b3443'>Let us know how we can convince you <i class="material-icons" style="vertical-align:sub;font-size:17px">arrow_forward</i></a></h><br><br>
+  <h>Not seeing something you want?<br> <a href='help/feedbacks?ext=uwc' style='color:#2b3443'>Tell us what feature you're looking for <i class="material-icons" style="vertical-align:sub;font-size:17px">arrow_forward</i></a></h><br><br>
 
 <a href="https://www.twitter.com/vrixeapp"><button type="button" class="socs"> <img src="app/icons/twitter.png" style="width:16px;height:16px;"></button></a>
 

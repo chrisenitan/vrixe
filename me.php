@@ -508,7 +508,7 @@ else { $shortee = $eem;
 }
 
 echo "<a href='event/$r'>
-<div class='cardtitle'>$shortee</div>
+<div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
 </a>
 ";
 
