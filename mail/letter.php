@@ -27,7 +27,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-...next time you visit us.</p>
+...the long wait is over.</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>
 <img alt='create' src='https://vrixe.com/mail/updateimages/mcreate.png' style='width:14px;height:14px'> Create invites 
 
@@ -44,20 +44,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Faster Private Events: </h></b></br>
-<h style='font-size:14px'>We've cahged the way private events are loaded to make sure they are faster and more secure.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/share.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Better Sharing Support: </h></b></br>
-<h style='font-size:14px'>You will now be able to share links even if your browser doesn't support the native web-share API.</h>
+<b><h style='font-size:14px'>Better Private Events: </h></b></br>
+<h style='font-size:14px'>We've completely rebuilt private events. Its now faster, more secure, fully featured and it took less code.</h>
 </div>
 </div><br>
 
@@ -68,8 +56,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/info.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Verifications (Invite actions): </h></b></br>
-<h style='font-size:14px'>Nothing like a <b>Are You Sure</b> just before you accept an invite you didn't mean to.</h>
+<b><h style='font-size:14px'>Verifications (Delete Contact): </h></b></br>
+<h style='font-size:14px'>We've listened and extended your love for actions check to the phonebook. Now you get a verification before completing a delete.</h>
 </div>
 </div><br>
 
@@ -77,11 +65,12 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 
+
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/gears.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>App Optimisation: </h></b></br>
-<h style='font-size:14px'>You will notice the whole app loads a lot faster, thanks to some code cleanup, more of that in the next update.</h>
+<h style='font-size:14px'>Nothing to see here... Just some tiny updates, so small you'll barely notice.</h>
 </div>
 </div><br>
 

@@ -143,6 +143,7 @@ display: none;
 	overflow: scroll;
 	background-color: transparent;
 	overflow-y: hidden;
+  scroll-snap-type: x mandatory;
 }
 #insidescroll{ /*responsive +150 */
 	width: 1540px;
@@ -151,6 +152,7 @@ display: none;
 .scrollimg{
 	width: 150px;
 	height: auto;
+  scroll-snap-align: center;
 }
 .explain{
     width: 100%;
@@ -281,6 +283,7 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
 	font-weight: bold;
 	height: auto;
 	font-size: 20px;
+  scroll-snap-align: center;
 	transition: 0.5s;
 	-webkit-transition: 0.5s; 
 	-moz-transition: 0.5s; 
@@ -290,6 +293,7 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
 	margin: auto;
 	overflow: scroll;
 	margin-bottom: 5px;
+  scroll-snap-type: x mandatory;
 }
 #insideeventnames{
 	width: 1300px;
@@ -497,6 +501,7 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
     overflow: scroll;
     background-color: transparent;
     overflow-y: hidden;
+  scroll-snap-type: x mandatory;
 }
 #altinsidescroll{ /*responsive +150 */
 	width: 1690px;
@@ -516,6 +521,7 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
     margin-right: 10px;
     box-shadow: 14px 16px 67px -31px rgb(48, 48, 48);
     transition: 0.3s;
+  scroll-snap-align: start;
 	-webkit-transition: 0.3s;
 	-moz-transition: 0.3s;
 }

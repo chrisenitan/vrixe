@@ -141,8 +141,8 @@ document.location = "tour.php";
 
 
 <div id="ctas">
-	<a href="app/pwa.html"><button class="cta" id="topwa">Install Web-App</button></a>
-	<a href="index.php"><button class="cta" id="tovrixe">Open Vrixe</button></a>
+	<a href="app/pwa.html"><button class="cta" id="topwa">Install</button></a>
+	<a href="index.php"><button class="cta" id="tovrixe">Open</button></a>
 </div>
 <br>
 
