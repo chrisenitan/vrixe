@@ -574,10 +574,10 @@ if($gotyourevents == 0){
    </div></a>
 
   <a href='/app/pwa.html'><div class='cards'>
-  <p class='miniss'>Try the Vrixe App</p>
+  <p class='miniss'>Get the Vrixe App</p>
    <img alt='make plans' src='/images/essentials/pwadevice.svg' style='width:66%;' class='everybodyimg'>
 <br>
- <button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_to_home_screen</i> Install WebApp</button>
+ <button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_to_home_screen</i> Install</button>
    </div></a>
 
   ";

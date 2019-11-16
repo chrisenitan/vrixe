@@ -10,7 +10,7 @@ $signup = mysqli_real_escape_string($conne, $_POST['signup']);
 $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
  $z = $url->countryName;
 
- $day =date("d m Y");
+ $day =date("Y-m-d"); //creation date
   $rate = mysqli_real_escape_string($conne, $_POST['rate']);
      $fullname = "Profile Name";
  $pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
