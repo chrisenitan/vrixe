@@ -339,6 +339,8 @@ else {$in = "";
 }//end of while every var must have been set here
   
 if ($gave == 0){ #but if ref was posted and you didnt find anything like it
+  //set $showUserEvent = false;
+  $showUserEvent = false; 
   echo "<br>
   <style>#write{display:none}</style>
 <div class='pagecen'>
@@ -816,7 +818,11 @@ mysqli_close($conne);
   
   //$showUserEvent = false; so we show form
  else{
-   if($authkey > "" and $authkey != $authkeyFromServer){$privateBoxError = "We could not verify your access. Please retry";}else{$privateBoxError = "";}
+   //check if gave was found. even ref 
+   if($gave == 0){
+     
+   }else{
+       if($authkey > "" and $authkey != $authkeyFromServer){$privateBoxError = "We could not verify your access. Please retry";}else{$privateBoxError = "";}
   $privateref = $row['refs'];
  $pposter = "<a href='/profile/$poster'>$poster</a>";
     $sendformto = '/event/'.$pureEventRef;
@@ -832,7 +838,7 @@ mysqli_close($conne);
     var program = document.getElementById('program');
  }
 </script>"; 
-}
+   }}
   
 
 }//end of if ref was sent in url
