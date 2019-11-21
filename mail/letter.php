@@ -27,7 +27,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-...plan for december.</p>
+...your plan for december.</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>
 <img alt='create' src='https://vrixe.com/mail/updateimages/mcreate.png' style='width:14px;height:14px'> Create invites 
 
@@ -57,7 +57,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/updateimages/info.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Verifications (Delete Contact): </h></b></br>
-<h style='font-size:14px'>We've listened and extended your love for actions check to the phonebook. Now you get a verification before completing a delete.</h>
+<h style='font-size:14px'>We've listened and extended your love for actions check to the phonebook. Now you get a verification before deleting a contact.</h>
 </div>
 </div><br>
 
@@ -70,7 +70,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/updateimages/gears.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>App Optimisation: </h></b></br>
-<h style='font-size:14px'>Nothing to see here... Just some tiny updates, so small you'll barely notice.</h>
+<h style='font-size:14px'>Moving along people... nothing to see here... Just some tiny updates, so small you'll barely notice.</h>
 </div>
 </div><br>
 
