@@ -340,7 +340,7 @@ if ($update == "available"){
 
   if ($cut == ""){
 
-  echo "<div id='oalert'>Be a friendly user. Please verify your account.<br>
+  echo "<div id='oalert'>Your email has not been verified, we sent you an email.<br>
   <a href='help/faq#spamfilter'>Didn't get a verification email? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
 <br>";}
 

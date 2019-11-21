@@ -61,7 +61,7 @@ else if( content == 'AS SEEN ON'){
                              var contentdesc = "Checkout what everyone thinks about us and our ratings.";}
 else{
   //document.getElementById("cardtext").innerHTML=""; //change card
-   var contentdesc = "Beyond calendars and chats, discover a new way to make group plans.";}
+   var contentdesc = "Beyond calendars and chats and discover a new way to make group plans.";}
 
 
   document.getElementById("maintopic").innerHTML=content ; //change title
@@ -86,7 +86,7 @@ document.getElementById(id).style.color="#fff";
  <p id="maintopic">
    Features 
   </p>
-  <p id="maindescription">Take your events beyond notes, calendars and chats, discover a new way to make group plans.</p><br>
+  <p id="maindescription">Take your events beyond notes, calendars and chats and discover a new way to make group plans.</p><br>
   <a href="/index?q=profile_required" style='text-decoration:none'><div id="t_btn"><i class="material-icons" style="vertical-align:sub;font-size:20px">person_outline</i> Get Started</div></a>
  
   
