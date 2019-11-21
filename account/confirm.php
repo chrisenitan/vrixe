@@ -34,17 +34,7 @@ else{
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
-<style>
-  .cards{
-    padding-bottom: 0px;
-  max-width: 200px;
-  background-color: #ffffff;
-}
-  @media screen and (min-width: 980px){/*responsive*/
-.cards{
-width:45%;
-}}
-</style>
+
 
 </head>
 <body>
@@ -79,10 +69,10 @@ It happens...<br><br>
 
 <img alt='Unconfirmed' src='https://vrixe.com/images/essentials/browser.svg' class='everybodyimg'>
    <br>
-Looks like you signed up in a different browser to this. Please open your verification link in the browser you signed up with.<br><br>
+Looks like you're not logged in this browser. If you are, please log out and back in again.<br>That should do it.<br><br>
 
 
-	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'> REPORT IT </button></a></h><br><br>
+	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
 	<h class='minis'>or please try:</h><br>
   <h class='miniss'>log into your account <a href='/index' style='text-decoration:underline;text-underline-position:under;'>here</a> and retry verification</h><br>
 
@@ -106,7 +96,7 @@ Looks like you signed up in a different browser to this. Please open your verifi
   $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
  $z = $url->countryName;
 
-  $newsday =date("d m Y");
+  $newsday =date("Y-m-d");
 
  	$sql = "UPDATE profiles SET confirm='$cut', freq='$newsday' WHERE cookie = '$cookie'";
 
@@ -130,33 +120,40 @@ echo "";
 <div class='pagecen'>
 <div class='pef'>
 
-  <div class='blfhead'>ACCOUNT VERIFIED<br></div>
+  <div class='blfhead'>Account Verified<br></div>
  <br>
   <h class='miniss'>Your account is all setup</h><br>
 
    <a href='/invite'><h>What would you like to do first?</h></a><br><br>
 
-<div class='cards'>
-  <p class='miniss'>Edit your profile details</p>
-   <img alt='update details' src='/images/essentials/idcard.png' class='everybodyimg'>
+<a href='/edit_profile'><div class='cards'>
+  <p class='miniss'>Update your profile</p>
+   <img alt='update details' src='/images/essentials/contacts.svg' class='everybodyimg'>
 <br>
-   <a href='/edit_profile'><button class='allcopele' id='ga_ep'>EDIT PROFILE</button></a>
-   </div>
+   <button class='allcopele' id='ga_ep'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>person</i> Edit Profile</button>
+   </div></a>
 
-   <div class='cards'>
+   <a href='contacts'><div class='cards'>
   <p class='miniss'>Add friends to contact</p>
-   <img alt='contacts' src='/images/essentials/inviteuser.png' class='everybodyimg'>
+   <img alt='contacts' src='/images/essentials/invitations.svg' class='everybodyimg' style='width:54%'>
 <br>
- <a href='contacts'><button class='allcopele' id='ga_mc'>MY CONTACTS</button></a>
-   </div>
+ <button class='allcopele' id='ga_mc'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>perm_contact_calendar</i> My Contacts</button>
+   </div></a>
 
 <br><br>
-   <div class='cards'>
+    <a href='/invite'><div class='cards'>
   <p class='miniss'>Create your first invite</p>
-   <img alt='make plans' src='/images/essentials/ivuser.png' class='everybodyimg'>
+   <img alt='make plans' src='/images/essentials/create.svg' class='everybodyimg'>
 <br>
- <a href='/invite'><button class='allcopele' id='ga_ci'>CREATE INVITE</button></a>
-   </div>
+<button class='allcopele' id='ga_ci'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_circle</i> Create Invite</button>
+   </div></a>
+   
+     <a href='/app/pwa.html'><div class='cards'>
+  <p class='miniss'>Get the Vrixe App</p>
+   <img alt='make plans' src='/images/essentials/pwadevice.svg' class='everybodyimg' style='width:67%'>
+<br>
+<button class='allcopele' id='ga_ci'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_to_home_screen</i> Install</button>
+   </div></a>
 
   
 
@@ -191,10 +188,10 @@ It happens...<br><br>
 
 <img alt='Unconfirmed' src='https://vrixe.com/images/essentials/bug.png' class='everybodyimg'>
    <br>
-Could you log out of your account, log back in and then retry the verification link.<br><br>
+Looks like you found a bug in the code. Please log out and back in again.<br>That should do it.<br><br>
 
 
-	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'> REPORT IT </button></a></h><br><br>
+	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
 	<h class='minis'>don't have time to send report?</h><br>
   <h class='miniss'>try logging out of your account <a href='/index' style='text-decoration:underline;text-underline-position:under;'>here</a></h><br>
 

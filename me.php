@@ -340,7 +340,7 @@ if ($update == "available"){
 
   if ($cut == ""){
 
-  echo "<div id='oalert'>Be a friendly user. Please verify your account.<br>
+  echo "<div id='oalert'>Your email has not been verified, we sent you an email.<br>
   <a href='help/faq#spamfilter'>Didn't get a verification email? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
 <br>";}
 
@@ -508,7 +508,7 @@ else { $shortee = $eem;
 }
 
 echo "<a href='event/$r'>
-<div class='cardtitle'>$shortee</div>
+<div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
 </a>
 ";
 
@@ -574,10 +574,10 @@ if($gotyourevents == 0){
    </div></a>
 
   <a href='/app/pwa.html'><div class='cards'>
-  <p class='miniss'>Try the Vrixe App</p>
+  <p class='miniss'>Get the Vrixe App</p>
    <img alt='make plans' src='/images/essentials/pwadevice.svg' style='width:66%;' class='everybodyimg'>
 <br>
- <button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_to_home_screen</i> Install WebApp</button>
+ <button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_to_home_screen</i> Install</button>
    </div></a>
 
   ";

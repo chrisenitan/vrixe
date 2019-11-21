@@ -24,7 +24,7 @@ var urlts = [
 '/app/fonts/gg.ttf',
 '/fall.html'
 ];
-/* service worker bit only / updated to 1.08 by sept 9th 2019*/  
+/* service worker bit only / updated nov 15 2019*/  
 
 self.addEventListener('install', function(event) {
 	event.waitUntil(

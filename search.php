@@ -208,7 +208,7 @@ else { $shortee = $eew;
 }
 
 echo "<a href='event/$rla'>
-<div class='cardtitle'>$shortee</div>
+<div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
 </a>
 ";
     
@@ -368,7 +368,7 @@ else { $shortee = $eew;
 }
 
 echo "<a href='event/$rla'>
-<div class='cardtitle'>$shortee</div>
+<div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
 </a>
 ";
     
@@ -446,7 +446,7 @@ else { $shortee = $ee;
 }
 
 echo "<a href='event/$r'>
-<div class='cardtitle'>$shortee</div>
+<div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
 </a>
 ";
     

@@ -192,8 +192,8 @@ else{echo"";}
 
 <div class="adbox"> 
   <img id="dsvg" src="https://vrixe.com/images/aboutvrixe/detailed.svg" alt="Collective plans with Vrixe"><br>
-  <h class="intx">Plan and share events with your team.</h><br>
-  <h style="color:#173652"><i>...discover a new way to collaborate with vrixe</i></h><br><br>
+  <h class="intx">Create and edit events with your team.</h><br>
+  <h style="color:#173652"><i>...discover a new way to collaborate on vrixe</i></h><br><br>
 
    <a href='aboutvrixe.php'><div id="act" title="See how Vrixe works">Features</div></a><br><br>
 
@@ -250,7 +250,7 @@ else{echo"";}
   <input type="text" name="rate" class="rates">
   <input type='email' name='recmail' class='privinput' placeholder='...Registered Email...' title='Email' required><br><br>
 
-<button class='copele' title='Request Delete' id="recv"> RECOVER </button>
+<button class='copele' title='Request Delete' id="recv"> Recover </button>
 </form>
 </div>
 

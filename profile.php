@@ -227,7 +227,7 @@ else { $shortee = $eem;
 }
 
 echo "<a href='event/$r'>
-<div class='cardtitle'>$shortee</div>
+<div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
 </a>
 ";
     
@@ -301,7 +301,7 @@ else {
 
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("garage/networkStatus.php"); ?>
 
 </body>
 </html>
