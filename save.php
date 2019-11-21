@@ -161,7 +161,8 @@ else {
 
 
 <?php 
-  echo"<p id='valert' onclick='closealert()'>Event's link copied to clipboard <button id='vbutton'>CLOSE</button></p>";
+  echo"<p id='valert' onclick='closealert()'>Event's link copied to clipboard <button id='vbutton'>CLOSE</button></p>
+    <div class='pagecen'>";
   
  if ($canUpload == true){
 
@@ -182,7 +183,6 @@ else {
 
    
  echo "
-  <div class='pagecen'>
 <div class='pef' >
 <div class='blfhead'>Invite Created.</div><br>
 <div class='eventimage'>$event</div><br>
@@ -239,7 +239,7 @@ function prcshare(){
 </div>
 
 
-</div><br><br><br>";
+<br><br><br>";
    
    
 
@@ -285,7 +285,7 @@ function prcshare(){
 <br><br>";
   }
   
-
+echo"</div>";
   require("garage/networkStatus.php");
 ?>
 
