@@ -132,9 +132,11 @@ unlink("../images/eventnails/$stringdthumb");
 
   $acttrash = "DELETE FROM actors WHERE refs = '$id' ";
 
+  $polltrash = "DELETE FROM poll WHERE refs = '$id' ";
+    
 echo "<div class='inresult' id='$id'>Event has been deleted</div>";
 
-if (!mysqli_query($conne,$totrash) or !mysqli_query($conne,$contrash) or !mysqli_query($conne,$protrash)  or !mysqli_query($conne,$acttrash))
+if (!mysqli_query($conne,$totrash) or !mysqli_query($conne,$contrash) or !mysqli_query($conne,$protrash)  or !mysqli_query($conne,$acttrash) or !mysqli_query($conne,$polltrash))
   {
   die('Error: ' . mysqli_error($conne));
   }
