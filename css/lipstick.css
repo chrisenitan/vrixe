@@ -85,9 +85,10 @@ input{
 	border: none;
 	border-radius: 3px;
 	text-align:center;
-	border-bottom-color:#f8f8ff;
+  letter-spacing: 1px;
 	background-color: #e0e8f9;
-	color: #2b3445;
+	color: #494a4a;
+   font-weight: bold;
 	font-family: Nunito;
 	transition: 0.5s;
 	-webkit-transition: 0.5s;

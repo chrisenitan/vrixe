@@ -7,7 +7,7 @@
 	font-size: 13px;
 }
 #oke{
-	color: #16b31c;
+	color: #ce9001;
 	font-size: 13px;
 }
 
