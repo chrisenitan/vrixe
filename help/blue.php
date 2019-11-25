@@ -9,6 +9,7 @@ if (isset($_COOKIE['user'])){
      $headcook = 1;
    $fullname = $founduser['fullname'];
    $username = $founduser['username'];
+   $accountcreated = $founduser['created'];
 
 }
 if ($headcook == 0){
@@ -51,10 +52,10 @@ else{
 <div class="pagecen" >
 	<br><br>
   <div class='pef' style='display:inline-block'>
-    <div class='blfhead'>...we're almost there</div><br><br>
+    <div class='blfhead'>...email not verified</div><br><br>
 
   <img alt='$code' src='/images/essentials/loading.svg' class='everybodyimg'><br>
-  <h class='miniss'>What is happening here?</h><br><h class='disl'>We noticed your email has not been verified for about 7 days now. Please verify your email, we really need to make sure its you. Human.</h> <br><br>
+  <h class='miniss'>What is happening here?</h><br><h class='disl'>We noticed your email has not been verified since <?php echo $accountcreated ?>. Please verify your email, we really need to make sure its you. Human.</h> <br><br>
       <h class='miniss'>What can I do?</h><br><h class='disl'>Please check your email, we sent you a verification button.<br>
     <a href='faq#spamfilter'>Didn't get a verification email? <i class='material-icons' style='font-size:17px;vertical-align:sub'>arrow_forward</i></a></h> <br><br>
    <a href='/event/$code'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>feedback</i> Send Feedback</button></a><br><br>

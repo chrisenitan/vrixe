@@ -330,6 +330,7 @@ $email = $gotuser['email'];
 $picture = $gotuser['picture'];
 $cut = $gotuser['confirm'];
 $accountCreationDate = $gotuser['created'];
+  $accountVerificationCutcok = $gotuser['cookie'];
 
 if ($update == "available"){
 

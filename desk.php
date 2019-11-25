@@ -8,11 +8,12 @@ if (isset($_COOKIE['user'])){
      $headcook = 1;
    $fullname = $founduser['fullname'];
    $username = $founduser['username'];
-    $useremail = $founduser['email'];
+    $useremail = $founduser['email']; $email = $useremail;
     $cut = $founduser['confirm'];
      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
    $userheadimg = $founduser['picture'];
      $accountCreationDate = $founduser['created'];
+     $accountVerificationCutcok = $founduser['cookie'];
 }
 if ($headcook == 0){
      $fullname = "relog";

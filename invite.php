@@ -14,6 +14,7 @@ if (isset($_COOKIE['user'])){
    $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>Create</button>";
    $userheadimg = $founduser['picture'];
    $accountCreationDate = $founduser['created'];
+     $accountVerificationCutcok = $founduser['cookie'];
 }
 if($headcook == 0){//go resign in please
   echo "<script> document.location = 'index.php'; </script>";//could send code later
