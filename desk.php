@@ -12,13 +12,11 @@ if (isset($_COOKIE['user'])){
     $cut = $founduser['confirm'];
      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
    $userheadimg = $founduser['picture'];
+     $accountCreationDate = $founduser['created'];
 }
 if ($headcook == 0){
      $fullname = "relog";
    $username = "";
-}
-if($cut == ""){//user has not verified account
-  echo "<script> document.location = 'me.php'; </script>";
 }
 }
 else{ 
@@ -107,7 +105,13 @@ window.addEventListener('drop', function(dd){
 
 <?php require("garage/subhead.php");?>
 
-<?php require("garage/thesearch.php"); ?>
+<?php require("garage/thesearch.php"); 
+  
+  if ($cut == ""){
+    //check if to allow user temp or block and send to blue
+require("garage/unverifiedEmailAccessStatus.php");
+  }
+  ?>
 
 
 

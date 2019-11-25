@@ -329,7 +329,7 @@ $cookie = $gotuser['cookie'];
 $email = $gotuser['email'];
 $picture = $gotuser['picture'];
 $cut = $gotuser['confirm'];
-
+$accountCreationDate = $gotuser['created'];
 
 if ($update == "available"){
 
@@ -339,10 +339,9 @@ if ($update == "available"){
   </script>";}
 
   if ($cut == ""){
-
-  echo "<div id='oalert'>Your email has not been verified, we sent you an email.<br>
-  <a href='help/faq#spamfilter'>Didn't get a verification email? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
-<br>";}
+    //check if to allow user temp or block and send to blue
+require("garage/unverifiedEmailAccessStatus.php");
+  }
 
 echo "<div class='postcen'> 
 
