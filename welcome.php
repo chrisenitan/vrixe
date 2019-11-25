@@ -122,17 +122,15 @@ VALUES
 
 echo "<div class='pagecen'><div class='pef'>
 <div class='blfhead'>Profile Created</div><br>
-<div class='lifted' id='sdsfj' onclick='sdsfj()'><b>Cookies!</b><br>...cookies help us know it's you and gives you seamless access. What do you think?<br><br><button class='copele'>COOKIES ARE OKAY</button> <a href='app/terms.html#cookies'><button class='control'>COOKIES ARE NOT OK</button></a></div><br>
+<div class='lifted' id='sdsfj' onclick='sdsfj()'><b>We added cookies!</b><br>...cookies help us know it's you and gives you seamless access to vrixe.<br><br><button class='copele'>Cookies Are Ok</button> <a href='app/terms.html#cookies'><button class='control'>Delete Cookies</button></a></div><br><br>
 
- <img id='menuimg' src='images/vlogie.png'><br>
-<h class='miniss'>Simple | Fun | Productive</h><br>
-
+ <img alt='Account Created' src='images/essentials/contacts.svg' class='everybodyimg'><br><br>
 <br><h class='sword'>Your account has been created and we emailed you for verification</h><br>
 ";
 
-$subject = 'Verify your profile';
+$subject = 'Please verify your profile';
 $feed = 'feedback@vrixe.com';
-$from = 'contact@vrixe.com';//or could be a name
+$from = 'contact@vrixe.com';
 
 $headers = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
@@ -159,8 +157,8 @@ Hey Vrixer!</p>
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/at.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;;text-align:left'>
-<b><h style='font-size:14px'>Your Username:</h></b></br>
-<h style='font-size:14px'>@$username - With this, you hold the power to fight Thanos... Not really!</h>
+<b><h style='font-size:14px'>Why Verify?</h></b></br>
+<h style='font-size:14px'>Get access to create, edit, poll and use other vrixe features without making anyone doubt you're real.</h>
 </div>
 </div><br>
 
@@ -226,12 +224,12 @@ echo "<div id='galert'>We've sent you a verification mail.</div><br>";
 echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On! We'll fix this</div><br>";
 }}
 
-echo "<h class='miniss'>Your account was created with a random password, please update this under your <a style='text-decoration:underline;text-underline-position:under;' href='edit_profile'>profile settings</a></h><br><br>
- <img alt='Account Created' src='images/essentials/idea.png' class='everybodyimg'><br><br>
-<a href='me'><button class='copele'>MY PROFILE</button></a><br><br>
+echo "<h class='miniss'>Your account was created with a secure password, but you can update it under your <a style='text-decoration:underline;text-underline-position:under;' href='edit_profile'>profile settings</a></h><br><br>
+
+<a href='me'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> My Profile</button></a><br><br>
 
 <i class='material-icons' style='color:#065cff;'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
 <div class='blfheadalt'></div>
 </div>

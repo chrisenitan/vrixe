@@ -1,6 +1,6 @@
 <?php
 //get cutcok
-$verificationCutcok = substr($accountVerificationCutcok, 0,6);
+$cutcok = substr($accountVerificationCutcok, 0,6);
 
 $dateCreated=date_create($accountCreationDate);
 $dateToday=date_create(date("Y-m-d"));
@@ -46,7 +46,7 @@ Hey Vrixer!</p>
 <div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
 
 
-<a href='https://vrixe.com/account/confirm?refs=$verificationCutcok'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#ec3832;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#ec3832;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>VERIFY EMAIL</div></a><br>
+<a href='https://vrixe.com/account/confirm?refs=$cutcok'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#ec3832;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#ec3832;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>VERIFY EMAIL</div></a><br>
 
 <h style='font-size:12px'>One step away from getting back.</h>
 
@@ -89,8 +89,8 @@ echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not 
 else{
   $daysRemaining = 8 - $accountAge;
   
-echo "<div id='oalert'>Please verify your accounts email within $daysRemaining days.<br>
-  <a href='help/faq#spamfilter'>Having troubles verifying? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
+echo "<div id='oalert'>Please verify your account's email within $daysRemaining days.<br>
+  <a href='help/faq#spamfilter'>Issues with email verification? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
 <br>";
 }
 

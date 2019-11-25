@@ -13,7 +13,7 @@ if (isset($_COOKIE['user'])){
      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
    $userheadimg = $founduser['picture'];
      $accountCreationDate = $founduser['created'];
-     $accountVerificationCutcok = $founduser['cookie'];
+     $cutcok = $founduser['cookie'];
 }
 if ($headcook == 0){
      $fullname = "relog";

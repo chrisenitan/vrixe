@@ -184,9 +184,9 @@ if ($founds == 0) {
   <div class='blfhead'>...your plans</div><br>
  
   <img alt='plans' src='/images/essentials/plans.svg' class='everybodyimg'><br>
-  <h class='miniss'>What is here?</h><br><h class='disl'>You'll find events in plan and approved stage you are contributing to, created by you or your friends.</h><br><br>
+  <h class='miniss'>What is here?</h><br><h class='disl'>Picks is a list of events you're working on</h><br><br>
   <h class='miniss'>Start a plan</h><br><h class='disl'>Have a meetup idea? Create a post and see who to join on Vrixe.</h> <br><br>
-   <button class='copele' onclick='customshare()'><i class='material-icons' style='vertical-align: bottom;font-size:18px;'>share</i> SHARE VRIXE</button><br><br>
+   <button class='copele' onclick='customshare()'><i class='material-icons' style='vertical-align: bottom;font-size:18px;'>share</i> Share Vrixe</button><br><br>
 
    <h class='miniss'>More?</h><br>
 

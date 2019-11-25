@@ -287,7 +287,7 @@ if ($usernotflyother == "true"){
   <img alt='Account missing' src='images/essentials/relogin.png' class='everybodyimg'>
   <h class='miniss'>Seems you changed your account password recently.<br>Please Login again to secure your account.<br>
   <a href='help/faq.php#relog'>Learn More</a><br><br>
-   <a href='index'><button class='copele'>LOG IN</button></a><br><br>
+   <a href='index'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Log In</button></a><br><br>
   <a href='help/feedbacks'>Send us a feedback</a></h>
  <br><br>
 
@@ -330,7 +330,7 @@ $email = $gotuser['email'];
 $picture = $gotuser['picture'];
 $cut = $gotuser['confirm'];
 $accountCreationDate = $gotuser['created'];
-  $accountVerificationCutcok = $gotuser['cookie'];
+  $cutcok = $gotuser['cookie'];
 
 if ($update == "available"){
 
