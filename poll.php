@@ -1,6 +1,6 @@
 <?php
 require("garage/visa.php"); 
-//poll page to show user
+//poll page to show user. will generate actual poll from user_poll
  $ppaccesscode = mysqli_real_escape_string($conne, $_POST['authkey']);
 if($ppaccesscode > ""){
      $pollref = mysqli_real_escape_string($conne, $_GET['id']); #turn ref into ordinary text

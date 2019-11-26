@@ -40,7 +40,7 @@ else{
   	.pef{
   		z-index: 300;
   	}
-    .blf{font-family: Nunito;color:#5a5a5a;}
+  .blf{font-family: Nunito;color:#5a5a5a;float: left;margin-left: 22px;}
     #result{
   margin-top: 0px;
   margin-bottom: 0px;
@@ -457,7 +457,7 @@ width:45%;
 <input type='text' id='whoorganiser' value='$whoorganiser' class='rates' name='whoorganiser' required>
 <div class='whoedit'>$whoorganiser</div><br><br>
 
-<h class='blf'>Whatsapp Group Link</h><br>
+<h class='blf' id='scrollAccessCode'>Whatsapp Group Link</h><br>
 <input type='url' value='$wapweb' id='evweb' class='privinput' name='wapweb' placeholder='... .... ...' onchange='var weidalt=\"whowapweb\";allwho(weidalt)'><br>
 <input type='text' id='whowapweb' value='$whowapweb' class='rates' name='whowapweb' required>
 <div class='whoedit'>$whowapweb</div><br><br>
@@ -472,7 +472,7 @@ width:45%;
 
 if ($username == $hype){
   echo " <h class='blf'>Access Code</h><br>
-<input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...'><br>
+<input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...' id=accessCode><br>
 <h class='petd'>password to lock private events. only you can see this</h><br><br>";
 }
 

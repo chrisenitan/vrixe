@@ -236,7 +236,7 @@ if (theevent == "" || trivinput == "" || privateid == "" || formcontrol == 1 || 
 		document.getElementById("bcde").style.color="#28e828";
 		document.getElementById("subhead").scrollIntoView();
 		document.getElementById("botblue").innerHTML=`Event will be live at vrixe.com/event/${randomstring}`;
-		eventbox(sixth);
+		eventbox(sixth);//actual function is in main.js
 	}
 });
   

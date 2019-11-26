@@ -582,5 +582,12 @@ else{//permission not granted ask for it
   }
 }
 
+//change poll access code from deskpop
+let deskChangePollCode = () =>{
+document.getElementById("accessCode").style.backgroundColor="#92ffc0";
+  eventbox(fourth);
+  document.location = '#scrollAccessCode';
+}
+
 
 
