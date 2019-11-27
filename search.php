@@ -427,7 +427,7 @@ $poster = $row['hype'];
      if($imagenamerow == "default.png"){
        $cardBack = "background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
      }else{
-       $cardBack = "background-image:url(\"images/eventnails/$imagename\")";
+       $cardBack = "background-image:url(\"images/eventnails/$imagenamerow\")";
      }
         
     echo "<div class='cards' style='$cardBack'><br>

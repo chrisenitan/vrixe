@@ -589,5 +589,13 @@ document.getElementById("accessCode").style.backgroundColor="#92ffc0";
   document.location = '#scrollAccessCode';
 }
 
+//show contributors list on event
+let displayContributorList = () =>{
+  document.getElementById("contributorList").style.height="324px";
+}
 
+//hide contributors list on event
+let hideContributorList = () =>{
+  document.getElementById("contributorList").style.height="0px";
+}
 
