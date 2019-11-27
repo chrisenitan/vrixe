@@ -203,20 +203,51 @@ $contributorb = $row['cub'];
 $contributorc = $row['cuc'];
 $contributord = $row['cud'];
 $contributore = $row['cue'];
-$contributorf = $row['cuf'];
-
-
-//count contributor for menia name
- if ($contributora > ""){$countcua = 1;}else {$countcua = 0;}
- if ($contributorb > ""){$countcub = 1;}else {$countcub = 0;}
-  if ($contributorc > ""){$countcuc = 1;}else {$countcuc = 0;}
-  if ($contributord > ""){$countcud = 1;}else {$countcud = 0;}
- if ($contributore > ""){$countcue = 1;}else {$countcue = 0;}
- if ($contributorf > ""){$countcuf = 1;}else {$countcuf = 0;}
- $totalContributorCount = 1 + $countcua + $countcub + $countcuc + $countcud + $countcue + $countcuf;
+$contributorf = $row['cuf']; 
    
+//count contributor for menia name, get contributor image
+ if ($contributora > ""){$countcua = 1;
+ $allContributoraImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributora' LIMIT 1"); 
+ while($gotcontributoraImage = mysqli_fetch_array($allContributoraImg)){
+$imageContributora = $gotcontributoraImage['picture'];
+}}else {$countcua = 0;}
+     
+ if ($contributorb > ""){$countcub = 1;
+ $allContributorbImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributorb' LIMIT 1"); 
+ while($gotcontributorbImage = mysqli_fetch_array($allContributorbImg)){
+$imageContributorb = $gotcontributorbImage['picture'];
+}}else {$countcub = 0;}
+     
+  if ($contributorc > ""){$countcuc = 1;
+ $allContributorcImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributorc' LIMIT 1"); 
+   while($gotcontributorcImage = mysqli_fetch_array($allContributorcImg)){
+$imageContributorc = $gotcontributorcImage['picture'];
+}}else {$countcuc = 0;}
+     
+  if ($contributord > ""){$countcud = 1;
+ $allContributordImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributord' LIMIT 1"); 
+ while($gotcontributordImage = mysqli_fetch_array($allContributordImg)){
+$imageContributord = $gotcontributordImage['picture'];
+}}else {$countcud = 0;}
+     
+ if ($contributore > ""){$countcue = 1;
+ $allContributoreImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributore' LIMIT 1"); 
+   while($gotcontributoreImage = mysqli_fetch_array($allContributoreImg)){
+$imageContributore = $gotcontributoreImage['picture'];
+}}else {$countcue = 0;}
+     
+ if ($contributorf > ""){$countcuf = 1;
+ $allContributorfImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributorf' LIMIT 1"); 
+   while($gotcontributorfImage = mysqli_fetch_array($allContributorfImg)){
+$imageContributorf = $gotcontributorfImage['picture'];
+}}else {$countcuf = 0;}
+     
+ $totalContributorCount = 1 + $countcua + $countcub + $countcuc + $countcud + $countcue + $countcuf;
+ $contributorMinusOwnerCount = $totalContributorCount - 1;
 
- //contributor tasks
+   
+     
+//contributor tasks
 $ringo = $row['ringo'];
 $ringa = $row['ringa'];
 $ringb = $row['ringb'];
@@ -397,38 +428,38 @@ $newViewsCount = $viewsCount + 1;
  if($totalContributorCount > 1){//if there are more people
    //show the contributor div
 echo "<div id='contributorList'>
-<button type='button' class='o' onclick='hideContributorList()' style='background-color:#fff;color:#2b3445;float:none;display:block'><i class='material-icons' style='font-size:15px;vertical-align:text-top'>close</i> Close</button>";
+<button type='button' class='o' onclick='hideContributorList()' style='background-color:#fff;color:#2b3445;float:none;display:block'><i class='material-icons' style='font-size:13px;vertical-align:sub'>close</i> Close</button>";
    //start checking for each person
 if($contributora > ""){
  echo"<a class='poslik' href='/profile/$contributora'>
 <div class='lilput' style='display: inline-block;'>
-<img src='/images/profiles/profilethumbs/60bdkitten.jpg' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributora</h></div>";}
+<img src='/images/profiles/profilethumbs/$imageContributora' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributora</h></div>";}
           
           
  if($contributorb > ""){
          echo"<a class='poslik' href='/profile/$contributorb'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/60bdkitten.jpg' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorb</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributorb' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorb</h></div></a>";}
    
  if($contributorc > ""){
          echo"<a class='poslik' href='/profile/$contributorc'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/60bdkitten.jpg' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorc</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributorc' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorc</h></div></a>";}
    
  if($contributord > ""){
          echo"<a class='poslik' href='/profile/$contributord'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/60bdkitten.jpg' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributord</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributord' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributord</h></div></a>";}
    
   if($contributore > ""){
          echo"<a class='poslik' href='/profile/$contributore'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/60bdkitten.jpg' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributore</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributore' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributore</h></div></a>";}
    
   if($contributorf > ""){
-         echo"<a class='poslik' href='/profile/$contributorf'>
+echo"<a class='poslik' href='/profile/$contributorf'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/60bdkitten.jpg' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorf</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributorf' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorf</h></div></a>";}
    
  echo "</div>"; }
  else{ }
@@ -437,7 +468,12 @@ echo "<div id='meniac'>
 <div id='menias'><a class='poslik' href='/profile/$poster'><img src='/images/profiles/profilethumbs/$picture' id='eventprofilephoto'><br><span style='font-size:12px'><span style='color:white'>Created by</span> @$poster</a>";
  
      if($totalContributorCount > 1){
-       echo"<h class='miniss' onclick='displayContributorList()'> <span style='color:white'>and</span> Others <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></h></div>";
+       if($contributorMinusOwnerCount == 1){
+         $other = "Other User";
+       }else{
+         $other = "Other Users";
+       }
+       echo"<h class='miniss' onclick='displayContributorList()'> <span style='color:white'>and $contributorMinusOwnerCount</span> $other <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></h></div>";
      }
      else{ echo"</div>";}
 
