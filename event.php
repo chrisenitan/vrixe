@@ -428,38 +428,38 @@ $newViewsCount = $viewsCount + 1;
  if($totalContributorCount > 1){//if there are more people
    //show the contributor div
 echo "<div id='contributorList'>
-<button type='button' class='o' onclick='hideContributorList()' style='background-color:#fff;color:#2b3445;float:none;display:block'><i class='material-icons' style='font-size:13px;vertical-align:sub'>close</i> Close</button>";
+<button type='button' class='o' onclick='hideContributorList()' style='background-color:#fff;color:#2b3445;float:none;display:block;margin-bottom:5px;'><i class='material-icons' style='font-size:13px;vertical-align:sub'>close</i> Close</button>";
    //start checking for each person
 if($contributora > ""){
  echo"<a class='poslik' href='/profile/$contributora'>
 <div class='lilput' style='display: inline-block;'>
-<img src='/images/profiles/profilethumbs/$imageContributora' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributora</h></div>";}
+<img src='/images/profiles/profilethumbs/$imageContributora' class='lilprofilephoto'><h style='display: inline-block;'>@$contributora</h></div>";}
           
           
  if($contributorb > ""){
          echo"<a class='poslik' href='/profile/$contributorb'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorb' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorb</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributorb' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorb</h></div></a>";}
    
  if($contributorc > ""){
          echo"<a class='poslik' href='/profile/$contributorc'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorc' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorc</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributorc' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorc</h></div></a>";}
    
  if($contributord > ""){
          echo"<a class='poslik' href='/profile/$contributord'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributord' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributord</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributord' class='lilprofilephoto'><h style='display: inline-block;'>@$contributord</h></div></a>";}
    
   if($contributore > ""){
          echo"<a class='poslik' href='/profile/$contributore'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributore' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributore</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributore' class='lilprofilephoto'><h style='display: inline-block;'>@$contributore</h></div></a>";}
    
   if($contributorf > ""){
 echo"<a class='poslik' href='/profile/$contributorf'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorf' class='lilprofilephoto'><div class='jal'></div><h style='display: inline-block;'>@$contributorf</h></div></a>";}
+    <img src='/images/profiles/profilethumbs/$imageContributorf' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorf</h></div></a>";}
    
  echo "</div>"; }
  else{ }
