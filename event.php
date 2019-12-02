@@ -473,7 +473,7 @@ echo "<div id='meniac'>
        }else{
          $other = "Other Users";
        }
-       echo"<h class='miniss' onclick='displayContributorList()'> <span style='color:white'>and $contributorMinusOwnerCount</span> $other <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></h></div>";
+       echo"<h class='miniss' onclick='displayContributorList()'> <span style='color:white'>and</span> $contributorMinusOwnerCount $other <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></h></div>";
      }
      else{ echo"</div>";}
 

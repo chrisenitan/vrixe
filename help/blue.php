@@ -9,6 +9,7 @@ if (isset($_COOKIE['user'])){
      $headcook = 1;
    $fullname = $founduser['fullname'];
    $username = $founduser['username'];
+   $usernameEmail = $founduser['email'];
    $accountcreated = $founduser['created'];
 
 }
@@ -55,8 +56,9 @@ else{
     <div class='blfhead'>...email not verified</div><br><br>
 
   <img alt='$code' src='/images/essentials/loading.svg' class='everybodyimg'><br>
-  <h class='miniss'>What is happening here?</h><br><h class='disl'>We noticed your email has not been verified since <?php echo $accountcreated ?>. Please verify your email, we really need to make this is a real account.</h> <br><br>
-      <h class='miniss'>What can I do?</h><br><h class='disl'>Please check your email, we sent you a verification button.<br>
+  <h class='miniss'>What is happening here?</h><br><h class='disl'>We noticed your email has not been verified since <?php echo $accountcreated ?>. Please verify your email, we really need to make sure this is a real account.</h> <br><br>
+      <h class='miniss'>What can I do?</h><br><h class='disl'>Please check your email inbox and spam folders, we've sent a new verification mail to: <h class='miniss'><?php echo $usernameEmail ?></h><br><br>
+    
     <a href='faq#spamfilter'>Didn't get a verification email? <i class='material-icons' style='font-size:17px;vertical-align:sub'>arrow_forward</i></a></h> <br><br>
    <a href='/help/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>feedback</i> Send Feedback</button></a><br><br>
 
