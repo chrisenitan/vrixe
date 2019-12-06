@@ -55,7 +55,7 @@ else{
   <div class='pef' style='display:inline-block'>
     <div class='blfhead'>...email not verified</div><br><br>
 
-  <img alt='$code' src='/images/essentials/loading.svg' class='everybodyimg'><br>
+  <img alt='Unverified Account' src='/images/essentials/loading.svg' class='everybodyimg'><br>
   <h class='miniss'>What is happening here?</h><br><h class='disl'>We noticed your email has not been verified since <?php echo $accountcreated ?>. Please verify your email, we really need to make sure this is a real account.</h> <br><br>
       <h class='miniss'>What can I do?</h><br><h class='disl'>Please check your email inbox and spam folders, we've sent a new verification mail to: <h class='miniss'><?php echo $usernameEmail ?></h><br><br>
     

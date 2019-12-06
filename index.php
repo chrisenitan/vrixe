@@ -199,7 +199,7 @@ else{echo"";}
 
 <div class="pef"><br>
 
-<div class="evtyhe" id="singup" style="background-position: center;">Sign Up<br><small class="loginsmall">create better group plans</small></div>
+ <a href="#singup" title="Sign Up For A Vrixe Account"><div class="evtyhe" id="singup" style="background-position: center;">Sign Up<br><small class="loginsmall">create better group plans</small></div></a>
 <div id="signup">
   <img class="menuimg" src="images/vlogie.png" alt="vrixe"><br>
   <h class="bugdes">Vrixe. All Access</h><br>
@@ -222,7 +222,7 @@ else{echo"";}
   <h class="petd">these topics below do apply<br> <a href="app/terms.html"><h class="miniss">Terms</h></a>, <a href="app/terms.html#prio"><h class="miniss">Privacy</h></a> and <a href="app/terms.html#cookies"><h class="miniss">Cookie</h></a> Policy.</h><br>
 </div><!--eo sign up-->
 
-<div class="evtyhe" id="longin" style="background-position: bottom;">Log In<br><small class="loginsmall">access your vrixe profile</small></div>
+ <a href="#longin" title="Log Into Your Account"><div class="evtyhe" id="longin" style="background-position: bottom;">Log In<br><small class="loginsmall">access your vrixe profile</small></div></a>
 <div id="login">
   <img class="menuimg" src="images/vlogie.png" alt="vrixe"><br>
   <h class="bugdes">Log In</h><br>

@@ -121,7 +121,7 @@ echo "<div class='cards' style='$cardBack'><br>
 <script>
   document.getElementById('r_c$r').addEventListener('click', function(){
     var closer = 'no, stay';
-  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">person_add_disabled</i> YES EXIT';
+  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">person_add_disabled</i> Yes Exit';
   var buttonlink = '#';
   var title = 'Exit this group plan?';
   var text = 'Are you sure you want to leave this plan?<br> You will no longer get updates but your last changes will be visible.';
