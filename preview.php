@@ -266,7 +266,7 @@ echo "<b class='gnttops'>Landmark</b><br>";
 echo "<h>Behind...</h><br><br></div>";
 
 
-echo "<div class='gntright'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>link</i> Add any link</button><br><br>";
+echo "<div class='gntright'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>message</i> Connect to Chat</button><br><br>";
 
 
 
@@ -287,7 +287,7 @@ if($username > ""){
 ";
 }
 else{
-  echo " <a href='index.php?q=profile_required#signup'> <button class='copele'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>person_add</i> Try Vrixe</button></a>
+  echo " <a href='index.php?q=profile_required#signup'> <button class='copele'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>person_add</i> Get Started</button></a>
   ";
 }
 

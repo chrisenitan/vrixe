@@ -236,7 +236,7 @@ document.location = "tour.php";
 	
 
 <div class="newage">
-	<form method="post" action="preview.php" style="display: inline;">
+	<form method="post" action="preview" style="display: inline;">
 <img src="images/essentials/preview/hang.jpeg" class="evtimg" id="dynoimg" alt="Image preview">
 <div class="evtdetails">
 
@@ -286,7 +286,7 @@ document.location = "tour.php";
 </div>
 <br>
 
-<button class="actbtn">PREVIEW DEMO</button>
+<button class="actbtn">Preview Demo</button>
 </form>
 </div>
 
