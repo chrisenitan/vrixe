@@ -21,7 +21,6 @@ function revpagemenu(){
 function createprogram(){
  document.getElementById('createprogram').style.display="inline-block"; 
  document.getElementById('procheck').value='present';
- 	document.getElementById('begpro').value="12:00:00";
 }
 function hidesearch(){
 	 document.getElementById('searchboxes').style.height="0";

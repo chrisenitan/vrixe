@@ -147,11 +147,11 @@ document.location = "tour.php";
 <br>
 
 <div id="details" onclick="showdet()">
-	<p style="text-align:center">Connect and edit key topics, questions and other details of your next plan with your team.<br></p>
+  <br><p id="reviewhead">Features</p>
+  
+	<p style="text-align:center">Create and edit details on the go. Share and collaborate on your next plan with your team.<br></p>
 
- Create an invite, add your team to contribute, edit your events details together and let your guests follow the changes and progress as you finalise your plan. <br>Vrixe brings you closer to your team and your team to your guests with features you can't find anywhere else.
-
-<br><br>
+<br>
 
 
 <h class="cyansm"><i class="material-icons">group_work</i> Edit plans together</h><br>
@@ -217,16 +217,16 @@ document.location = "tour.php";
 <div id="sidescroll">
 <div id="insidescroll">
 
-<img src="images/aboutvrixe/invite-cv.jpg" class="scrollimg" alt="Send Invites">
-<img src="images/aboutvrixe/event-cv.jpg" class="scrollimg" alt="Share Events">
-<img src="images/aboutvrixe/desk-cv.jpg" class="scrollimg" alt="Co plan and edit">
-<img src="images/aboutvrixe/analytics-cv.jpg" class="scrollimg" alt="Get Reports">
-<img src="images/aboutvrixe/poll-cv.jpg" class="scrollimg" alt="Simple UX">
-<img src="images/aboutvrixe/agenda-cv.jpg" class="scrollimg" alt="Add Programs">
-<img src="images/aboutvrixe/privacy-cv.jpg" class="scrollimg" alt="Built with privacy in mind">
-<img src="images/aboutvrixe/s1-cv.jpg" class="scrollimg" alt="Avalable as a PWA">
-<img src="images/aboutvrixe/s2-cv.jpg" class="scrollimg" alt="Responsive Design Mobile">
-<img src="images/aboutvrixe/s3-cv.jpg" class="scrollimg" alt="Responsive Design Desktop">
+<img src="images/aboutvrixe/invite-cv.jpg" class="scrollimg" alt="Send Invites" id="invite-cv">
+<img src="images/aboutvrixe/event-cv.jpg" class="scrollimg" alt="Share Events" id="event-cv">
+<img src="images/aboutvrixe/desk-cv.jpg" class="scrollimg" alt="Co plan and edit" id="desk-cv">
+<img src="images/aboutvrixe/analytics-cv.jpg" class="scrollimg" alt="Get Reports" id="analytics-cv">
+<img src="images/aboutvrixe/poll-cv.jpg" class="scrollimg" alt="Simple UX" id="poll-cv">
+<img src="images/aboutvrixe/agenda-cv.jpg" class="scrollimg" alt="Add Programs" id="agenda-cv">
+<img src="images/aboutvrixe/privacy-cv.jpg" class="scrollimg" alt="Built with privacy in mind" id="privacy-cv">
+<img src="images/aboutvrixe/s1-cv.jpg" class="scrollimg" alt="Avalable as a PWA" id="s1-cv">
+<img src="images/aboutvrixe/s2-cv.jpg" class="scrollimg" alt="Responsive Design Mobile" id="s2-cv">
+<img src="images/aboutvrixe/s3-cv.jpg" class="scrollimg" alt="Responsive Design Desktop" id="s3-cv">
 
 </div>
 </div>
@@ -660,6 +660,16 @@ else{
   
   <div class='blfheadalt'></div>
 </div>
+<script>
+  var scrollimg = document.querySelectorAll(".scrollimg");
+  
+ for (let i = 0; i < scrollimg.length; i++) {
+     scrollimg[i].addEventListener("click", function() {
+      alert("hejej");
+     });
+ }
+  
 
+  </script>
 </body>
 </html>

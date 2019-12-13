@@ -193,6 +193,7 @@ $poster = $row['hype'];
 $mail = $row['email'];
 $organiser = $row['organiser'];
 $phone = $row['phone'];
+$rsvpmail = $row['rsvpmail'];
 $wapweb = $row['wapweb'];
 $month = $row['month'];
 $authkey = $row['authkey'];
@@ -253,6 +254,7 @@ $ringf = $row['ringf'];
   $whoorganiser = $actorsare['organiser'];if($whoorganiser == ""){$whoorganiser = $poster;}
   $whowapweb = $actorsare['wapweb'];if($whowapweb == ""){$whowapweb = $poster;}
   $whophone = $actorsare['phone'];if($whophone == ""){$whophone = $poster;}
+  $whorsvpmail = $actorsare['phone'];if($whorsvpmail == ""){$whorsvpmail = $poster;}
   $whokeynote = $actorsare['keynote'];if($whokeynote == ""){$whokeynote = $poster;}
 $whodayedit =date("d - M - Y");
 }
@@ -463,10 +465,15 @@ width:45%;
 <div class='whoedit'>$whowapweb</div><br><br>
 
 
-<h class='blf'>Your RSVP Mail</h><br>
-<input type='email' value='$phone' class='privinput' name='phone' placeholder='... .... ...' autocomplete='tel' onchange='var weidalt=\"whophone\";allwho(weidalt)'><br>
+<h class='blf'>RSVP Phone Number</h><br>
+<input type='tel' value='$phone' class='privinput' name='phone' placeholder='... .... ...' autocomplete='tel' onchange='var weidalt=\"whophone\";allwho(weidalt)'><br>
 <input type='text' id='whophone' value='$whophone' class='rates' name='whophone' required>
-<div class='whoedit'>$whophone</div><br><br>";
+<div class='whoedit'>$whophone</div><br><br>
+
+<h class='blf'>RSVP Email</h><br>
+<input type='email' value='$rsvpmail' class='privinput' name='rsvpmail' placeholder='... .... ...' onchange='var weidalt=\"whorsvpmail\";allwho(weidalt)'><br>
+<input type='text' id='whorsvpmail' value='$whorsvpmail' class='rates' name='whorsvpmail' required>
+<div class='whoedit'>$whorsvpmail</div><br><br>";
 
  //jus a way to change auth key
 

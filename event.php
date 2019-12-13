@@ -186,6 +186,7 @@ $state = $row['state'];
 $hype = $row['hype'];
 $probelandmark = $row['landmark']; $landmark = htmlspecialchars($probelandmark, ENT_QUOTES);
 $probephone = $row['phone']; $phone = htmlspecialchars($probephone, ENT_QUOTES);
+$probersvpmail = $row['rsvpmail']; $rsvpmail = htmlspecialchars($probersvpmail, ENT_QUOTES);
 
 $theplace = $row['zip'];
 $kilas = $row['class'];
@@ -852,7 +853,12 @@ if ($wapweb > ""){
 else {echo "";}
 
 if ($phone > ""){
-echo "<a href='mailto:$phone'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>contact_mail</i> Email Team";
+echo "<a href='tel:$phone'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>phone</i> Phone";
+echo "</button></a><br><br>";}
+else {echo "";}
+  
+if ($rsvpmail > ""){
+echo "<a href='mailto:$rsvpmail'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>contact_mail</i> Email Team";
 echo "</button></a><br><br>";}
 else {echo "";}
 
