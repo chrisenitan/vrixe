@@ -123,7 +123,11 @@ document.location = "tour.php";
 </script>
 </head>
 <body>
-
+<div id="screenshotDiv">
+  <img id="screenshot"><br><br>
+  
+  <button id="closeScreenshot" class="adss"><i class="material-icons" style="font-size:17px;color:#fff;vertical-align:sub">close</i> Close</button>
+  </div>
 <img src='https://vrixe.com/images/und.svg' id='himg'>
 
 <div id="icontxt">
@@ -142,7 +146,7 @@ document.location = "tour.php";
 
 <div id="ctas">
 	<a href="app/pwa.html"><button class="cta" id="topwa">Install</button></a>
-	<a href="index.php"><button class="cta" id="tovrixe">Open</button></a>
+	<a href="#sample"><button class="cta" id="tovrixe">Explore A Demo</button></a>
 </div>
 <br>
 
@@ -208,7 +212,7 @@ document.location = "tour.php";
 
 <br><br><br>
 
-<a href="#sample"><button class="adss">Explore a Demo</button></a>
+<a href="index.php"><button class="adss">Open Vrixe</button></a>
 
 <a href="#reviews"><button class="adss">User Reviews</button></a>
 
@@ -665,10 +669,17 @@ else{
   
  for (let i = 0; i < scrollimg.length; i++) {
      scrollimg[i].addEventListener("click", function() {
-      alert("hejej");
+      var imgName = this.id; //get image name
+       var screenshotDiv = document.getElementById("screenshotDiv"); //get image dispaly div
+        document.getElementById("screenshot").setAttribute("src", `images/aboutvrixe/${imgName}.jpg`); //set image in div to image clicked
+       screenshotDiv.style.display="block"; //show the div
      });
  }
-  
+ 
+  //close the screenshot div
+  document.getElementById("closeScreenshot").addEventListener("click", function(){
+     document.getElementById("screenshotDiv").style.display="none"; //show the div
+  })
 
   </script>
 </body>

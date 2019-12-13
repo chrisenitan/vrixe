@@ -277,9 +277,7 @@ echo "<button class='gntbtnalt' id='clean'><i class='material-icons' style='font
 echo "</div></div>";
 
 
-echo "<div id='botblue' style='font-family:Nunito;'><br>...create detailed events together from your browser.<br><br>
-
-<a href='aboutvrixe#reviews'><button class='copele'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>star_half</i> User Reviews</button></a> &nbsp; ";
+echo "<div id='botblue' style='font-family:Nunito;'><br>...create detailed events together from your browser.<br><br>";
 
 if($username > ""){
  echo"

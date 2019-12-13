@@ -618,3 +618,21 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
 background: -webkit-linear-gradient(to right, #e67c82, #434576);  
 background: linear-gradient(to right, #e67c82, #434576)
 }
+#screenshotDiv{
+    position: fixed;
+    display: none;
+    background-color: #143753;
+    width: 96%;
+    height: 90vh;
+  z-index:900;
+    border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+    padding: 2%;
+    overflow: hidden;
+}
+#screenshot{
+  height:auto;
+  width:98%;
+  margin-top:2%;
+  border-radius: 4px;
+}

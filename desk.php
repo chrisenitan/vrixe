@@ -317,7 +317,7 @@ width:45%;
 <div class='pef' id='first'>
 <div class='blfhead'>Dates</div><br>
 <h class='petd' style='color: #379e65;'>starting with the basics</h><br><br>
-<h class='blf'>Team's next task for the event<span class='asterik'>*</span></h><br>
+<h class='blf'>Current Stage<span class='asterik'>*</span></h><br>
 <input type='text'  id='evtyp' class='privinput' name='type' title='club, fashion show, seminar...' maxlength='58' placeholder='Looking for a venue...' value='$tag' onchange='var weidalt=\"whotag\";allwho(weidalt)' required><br>
 <input type='text' id='whotag' value='$whotag' class='rates' name='whotag' required>
 <div class='whoedit'>$whotag</div><br>
@@ -356,7 +356,7 @@ width:45%;
 <div class='blfhead'>Venue</div><br>
 <h class='petd' style='color: #379e65;'>...on not getting lost</h><br><br>
 
-<br><h class='blf'>Venue<span class='asterik'>*</span></h><br>
+<h class='blf'>Venue<span class='asterik'>*</span></h><br>
 <h id='err' style='display:block' class='petd'></h>
 <input title='Textual Address' type='text'  class='privinput' name='bvenue' required placeholder='... .... ...' id='lalo' value=\"$bvenue\" autocomplete='shipping street-address' id='addressline' onchange='var weidalt=\"whoaddressline\";allwho(weidalt)'><br>
 <input type='text' id='whoaddressline' value='$whoaddressline' class='rates' name='whoaddressline' required>
@@ -371,7 +371,7 @@ width:45%;
 <div class='whoedit'>$whocoord</div>
 <br>
 
-<h class='blf'>Landmark<span class='asterik'>*</span></h><br>
+<h class='blf'>Venue Landmark<span class='asterik'>*</span></h><br>
 <input onchange='var weidalt=\"wholandmark\";allwho(weidalt)' type='text' value=\"$landmark\" class='privinput' id='evldm' name='landmark' required placeholder='... .... ...'><br>
 <input type='text' id='wholandmark' value='$wholandmark' class='rates' name='wholandmark' required>
 <div class='whoedit'>$wholandmark</div><br><br>
@@ -478,7 +478,7 @@ width:45%;
  //jus a way to change auth key
 
 if ($username == $hype){
-  echo " <h class='blf'>Access Code</h><br>
+  echo " <h class='blf'>Your Secure Access Code</h><br>
 <input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...' id=accessCode><br>
 <h class='petd'>password to lock private events. only you can see this</h><br><br>";
 }
