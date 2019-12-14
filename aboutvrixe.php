@@ -46,7 +46,7 @@ echo "<link type='text/css' rel='stylesheet' href='css/makeup.css?$vv'>";
 <script>	
   window.addEventListener("wheel", {passive: true} );
 function showdet(){
-	document.getElementById("details").style.height="1350px";
+	document.getElementById("details").style.height="1223px";
 	document.getElementById("showbtn").style.display="none";
 	document.getElementById("hidebtn").style.display="block";
 }
@@ -124,9 +124,9 @@ document.location = "tour.php";
 </head>
 <body>
 <div id="screenshotDiv">
-  <img id="screenshot"><br><br>
+  <img id="screenshot"><br>
   
-  <button id="closeScreenshot" class="adss"><i class="material-icons" style="font-size:17px;color:#fff;vertical-align:sub">close</i> Close</button>
+  <button id="closeScreenshot" class="tramp"><i class="material-icons">close</i></button>
   </div>
 <img src='https://vrixe.com/images/und.svg' id='himg'>
 
@@ -671,8 +671,9 @@ else{
      scrollimg[i].addEventListener("click", function() {
       var imgName = this.id; //get image name
        var screenshotDiv = document.getElementById("screenshotDiv"); //get image dispaly div
-        document.getElementById("screenshot").setAttribute("src", `images/aboutvrixe/${imgName}.jpg`); //set image in div to image clicked
+        document.getElementById("screenshot").setAttribute("src", `images/aboutvrixe/highres/${imgName}.jpg`); //set image in div to image clicked
        screenshotDiv.style.display="block"; //show the div
+       document.location="#himg";//pull page back up for gallery scroll
      });
  }
  

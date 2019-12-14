@@ -525,7 +525,7 @@ else{
 
 
 echo"
-<button title='Copy Link' type='button' id='clonebtn' class='meniabtn'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>link</i> Link</button>
+<button title='Copy Link' type='button' id='clonebtn' class='meniabtn'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>link</i> Copy Link</button>
 
 <form action='/help/feedbacks.php' method='post'>
 <input type='text' value='$pureEventRef' name='refs' style='display:none'><button class='meniabtn' title='Feedback for this Event'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>report</i> Report</button></form>
@@ -551,7 +551,7 @@ echo"
 
 //show getcalendar if a user is logged in somehow
 if($username > ""){
-  echo"<button onclick='adcal();' title='add to calendar' type='button' class='meniabtn' id='adcal'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>event</i> Get Calendar</button></div>
+  echo"<button onclick='adcal();' title='add to calendar' type='button' class='meniabtn' id='adcal'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>event</i> Add to Calendar</button></div>
   
   <script>
   function adcal(){

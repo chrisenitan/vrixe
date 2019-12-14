@@ -3146,6 +3146,7 @@ width:15%;
 .remlilput{
 	width: 50px;
     font-size: 10px;
+  margin: auto;
     border: none;
     cursor: pointer;
     padding-top: 4%;

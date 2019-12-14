@@ -623,16 +623,14 @@ background: linear-gradient(to right, #e67c82, #434576)
     display: none;
     background-color: #143753;
     width: 96%;
-    height: 90vh;
+    height: 83vh;
   z-index:900;
-    border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
     padding: 2%;
     overflow: hidden;
 }
 #screenshot{
   height:auto;
-  width:98%;
+  width:90%;
   margin-top:2%;
   border-radius: 4px;
 }
