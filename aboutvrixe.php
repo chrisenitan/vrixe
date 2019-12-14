@@ -126,7 +126,7 @@ document.location = "tour.php";
 <div id="screenshotDiv">
   <img id="screenshot"><br>
   
-  <button id="closeScreenshot" class="tramp"><i class="material-icons">close</i></button>
+  <h id="buffertxt">Please wait, loading image...</h> <button id="closeScreenshot" class="tramp"><i class="material-icons">close</i></button>
   </div>
 <img src='https://vrixe.com/images/und.svg' id='himg'>
 
@@ -674,6 +674,14 @@ else{
         document.getElementById("screenshot").setAttribute("src", `images/aboutvrixe/highres/${imgName}.jpg`); //set image in div to image clicked
        screenshotDiv.style.display="block"; //show the div
        document.location="#himg";//pull page back up for gallery scroll
+       
+       document.getElementById("buffertxt").style.display="inline-block";//show buffer text
+       
+       //hide buffer text
+       setTimeout(function(){
+         document.getElementById("buffertxt").style.display="none";
+       },3000);
+       
      });
  }
  

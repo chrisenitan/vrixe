@@ -634,3 +634,11 @@ background: linear-gradient(to right, #e67c82, #434576)
   margin-top:2%;
   border-radius: 4px;
 }
+#buffertxt{
+  float: left;
+    margin-left: 50px;
+    margin-top: 22px;
+  font-size: 12px;
+    color: #a9dce4;
+    font-weight: bold
+}
