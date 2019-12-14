@@ -771,7 +771,7 @@ require('garage/validuser.php'); //call mover script
        <button type='button' class='pickerdeskbtn' onclick=\"var dd='30';ddprocess(dd);\" id='bc30'>30</button>
        <button type='button' class='pickerdeskbtn' onclick=\"var dd='31';ddprocess(dd);\" id='bc31'>31</button>
        
-      <button class='pickerminitxt' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$month</button>
+      <br><button class='textButton' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$month</button>
        <input type='text' class='rates' id='deskmholder' value='02'>
     </div>
     

@@ -44,10 +44,10 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/key.png' style='float:left;width:50px;height:50px'>
+<img src='https://vrixe.com/mail/event/friendship.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Better Private Events: </h></b></br>
-<h style='font-size:14px'>We've completely rebuilt private events. Its now faster, more secure, fully featured and it took less code.</h>
+<b><h style='font-size:14px'>Team List: </h></b></br>
+<h style='font-size:14px'>Now you can view a list of people making a plan together.</h>
 </div>
 </div><br>
 
@@ -56,10 +56,10 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/info.png' style='float:left;width:50px;height:50px'>
+<img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Verifications (Delete Contact): </h></b></br>
-<h style='font-size:14px'>We've listened and extended your love for actions check to the phonebook. Now you get a verification before deleting a contact.</h>
+<b><h style='font-size:14px'>Email Verifications: </h></b></br>
+<h style='font-size:14px'>New users can now use the App for a trial period before, we're skipping the nagging verifications for you.</h>
 </div>
 </div><br>
 
@@ -69,10 +69,10 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/gears.png' style='float:left;width:50px;height:50px'>
+<img src='https://vrixe.com/mail/otherimg/creativity.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>App Optimisation: </h></b></br>
-<h style='font-size:14px'>Moving along people... nothing to see here... Just some tiny updates, so small you'll barely notice.</h>
+<b><h style='font-size:14px'>More: </h></b></br>
+<h style='font-size:14px'>More details, add phone number and edit your private event code with the new Vrixe.</h>
 </div>
 </div><br>
 

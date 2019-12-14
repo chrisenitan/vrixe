@@ -204,7 +204,7 @@ if($cut == ""){
        
         <?php
        echo"
-        <button class='pickerminitxt' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$automonth</button>
+        <br><button class='textButton' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$automonth</button>
         <input type='text' class='rates' id='deskmholder' value='$autoddtae'>"
        ?>
     </div>
