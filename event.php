@@ -75,6 +75,20 @@ else {
  $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i> Events on Vrixe</button>";
   echo "<title>Plan on Vrixe </title>"; #direct url entry
 }
+  
+  //trace analytics location test    pTecj8auk6
+  if($pureEventRef == "gVphkcQJWV"){
+    //insert into db 
+    $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
+ $anacountry = $url->countryName;
+    $anadate = date("Y-m-d");
+    $anatime = date("h:i:sa");
+    $anastring = "+1 from <b>$anacountry</b> on <b>$anadate</b> at <b>$anatime</b>";
+    $savedetail="INSERT INTO store (searchquery, sqy, profile,sc) VALUES ('$anastring','analytics','mobile','1')";
+  }
+  if (!mysqli_query($conne,$savedetail)){
+  die('Error: ' . mysqli_error($conne));
+  }
 ?>
 <link rel="manifest" href="/manifest.json">
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" x-undefined=""/>
