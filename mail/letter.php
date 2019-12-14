@@ -38,7 +38,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img alt='coedit' src='https://vrixe.com/mail/updateimages/mcoedit.png' style='width:14px;height:14px'> Plan together 
 </p><br>
 
-<img alt='new features on vrixe' src='https://vrixe.com/mail/updateimages/$bannerimage' style='height:auto;width:96%;margin-left:2%'>
+<img alt='new features on vrixe' src='https://vrixe.com/mail/banners/$bannerimage' style='height:auto;width:96%;margin-left:2%'>
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
 

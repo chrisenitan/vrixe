@@ -452,7 +452,7 @@ Plan Approved!</p>
 
 <p style='margin-top:2px;font-size:14px;text-align:center'>@$hype just approved $probeevent</p><br>
 
-<img alt='new features on vrixe' src='https://vrixe.com/mail/event/vrixed.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='new features on vrixe' src='https://vrixe.com/mail/banners/eventupdated.jpg' style='height:auto;width:96%;margin-left:2%'>
 
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
@@ -554,7 +554,7 @@ Plan Updated!</p>
 
 <p style='margin-top:2px;font-size:14px;text-align:center'>$username just made some changes to <b>$probeevent</b></p><br>
 
-<img alt='your vrixe event' src='https://vrixe.com/mail/event/vrixed.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='your vrixe event' src='https://vrixe.com/mail/banners/eventupdated.jpg' style='height:auto;width:96%;margin-left:2%'>
 
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
