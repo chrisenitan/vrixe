@@ -214,7 +214,7 @@ require("mail/genericMailer.php");
    if($pushlist > ""){
      require("garage/invitelistpush.php"); 
    }else{
-     //do not push
+  //do not push
    }
 
 echo"<h class='sword'>Your private access code is: </h><h id='string'>$authkey</h>
