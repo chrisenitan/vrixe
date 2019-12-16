@@ -46,8 +46,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/friendship.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Team List: </h></b></br>
-<h style='font-size:14px'>Now you can view a list of people making a plan together.</h>
+<b><h style='font-size:14px'>Event Team List: </h></b></br>
+<h style='font-size:14px'>Now you can see a list of teammates planning an event.</h>
 </div>
 </div><br>
 
@@ -58,8 +58,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Email Verifications: </h></b></br>
-<h style='font-size:14px'>New users can now use the App for a trial period before, we're skipping the nagging verifications for you.</h>
+<b><h style='font-size:14px'>Email Verification: </h></b></br>
+<h style='font-size:14px'>New users can now use the App for a trial period before, we've pushed the verification step further for you.</h>
 </div>
 </div><br>
 
@@ -71,8 +71,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/otherimg/creativity.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>More: </h></b></br>
-<h style='font-size:14px'>More details, add phone number and edit your private event code with the new Vrixe.</h>
+<b><h style='font-size:14px'>New: </h></b></br>
+<h style='font-size:14px'>Now you can add an RSVP phone number and edit your event code all from your desk.</h>
 </div>
 </div><br>
 
