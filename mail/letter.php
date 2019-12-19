@@ -44,6 +44,19 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
+<img src='https://vrixe.com/mail/otherimg/creativity.png' style='float:left;width:50px;height:50px'>
+<div style='float:right;width:80%;padding-right:1%;text-align:left'>
+<b><h style='font-size:14px'>New: </h></b></br>
+<h style='font-size:14px'>Now you can add an RSVP phone number and edit your event code all from your desk.</h>
+</div>
+</div><br>
+
+<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
+
+
+
+
+<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/friendship.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Event Team List: </h></b></br>
@@ -55,24 +68,12 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 
+
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Email Verification: </h></b></br>
 <h style='font-size:14px'>New users can now use the App for a trial period before, we've pushed the verification step further for you.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/otherimg/creativity.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>New: </h></b></br>
-<h style='font-size:14px'>Now you can add an RSVP phone number and edit your event code all from your desk.</h>
 </div>
 </div><br>
 
