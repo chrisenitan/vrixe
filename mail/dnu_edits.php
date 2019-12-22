@@ -1,11 +1,15 @@
 <?php
-$email = "ennycris1@gmail.com";
-$password ="jsjhjhj2";
-$username = "crisdeven";
-$subject = 'Your Vrixe account is';
+
+require("../garage/visa.php");
+
+$fetchlist = mysqli_query($conne,"SELECT * FROM newsletter WHERE day !='unsubscribed' ");
+
+while($list = mysqli_fetch_array($fetchlist)){
+
+$email = $list['mail'];
 
 
-
+$subject = 'Another Christmas Best Wishes - Vrixe';
 $feed = 'feedback@vrixe.com';
 $from = 'contact@vrixe.com';//or could be a name
 
@@ -23,7 +27,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-...merry christmas.</p>
+...Merry Christmas.</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>
 <img alt='create' src='https://vrixe.com/mail/updateimages/mcreate.png' style='width:14px;height:14px'> Create invites 
 
@@ -40,20 +44,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Better Private Events: </h></b></br>
-<h style='font-size:14px'>We've completely rebuilt private events. Its now faster, more secure, fully featured and it took less code.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/info.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Verifications (Delete Contact): </h></b></br>
-<h style='font-size:14px'>We've listened and extended your love for actions check to the phonebook. Now you get a verification before deleting a contact.</h>
+<b><h style='font-size:14px'>Into 2020: </h></b></br>
+<h style='font-size:14px'>The best part of 2019 will be that we found you and you stuck with us. Let's have the best 2020 shall we. We look forward to serving you the chillest webapp possible. It will be exciting as fulalalala! <b>Merry Christmas</b></h>
 </div>
 </div><br>
 
@@ -62,22 +54,9 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/gears.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>App Optimisation: </h></b></br>
-<h style='font-size:14px'>Moving along people... nothing to see here... Just some tiny updates, so small you'll barely notice.</h>
-</div>
-</div><br>
+<a href='https://vrixe.com'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>THE NEW VRIXE</div></a><br>
 
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-
-
-<a href='https://vrixe.com'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>WHAT'S NEW</div></a><br>
-
-<h style='font-size:12px'>Go on, start your next plan with friends.</h>
+<h style='font-size:12px'>From our tiny team at Vrixe.</h>
 </div><br><br>
 
 
@@ -96,17 +75,21 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 </div>
 
-<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'>This email is really not cool? <a href='https://vrixe.com/help/feedbacks?mails=$email'>Unsubscribe.</a><br>
+<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'>Who unsubscribes from a Christmas email! Really? <a href='https://vrixe.com/help/feedbacks?mails=$email'>Unsubscribe.</a><br>
 </div>
 ";
 $message .= "</body></html>";
 
-
-if(mail($email, $subject, $message, $headers)){
+  if(mail($email, $subject, $message, $headers)){
 echo "mail sent to $email";
 } else{
 echo "<div id='oalert' style='display:block'><span id='vtext'>Email could not be sent</span> </div>";
 }
+  
+}
+
+
+
 
 
 

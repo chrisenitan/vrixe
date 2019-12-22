@@ -334,8 +334,8 @@ document.getElementById('bt').value=navigator.userAgent;
 
 
 <br>
-<h class='petd'>reviews are protected and guided by our <br> <a href='/app/terms.html#reviews'><h class='miniss'>Terms & Policies</h></a>.</h><br><br>
-<button class='copele'>SUBMIT</button>
+<h class='petd'>reviews are protected by our <br> <a href='/app/terms.html#reviews'><h class='miniss'>Terms & Policies</h></a>.</h><br><br>
+<button class='copele'>Submit <i class='material-icons' style='font-size:17px;vertical-align:sub'>send</i></button>
 <br><br></form><br><br>
 
 
