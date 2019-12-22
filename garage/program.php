@@ -207,7 +207,7 @@ else{echo "
 
 
 <div class='proginput' id='ones'>
-<input type='time' class='so' name='pa' id='begpro'>
+<input type='time' class='so' name='pa' id='begpro' value='12:00:00'>
 
 <button class='po'>1</button>
 
@@ -215,23 +215,23 @@ else{echo "
 
 
 <div class='proginput' id='two'>
-<input type='time' class='so' name='pb'>
+<input type='time' class='so' name='pb' value='13:00:00'>
 
 <button class='po'>2</button>
 
-<input type='text' class='privinput' name='pbt' placeholder='... .... ...'></div>
+<input type='text' class='privinput' name='pbt' placeholder='Meeting of...'></div>
 
 
 <div class='proginput' id='three'>
-<input type='time' class='so' name='pc'>
+<input type='time' class='so' name='pc' value='13:30:00'>
 
 <button class='po'>3</button>
 
-<input type='text' class='privinput' name='pct' placeholder='... .... ...'></div>
+<input type='text' class='privinput' name='pct' placeholder='Introduction of...'></div>
 
 
 <div class='proginput' id='four'>
-<input type='time' class='so' name='pd'>
+<input type='time' class='so' name='pd' value='14:00:00'>
 
 <button class='po'>4</button>
 
@@ -239,7 +239,7 @@ else{echo "
 
 
 <div class='proginput' id='five'>
-<input type='time' class='so' name='pe'>
+<input type='time' class='so' name='pe' value='15:00:00'>
 
 <button class='po'>5</button>
 
@@ -247,7 +247,7 @@ else{echo "
 
 
 <div class='proginput' id='six'>
-<input type='time' class='so' name='pf'>
+<input type='time' class='so' name='pf' value='16:00:00'>
 
 <button class='po'>6</button>
 
@@ -255,7 +255,7 @@ else{echo "
 
 
 <div class='proginput' id='seven'>
-<input type='time' class='so' name='pg'>
+<input type='time' class='so' name='pg' value='17:00:00'>
 
 <button class='po'>7</button>
 
@@ -263,7 +263,7 @@ else{echo "
 
 
 <div class='proginput' id='eight'>
-<input type='time' class='so' name='ph'>
+<input type='time' class='so' name='ph' value='18:00:00'>
 
 <button class='po'>8</button>
 
@@ -271,7 +271,7 @@ else{echo "
 
 
 <div class='proginput' id='nine'>
-<input type='time' class='so' name='pi'>
+<input type='time' class='so' name='pi' value='19:00:00'>
 
 <button class='po'>9</button>
 
@@ -279,7 +279,7 @@ else{echo "
 
 
 <div class='proginput' id='ten'>
-<input type='time' class='so' name='pj'>
+<input type='time' class='so' name='pj' value='20:00:00'>
 
 <button class='po'>10</button>
 
@@ -287,7 +287,7 @@ else{echo "
 
 
 <div class='proginput' id='eleven'>
-<input type='time' class='so' name='pk'>
+<input type='time' class='so' name='pk' value='20:30:00'>
 
 <button class='po'>11</button>
 
@@ -295,7 +295,7 @@ else{echo "
 
 
 <div class='proginput' id='twleve'>
-<input  type='time' class='so' name='pl'>
+<input  type='time' class='so' name='pl' value='21:00:00'>
 
 <button class='po'>12</button>
 

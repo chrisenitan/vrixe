@@ -186,6 +186,7 @@ $state = $row['state'];
 $hype = $row['hype'];
 $probelandmark = $row['landmark']; $landmark = htmlspecialchars($probelandmark, ENT_QUOTES);
 $probephone = $row['phone']; $phone = htmlspecialchars($probephone, ENT_QUOTES);
+$probersvpmail = $row['rsvpmail']; $rsvpmail = htmlspecialchars($probersvpmail, ENT_QUOTES);
 
 $theplace = $row['zip'];
 $kilas = $row['class'];
@@ -203,20 +204,51 @@ $contributorb = $row['cub'];
 $contributorc = $row['cuc'];
 $contributord = $row['cud'];
 $contributore = $row['cue'];
-$contributorf = $row['cuf'];
-
-
-//count contributor for menia name
- if ($contributora > ""){$countcua = 1;}else {$countcua = 0;}
- if ($contributorb > ""){$countcub = 1;}else {$countcub = 0;}
-  if ($contributorc > ""){$countcuc = 1;}else {$countcuc = 0;}
-  if ($contributord > ""){$countcud = 1;}else {$countcud = 0;}
- if ($contributore > ""){$countcue = 1;}else {$countcue = 0;}
- if ($contributorf > ""){$countcuf = 1;}else {$countcuf = 0;}
- $totalContributorCount = 1 + $countcua + $countcub + $countcuc + $countcud + $countcue + $countcuf;
+$contributorf = $row['cuf']; 
    
+//count contributor for menia name, get contributor image
+ if ($contributora > ""){$countcua = 1;
+ $allContributoraImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributora' LIMIT 1"); 
+ while($gotcontributoraImage = mysqli_fetch_array($allContributoraImg)){
+$imageContributora = $gotcontributoraImage['picture'];
+}}else {$countcua = 0;}
+     
+ if ($contributorb > ""){$countcub = 1;
+ $allContributorbImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributorb' LIMIT 1"); 
+ while($gotcontributorbImage = mysqli_fetch_array($allContributorbImg)){
+$imageContributorb = $gotcontributorbImage['picture'];
+}}else {$countcub = 0;}
+     
+  if ($contributorc > ""){$countcuc = 1;
+ $allContributorcImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributorc' LIMIT 1"); 
+   while($gotcontributorcImage = mysqli_fetch_array($allContributorcImg)){
+$imageContributorc = $gotcontributorcImage['picture'];
+}}else {$countcuc = 0;}
+     
+  if ($contributord > ""){$countcud = 1;
+ $allContributordImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributord' LIMIT 1"); 
+ while($gotcontributordImage = mysqli_fetch_array($allContributordImg)){
+$imageContributord = $gotcontributordImage['picture'];
+}}else {$countcud = 0;}
+     
+ if ($contributore > ""){$countcue = 1;
+ $allContributoreImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributore' LIMIT 1"); 
+   while($gotcontributoreImage = mysqli_fetch_array($allContributoreImg)){
+$imageContributore = $gotcontributoreImage['picture'];
+}}else {$countcue = 0;}
+     
+ if ($contributorf > ""){$countcuf = 1;
+ $allContributorfImg = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$contributorf' LIMIT 1"); 
+   while($gotcontributorfImage = mysqli_fetch_array($allContributorfImg)){
+$imageContributorf = $gotcontributorfImage['picture'];
+}}else {$countcuf = 0;}
+     
+ $totalContributorCount = 1 + $countcua + $countcub + $countcuc + $countcud + $countcue + $countcuf;
+ $contributorMinusOwnerCount = $totalContributorCount - 1;
 
- //contributor tasks
+   
+     
+//contributor tasks
 $ringo = $row['ringo'];
 $ringa = $row['ringa'];
 $ringb = $row['ringb'];
@@ -339,6 +371,8 @@ else {$in = "";
 }//end of while every var must have been set here
   
 if ($gave == 0){ #but if ref was posted and you didnt find anything like it
+  //set $showUserEvent = false;
+  $showUserEvent = false; 
   echo "<br>
   <style>#write{display:none}</style>
 <div class='pagecen'>
@@ -390,30 +424,61 @@ $newViewsCount = $viewsCount + 1;
 //START EVENT DISPLAY  
  echo "
 <div id='menia'>
-<div id='meniab'>$in<span class='mnb'>$yl</span>$ears <span class='mnb'>$ml</span>$onth <span class='mnb'>$dl</span>$ays </div>
-
-<div id='meniac'>
+<div id='meniab'>$in<span class='mnb'>$yl</span>$ears <span class='mnb'>$ml</span>$onth <span class='mnb'>$dl</span>$ays </div>";
+   
+ if($totalContributorCount > 1){//if there are more people
+   //show the contributor div
+echo "<div id='contributorList'>
+<button type='button' class='o' onclick='hideContributorList()' style='background-color:#fff;color:#2b3445;float:none;display:block;margin-bottom:5px;'><i class='material-icons' style='font-size:13px;vertical-align:sub'>close</i> Close</button>";
+   //start checking for each person
+if($contributora > ""){
+ echo"<a class='poslik' href='/profile/$contributora'>
+<div class='lilput' style='display: inline-block;'>
+<img src='/images/profiles/profilethumbs/$imageContributora' class='lilprofilephoto'><h style='display: inline-block;'>@$contributora</h></div>";}
+          
+          
+ if($contributorb > ""){
+         echo"<a class='poslik' href='/profile/$contributorb'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='/images/profiles/profilethumbs/$imageContributorb' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorb</h></div></a>";}
+   
+ if($contributorc > ""){
+         echo"<a class='poslik' href='/profile/$contributorc'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='/images/profiles/profilethumbs/$imageContributorc' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorc</h></div></a>";}
+   
+ if($contributord > ""){
+         echo"<a class='poslik' href='/profile/$contributord'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='/images/profiles/profilethumbs/$imageContributord' class='lilprofilephoto'><h style='display: inline-block;'>@$contributord</h></div></a>";}
+   
+  if($contributore > ""){
+         echo"<a class='poslik' href='/profile/$contributore'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='/images/profiles/profilethumbs/$imageContributore' class='lilprofilephoto'><h style='display: inline-block;'>@$contributore</h></div></a>";}
+   
+  if($contributorf > ""){
+echo"<a class='poslik' href='/profile/$contributorf'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='/images/profiles/profilethumbs/$imageContributorf' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorf</h></div></a>";}
+   
+ echo "</div>"; }
+ else{ }
+   
+echo "<div id='meniac'>
 <div id='menias'><a class='poslik' href='/profile/$poster'><img src='/images/profiles/profilethumbs/$picture' id='eventprofilephoto'><br><span style='font-size:12px'><span style='color:white'>Created by</span> @$poster</a>";
  
-   if($totalContributorCount == 2){
-       echo" <span style='color:white;font-size:12px'>and</span> <a style='text-decoration:none;color:#cde7ff' href='/profile/$contributora$contributorb$contributorc$contributord$contributore$contributorf'><span style='font-size:12px'> @$contributora$contributorb$contributorc$contributord$contributore$contributorf</a></span> </span></a></div>";
+     if($totalContributorCount > 1){
+       if($contributorMinusOwnerCount == 1){
+         $other = "Other User";
+       }else{
+         $other = "Other Users";
+       }
+       echo"<h class='miniss' onclick='displayContributorList()'> <span style='color:white'>and</span> $contributorMinusOwnerCount $other <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></h></div>";
      }
-     else if($totalContributorCount > 2){
-       echo" <span style='color:white;font-size:12px'>Collaborating with</span>";
-       
-       if($contributora > ""){echo"<a class='poslik' href='/profile/$contributora'> @$contributora</a>";}
-       if($contributorb > ""){echo"<a class='poslik' href='/profile/$contributorb'> @$contributorb</a>";}
-       if($contributorc > ""){echo"<a class='poslik' href='/profile/$contributorc'> @$contributorc</a>";}
-       if($contributord > ""){echo"<a class='poslik' href='/profile/$contributord'> @$contributord</a>";}
-       if($contributore > ""){echo"<a class='poslik' href='/profile/$contributore'> @$contributore</a>";}
-       if($contributorf > ""){echo"<a class='poslik' href='/profile/$contributorf'> @$contributorf</a>";}
-         
-         echo"</span></div>";
-     }else{echo"</span></div>";}
-     
-    
+     else{ echo"</div>";}
 
- echo"<button id='meniass'><span style='text-transform:capitalize'>$kilas Event in</span> $theplace</button><br>";
+echo"<button id='meniass'><span style='text-transform:capitalize'>$kilas Event in</span> $theplace</button><br>";
 
 if ($viewsCount == 0){
 echo "
@@ -460,7 +525,7 @@ else{
 
 
 echo"
-<button title='Copy Link' type='button' id='clonebtn' class='meniabtn'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>link</i> Link</button>
+<button title='Copy Link' type='button' id='clonebtn' class='meniabtn'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>link</i> Copy Link</button>
 
 <form action='/help/feedbacks.php' method='post'>
 <input type='text' value='$pureEventRef' name='refs' style='display:none'><button class='meniabtn' title='Feedback for this Event'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>report</i> Report</button></form>
@@ -486,7 +551,7 @@ echo"
 
 //show getcalendar if a user is logged in somehow
 if($username > ""){
-  echo"<button onclick='adcal();' title='add to calendar' type='button' class='meniabtn' id='adcal'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>event</i> Get Calendar</button></div>
+  echo"<button onclick='adcal();' title='add to calendar' type='button' class='meniabtn' id='adcal'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>event</i> Add to Calendar</button></div>
   
   <script>
   function adcal(){
@@ -788,7 +853,12 @@ if ($wapweb > ""){
 else {echo "";}
 
 if ($phone > ""){
-echo "<a href='mailto:$phone'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>contact_mail</i> Email Team";
+echo "<a href='tel:$phone'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>phone</i> Phone";
+echo "</button></a><br><br>";}
+else {echo "";}
+  
+if ($rsvpmail > ""){
+echo "<a href='mailto:$rsvpmail'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>contact_mail</i> Email Team";
 echo "</button></a><br><br>";}
 else {echo "";}
 
@@ -816,7 +886,11 @@ mysqli_close($conne);
   
   //$showUserEvent = false; so we show form
  else{
-   if($authkey > "" and $authkey != $authkeyFromServer){$privateBoxError = "We could not verify your access. Please retry";}else{$privateBoxError = "";}
+   //check if gave was found. even ref 
+   if($gave == 0){
+     
+   }else{
+       if($authkey > "" and $authkey != $authkeyFromServer){$privateBoxError = "We could not verify your access. Please retry";}else{$privateBoxError = "";}
   $privateref = $row['refs'];
  $pposter = "<a href='/profile/$poster'>$poster</a>";
     $sendformto = '/event/'.$pureEventRef;
@@ -832,7 +906,7 @@ mysqli_close($conne);
     var program = document.getElementById('program');
  }
 </script>"; 
-}
+   }}
   
 
 }//end of if ref was sent in url

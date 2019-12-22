@@ -1,13 +1,15 @@
-
 <?php 
 require("../garage/versions.php");
 
 if($reqpage == "confirm"){//for confirm email 
   $setsubject = "Your account has been verified";
+  $bannerimage = "accountverified.jpg";
 }
 else if ($reqpage == "updates"){//for monthly update and newsletter
   $setsubject = "What's New In Update $genAppVersion";
-}else{  $setsubject = "What's New In Update $genAppVersion";}
+  $bannerimage = "appupdate.jpg";
+}else{  $setsubject = "What's New In Update $genAppVersion";
+     $bannerimage = "appupdate.jpg";}
 
  $subject = $setsubject;
 $feed = 'feedback@vrixe.com';
@@ -36,28 +38,16 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img alt='coedit' src='https://vrixe.com/mail/updateimages/mcoedit.png' style='width:14px;height:14px'> Plan together 
 </p><br>
 
-<img alt='new features on vrixe' src='https://vrixe.com/mail/updateimages/update.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='new features on vrixe' src='https://vrixe.com/mail/banners/$bannerimage' style='height:auto;width:96%;margin-left:2%'>
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
 
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/key.png' style='float:left;width:50px;height:50px'>
+<img src='https://vrixe.com/mail/otherimg/creativity.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Better Private Events: </h></b></br>
-<h style='font-size:14px'>We've completely rebuilt private events. Its now faster, more secure, fully featured and it took less code.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/info.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Verifications (Delete Contact): </h></b></br>
-<h style='font-size:14px'>We've listened and extended your love for actions check to the phonebook. Now you get a verification before deleting a contact.</h>
+<b><h style='font-size:14px'>New: </h></b></br>
+<h style='font-size:14px'>Now you can add an RSVP phone number and edit your event code all from your desk.</h>
 </div>
 </div><br>
 
@@ -67,10 +57,23 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/gears.png' style='float:left;width:50px;height:50px'>
+<img src='https://vrixe.com/mail/event/friendship.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>App Optimisation: </h></b></br>
-<h style='font-size:14px'>Moving along people... nothing to see here... Just some tiny updates, so small you'll barely notice.</h>
+<b><h style='font-size:14px'>Event Team List: </h></b></br>
+<h style='font-size:14px'>Now you can see a list of teammates planning an event.</h>
+</div>
+</div><br>
+
+<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
+
+
+
+
+<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
+<img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
+<div style='float:right;width:80%;padding-right:1%;text-align:left'>
+<b><h style='font-size:14px'>Email Verification: </h></b></br>
+<h style='font-size:14px'>New users can now use the App for a trial period before, we've pushed the verification step further for you.</h>
 </div>
 </div><br>
 

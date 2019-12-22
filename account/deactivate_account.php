@@ -16,15 +16,15 @@ if($rate != '' or $email == '' or $cookie == ""){
 }
 
 else{
+   //delete profile
  $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); //find user as profiler
-
- //deleter
    while($founduser = mysqli_fetch_array($cooked)){
 
    $username = $founduser['username'];
    $cookieemail = $founduser['email'];
    $unhookpropic = $founduser['picture'];
 
+     //if request is for logged in user
     if ($cookieemail == $email){
       $candeactivate = 1; 
 
@@ -40,11 +40,12 @@ unlink("../images/profiles/profilethumbs/$unhookpropic");
 setcookie("user", "", time() - 3600, "/");
 setcookie("formail", "", time() - 3600, "/");
 
+   
 }else {$candeactivate = 0;}
 
 }
-//unhooker
 
+//delete events
  $unhook = mysqli_query($conne,"SELECT * FROM events WHERE hype = '$username' "); //find user as eventer
    while($unhookarray = mysqli_fetch_array($unhook)){
 
@@ -60,17 +61,21 @@ setcookie("formail", "", time() - 3600, "/");
 
        $delactors = mysqli_query($conne,"DELETE FROM actors WHERE refs = '$unhookref' "); 
       
-      //code for deleting ics calendars here
-      unlink("../garage/calendars/$unhookref.ics");
+//code for deleting ics calendars here
+unlink("../garage/calendars/$unhookref.ics");
 
+      //remove user event image
 if($unhookimgthumb != "default.png"){
  unlink("../images/events/$unhookimg");
 unlink("../images/eventnails/$unhookimgthumb");
 }else {}
-
-}else {$candeactivate = 0;}
+      
+}else {}
+     
  } //e of getting unhooks while
 
+//set username to null to show login on mobile menu
+$username = "";
 
 
 } //e of else rate was passed

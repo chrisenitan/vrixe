@@ -128,6 +128,7 @@ $keynote = mysqli_real_escape_string($conne, $_POST['keynote']);
  $wapweb = mysqli_real_escape_string($conne, $_POST['wapweb']);
   $authkey = mysqli_real_escape_string($conne, $_POST['authkey']);
  $phone = mysqli_real_escape_string($conne, $_POST['phone']);
+  $rsvpmail = mysqli_real_escape_string($conne, $_POST['rsvpmail']);
  $class = mysqli_real_escape_string($conne, $_POST['class']);
   $zipi = mysqli_real_escape_string($conne, $_POST['zipi']);
 $state = mysqli_real_escape_string($conne, $_POST['state']);
@@ -321,6 +322,7 @@ $whocoord = mysqli_real_escape_string($conne, $_POST['whocoord']);
 $whoorganised = mysqli_real_escape_string($conne, $_POST['whoorganiser']);
 $whowapweb = mysqli_real_escape_string($conne, $_POST['whowebsite']);
 $whophone = mysqli_real_escape_string($conne, $_POST['whophone']);
+$whorsvpmail = mysqli_real_escape_string($conne, $_POST['whorsvpmail']);
 $whokeynote = mysqli_real_escape_string($conne, $_POST['whokeynote']);
  
 
@@ -342,11 +344,11 @@ $whokeynote = mysqli_real_escape_string($conne, $_POST['whokeynote']);
 	return false;
  }
  else{
-$sql = "UPDATE events SET status='$status', type='$type', datep='$day', event='$probeevent', organiser='$organiser', description='$description', keynote='$keynote', dates='$dates', edates='$edates', timing='$timing', variant='$variant', venue='$venue', bvenue='$bvenue', cost='$cost', costpur='$costpur', landmark='$landmark', dresscode='$dresscode', wapweb='$wapweb', authkey='$authkey', phone='$phone', hype='$hype', class='$pupr', zip='$zipi', year='$year', month='$mot', day='$week', state='$state', datep='$dateposted', programcheck='$programcheck', pollcheck='$pollcheck', imgname='$eventImage', imgthumb='$eventImagethumb', cua='$cua', cub='$cub', cuc='$cuc', cud='$cud', cue='$cue', cuf='$cuf', lastedit='$lastedit', $bringpos='$bringing' WHERE refs='$postRefCode'";
+$sql = "UPDATE events SET status='$status', type='$type', datep='$day', event='$probeevent', organiser='$organiser', description='$description', keynote='$keynote', dates='$dates', edates='$edates', timing='$timing', variant='$variant', venue='$venue', bvenue='$bvenue', cost='$cost', costpur='$costpur', landmark='$landmark', dresscode='$dresscode', wapweb='$wapweb', authkey='$authkey', phone='$phone', rsvpmail='$rsvpmail', hype='$hype', class='$pupr', zip='$zipi', year='$year', month='$mot', day='$week', state='$state', datep='$dateposted', programcheck='$programcheck', pollcheck='$pollcheck', imgname='$eventImage', imgthumb='$eventImagethumb', cua='$cua', cub='$cub', cuc='$cuc', cud='$cud', cue='$cue', cuf='$cuf', lastedit='$lastedit', $bringpos='$bringing' WHERE refs='$postRefCode'";
 
 $pon = "UPDATE programs SET pa='$pa', pb='$pb', pc='$pc', pd='$pd', pe='$pe', pf='$pf', pg='$pg', ph='$ph', pi='$pi', pj='$pj', pk='$pk', pl='$pl', pat='$pat', pbt='$pbt', pct='$pct', pdt='$pdt', pet='$pet', pft='$pft', pgt='$pgt', pht='$pht', pit='$pit', pjt='$pjt', pkt='$pkt', plt='$plt' WHERE refs='$postRefCode'";
 
-$acting = "UPDATE actors SET tag='$whotag', dates='$whodates', edate='$whoedate', timing='$whotiming', etime='$whoetime', coord='$whocoord', landmark='$wholandmark', dresscode='$whodresscode', price='$whoprice', payment='$whopayment', address='$whoaddressline', organiser='$whoorganised', wapweb='$whowapweb', phone='$whophone', keynote='$whokeynote' WHERE refs='$postRefCode'";
+$acting = "UPDATE actors SET tag='$whotag', dates='$whodates', edate='$whoedate', timing='$whotiming', etime='$whoetime', coord='$whocoord', landmark='$wholandmark', dresscode='$whodresscode', price='$whoprice', payment='$whopayment', address='$whoaddressline', organiser='$whoorganised', wapweb='$whowapweb', phone='$whophone', rsvpmail='$whorsvpmail', keynote='$whokeynote' WHERE refs='$postRefCode'";
    
 $polling = "UPDATE poll SET question='$pollquestion', answerone='$pollanswerone', answertwo='$pollanswertwo', answerthree='$pollanswerthree', answerfour='$pollanswerfour', answerfive='$pollanswerfive', pollpri='$popr', comments='$pollcomments' WHERE refs='$postRefCode'";
 
@@ -450,7 +452,7 @@ Plan Approved!</p>
 
 <p style='margin-top:2px;font-size:14px;text-align:center'>@$hype just approved $probeevent</p><br>
 
-<img alt='new features on vrixe' src='https://vrixe.com/mail/event/vrixed.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='new features on vrixe' src='https://vrixe.com/mail/banners/eventupdated.jpg' style='height:auto;width:96%;margin-left:2%'>
 
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
@@ -552,7 +554,7 @@ Plan Updated!</p>
 
 <p style='margin-top:2px;font-size:14px;text-align:center'>$username just made some changes to <b>$probeevent</b></p><br>
 
-<img alt='your vrixe event' src='https://vrixe.com/mail/event/vrixed.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='your vrixe event' src='https://vrixe.com/mail/banners/eventupdated.jpg' style='height:auto;width:96%;margin-left:2%'>
 
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>

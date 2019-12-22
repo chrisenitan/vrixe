@@ -36,7 +36,7 @@ function checkmailava(em){
 	}
   else if(ifnoat < 0){ 
      var theemail = document.getElementById("email");
-       theemail.innerHTML = "please use an email address"; theemail.style.color="red";
+       theemail.innerHTML = "please use a valid email address"; theemail.style.color="red";
 		return;
      }
 	else {

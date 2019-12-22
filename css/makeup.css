@@ -483,6 +483,7 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
     font-weight: bolder;
     margin-top: 5px;
     margin-bottom: 10px;
+  text-align: center;
 }
 #himg{
 	    width: 100%;
@@ -616,4 +617,28 @@ box-shadow: 5px 40px 67px -31px rgba(92,91,92,1);
 	background: #434576; 
 background: -webkit-linear-gradient(to right, #e67c82, #434576);  
 background: linear-gradient(to right, #e67c82, #434576)
+}
+#screenshotDiv{
+    position: fixed;
+    display: none;
+    background-color: #143753;
+    width: 96%;
+    height: 83vh;
+  z-index:900;
+    padding: 2%;
+    overflow: hidden;
+}
+#screenshot{
+  height:auto;
+  width:90%;
+  margin-top:2%;
+  border-radius: 4px;
+}
+#buffertxt{
+  float: left;
+    margin-left: 50px;
+    margin-top: 22px;
+  font-size: 12px;
+    color: #a9dce4;
+    font-weight: bold
 }

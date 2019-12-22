@@ -8,17 +8,16 @@ if (isset($_COOKIE['user'])){
      $headcook = 1;
    $fullname = $founduser['fullname'];
    $username = $founduser['username'];
-    $useremail = $founduser['email'];
+    $useremail = $founduser['email']; $email = $useremail;
     $cut = $founduser['confirm'];
      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
    $userheadimg = $founduser['picture'];
+     $accountCreationDate = $founduser['created'];
+     $cutcok = $founduser['cookie'];
 }
 if ($headcook == 0){
      $fullname = "relog";
    $username = "";
-}
-if($cut == ""){//user has not verified account
-  echo "<script> document.location = 'me.php'; </script>";
 }
 }
 else{ 
@@ -41,7 +40,7 @@ else{
   	.pef{
   		z-index: 300;
   	}
-    .blf{font-family: Nunito;color:#5a5a5a;}
+  .blf{font-family: Nunito;color:#5a5a5a;float: left;margin-left: 22px;}
     #result{
   margin-top: 0px;
   margin-bottom: 0px;
@@ -107,7 +106,13 @@ window.addEventListener('drop', function(dd){
 
 <?php require("garage/subhead.php");?>
 
-<?php require("garage/thesearch.php"); ?>
+<?php require("garage/thesearch.php"); 
+  
+  if ($cut == ""){
+    //check if to allow user temp or block and send to blue
+require("garage/unverifiedEmailAccessStatus.php");
+  }
+  ?>
 
 
 
@@ -188,6 +193,7 @@ $poster = $row['hype'];
 $mail = $row['email'];
 $organiser = $row['organiser'];
 $phone = $row['phone'];
+$rsvpmail = $row['rsvpmail'];
 $wapweb = $row['wapweb'];
 $month = $row['month'];
 $authkey = $row['authkey'];
@@ -248,6 +254,7 @@ $ringf = $row['ringf'];
   $whoorganiser = $actorsare['organiser'];if($whoorganiser == ""){$whoorganiser = $poster;}
   $whowapweb = $actorsare['wapweb'];if($whowapweb == ""){$whowapweb = $poster;}
   $whophone = $actorsare['phone'];if($whophone == ""){$whophone = $poster;}
+  $whorsvpmail = $actorsare['phone'];if($whorsvpmail == ""){$whorsvpmail = $poster;}
   $whokeynote = $actorsare['keynote'];if($whokeynote == ""){$whokeynote = $poster;}
 $whodayedit =date("d - M - Y");
 }
@@ -310,7 +317,7 @@ width:45%;
 <div class='pef' id='first'>
 <div class='blfhead'>Dates</div><br>
 <h class='petd' style='color: #379e65;'>starting with the basics</h><br><br>
-<h class='blf'>Team's next task for the event<span class='asterik'>*</span></h><br>
+<h class='blf'>Current Stage<span class='asterik'>*</span></h><br>
 <input type='text'  id='evtyp' class='privinput' name='type' title='club, fashion show, seminar...' maxlength='58' placeholder='Looking for a venue...' value='$tag' onchange='var weidalt=\"whotag\";allwho(weidalt)' required><br>
 <input type='text' id='whotag' value='$whotag' class='rates' name='whotag' required>
 <div class='whoedit'>$whotag</div><br>
@@ -349,7 +356,7 @@ width:45%;
 <div class='blfhead'>Venue</div><br>
 <h class='petd' style='color: #379e65;'>...on not getting lost</h><br><br>
 
-<br><h class='blf'>Venue<span class='asterik'>*</span></h><br>
+<h class='blf'>Venue<span class='asterik'>*</span></h><br>
 <h id='err' style='display:block' class='petd'></h>
 <input title='Textual Address' type='text'  class='privinput' name='bvenue' required placeholder='... .... ...' id='lalo' value=\"$bvenue\" autocomplete='shipping street-address' id='addressline' onchange='var weidalt=\"whoaddressline\";allwho(weidalt)'><br>
 <input type='text' id='whoaddressline' value='$whoaddressline' class='rates' name='whoaddressline' required>
@@ -364,7 +371,7 @@ width:45%;
 <div class='whoedit'>$whocoord</div>
 <br>
 
-<h class='blf'>Landmark<span class='asterik'>*</span></h><br>
+<h class='blf'>Venue Landmark<span class='asterik'>*</span></h><br>
 <input onchange='var weidalt=\"wholandmark\";allwho(weidalt)' type='text' value=\"$landmark\" class='privinput' id='evldm' name='landmark' required placeholder='... .... ...'><br>
 <input type='text' id='wholandmark' value='$wholandmark' class='rates' name='wholandmark' required>
 <div class='whoedit'>$wholandmark</div><br><br>
@@ -452,22 +459,27 @@ width:45%;
 <input type='text' id='whoorganiser' value='$whoorganiser' class='rates' name='whoorganiser' required>
 <div class='whoedit'>$whoorganiser</div><br><br>
 
-<h class='blf'>Whatsapp Group Link</h><br>
+<h class='blf' id='scrollAccessCode'>Whatsapp Group Link</h><br>
 <input type='url' value='$wapweb' id='evweb' class='privinput' name='wapweb' placeholder='... .... ...' onchange='var weidalt=\"whowapweb\";allwho(weidalt)'><br>
 <input type='text' id='whowapweb' value='$whowapweb' class='rates' name='whowapweb' required>
 <div class='whoedit'>$whowapweb</div><br><br>
 
 
-<h class='blf'>Your RSVP Mail</h><br>
-<input type='email' value='$phone' class='privinput' name='phone' placeholder='... .... ...' autocomplete='tel' onchange='var weidalt=\"whophone\";allwho(weidalt)'><br>
+<h class='blf'>RSVP Phone Number</h><br>
+<input type='tel' value='$phone' class='privinput' name='phone' placeholder='... .... ...' autocomplete='tel' onchange='var weidalt=\"whophone\";allwho(weidalt)'><br>
 <input type='text' id='whophone' value='$whophone' class='rates' name='whophone' required>
-<div class='whoedit'>$whophone</div><br><br>";
+<div class='whoedit'>$whophone</div><br><br>
+
+<h class='blf'>RSVP Email</h><br>
+<input type='email' value='$rsvpmail' class='privinput' name='rsvpmail' placeholder='... .... ...' onchange='var weidalt=\"whorsvpmail\";allwho(weidalt)'><br>
+<input type='text' id='whorsvpmail' value='$whorsvpmail' class='rates' name='whorsvpmail' required>
+<div class='whoedit'>$whorsvpmail</div><br><br>";
 
  //jus a way to change auth key
 
 if ($username == $hype){
-  echo " <h class='blf'>Access Code</h><br>
-<input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...'><br>
+  echo " <h class='blf'>Your Secure Access Code</h><br>
+<input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...' id=accessCode><br>
 <h class='petd'>password to lock private events. only you can see this</h><br><br>";
 }
 
@@ -759,7 +771,7 @@ require('garage/validuser.php'); //call mover script
        <button type='button' class='pickerdeskbtn' onclick=\"var dd='30';ddprocess(dd);\" id='bc30'>30</button>
        <button type='button' class='pickerdeskbtn' onclick=\"var dd='31';ddprocess(dd);\" id='bc31'>31</button>
        
-      <button class='pickerminitxt' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$month</button>
+      <br><button class='textButton' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$month</button>
        <input type='text' class='rates' id='deskmholder' value='02'>
     </div>
     

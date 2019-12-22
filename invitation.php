@@ -310,7 +310,7 @@ echo"<div class='pef'>
 <div class='blfhead'>Received Invite</div><br>
 
 <a href='event/$code'>
-<h id='type'>GO TO EVENT VIEW</h><br>
+<h id='type'>VIEW EVENT <i class='material-icons' style='font-size:13px;vertical-align:sub'>arrow_forward</i></h><br>
 
 <div class='eventimage'>$ee</div><br>
 

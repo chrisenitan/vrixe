@@ -21,7 +21,6 @@ function revpagemenu(){
 function createprogram(){
  document.getElementById('createprogram').style.display="inline-block"; 
  document.getElementById('procheck').value='present';
- 	document.getElementById('begpro').value="12:00:00";
 }
 function hidesearch(){
 	 document.getElementById('searchboxes').style.height="0";
@@ -282,40 +281,46 @@ function allclass(chjs){
 
 //add to invite
 function toin(des, pes, ces, push){
-	var exp = document.getElementById("ua").value; 
-	var upic = document.getElementById("pa").value;
-  var umail = document.getElementById("ma").value;
-  var pushid = document.getElementById("os").value;
+	var userName = document.getElementById("ua").value; //name
+	var upic = document.getElementById("pa").value;//image
+  var umail = document.getElementById("ma").value;//email
+  var pushid = document.getElementById("os").value;//push
 	//find if value exists and stop readding
-	var fr = exp.search(des);
+	var fr = userName.search(des);
 	if(fr == -1){} else{return false;}
 
 		//count list
 	var counts = document.getElementById("ua").value;
 	var count = (counts.split(",").length - 1);
 	var ct = count + 1;
+  //if users added are more than 5, user must be 6
    if(count > 5){return false;}
    else{
+     //write number of users added
    	document.getElementById("invitelist").innerHTML=ct;
    }
-	//remove lists first comma and add
-	if(exp == ""){var nexp = des + ","; var npic = pes + ","; var nmail = ces + ","; var pushid = push + ",";}
-	else{var nexp = exp + des + ","; var npic = upic + pes + ","; var nmail = umail + ces + ","; var pushid = pushid + push + ",";}
-	document.getElementById("ua").value=nexp; //set names
-	document.getElementById("pa").value=npic; //set pics	
-  document.getElementById("ma").value=nmail; //set pics	
-  document.getElementById("os").value=pushid; //set pics	
+	//add the comma behind the firstname
+	if(userName == ""){var newUserName = des + ","; var newUserPic = pes + ","; var newUserMail = ces + ","; var newPushid = push + ",";}
+  
+  //add the old contentthen a comma and later details
+	else{var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
+	document.getElementById("ua").value=newUserName; //set names
+	document.getElementById("pa").value=newUserPic; //set pics	
+  document.getElementById("ma").value=newUserMail; //set mail	
+  document.getElementById("os").value=newPushid; //set push id
+  
+  //style the adding div
 	var clist = document.getElementById("clist");
 	clist.style.width="40%";
 	clist.style.height="auto";
-    clist.style.boxShadow="0px 0px 3px 1px #a9a9a9";
-	//id + user as var to select
+  clist.style.boxShadow="0px 0px 3px 1px #a9a9a9";
+	
+  //style the selected user
 	var iddes = document.getElementById(`id${des}`);
   	iddes.style.background="none";
 	iddes.style.backgroundColor="#372538";
-
-
 }
+
 //clear invite list/contact
 function refreshtoin(){
 	document.getElementById("ua").value="";
@@ -332,7 +337,6 @@ function refreshtoin(){
 	for (callpc = 0; callpc < allpc.length; callpc++) {
     allpc[callpc].style.background="linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
 }
-
 }
 
 //remove user form desk
@@ -582,5 +586,20 @@ else{//permission not granted ask for it
   }
 }
 
+//change poll access code from deskpop
+let deskChangePollCode = () =>{
+document.getElementById("accessCode").style.backgroundColor="#92ffc0";
+  eventbox(fourth);
+  document.location = '#scrollAccessCode';
+}
 
+//show contributors list on event
+let displayContributorList = () =>{
+  document.getElementById("contributorList").style.height="324px";
+}
+
+//hide contributors list on event
+let hideContributorList = () =>{
+  document.getElementById("contributorList").style.height="0px";
+}
 

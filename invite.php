@@ -13,12 +13,11 @@ if (isset($_COOKIE['user'])){
    $cut = $founduser['confirm'];
    $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>Create</button>";
    $userheadimg = $founduser['picture'];
+   $accountCreationDate = $founduser['created'];
+     $cutcok = $founduser['cookie'];
 }
 if($headcook == 0){//go resign in please
   echo "<script> document.location = 'index.php'; </script>";//could send code later
-}
-if($cut == ""){//user has not verified account
-  echo "<script> document.location = 'me.php'; </script>";
 }
 }
 else{
@@ -116,10 +115,14 @@ $invitecolor = "style='color:#1fade4'";
 
 require("garage/subhead.php");?>
 
-<?php require("garage/thesearch.php"); ?>
-
-
-
+<?php require("garage/thesearch.php"); 
+  
+  
+if($cut == ""){
+  //check for tempray access
+  require("garage/unverifiedEmailAccessStatus.php");
+}
+  ?>
 
 
 <div class="respef">
@@ -201,7 +204,7 @@ require("garage/subhead.php");?>
        
         <?php
        echo"
-        <button class='pickerminitxt' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$automonth</button>
+        <br><button class='textButton' id='deskbmtxt' type='button' onclick='switchmonth(this.innerHTML);'>$automonth</button>
         <input type='text' class='rates' id='deskmholder' value='$autoddtae'>"
        ?>
     </div>

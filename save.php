@@ -192,8 +192,8 @@ else {
   <form style='display:inline' action='invitation.php' method='post'>
 <input type='text' class='rates' value='$string' name='iv'>
 <input type='text' class='rates' value='owner' name='claim'>
-<button class='copele' id='ga_vai'> VIEW AS INVITE </button>
-</form> <a href='event/$string'><button class='control' id='ga_vae'> VIEW AS EVENT </button></a><br><br>
+<button class='copele' id='ga_vai'><i class='material-icons' style='font-size:17px;vertical-align:sub'>mail</i> View As Invite </button>
+</form> <a href='event/$string'><button class='control' id='ga_vae'><i class='material-icons' style='font-size:17px;vertical-align:sub'>event</i> View As Event </button></a><br><br>
 ";
 
    
@@ -214,7 +214,7 @@ require("mail/genericMailer.php");
    if($pushlist > ""){
      require("garage/invitelistpush.php"); 
    }else{
-     //do not push
+  //do not push
    }
 
 echo"<h class='sword'>Your private access code is: </h><h id='string'>$authkey</h>

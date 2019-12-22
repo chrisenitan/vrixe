@@ -46,7 +46,7 @@ echo "<link type='text/css' rel='stylesheet' href='css/makeup.css?$vv'>";
 <script>	
   window.addEventListener("wheel", {passive: true} );
 function showdet(){
-	document.getElementById("details").style.height="1350px";
+	document.getElementById("details").style.height="1223px";
 	document.getElementById("showbtn").style.display="none";
 	document.getElementById("hidebtn").style.display="block";
 }
@@ -123,7 +123,11 @@ document.location = "tour.php";
 </script>
 </head>
 <body>
-
+<div id="screenshotDiv">
+  <img id="screenshot"><br>
+  
+  <h id="buffertxt">Please wait, loading image...</h> <button id="closeScreenshot" class="tramp"><i class="material-icons">close</i></button>
+  </div>
 <img src='https://vrixe.com/images/und.svg' id='himg'>
 
 <div id="icontxt">
@@ -142,16 +146,16 @@ document.location = "tour.php";
 
 <div id="ctas">
 	<a href="app/pwa.html"><button class="cta" id="topwa">Install</button></a>
-	<a href="index.php"><button class="cta" id="tovrixe">Open</button></a>
+	<a href="#sample"><button class="cta" id="tovrixe">Explore A Demo</button></a>
 </div>
 <br>
 
 <div id="details" onclick="showdet()">
-	<p style="text-align:center">Connect and edit key topics, questions and other details of your next plan with your team.<br></p>
+  <br><p id="reviewhead">Features</p>
+  
+	<p style="text-align:center">Create and edit details on the go. Share and collaborate on your next plan with your team.<br></p>
 
- Create an invite, add your team to contribute, edit your events details together and let your guests follow the changes and progress as you finalise your plan. <br>Vrixe brings you closer to your team and your team to your guests with features you can't find anywhere else.
-
-<br><br>
+<br>
 
 
 <h class="cyansm"><i class="material-icons">group_work</i> Edit plans together</h><br>
@@ -208,7 +212,7 @@ document.location = "tour.php";
 
 <br><br><br>
 
-<a href="#sample"><button class="adss">Explore a Demo</button></a>
+<a href="index.php"><button class="adss">Open Vrixe</button></a>
 
 <a href="#reviews"><button class="adss">User Reviews</button></a>
 
@@ -217,16 +221,16 @@ document.location = "tour.php";
 <div id="sidescroll">
 <div id="insidescroll">
 
-<img src="images/aboutvrixe/invite-cv.jpg" class="scrollimg" alt="Send Invites">
-<img src="images/aboutvrixe/event-cv.jpg" class="scrollimg" alt="Share Events">
-<img src="images/aboutvrixe/desk-cv.jpg" class="scrollimg" alt="Co plan and edit">
-<img src="images/aboutvrixe/analytics-cv.jpg" class="scrollimg" alt="Get Reports">
-<img src="images/aboutvrixe/poll-cv.jpg" class="scrollimg" alt="Simple UX">
-<img src="images/aboutvrixe/agenda-cv.jpg" class="scrollimg" alt="Add Programs">
-<img src="images/aboutvrixe/privacy-cv.jpg" class="scrollimg" alt="Built with privacy in mind">
-<img src="images/aboutvrixe/s1-cv.jpg" class="scrollimg" alt="Avalable as a PWA">
-<img src="images/aboutvrixe/s2-cv.jpg" class="scrollimg" alt="Responsive Design Mobile">
-<img src="images/aboutvrixe/s3-cv.jpg" class="scrollimg" alt="Responsive Design Desktop">
+<img src="images/aboutvrixe/invite-cv.jpg" class="scrollimg" alt="Send Invites" id="invite-cv">
+<img src="images/aboutvrixe/event-cv.jpg" class="scrollimg" alt="Share Events" id="event-cv">
+<img src="images/aboutvrixe/desk-cv.jpg" class="scrollimg" alt="Co plan and edit" id="desk-cv">
+<img src="images/aboutvrixe/analytics-cv.jpg" class="scrollimg" alt="Get Reports" id="analytics-cv">
+<img src="images/aboutvrixe/poll-cv.jpg" class="scrollimg" alt="Simple UX" id="poll-cv">
+<img src="images/aboutvrixe/agenda-cv.jpg" class="scrollimg" alt="Add Programs" id="agenda-cv">
+<img src="images/aboutvrixe/privacy-cv.jpg" class="scrollimg" alt="Built with privacy in mind" id="privacy-cv">
+<img src="images/aboutvrixe/s1-cv.jpg" class="scrollimg" alt="Avalable as a PWA" id="s1-cv">
+<img src="images/aboutvrixe/s2-cv.jpg" class="scrollimg" alt="Responsive Design Mobile" id="s2-cv">
+<img src="images/aboutvrixe/s3-cv.jpg" class="scrollimg" alt="Responsive Design Desktop" id="s3-cv">
 
 </div>
 </div>
@@ -236,7 +240,7 @@ document.location = "tour.php";
 	
 
 <div class="newage">
-	<form method="post" action="preview.php" style="display: inline;">
+	<form method="post" action="preview" style="display: inline;">
 <img src="images/essentials/preview/hang.jpeg" class="evtimg" id="dynoimg" alt="Image preview">
 <div class="evtdetails">
 
@@ -286,7 +290,7 @@ document.location = "tour.php";
 </div>
 <br>
 
-<button class="actbtn">PREVIEW DEMO</button>
+<button class="actbtn">Preview Demo</button>
 </form>
 </div>
 
@@ -660,6 +664,32 @@ else{
   
   <div class='blfheadalt'></div>
 </div>
+<script>
+  var scrollimg = document.querySelectorAll(".scrollimg");
+  
+ for (let i = 0; i < scrollimg.length; i++) {
+     scrollimg[i].addEventListener("click", function() {
+      var imgName = this.id; //get image name
+       var screenshotDiv = document.getElementById("screenshotDiv"); //get image dispaly div
+        document.getElementById("screenshot").setAttribute("src", `images/aboutvrixe/highres/${imgName}.jpg`); //set image in div to image clicked
+       screenshotDiv.style.display="block"; //show the div
+       document.location="#himg";//pull page back up for gallery scroll
+       
+       document.getElementById("buffertxt").style.display="inline-block";//show buffer text
+       
+       //hide buffer text
+       setTimeout(function(){
+         document.getElementById("buffertxt").style.display="none";
+       },3000);
+       
+     });
+ }
+ 
+  //close the screenshot div
+  document.getElementById("closeScreenshot").addEventListener("click", function(){
+     document.getElementById("screenshotDiv").style.display="none"; //show the div
+  })
 
+  </script>
 </body>
 </html>

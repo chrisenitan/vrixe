@@ -238,16 +238,6 @@ button{
 #mis{
 	font-size: 17px;
 }
-#sidescroll{
-	width: 100%;
-	height: auto;
-	overflow: scroll;
-	background-color: #2b3445;
-}
-@media screen and (min-width: 420px){/*responsive*/
-#sidescroll{
-display: none;
-}}
 .scrollbut{
 	display: inline-block;
 	height: auto;

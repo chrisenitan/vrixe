@@ -266,7 +266,7 @@ echo "<b class='gnttops'>Landmark</b><br>";
 echo "<h>Behind...</h><br><br></div>";
 
 
-echo "<div class='gntright'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>link</i> Add any link</button><br><br>";
+echo "<div class='gntright'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>message</i> Connect to Chat</button><br><br>";
 
 
 
@@ -277,9 +277,7 @@ echo "<button class='gntbtnalt' id='clean'><i class='material-icons' style='font
 echo "</div></div>";
 
 
-echo "<div id='botblue' style='font-family:Nunito;'><br>...create detailed events together from your browser.<br><br>
-
-<a href='aboutvrixe#reviews'><button class='copele'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>star_half</i> User Reviews</button></a> &nbsp; ";
+echo "<div id='botblue' style='font-family:Nunito;'><br>...create detailed events together from your browser.<br><br>";
 
 if($username > ""){
  echo"
@@ -287,7 +285,7 @@ if($username > ""){
 ";
 }
 else{
-  echo " <a href='index.php?q=profile_required#signup'> <button class='copele'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>person_add</i> Try Vrixe</button></a>
+  echo " <a href='index.php?q=profile_required#signup'> <button class='copele'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>person_add</i> Get Started</button></a>
   ";
 }
 

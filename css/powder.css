@@ -577,9 +577,10 @@ input{
 	outline: none;
 	border: none;
 	border-radius: 3px;
-	border-bottom-color:#f8f8ff;
 	background-color: #e0e8f9;
-	color: #2b3445;
+	color: #494a4a;
+  letter-spacing: 0.5px;
+   font-weight: bold;
 	font-family: Nunito;
 	transition: 0.5s;
 	-webkit-transition: 0.5s;
@@ -1206,6 +1207,16 @@ color: #fff;
 #meniac{
 	overflow: hidden;
 	height: auto;
+}
+#contributorList{
+	overflow: hidden;
+	height: auto;
+  width: 100%;
+  text-align: center;
+  height: 0px;
+   -transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
 }
 .meniadi{
     width: 70%;
@@ -3109,11 +3120,12 @@ width:15%;
     font-weight: bold; 
 }
 .lilput{
-	color: #000000;
+	color: #1f1e1e;
     text-align: center;
     box-shadow: 0px 16px 27px -20px rgb(101, 100, 100);
     display: inline-block;
     font-size: 9px;
+    font-weight: bold;
     margin-top: 10px;
     border-radius: 5px;
     text-transform: lowercase;
@@ -3134,6 +3146,7 @@ width:15%;
 .remlilput{
 	width: 50px;
     font-size: 10px;
+  margin: auto;
     border: none;
     cursor: pointer;
     padding-top: 4%;
@@ -3152,8 +3165,8 @@ width:15%;
   background-color: #d42424;
 }
 .lilprofilephoto{
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border-radius: 100%;
 	margin-bottom: 5px;
   border-style: solid;
@@ -3590,28 +3603,6 @@ width:15%;
   background-color: transparent;
   color:transparent;
 }
-#deskbmtxt{
-      width: 33%;
-    margin-left: 64%;
-    text-align: center;
-    padding-top: 5.2%;
-    padding-bottom: 5.2%;
-  font-family: Nunito;
-  font-weight: bold;
-    border: none;
-  outline: none;
-  color: #21d88c;
-  background-color: transparent;
-  cursor:pointer;
-  border-radius: 5px;
-  	transition: 0.3s;
-	-webkit-transition: 0.3s;
-	-moz-transition: 0.3s;
-}
-#deskbmtxt:hover{
-  color: #08d881;
-  background-color: #d5fbfb;
-}
 #invitespace{
   width: 90%;
   opacity: 0.5;
@@ -3761,4 +3752,31 @@ display: none;
     border-top: none;
   color: #21d88c;
 }
-
+.textButton{
+  	color: #5c9ced;
+	font-size: 13px;
+  font-weight: bold;
+   width: auto;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: Nunito;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+   margin: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    overflow: hidden;
+    display: inline-block;
+   border: none;
+    border-radius: 3px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+.textButton:hover{
+  background-color: #d3e4fa;
+  color: #5299f3;
+}

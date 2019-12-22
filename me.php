@@ -287,7 +287,7 @@ if ($usernotflyother == "true"){
   <img alt='Account missing' src='images/essentials/relogin.png' class='everybodyimg'>
   <h class='miniss'>Seems you changed your account password recently.<br>Please Login again to secure your account.<br>
   <a href='help/faq.php#relog'>Learn More</a><br><br>
-   <a href='index'><button class='copele'>LOG IN</button></a><br><br>
+   <a href='index'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Log In</button></a><br><br>
   <a href='help/feedbacks'>Send us a feedback</a></h>
  <br><br>
 
@@ -329,7 +329,8 @@ $cookie = $gotuser['cookie'];
 $email = $gotuser['email'];
 $picture = $gotuser['picture'];
 $cut = $gotuser['confirm'];
-
+$accountCreationDate = $gotuser['created'];
+  $cutcok = $gotuser['cookie'];
 
 if ($update == "available"){
 
@@ -339,10 +340,9 @@ if ($update == "available"){
   </script>";}
 
   if ($cut == ""){
-
-  echo "<div id='oalert'>Your email has not been verified, we sent you an email.<br>
-  <a href='help/faq#spamfilter'>Didn't get a verification email? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
-<br>";}
+    //check if to allow user temp or block and send to blue
+require("garage/unverifiedEmailAccessStatus.php");
+  }
 
 echo "<div class='postcen'> 
 
@@ -615,7 +615,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <p style='margin-top:2px;font-size:14px;text-align:center'>New account login from $z
 </p><br>
 
-<img alt='new login on vrixe' src='https://vrixe.com/mail/updateimages/newuser.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='new login on vrixe' src='https://vrixe.com/mail/banners/newlogin.jpg' style='height:auto;width:96%;margin-left:2%'>
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
 
