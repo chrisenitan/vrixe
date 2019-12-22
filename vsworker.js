@@ -1,4 +1,4 @@
-var Vone = 'vrixe1.08';
+var Vone = 'vrixe1.09';
 var urlts = [
 '/app/pwa.html',
 '/app/allmenu.html',
@@ -24,7 +24,7 @@ var urlts = [
 '/app/fonts/gg.ttf',
 '/fall.html'
 ];
-/* service worker bit only / updated nov 15 2019*/  
+/* service worker bit only / updated dec 22 2019*/  
 
 self.addEventListener('install', function(event) {
 	event.waitUntil(
