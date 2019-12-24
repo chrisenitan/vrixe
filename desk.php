@@ -1,30 +1,6 @@
 <?php
-require("garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-    $useremail = $founduser['email']; $email = $useremail;
-    $cut = $founduser['confirm'];
-     $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
-   $userheadimg = $founduser['picture'];
-     $accountCreationDate = $founduser['created'];
-     $cutcok = $founduser['cookie'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-}
-}
-else{ 
- echo "<script>
- document.location = 'index.php?q=account_needed';
- </script>";
-}
+require("garage/passport.php"); 
+//$defaultErrorLink = "index.php?q=account_needed";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +78,9 @@ window.addEventListener('drop', function(dd){
 <?php require("garage/deskpop.php"); ?>
 
 
-<?php require("garage/mobilehead.php"); ?>
+<?php 
+$pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 

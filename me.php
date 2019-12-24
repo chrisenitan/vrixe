@@ -21,26 +21,8 @@ require("garage/visa.php");
 
 //User returning to me page unique
 if (isset($_COOKIE['user']) and $loginValue == "" and $update == ""){
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $usernotfly = 0;
-   while($founduser = mysqli_fetch_array($result)){
-  $usernotfly = 1;
-   $fullname = $founduser['fullname'];
-    $username = $founduser['username'];
-    $checkpasswordsecurity = $founduser['password'];
-    $userheadimg = $founduser['picture'];
-}
-if ($usernotfly == 0){
-  $usernotflyother = "true";
- setcookie("user", "", time() - 3600, "/");
-  }
-  
-  //Check if user account has been locked
-if (substr($checkpasswordsecurity, -14) == "blockedbyvrixe"){
-    setcookie("user", "", time() - 3600, "/"); //delete user login
-    header('Location: index?q=b');
-    }
+  //log user in normal
+  require("garage/passport.php");
 }
 
 //New login from index
@@ -278,7 +260,8 @@ require("garage/subhead.php");?>
 
 <?php
 //user has a cookie but somehow we did not find that user in db so we deletethe cookie and ask for a relogin
-if ($usernotflyother == "true"){
+//checking isset here because users could be coming fromindex page where login is not going to give headcook
+if (isset($headcook) and $headcook == false){
  echo"
 <div class='pagecen'>
 <div class='pef'>

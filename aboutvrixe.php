@@ -1,28 +1,7 @@
 <?php 
 header("Feature-Policy: geolocation 'none'");
 error_reporting( error_reporting() & ~E_NOTICE ); //prevent error repr
-require("garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $email = $founduser['email'];
-   $link = $founduser['link'];
-   $mycontacts = $founduser['contacts'];
-   $pagename = "Contacts";//not needed
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  echo "<script> document.location = '/me.php';</script>";
-}}
-else{
-	$username = "";
-}
-
+require("garage/passport.php");
 ?>
 
 <!DOCTYPE html>
