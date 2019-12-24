@@ -589,7 +589,7 @@ else{//permission not granted ask for it
 //change poll access code from deskpop
 let deskChangePollCode = () =>{
 document.getElementById("accessCode").style.backgroundColor="#92ffc0";
-  eventbox(fourth);
+  eventbox(fourth);//run show pef code
   document.location = '#scrollAccessCode';
 }
 

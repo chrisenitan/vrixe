@@ -204,6 +204,8 @@ $imgname = $row['imgname'];
 $imgthumb = $row['imgthumb'];
 $year = $row['year']; 
 $npdate = substr($year, 7); 
+ //check for governoOnPage
+ if($username == $hype){$governoOnPage = true;}else{$governoOnPage = false;}
 
 $probecua =  $row['cua']; $cua = htmlspecialchars($probecua, ENT_QUOTES);
 $probecub =  $row['cub']; $cub = htmlspecialchars($probecub, ENT_QUOTES);
@@ -475,9 +477,9 @@ width:45%;
 <input type='text' id='whorsvpmail' value='$whorsvpmail' class='rates' name='whorsvpmail' required>
 <div class='whoedit'>$whorsvpmail</div><br><br>";
 
- //jus a way to change auth key
+ //just a way to change auth key
 
-if ($username == $hype){
+if ($governoOnPage == true){
   echo " <h class='blf'>Your Secure Access Code</h><br>
 <input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...' id=accessCode><br>
 <h class='petd'>password to lock private events. only you can see this</h><br><br>";
