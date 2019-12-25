@@ -74,7 +74,7 @@ Hey Vrixer!</p>
 ";
 $message .= "</body></html>";
 
-       if($phpurl == 'vrixe-enn'){
+if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server
    }else{
 if(mail($email, $subject, $message, $headers)){
@@ -83,12 +83,11 @@ echo "<div id='galert'>We've sent you a verification mail.</div><br>";
 echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On! We'll fix this</div><br>";
 }}
   
-  //show user prompt to verify
-    echo "<script> document.location = '/help/blue.php'; </script>";
+ //show user prompt to verify
+ echo "<script> document.location = '/help/blue.php'; </script>";
 }
-else{
-  $daysRemaining = 8 - $accountAge;
-  
+else{//users account is still in trial period
+  $daysRemaining = 8 - $accountAge;  
 echo "<div id='oalert'>Please verify your account's email within $daysRemaining days.<br>
   <a href='help/faq#spamfilter'>Issues with email verification? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
 <br>";

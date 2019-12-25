@@ -1,24 +1,7 @@
 <?php
-require("garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $useremail = $founduser['email'];
-      $link = $founduser['link'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Invitations</button>";
-      $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  echo "<script> document.location = 'me';</script>";
-}}
-else{
- // later
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +29,8 @@ width:45%;
 
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Invitations</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 
@@ -82,7 +66,6 @@ $probecue =  $rowiv['cue']; $cue = htmlspecialchars($probecue, ENT_QUOTES);
 $probecuf =  $rowiv['cuf']; $cuf = htmlspecialchars($probecuf, ENT_QUOTES);
 
 
-    $email = $rowiv['email'];
     $code = $rowiv['refs'];
     $view = $rowiv['views']; if($view == 1){$views = "$view view";}else{$views = "$view views";}
     $owner = $rowiv['hype'];
@@ -190,7 +173,7 @@ if ($claim == "owner" and $username == $owner) { //its your event see it naked
 echo"<div class='pef'>
 <script>
   var iv = '$code';
-   var cu = '$useremail';
+   var cu = '$email';
 </script>
 <br>
 
@@ -369,9 +352,9 @@ if($cuf > "" and $cuf != "$username"){
 echo "
 <br><br>
 
-<button onclick='process(\"ACCEPT\", iv, cu, dbid)' class='copele' type='utton'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>how_to_reg</i> ACCEPT</button>
+<button onclick='process(\"ACCEPT\", iv, cu, dbid)' class='copele' type='utton'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>how_to_reg</i> Accept</button>
 
-<button onclick='ignoreInvite(iv, cu, dbid)' class='triocontrol' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>person_add_disabled</i> IGNORE</button>
+<button onclick='ignoreInvite(iv, cu, dbid)' class='triocontrol' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>person_add_disabled</i> Ignore</button>
 
 
 <div id='result'></div>
@@ -480,7 +463,7 @@ else{ //you tried the ordinary link directl via url. show advert
 
   <img alt='$iv' src='images/events/default.jpg' class='thisimage'>
   <h class='miniss'>Invite your friends to something<br>Manage invitations and move to planning stage to collaborate with your friends on that next big thing.<br><br>
-   <a href='aboutvrixe'><button class='copele'>KNOW MORE</button></a><br><br>
+   <a href='aboutvrixe'><button class='copele'>Know More</button></a><br><br>
 
    <h class='miniss'>More?<br>
 
