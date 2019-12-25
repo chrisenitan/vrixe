@@ -1,39 +1,13 @@
 <?php
-require("./garage/visa.php");  require("./garage/passport.php"); 
+//do not require user account
+$defaultAllowNoUser = true;
+require("./garage/passport.php"); 
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header("Cache-Control: no-cache");
 header("Pragma: no-cache");
 
 //collect authkey from form if available
 $authkey = mysqli_real_escape_string($conne, $_POST['authkey']);
-
-
-#CHECK FOR COOKIE
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];//finds the promoter
-   $email = $founduser['email'];
-   $pushid = $founduser['pushid'];
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  $cookie = "";
-  $fullname = "relog";
-   $username = "";
-   $email = "";
-}
-}
-else{
-$cookie = "";
-  $fullname = "";
-   $username = "";
-   $email = "";
-}
 
 ?>
 <!DOCTYPE html>

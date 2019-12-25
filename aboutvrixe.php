@@ -1,6 +1,8 @@
 <?php 
 header("Feature-Policy: geolocation 'none'");
 error_reporting( error_reporting() & ~E_NOTICE ); //prevent error repr
+//do not require user account
+$defaultAllowNoUser = true;
 require("garage/passport.php");
 ?>
 

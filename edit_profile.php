@@ -1,25 +1,5 @@
 <?php #check cookie for registered users
-require("garage/visa.php"); 
-   # $username = mysqli_real_escape_string($conne, $_POST['username']);
-
-if (isset($_COOKIE['user'])){#its someone we know and knows us
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $canedit = 0;
-   while($founduser = mysqli_fetch_array($result))
- {
-    $canedit = 1;
-   $fullname = $founduser['fullname'];
-      $username = $founduser['username'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Profile</button>";
-      $userheadimg = $founduser['picture'];
-}if ($canedit == 0){
-echo "<script> document.location = 'me';</script>";
-}
-}
-else {  echo "<script>
-document.location = 'index.php';
-</script>";} #its prolly a sinner typing ordinaru url 
+require("garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +32,8 @@ else {
 <?php require("garage/desksearch.php");  ?>
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php  $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Profile</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 

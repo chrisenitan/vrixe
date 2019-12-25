@@ -14,6 +14,7 @@ if (isset($_COOKIE['user'])){
    $accountCreationDate = $founduser['created'];
    $cutcok = $founduser['cookie'];
    $link = $founduser['link'];
+   $pushid = $founduser['pushid'];
    $mycontacts = $founduser['contacts'];
    $userheadimg = $founduser['picture'];
    $checkpasswordsecurity = $founduser['password'];
@@ -28,10 +29,18 @@ if (substr($checkpasswordsecurity, -14) == "blockedbyvrixe"){
     header('Location: index?q=b');
  }}
 else{
- echo "<script>
+  //check if user should beleft alone for pages that dont need user account
+  if(isset($defaultAllowNoUser) and $defaultAllowNoUser == true){
+    $cookie = "";
+  $fullname = "";
+   $username = "";
+   $email = "";
+  }
+  else{
+     echo "<script>
  document.location = 'index.php';
  </script>";
-}
+}}
 
 
 
