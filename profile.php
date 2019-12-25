@@ -3,7 +3,6 @@
 $defaultAllowNoUser = true;
 require("./garage/passport.php"); 
 
-//only load this page if user was given
 if (isset($_GET['refs'])){
 $visitedProfile = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a var
 
@@ -11,9 +10,7 @@ $visitedProfile = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a
 if ($visitedProfile == $username){ 
 header('Location: me');
 }}
-else{
-
-}
+else{}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +47,9 @@ else {echo "<title>Profile</title>";
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("./garage/resources.php"); ?>
-    <meta name="robots" content="noindex">
-  <meta name="googlebot" content="noindex">  
- <style> body{background-color: #f5f5f5;} </style>
+<meta name="robots" content="noindex">
+<meta name="googlebot" content="noindex">  
+<style> body{background-color: #f5f5f5;} </style>
 </head>
 <body>
 <?php require("./garage/absolunia.php"); ?>
@@ -73,12 +70,12 @@ require("./garage/thesearch.php"); ?>
 <br>
 
 <?php
-if (isset($_GET['refs'])) #if ref is passed
-{
+  //get visited profiles info
+if (isset($_GET['refs'])){
 $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$visitedProfilecookie' LIMIT 1"); 
- $confirm = 0;
+$confirm = 0;
    while($gotuser = mysqli_fetch_array($start)){
-   $confirm = 1;
+ $confirm = 1;
 
 //just to be safe, do username aswell. future update will cover everything
 $probepusername =  $gotuser['username']; $pusername = htmlspecialchars($probepusername, ENT_QUOTES);
@@ -86,13 +83,12 @@ $$visitedProfileemail = $gotuser['email'];
 $probebio =  $gotuser['bio']; $bio = htmlspecialchars($probebio, ENT_QUOTES);
 $probelink =  $gotuser['link']; $link = htmlspecialchars($probelink, ENT_QUOTES);
 $probelocation =  $gotuser['location']; $location = htmlspecialchars($probelocation, ENT_QUOTES);
-
 $picture = $gotuser['picture'];
 $usercid = $gotuser['cid'];
 $fines = "cid = " . $usercid;
 
 //check if user is already following
-$countoccur = substr_count($mycontacts, $fines);
+$foundUserInContactList = substr_count($mycontacts, $fines);
 
 echo "<div class='postcen' style='margin-top:0px'>
 
@@ -127,17 +123,15 @@ $pfullname <br><div id='cateuser'> @$pusername </div>
 
 <div id='result'></div>";
 
-if($countoccur >= 1 ){
-  echo"
-     <script>
+if($foundUserInContactList >= 1 ){
+  echo"<script>
 var iv$usercid = 'or cid = $usercid ';
 var cu$usercid = '$username';
 var req$usercid = 'delete contact';
 </script>
  <button aria-label='delete contact' title='Delete Contact' class='control' onclick='process(req$usercid, iv$usercid, cu$usercid)'><i class='material-icons' style='font-size: 17px;vertical-align: sub;'>person_add_disabled</i> Remove Contact</button>";
 }else{
-    echo"  
-    <script>
+ echo"<script>
 var iv$usercid = 'or cid = $usercid ';
 var cu$usercid = '$username';
 var req$usercid = 'add contact';
@@ -152,6 +146,7 @@ echo"<br><br>
 </div>
 </div>";
 
+//get visited profiles events
 $year = date("Y.md");
 $holder = mysqli_query($conne,"SELECT * FROM events WHERE hype = '$pusername' and class = 'public' or hype = '$pusername' and cua = '$username' and '$username' > '' or hype = '$pusername' and cub = '$username' and '$username' > '' or hype = '$pusername' and cuc = '$username' and '$username' > '' or hype = '$pusername' and cud = '$username' and '$username' > '' or hype = '$pusername' and cue = '$username' and '$username' > '' or hype = '$pusername' and cuf = '$username' and '$username' > '' ORDER BY year DESC LIMIT 15"); 
    $gotyourevents = 0;
@@ -174,13 +169,11 @@ $elent = strlen($eem);
 //image background set
 if($imagename == "default.png"){
   $cardBack = "background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
-  }
-  else{
+ }else{
        $cardBack = "background-image:url(\"/images/eventnails/$imagename\")";
  }
 echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";    
-    
 if ($elent > 21){
 $newee = substr($eem, 0, 20);
 $shortee = "$newee...";
@@ -208,8 +201,22 @@ customshare(cst, csl);
 }
 </script>";
 }
-if($gotyourevents == 0){
+if($gotyourevents == 0){//user has no events
+  echo "<div class='pef' style='display:inline-block'>
+    <div class='blfhead'>...No public events</div><br><br>
 
+  <img alt='No public events' src='/images/essentials/create.svg' class='everybodyimg'><br>
+  <h class='miniss'>@$pusername has no public events</h><br><h class='disl'>...wonder what $pusername is planning? No more! send an invite and make something happen</h> <br><br>
+   <a href='/invite'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>add_circle</i> Create Invite</button></a><br><br>
+
+   <h class='miniss'>More</h><br>
+
+<i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
+<h class='miniss'>Tried the Vriexe PWA?<br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
+
+  <div class='blfheadalt'></div>
+
+  </div><br><br><br>";
 }
 echo"</div>";
 }
