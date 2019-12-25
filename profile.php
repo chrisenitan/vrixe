@@ -1,114 +1,90 @@
 <?php
-require("./garage/visa.php"); 
+ //do not require user account
+$defaultAllowNoUser = true;
+  require("./garage/passport.php"); 
 
-if (isset($_GET['refs'])) #if ref is passed
-{
-  $ness = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a var
+//only load this page if user was given
+if (isset($_GET['refs'])){
+$visitedProfile = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a var
 
-if (isset($_COOKIE['user'])){ //find cookie and get current signed in user
- $rcookie = $_COOKIE['user'];
- $rcooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$rcookie' LIMIT 1"); 
- $headcook = 0;
-   while($rfounduser = mysqli_fetch_array($rcooked)){
-    $headcook = 1;
-   
-   $username = $rfounduser['username'];
-   $fullname = $rfounduser['fullname'];
-   $usercontacts = $rfounduser['contacts'];
-   $userheadimg = $rfounduser['picture'];
-}
-//check if user found
-if ($headcook == 0){
-  echo "<script> document.location = 'index.php'; "; //please log in refs
-}}
-if ($ness == $username){ //check if user is same as ref requested if so send to profile page instead
-   echo "<script>
- document.location = '/me'; 
- </script>";
+//check if user is same as ref requested if so send to profile page instead
+if ($visitedProfile == $username){ 
+header('Location: me');
 }}
 
 else{
- echo "";
+
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--every link on thispage is absolute cus of the htaccess redirect-->
+<!--every link on thispage is absolute cus of the htaccess redirect-->
 <?php
-if (isset($_GET['refs'])) #if ref is passed
-{
-  $nes = mysqli_real_escape_string($conne, $_GET['refs']);
-  #GET USER BY REFS
-     $findusercookie = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$nes' LIMIT 1"); 
+//get profileof user being viewed
+if (isset($_GET['refs'])){
+  $findusercookie = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$visitedProfile' LIMIT 1"); 
  $confirmcookie = 0;
-   while($gotuser = mysqli_fetch_array($findusercookie))
+ while($gotuser = mysqli_fetch_array($findusercookie))
  {$confirmcookie = 1;
-  $cookie = $gotuser['cookie'];
+  $visitedProfilecookie = $gotuser['cookie'];
   $probepfullname =  $gotuser['fullname']; $pfullname = htmlspecialchars($probepfullname, ENT_QUOTES);
    //just to be safe, do username aswell. future update will cover everything
 $probepusername =  $gotuser['username']; $pusername = htmlspecialchars($probepusername, ENT_QUOTES);
-$pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>$pfullname</button>";
  }
  if ($confirmcookie == 0){
-   $cookie = "nil"; #couldnt find user by name. doesnt exist
+   $visitedProfilecookie = "nil"; #couldnt find user by name. doesnt exist
        $pfullname = "Vrixe Profile";
       $pusername = "username";
  }
-
-  echo "<title> $pfullname - @$pusername | Vrixe</title>
+echo "<title> $pfullname - @$pusername | Vrixe</title>
 <meta name='description' content='Connect with $pfullname on Vrixe.'>
 <meta property='og:description' content=' Connect with $pfullname on Vrixe. ' />
 <meta property='og:title' content='$pfullname - @$pusername | Vrixe ' />
 <meta property='og:url' content='https://www.vrixe.com/profile/$pusername' />
 <meta property='og:image' content='https://vrixe.com/images/vogo.png' />" ;
 }
-else {echo "<title>No User Found</title>";}#redirect would have hanled this
+else {echo "<title>Profile</title>";
+       $pfullname = "Vrixe Profile";}#redirect would have hanled this
 ?>
 <link rel="manifest" href="/manifest.json">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("./garage/resources.php"); ?>
     <meta name="robots" content="noindex">
-  <meta name="googlebot" content="noindex">
-  
- <style>
-    body{
-      background-color: #f5f5f5;
-    }
-  </style>
+  <meta name="googlebot" content="noindex">  
+ <style> body{background-color: #f5f5f5;} </style>
 </head>
 <body>
-    <?php require("./garage/absolunia.php"); ?>
+<?php require("./garage/absolunia.php"); ?>
 <div id="gtr" onclick="closecloseb()"></div>
 
 <?php 
- require("./garage/validuser.php"); 
- require("./garage/deskhead.php"); ?>
-<?php require("./garage/desksearch.php");  ?>
-<?php require("./garage/deskpop.php"); ?>
+require("./garage/validuser.php"); 
+require("./garage/deskhead.php"); 
+require("./garage/desksearch.php");  
+require("./garage/deskpop.php"); 
+?>
 
-<?php require("./garage/mobilehead.php"); ?>
-
-<?php require("./garage/subhead.php");?>
-
-<?php require("./garage/thesearch.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>$pfullname</button>";
+require("./garage/mobilehead.php");
+require("./garage/subhead.php");
+require("./garage/thesearch.php"); ?>
 
 <br>
 
 <?php
 if (isset($_GET['refs'])) #if ref is passed
 {
-
-   $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
+$start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$visitedProfilecookie' LIMIT 1"); 
  $confirm = 0;
-   while($gotuser = mysqli_fetch_array($start))
- {$confirm = 1;
+   while($gotuser = mysqli_fetch_array($start)){
+   $confirm = 1;
 
 //just to be safe, do username aswell. future update will cover everything
 $probepusername =  $gotuser['username']; $pusername = htmlspecialchars($probepusername, ENT_QUOTES);
-$email = $gotuser['email'];
+$$visitedProfileemail = $gotuser['email'];
 $probebio =  $gotuser['bio']; $bio = htmlspecialchars($probebio, ENT_QUOTES);
 $probelink =  $gotuser['link']; $link = htmlspecialchars($probelink, ENT_QUOTES);
 $probelocation =  $gotuser['location']; $location = htmlspecialchars($probelocation, ENT_QUOTES);
@@ -118,11 +94,9 @@ $usercid = $gotuser['cid'];
 $fines = "cid = " . $usercid;
 
 //check if user is already following
-$countoccur = substr_count($usercontacts, $fines);
+$countoccur = substr_count($mycontacts, $fines);
 
-
-echo "
-<div class='postcen' style='margin-top:0px'>
+echo "<div class='postcen' style='margin-top:0px'>
 
 <h id='evin' class='rates'>Check out Events from $pusername on Vrixe</h>
 
@@ -175,23 +149,16 @@ var pjs$pusername = '$pusername';
 }
 
 
-echo"
-<br><br>
-
-
+echo"<br><br>
 </div>
 </div>
 </div>";
-
-
-
 
 $year = date("Y.md");
 $holder = mysqli_query($conne,"SELECT * FROM events WHERE hype = '$pusername' and class = 'public' or hype = '$pusername' and cua = '$username' and '$username' > '' or hype = '$pusername' and cub = '$username' and '$username' > '' or hype = '$pusername' and cuc = '$username' and '$username' > '' or hype = '$pusername' and cud = '$username' and '$username' > '' or hype = '$pusername' and cue = '$username' and '$username' > '' or hype = '$pusername' and cuf = '$username' and '$username' > '' ORDER BY year DESC LIMIT 15"); 
    $gotyourevents = 0;
    echo "<div class='postcen'>";
-   while($row2 = mysqli_fetch_array($holder))
- {
+   while($row2 = mysqli_fetch_array($holder)){
   //funny enough, short text out from strlen is making evil cut off. but still we shall put here too hahahaah
 $gotyourevents = 1;
 $r = $row2['refs'];
@@ -206,20 +173,18 @@ $kilas = $row2['class'];
 $views = $row2['views'];
 $elent = strlen($eem);
      
-        //image background set
-     if($imagename == "default.png"){
-       $cardBack = "background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
-     }else{
+//image background set
+if($imagename == "default.png"){
+  $cardBack = "background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
+  }
+  else{
        $cardBack = "background-image:url(\"/images/eventnails/$imagename\")";
-     }
+ }
        
-   
-    echo "<div class='cards' style='$cardBack'><br>
-    <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>
-   
-    ";    
+echo "<div class='cards' style='$cardBack'><br>
+    <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";    
     
-    if ($elent > 21){
+if ($elent > 21){
 $newee = substr($eem, 0, 20);
 $shortee = "$newee...";
 }
@@ -228,9 +193,7 @@ else { $shortee = $eem;
 
 echo "<a href='event/$r'>
 <div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
-</a>
-";
-    
+</a>";
 
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
@@ -257,18 +220,17 @@ if($gotyourevents == 0){
 echo"</div>";
 }
 if($confirm == 0){
-  echo "<div class='pagecen'>
+echo "<div class='pagecen'>
 <br><div class='smallposts'>
-<div class='blfhead'>No, bo, dy</div>
-  <br>
-  <h>We did not find any user from that.<br> Know a $ness you'd like here?</h><br><br> 
-   <img alt='invite' src='/images/essentials/inviteuser.png' class='everybodyimg'>
-   <br><br><button class='copele' onclick='customshare(\"Create and edit plans with me on Vrixe\", \"vrixe.com/aboutvrixe\");'>INVITE TO VRIXE</button><br>
- <br>
+<div class='blfhead'>No, bo, dy</div><br>
+<img alt='invite' src='/images/essentials/contacts.svg' class='everybodyimg'><br>
+<h class='miniss'>Find your plan mate</h><br>
+<br><h>We did not find any user from that.<br> Know a <b>$visitedProfile</b> you'd like here?</h><br><br> 
+<br><br><button class='copele' onclick='customshare(\"Create and edit plans with me on Vrixe\", \"vrixe.com/aboutvrixe\");'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person_add</i> Invite To Vrixe</button><br><br>
 
- <div class='blfheadalt'></div>
-  </div><br>
-  </div>
+<div class='blfheadalt'></div>
+</div><br>
+</div>
 ";
 }
 
@@ -276,26 +238,26 @@ if($confirm == 0){
 
 
 else {  
-  echo "<div class='pagecen'>
-<div class='pef'>
-  
-  <div class='blfhead'>Create an All Access account</div>
-  <br>
-    <img alt='Vrixe Profiles' src='images/essentials/profiles.png' class='everybodyimg'>
-  <h class='miniss'>Co-edit and Plan your Events with friends on Vrixe<br>...add more fun to making plans.
- <br><br>
-  <a href='/index.php'><button class='copele'>SIGN UP</button></a>
-<br><br>
+echo "<div class='postcen'> <br>
+  <div class='pef' style='display:inline-block'>
+    <div class='blfhead'>...a place for all</div><br><br>
 
-<div class='blfheadalt'></div>
-  </div>
-  </div>
+  <img alt='SIgn up for Vrixe' src='images/essentials/contacts.svg' class='everybodyimg'><br>
+  <h class='miniss'>One place, all events for all teams</h><br><h class='disl'>Create, manage and edit events with friends.<br>Create polls, take agenda... right from your phone.</h> <br><br>";
+  if(isset($username) and $username > ""){
+    echo"   <a href='/account/contacts'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>perm_contact_calendar</i> My Contacts</button></a><br><br>";
+  }else{
+    echo"   <a href='/index.php?q=profile_required'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person_add</i> Sign me up</button></a><br><br>";
+  }
 
+echo"<br>
+<h class='miniss'>Before you jump in<br><a href='./aboutvrixe'><button class='control'> Learn More</button></a></h><br><br>
 
-";
+  <div class='blfheadalt'></div>
+
+  </div><br><br><br></div>";
  }
 
-   
 ?>
 <br>
 

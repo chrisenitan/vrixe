@@ -12,11 +12,11 @@ echo"
  ";
 
 //wip if user is given but not verified. ask for verification. today minus freq
- if($username > "" and $userisverified > ""){ //verified
+ if($username > "" and $cut > ""){ //verified
    echo"<p class='petd' style='width:96%;margin:auto'>You are polling as @$username. Tap any choice to cast vote<br>or logout to poll anonymously</p><br>
     <input type='text' class='rates' required placeholder='... .... ...'  id='usernameforvote' value='@$username'>";
  }
-else if($username > "" and $userisverified == ""){ //not verified but valid days
+else if($username > "" and $cut == ""){ //not verified but valid days
      echo"<p class='petd' style='width:96%;margin:auto'>Please verify account to poll as @$username<br>or logout to poll anonymously</p><br>
     <input type='text' class='rates' required placeholder='... .... ...'  id='usernameforvote' value='unverifieduser'>";
 }
