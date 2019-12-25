@@ -1,7 +1,7 @@
 <?php
  //do not require user account
 $defaultAllowNoUser = true;
-  require("./garage/passport.php"); 
+require("./garage/passport.php"); 
 
 //only load this page if user was given
 if (isset($_GET['refs'])){
@@ -11,11 +11,9 @@ $visitedProfile = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a
 if ($visitedProfile == $username){ 
 header('Location: me');
 }}
-
 else{
 
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,8 +155,8 @@ echo"<br><br>
 $year = date("Y.md");
 $holder = mysqli_query($conne,"SELECT * FROM events WHERE hype = '$pusername' and class = 'public' or hype = '$pusername' and cua = '$username' and '$username' > '' or hype = '$pusername' and cub = '$username' and '$username' > '' or hype = '$pusername' and cuc = '$username' and '$username' > '' or hype = '$pusername' and cud = '$username' and '$username' > '' or hype = '$pusername' and cue = '$username' and '$username' > '' or hype = '$pusername' and cuf = '$username' and '$username' > '' ORDER BY year DESC LIMIT 15"); 
    $gotyourevents = 0;
-   echo "<div class='postcen'>";
-   while($row2 = mysqli_fetch_array($holder)){
+ echo "<div class='postcen'>";
+ while($row2 = mysqli_fetch_array($holder)){
   //funny enough, short text out from strlen is making evil cut off. but still we shall put here too hahahaah
 $gotyourevents = 1;
 $r = $row2['refs'];
@@ -180,7 +178,6 @@ if($imagename == "default.png"){
   else{
        $cardBack = "background-image:url(\"/images/eventnails/$imagename\")";
  }
-       
 echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";    
     
@@ -188,8 +185,7 @@ if ($elent > 21){
 $newee = substr($eem, 0, 20);
 $shortee = "$newee...";
 }
-else { $shortee = $eem;
-}
+else { $shortee = $eem; }
 
 echo "<a href='event/$r'>
 <div class='cardtitle'>$shortee <i class='material-icons' style='font-size:17px;vertical-align:sub;color:#00f2a2'>arrow_forward</i></div>
@@ -211,8 +207,6 @@ function share$r(){
 customshare(cst, csl);
 }
 </script>";
-     
-
 }
 if($gotyourevents == 0){
 
@@ -232,9 +226,7 @@ echo "<div class='pagecen'>
 </div><br>
 </div>
 ";
-}
-
-}
+}}
 
 
 else {  
@@ -244,18 +236,17 @@ echo "<div class='postcen'> <br>
 
   <img alt='SIgn up for Vrixe' src='images/essentials/contacts.svg' class='everybodyimg'><br>
   <h class='miniss'>One place, all events for all teams</h><br><h class='disl'>Create, manage and edit events with friends.<br>Create polls, take agenda... right from your phone.</h> <br><br>";
+  
   if(isset($username) and $username > ""){
-    echo"   <a href='/account/contacts'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>perm_contact_calendar</i> My Contacts</button></a><br><br>";
+    echo"<a href='/account/contacts'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>perm_contact_calendar</i> My Contacts</button></a><br><br>";
   }else{
-    echo"   <a href='/index.php?q=profile_required'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person_add</i> Sign me up</button></a><br><br>";
+    echo"<a href='/index.php?q=profile_required'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person_add</i> Sign me up</button></a><br><br>";
   }
 
-echo"<br>
-<h class='miniss'>Before you jump in<br><a href='./aboutvrixe'><button class='control'> Learn More</button></a></h><br><br>
+echo"<br><h class='miniss'>Before you jump in<br><a href='./aboutvrixe'><button class='control'> Learn More</button></a></h><br><br>
 
-  <div class='blfheadalt'></div>
-
-  </div><br><br><br></div>";
+<div class='blfheadalt'></div>
+</div><br><br><br></div>";
  }
 
 ?>

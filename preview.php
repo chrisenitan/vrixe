@@ -1,7 +1,7 @@
 <?php
 //do not require user account
 $defaultAllowNoUser = true;
-require("garage/visa.php");
+require("garage/passport.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,6 @@
 <?php
 //3rd party or self user auth
-require("visa.php"); 
+require("visa.php");
 if (isset($_COOKIE['user'])){
  $cookie = $_COOKIE['user'];
  $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
@@ -31,10 +31,10 @@ if (substr($checkpasswordsecurity, -14) == "blockedbyvrixe"){
 else{
   //check if user should beleft alone for pages that dont need user account
   if(isset($defaultAllowNoUser) and $defaultAllowNoUser == true){
-    $cookie = "";
+  $cookie = "";
   $fullname = "";
-   $username = "";
-   $email = "";
+  $username = "";
+  $email = "";
   }
   else{
      echo "<script>
