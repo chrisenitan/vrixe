@@ -1,31 +1,9 @@
 <?php
-require("../garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $usernotfly = 0;
-   while($founduser = mysqli_fetch_array($result))
- {
-  $usernotfly = 1;
-   $cid = $founduser['cid'];
-     $fullname = $founduser['fullname'];
-    $username = $founduser['username'];
-      $freq = $founduser['freq'];
-    $email = $founduser['email'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>Confirm Account</button>";
-    $userheadimg = $founduser['picture'];
-}
-if ($usernotfly == 0){
-     $fullname = "relog";
-   $username = "";
-   setcookie("user", "", time() - 3600, "/");
-}}
-else{
-     $fullname = "";
-   $username = "";
-}
-  ?>
-  <!DOCTYPE html>
+//do not require user account
+$defaultAllowNoUser = true;
+require("../garage/passport.php");
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Verify Account - Vrixe</title>
@@ -34,24 +12,18 @@ else{
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
-
-
 </head>
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
 
+<?php require("../garage/deskhead.php");
+  require("../garage/deskpop.php"); ?>
 
-<?php require("../garage/deskhead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>Confirm Account</button>";
+  require("../garage/mobilehead.php"); ?>
 
-<?php require("../garage/deskpop.php"); ?>
-
-<?php require("../garage/mobilehead.php"); ?>
-
-<?php require("../garage/subhead.php");?>
-
-<?php require("../garage/thesearch.php"); ?>
-
-
+<?php require("../garage/subhead.php");
+  require("../garage/thesearch.php"); ?>
 <br>
 	
 <?php 
@@ -63,18 +35,19 @@ else{
  	echo "
   <div class='pagecen'>
 <div class='pef'>
-<div class='blfhead'>Using multiple browsers?</div><br> 
-
-It happens...<br><br>
+<div class='blfhead'>Something went wrong there</div><br> 
+<br><br>
 
 <img alt='Unconfirmed' src='https://vrixe.com/images/essentials/browser.svg' class='everybodyimg'>
    <br>
-Looks like you're not logged in this browser. If you are, please log out and back in again.<br>That should do it.<br><br>
+    <h class='miniss'>What is happening here?</h><br><h class='disl'>We could not find your account on this device. Sure you're logged in?</h> <br><br>
+    
+    <h class='miniss'>What can I do?</h><br>Please make sure you're logged in and retry. If you're already logged in, please log out and back in again.<br>That should do it.<br><br>
 
 
-	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
+	<h class='minis'>do you keep getting this page?<br><a href='/help/feedbacks?ext=lvtw'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
 	<h class='minis'>or please try:</h><br>
-  <h class='miniss'>log into your account <a href='/index' style='text-decoration:underline;text-underline-position:under;'>here</a> and retry verification</h><br>
+  <h class='miniss'>log into your account <a href='/index?q=login' style='text-decoration:underline;text-underline-position:under;'>here</a> and retry verification</h><br>
 
 	<br><br>
 
@@ -191,7 +164,7 @@ It happens...<br><br>
 Looks like you found a bug in the code. Please log out and back in again.<br>That should do it.<br><br>
 
 
-	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
+	<h class='minis'>do you keep getting this page?<br><a href='/help/feedbacks?ext=lvtw'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
 	<h class='minis'>don't have time to send report?</h><br>
   <h class='miniss'>try logging out of your account <a href='/index' style='text-decoration:underline;text-underline-position:under;'>here</a></h><br>
 
@@ -208,6 +181,6 @@ Looks like you found a bug in the code. Please log out and back in again.<br>Tha
 <br><br>
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 </body>
 </html>

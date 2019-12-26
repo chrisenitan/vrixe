@@ -14,6 +14,8 @@ if (isset($_COOKIE['user'])){
    $accountCreationDate = $founduser['created'];
    $cutcok = $founduser['cookie'];
    $link = $founduser['link'];
+   $freq = $founduser['freq'];
+   $sqlcid = $founduser['cid'];
    $pushid = $founduser['pushid'];
    $mycontacts = $founduser['contacts'];
    $userheadimg = $founduser['picture'];

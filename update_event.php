@@ -1,47 +1,19 @@
-<?php
-require("garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $userheadimg = $founduser['picture'];
-   $loggedinemail = $founduser['email'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-}}
-else{
-     $fullname = "";
-   $username = "";
-}
-?>
+<?php require("garage/passport.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Event Updated - Vrixe</title>
+<title>Event Updates - Vrixe</title>
 <link rel="manifest" href="manifest.json">
 <meta name="description" content="Update Event on vrixe">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("garage/resources.php"); ?>
-
-  
-  <style>
-    body{
-      background-color: #f5f5f5;
-    }
-  </style>
+<style> body{ background-color: #f5f5f5; } </style>
 </head>
 <body>
 <?php require("garage/absolunia.php"); ?>
 
 <div id="gtr" onclick="closecloseb()"></div>
-
 
 <?php require("garage/deskhead.php"); ?>
 <?php require("garage/desksearch.php");  ?>
@@ -63,21 +35,20 @@ $rate = mysqli_real_escape_string($conne, $_POST['rate']); //form validation mus
 <div class="pef">
 
 <?php 
-
 //get old imagename so we dontreupload image
 if ($postRefCode > ""){
 $checkoldimg= mysqli_query($conne,"SELECT * FROM events WHERE refs = '$postRefCode' LIMIT 1"); 
    while($img = mysqli_fetch_array($checkoldimg))
  {
   $imgold = $img['imgname'];
-    $imgoldthumb = $img['imgthumb'];
-    $poster = $img['hype'];
-   $cua = $img['cua'];
-    $cub = $img['cub'];
-    $cuc = $img['cuc'];
-    $cud = $img['cud'];
-    $cue = $img['cue'];
-    $cuf = $img['cuf'];
+  $imgoldthumb = $img['imgthumb'];
+  $poster = $img['hype'];
+  $cua = $img['cua'];
+  $cub = $img['cub'];
+  $cuc = $img['cuc'];
+  $cud = $img['cud'];
+  $cue = $img['cue'];
+  $cuf = $img['cuf'];
 
   //get position to store users task
     if ($username == $poster){$bringpos = 'ringo';}
@@ -109,7 +80,7 @@ $notificationstat = mysqli_real_escape_string($conne, $_POST['notifstat']);
 //savesimple value but echo protected value
  $rawprobeevent = mysqli_real_escape_string($conne, $_POST['event']); $probeevent = strtoupper($rawprobeevent);
  $event = htmlspecialchars($probeevent, ENT_QUOTES);
-  $description = mysqli_real_escape_string($conne, $_POST['description']);
+ $description = mysqli_real_escape_string($conne, $_POST['description']);
  $type = mysqli_real_escape_string($conne, $_POST['type']);
  $dates = mysqli_real_escape_string($conne, $_POST['dates']);
  $edates = mysqli_real_escape_string($conne, $_POST['edates']);
@@ -118,24 +89,24 @@ $notificationstat = mysqli_real_escape_string($conne, $_POST['notifstat']);
  $variant = mysqli_real_escape_string($conne, $_POST['etiming']);
  $venue = mysqli_real_escape_string($conne, $_POST['venue']);
  $bvenue = mysqli_real_escape_string($conne, $_POST['bvenue']);
-  $cost = mysqli_real_escape_string($conne, $_POST['cost']);
-   $costpur = mysqli_real_escape_string($conne, $_POST['costpur']);
+ $cost = mysqli_real_escape_string($conne, $_POST['cost']);
+ $costpur = mysqli_real_escape_string($conne, $_POST['costpur']);
  $landmark = mysqli_real_escape_string($conne, $_POST['landmark']);
-$keynote = mysqli_real_escape_string($conne, $_POST['keynote']);
+ $keynote = mysqli_real_escape_string($conne, $_POST['keynote']);
  $dresscode = mysqli_real_escape_string($conne, $_POST['dresscode']);
  $hype = mysqli_real_escape_string($conne, $_POST['hype']);
  $organiser = mysqli_real_escape_string($conne, $_POST['organiser']);
  $wapweb = mysqli_real_escape_string($conne, $_POST['wapweb']);
-  $authkey = mysqli_real_escape_string($conne, $_POST['authkey']);
+ $authkey = mysqli_real_escape_string($conne, $_POST['authkey']);
  $phone = mysqli_real_escape_string($conne, $_POST['phone']);
-  $rsvpmail = mysqli_real_escape_string($conne, $_POST['rsvpmail']);
+ $rsvpmail = mysqli_real_escape_string($conne, $_POST['rsvpmail']);
  $class = mysqli_real_escape_string($conne, $_POST['class']);
-  $zipi = mysqli_real_escape_string($conne, $_POST['zipi']);
-$state = mysqli_real_escape_string($conne, $_POST['state']);
-  $customnotifmsg = mysqli_real_escape_string($conne, $_POST['customnotifmsg']);
+ $zipi = mysqli_real_escape_string($conne, $_POST['zipi']);
+ $state = mysqli_real_escape_string($conne, $_POST['state']);
+ $customnotifmsg = mysqli_real_escape_string($conne, $_POST['customnotifmsg']);
   if($customnotifmsg > ""){$customusermessage = $customnotifmsg;}else{$customusermessage = "Some changes to your plan were made, so important we've been asked to notify you, please check to see.";}
    $dateposted = mysqli_real_escape_string($conne, $_POST['dateposted']);
-   $email = mysqli_real_escape_string($conne, $_POST['email']);//email of the hype
+   $hypeEmail = mysqli_real_escape_string($conne, $_POST['email']);//email of the hype
   $iniy = substr($dates, 0,4); //event year
  $inimot = substr($dates, 5,2); //event month
  $inid = substr($dates, 8,2); //event day
@@ -151,9 +122,6 @@ $pushlist = mysqli_real_escape_string($conne, $_POST['pushlist']);//pushmessagel
     $cud = mysqli_real_escape_string($conne, $_POST['cud']);
     $cue = mysqli_real_escape_string($conne, $_POST['cue']);
     $cuf = mysqli_real_escape_string($conne, $_POST['cuf']);
-
-
-  
   
  //image upload
   $postedimage = $_FILES['banner']['name'];
@@ -417,12 +385,12 @@ $fmailcuf = "$ecuf, "; $fpushcuf = "$pushcuf,";
   
 
   //conc all mails
-$rawallmail = $fmailcua . $fmailcub . $fmailcuc . $fmailcud . $fmailcue . $fmailcuf . $email;
-  if($loggedinemail > "" and $loggedinemail != $email){
+$rawallmail = $fmailcua . $fmailcub . $fmailcuc . $fmailcud . $fmailcue . $fmailcuf . $hypeEmail;
+  if($email > "" and $email != $hypeEmail){
   $allmail = $rawallmail; //leave mailing list as is with hype
   }
   else{
-    $initallmail = str_replace($email, "", $rawallmail);
+    $initallmail = str_replace($hypeEmail, "", $rawallmail);
     $allmail = substr($initallmail, 0, -2); //remove hype and remove comma and last space. if editor is hype
   }
   //set all push and last push is owner

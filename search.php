@@ -1,25 +1,7 @@
 <?php
-require("garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-    $usercontacts = $founduser['contacts'];
-    $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Search</button>";
-    $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-}}
-else{
-     $fullname = "";
-   $username = "";
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,29 +26,22 @@ else {echo "<title>Empty - Vrixe Search</title>";}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("garage/resources.php"); ?>
 
-
-
-  <style>
-  	body{
-  		background-color: #f5f5f5;
-  	}
-  </style>
+  <style>	body{background-color: #f5f5f5;} </style>
 </head>
-
 <body>
 <?php require("garage/absolunia.php"); ?>
 
 <div id="gtr" onclick="closecloseb()"></div>
 
-<?php require("garage/deskhead.php"); ?>
-<?php require("garage/desksearch.php");  ?>
-<?php require("garage/deskpop.php"); ?>
+<?php require("garage/deskhead.php"); 
+  require("garage/desksearch.php"); 
+  require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Search</button>";
+  require("garage/mobilehead.php"); ?>
 
-<?php require("garage/subhead.php");?>
-
-<?php require("garage/thesearch.php"); ?>
+<?php require("garage/subhead.php");
+  require("garage/thesearch.php"); ?>
 
 <br>
 
@@ -269,7 +244,7 @@ $ufimg = $mowa['picture'];
 $fines = "cid = " . $usercid;
 
 //check if user is already following
-$countoccur = substr_count($usercontacts, $fines);
+$countoccur = substr_count($mycontacts, $fines);
 
 if($countoccur >= 1){
     echo "

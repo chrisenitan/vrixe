@@ -1079,7 +1079,7 @@ echo"
 
   <img alt='$code' src='images/essentials/loading.svg' class='everybodyimg'><br>
   <h class='miniss'>What is happening here?</h><br><h class='disl'><a href='profile/$hype'>@$hype</a> has not moved this invite to a group plan.<br>You'll be able to edit after this.</h> <br><br>
-   <a href='/event/$code'><button class='copele'>View Event</button></a><br><br>
+   <a href='/event/$code'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>event</i> View Event</button></a><br><br>
 
    <h class='miniss'>More?</h><br>
 

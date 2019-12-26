@@ -1,22 +1,7 @@
 <?php
-require("garage/visa.php");
-  if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $username = $founduser['username'];     
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  	$username = "missing";
-}}
-else{
-	$username = "missing";
-}
-
-
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
