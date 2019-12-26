@@ -1,28 +1,4 @@
-<?php #check cookie for registered users
-require("../garage/visa.php"); 
-   # $username = mysqli_real_escape_string($conne, $_POST['username']);
-
-if (isset($_COOKIE['user'])){#its someone we know and knows us
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $canedit = 0;
-   while($founduser = mysqli_fetch_array($result))
- {
-    $canedit = 1;
-   $fullname = $founduser['fullname'];
-     $cid = $founduser['cid'];
-     $fullname = $founduser['fullname'];
-      $username = $founduser['username'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Settings</button>";
-      $userheadimg = $founduser['picture'];
-}if ($canedit == 0){
-echo "<script> document.location = '/me';</script>";
-}
-}
-else {  echo "<script>
-document.location = '/index?q=login#singup';
-</script>";} #its prolly a sinner typing ordinaru url 
-?>
+<?php require("../garage/passport.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +7,7 @@ document.location = '/index?q=login#singup';
 <?php
    if($phpurl == 'vrixe-enn'){$appID = '527b2883-5dff-4a9b-88bd-5e2e3e74c9f4';}else{$appID = '151afe3d-500c-49f3-b682-dd9c5084a863';}
   
-  echo"
+echo"
   <script>
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
@@ -42,7 +18,7 @@ document.location = '/index?q=login#singup';
 
 OneSignal.push(function() {
      OneSignal.sendTag('who', '$username');
-     //OneSignal.setExternalUserId('$cid');
+     //OneSignal.setExternalUserId('$sqlcid');
    //OneSignal.deleteTag('who');
    
     OneSignal.getUserId(function(userId) {
@@ -52,10 +28,7 @@ OneSignal.push(function() {
     savepushid(req, iv, cu);  
   });
       //OneSignal.setSubscription(true);  
-       
-       
 });
-
 
 function savepushid(req, iv, cu){
 	if (req == ''){
@@ -76,7 +49,6 @@ document.getElementById('result').innerHTML =
 this.responseText;
 }
 };
-
 xmlhttp.open('GET','/garage/mover.php?k='+req+'&i='+iv+'&c='+cu,true);
 xmlhttp.send(); 
 }  
@@ -84,11 +56,7 @@ xmlhttp.send();
 
 </script>
 ";
-	
-  ?>
-  
-
-  
+?>  
   
 <title>Account Settings</title>
 <link rel="manifest" href="/manifest.json">
@@ -109,8 +77,7 @@ function confirmPosition(position) {
   var output = document.getElementById("valert");
         output.innerHTML = "Location Access Turned On"; output.style.display='block';
 }
-
-  </script>
+</script>
  <style>
     body{
       background-color: #f5f5f5;
@@ -125,24 +92,21 @@ function confirmPosition(position) {
   </style>
 </head>
 <body>
-
 <div id="gtr" onclick="closecloseb()"></div>
 
-<?php require("../garage/deskhead.php"); ?>
-<?php require("../garage/desksearch.php");  ?>
-<?php require("../garage/deskpop.php"); ?>
+<?php require("../garage/deskhead.php");
+  require("../garage/desksearch.php");
+  require("../garage/deskpop.php"); ?>
 
-<?php require("../garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Settings</button>";
+  require("../garage/mobilehead.php"); ?>
 
-<?php require("../garage/subhead.php");?>
-
-<?php require("../garage/thesearch.php"); ?>
-
+<?php require("../garage/subhead.php");
+  require("../garage/thesearch.php"); ?>
 <br>
-
 <?php
 
-    $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
+ $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
  $confirm = 0;
    while($gotuser = mysqli_fetch_array($start))
  {$confirm = 1;
@@ -214,8 +178,6 @@ echo "<div class='postcen'>
  <img alt='Accounts Permission' src='/images/essentials/link.png' class='everybodyimg'>
   <h class='bottoms'>Find friends already on Vrixe</h><br>
 
-
-
   <small>We're trying to make sending invites easier, we can help you find friends from other platforms who use Vrixe. This is a big deal and we want to be careful when connecting to your accounts, so please hang in there, we've almost got it perfect</small><br>
 
 <br><div class="blfheadalt"></div>
@@ -230,7 +192,7 @@ echo "<div class='postcen'>
 
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 
 </body>
 </html>

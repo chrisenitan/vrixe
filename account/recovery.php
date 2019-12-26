@@ -1,7 +1,8 @@
-<?php
-require("../garage/visa.php");
-  ?>
-  <!DOCTYPE html>
+<?php 
+//do not require user account
+$defaultAllowNoUser = true;
+require("../garage/passport.php"); ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Recover Account - Vrixe</title>
@@ -33,9 +34,9 @@ require("../garage/visa.php");
 <?php 
  $day =date("d m Y");
  $rate = mysqli_real_escape_string($conne, $_POST['rate']);
- $email = mysqli_real_escape_string($conne, $_POST['recmail']);
+ $postEmail = mysqli_real_escape_string($conne, $_POST['recmail']);
 
- if ($rate != '' or $email == '') {
+ if ($rate != '' or $postEmail == ''){
   echo "<div class='pef'><div class='blfhead'>...you seem lost</div><br><br>
 
   <img alt='missing' src='/images/essentials/bug.png' class='everybodyimg'><br>
@@ -52,9 +53,9 @@ require("../garage/visa.php");
 <br><br>";
  }
  else{
- 	$sql = "UPDATE profiles SET freq='$day' WHERE email = '$email'";
+ 	$sql = "UPDATE profiles SET freq='$day' WHERE email = '$postEmail'";
 
-$collect = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$email' LIMIT 1"); 
+$collect = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$postEmail' LIMIT 1"); 
 $gotaccount = 0;
    while($row2 = mysqli_fetch_array($collect)) {
    	$gotaccount = 1;
@@ -135,7 +136,7 @@ $message .= "</body></html>";
           if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server
    }else{
-if(mail($email, $subject, $message, $headers)){
+if(mail($postEmail, $subject, $message, $headers)){
 echo "<div id='galert'>We'll email you the next step.</div><br>";
 } else{
 echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Please contact us to get your initials.<br>We'll fix this</div><br>";

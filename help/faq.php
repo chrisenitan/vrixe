@@ -1,26 +1,7 @@
 <?php
-require("../garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>FAQ</button>";
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>FAQ</button>";
-}}
-else{
-     $fullname = "";
-   $username = "";
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>FAQ</button>";
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("../garage/passport.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +24,8 @@ else{
 <?php require("../garage/desksearch.php");  ?>
 <?php require("../garage/deskpop.php"); ?>
 
-<?php require("../garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>FAQ</button>";
+  require("../garage/mobilehead.php"); ?>
 
 <?php require("../garage/subhead.php");?>
 
@@ -130,6 +112,6 @@ else{
 </div>
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 </body>
 </html>
