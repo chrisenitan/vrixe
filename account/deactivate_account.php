@@ -3,7 +3,7 @@ require("../garage/visa.php");
   $rate = mysqli_real_escape_string($conne, $_POST['rate']);
     $email = mysqli_real_escape_string($conne, $_POST['deactemail']);
 
-    if (isset($_COOKIE['user'])){
+  if (isset($_COOKIE['user'])){
  $cookie = $_COOKIE['user'];
 } else {$cookie = "";}
 

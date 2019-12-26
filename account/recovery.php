@@ -10,8 +10,6 @@ require("../garage/visa.php");
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
-
-
 </head>
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
@@ -175,6 +173,6 @@ if ($gotaccount == 0) {
 <br><br>
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 </body>
 </html>

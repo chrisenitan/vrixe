@@ -1,26 +1,5 @@
 <?php
-require("../garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $email = $founduser['email'];
-      $link = $founduser['link'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Analytics</button>";
-      $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  echo "<script> document.location = '/me.php';</script>";
-}}
-else{
- echo "<script>
- document.location = '/index.php';
- </script>";
-}
+require("../garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,37 +13,31 @@ echo "<title>$fullname | Profile Analysis</title>";
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
 <style>
-  @media screen and (min-width: 980px){/*responsive*/
-.cards{
-width:45%;
-}}
+ @media screen and (min-width: 980px){/*responsive*/
+.cards{width:45%;}}
   </style>
 </head>
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
 
+<?php require("../garage/deskhead.php"); 
+  require("../garage/desksearch.php"); 
+  require("../garage/deskpop.php"); ?>
 
-<?php require("../garage/deskhead.php"); ?>
-<?php require("../garage/desksearch.php");  ?>
-
-<?php require("../garage/deskpop.php"); ?>
-
-<?php require("../garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Analytics</button>";
+  require("../garage/mobilehead.php"); ?>
 
 <?php 
 //set icon color
 $notifcolor = "style='color:#1fade4'";
 
-require("../garage/subhead.php");?>
-
-<?php require("../garage/thesearch.php"); ?>
+require("../garage/subhead.php");
+require("../garage/thesearch.php"); ?>
 
 
 <br>
-
 <div class="postcen">
 <?php 
-
 #account date
 $profiledate = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$username' LIMIT 1 "); 
    $gotdate = 0;
@@ -346,8 +319,6 @@ echo"
 </div>";
 
  ?>
-
-
 
 </div>
 <br><br>

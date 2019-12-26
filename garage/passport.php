@@ -24,11 +24,11 @@ if (isset($_COOKIE['user'])){
 if ($headcook == false){
   //deleting user cookie here
  setcookie("user", "", time() - 3600, "/");
- header('Location: index');
+ header('Location: /index');
 }
 if (substr($checkpasswordsecurity, -14) == "blockedbyvrixe"){
     setcookie("user", "", time() - 3600, "/"); //delete user login
-    header('Location: index?q=b');
+    header('Location: /index?q=b');
  }}
 else{
   //check if user should beleft alone for pages that dont need user account
@@ -40,7 +40,7 @@ else{
   }
   else{
      echo "<script>
- document.location = 'index.php';
+ document.location = '/index.php';
  </script>";
 }}
 
