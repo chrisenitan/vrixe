@@ -82,11 +82,11 @@ require("../garage/passport.php");
 </div><br>
 
 
-<div class="long">
+<div class="long" style="display:none">
 <span class="topic" id="relog" onclick="var all='all';var one ='seven';hideshow(all, one);">I'm being asked to log in or Update Account</span>
 <button class="mores" onclick="var all='all';var one ='seven';hideshow(all, one);"><i class="material-icons">arrow_downward</i></button><br>
 <div class="all" id="seven">This means our server noticed that you recently updated some important details on your account. Please complete this process and refresh your account on all devices you are logged on with. If you are being required to Verify account repeatedly, please clear website data of Vrixe from your browser.</div>
-</div><br>
+</div>
 
 <div class="long">
 <span class="topic" id="eventimagesupdate" onclick="var all='all';var one ='eight';hideshow(all, one);">Default Event Images</span>

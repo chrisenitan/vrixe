@@ -132,9 +132,9 @@ if (!mysqli_query($conne,$updatereview))
   //if not the insert new review
   else{
     $reviewdate = date("d M Y");
-$insertreview="INSERT INTO reviews (fullname, user, design, pic, reviewdate, ux, features, support, texts)
+$insertreview="INSERT INTO reviews (fullname, user, design, reviewdate, ux, features, support, texts)
 VALUES
-('$reviewfullname','$reviewusername','$reviewdesign','$userheadimg','$reviewdate','$reviewux','$reviewfeatures','$reviewsupport','$review')";
+('$reviewfullname','$reviewusername','$reviewdesign','$reviewdate','$reviewux','$reviewfeatures','$reviewsupport','$review')";
 
   echo "<div class='pef'>
   <div class='blfhead'>Review Saved</div><br>

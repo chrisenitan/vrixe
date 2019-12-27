@@ -261,7 +261,7 @@ require("garage/subhead.php");?>
 <?php
 //user has a cookie but somehow we did not find that user in db so we deletethe cookie and ask for a relogin
 //checking isset here because users could be coming fromindex page where login is not going to give headcook
-if (isset($headcook) and $headcook == false){
+if (isset($headcook) and $headcook == false){//this might be derprecated
  echo"
 <div class='pagecen'>
 <div class='pef'>

@@ -5,11 +5,8 @@
 
 <div id="floare">
 	<?php
-	if ($fullname != "" and $fullname != "relog"){
+	if ($fullname > ""){
 echo "<a href='/me' class='disl' title='my account'>@$username &nbsp &nbsp </a>";
-}
-else if ($fullname != "" and $fullname == "relog"){
-	echo "<a href='/me' class='disl' title='Please login again' style='color:crimson'><i class='material-icons' style='font-size:14px;'>person</i> Verify Account &nbsp &nbsp </a>";
 }
 else{
 	echo "<a href='/index?q=login#longin' class='disl' title='Log into your account'><i class='material-icons' style='font-size:14px;'>person</i> Log In</a> <span style='color:black'>|</span> <a href='/index?q=profile_required#singup' class='disl' title='Sign Up for a Vrixe Account'>Sign Up &nbsp &nbsp </a>";
