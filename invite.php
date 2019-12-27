@@ -424,7 +424,7 @@ echo
 
 
 <br>
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("garage/networkStatus.php"); ?>
   
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr1pOvW2cHlHyjtLhR1Hoqr7QnvH2DZIg&libraries=places&callback=initAutocomplete"
         async defer></script>

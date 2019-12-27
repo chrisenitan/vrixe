@@ -442,14 +442,14 @@ $fetchreviews = mysqli_query($conne,"SELECT * FROM reviews WHERE user = '$userna
    $revux = $founduserviews['ux'];
    $revfeatures = $founduserviews['features'];
    $revsupport = $founduserviews['support'];
-     $puawco = $founduserviews['created'];
+     $puawco = $founduserviews['reviewdate'];
 
 echo "
 <div class='scrollrevs'>
 <div class='revfl'>
 <img src='images/profiles/profilethumbs/$userheadimg' class='revpi'><br>
 <b>$fullname</b><br>
-
+$puawco
 </div>
 
 <div class='revfr'>
@@ -465,13 +465,7 @@ $revtext
 <a href='help/feedbacks.php?rate=o'><div class='altpellets'><i class='material-icons' style='font-size:16px;'>edit</i></div></a>
 
 </div>
-
-
-</div>
-
-
-
-";
+</div>";
 }
 
 if ($gotuserviews == 0){
@@ -549,15 +543,14 @@ $fetchallreviews = mysqli_query($conne,"SELECT * FROM reviews WHERE user > '' an
     $allrevux = $foundalluserviews['ux'];
     $allrevfeatures = $foundalluserviews['features'];
     $allrevsupport = $foundalluserviews['support'];
+    $uawco = $foundalluserviews['reviewdate'];
     
      $getusersimagedirect = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$allusername' ");
      while($founduserimagedirect = mysqli_fetch_array($getusersimagedirect)){
         $alluserpic = $founduserimagedirect['picture'];
-       $uawco = $founduserimagedirect['created'];
      }
  
-echo "
-<div class='scrollrevs'>
+echo "<div class='scrollrevs'>
 <div class='revfl'>
 <img src='images/profiles/profilethumbs/$alluserpic' class='revpi'><br>
 <b>$allfullname</b><br>
@@ -581,29 +574,16 @@ $allrevtext
 </form>
 </div>
 
-
-
-</div>
-
-
-
-";
+</div>";
 }
 
 if ($gotuserviews == 0){
-	//if no review is found
+	//if no review is found.this is impossible at this point
 }
-
-
-
-
 
 ?>
 </div>
 </div>
-
-
-
 
 </div><!--end of reviews-->
 <br>
