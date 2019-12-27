@@ -1,21 +1,13 @@
 <?php
-require("../garage/visa.php");
-if (isset($_COOKIE['user'])){
- echo "<script>
-document.location = '/index.php';
-</script>";} #its prolly a sinner typing ordinaru url 
-
-else{
-     $fullname = "";
-   $username = "";
-   $email = "";
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("../garage/passport.php");
 ?>
 <!DOCTYPE html>
-<!-- handling unathorised logins-->
+<!-- handling unathorised logins, takingpost data from account_security where user enters verification b4 we block account-->
 <html lang="en">
 <head>
-<title>Account security- Vrixe</title>
+<title>Securing Your Account - Vrixe</title>
 <link rel="manifest" href="/manifest.json">
 <meta name="description" content="Help with account security issues.General sccount security for Vrixe users. Level 1">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
@@ -76,7 +68,7 @@ if ($varuser == 0){
   </div>";
 }
 else {
-//log the query
+//log the query and block the users account
   $saverecord="INSERT INTO ammo (day, name, reqaction, email, securecode)
 VALUES
 ('$reportday','$postusername','$action','$postemail','$postcode')";
@@ -121,13 +113,13 @@ else{
     echo "<div class='pagecen'>
 <div class='pef'>
 
-  <div class='blfhead'>Straight faces here</div>
+  <div class='blfhead'>All good here</div>
  <br>
   <img alt='Account Security' src='/images/essentials/cog.png' class='everybodyimg'>
   <br>
    <h class='miniss'>This is where we look after ill accounts<br>...and the occasional candy lovers</h><br>
 
-  <div class='yalert'>Looks like you're all clean, no candy for you</div>
+  <div class='yalert'>Looks like your account is all clean</div>
 
 <br><br>
 <h class='miniss'>Keep Vrixe with you <br><a href='app/pwa.html'><button class='copele'> INSTALL WEB APP</button></a></h><br><br>
@@ -137,12 +129,9 @@ else{
   </div>";
 
 }
-
-
 ?>
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 </body>
-
 </html>

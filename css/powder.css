@@ -143,27 +143,6 @@ width: auto;
 #capsl{
 	text-transform: capitalize;
 }
-.submit{
-	width: 50px;
-	font-family: Sarpanch;
-	overflow: hidden;
-	height: 50px;
-	border-radius: 100%;
-	cursor: pointer;
-	outline: none;
-	background-color: #2b3445;
-	box-shadow: 0px 2px 7px 0px #ababaf;
-	color: #99aed6;
-	border: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	transition: 0.5s;
-	-webkit-transition: 0.5s;
-	-moz-transition: 0.5s;
-}
-.submit:hover{
-	color: #fff;
-}
 #submitbox{
 	width: auto;
 }

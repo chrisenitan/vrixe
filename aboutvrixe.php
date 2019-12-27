@@ -139,8 +139,8 @@ document.location = "tour.php";
 <br>
 
 
-<h class="cyansm"><i class="material-icons">group_work</i> Edit plans together</h><br>
-		Edit and contribute details, see what others are adding, who changed what and collectively finalize decisions.
+<h class="cyansm"><i class="material-icons">group_work</i> Create invites and plans</h><br>
+		Start by sending an invite to your co-planners then move your invite to a plan, everyone can edit and view the updates together.
 <br><br>
   
   <h class="cyansm"><i class="material-icons">subject</i> Add all the details you want</h><br>
