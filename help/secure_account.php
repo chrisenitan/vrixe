@@ -13,28 +13,19 @@ require("../garage/passport.php");
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
-
 </head>
 <body>
-
-
 <div id="gtr" onclick="closecloseb()"></div>
 
-
-<?php require("../garage/deskhead.php"); ?>
-<?php require("../garage/desksearch.php");  ?>
-
-<?php require("../garage/deskpop.php"); ?>
-
-<?php require("../garage/mobilehead.php"); ?>
-
-<?php require("../garage/subhead.php");?>
-
-<?php require("../garage/thesearch.php"); ?>
+<?php require("../garage/deskhead.php"); 
+  require("../garage/desksearch.php"); 
+  require("../garage/deskpop.php");
+  require("../garage/mobilehead.php"); 
+  require("../garage/subhead.php");
+  require("../garage/thesearch.php"); ?>
 
 
-<br>
-	
+<br>	
 <?php 
  $reportday =date("d M Y");
   $postusername = mysqli_real_escape_string($conne, $_POST['accountuser']);
@@ -89,23 +80,20 @@ $blocker = "UPDATE profiles SET password='$blockedpass' WHERE email = '$postemai
 One of us will be contacting you within 24 hours to discuss how to get your account re-authorised and protected.<br> We apologies for this temporary error and whatever it may be affecting.
   </div>
   <br><br>
-   <h class='miniss'>More?<br>
+  <h class='miniss'>More?<br>
 
 <i class='material-icons' style='color:#065cff;'>contact_support</i><br>
 <h class='miniss'>Try screaming at our guys if it makes you feel better <br><a href='feedbacks.php'><button class='copele'> FFEDBACK</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
-
   </div>
-  </div>
-"; 
+  </div>"; 
 if (!mysqli_query($conne,$saverecord) or !mysqli_query($conne,$blocker))
   {
   die('Error: ' . mysqli_error($conne));
   }
   mysqli_close($conne);
 }
-
 }
 
 else{
@@ -117,17 +105,16 @@ else{
  <br>
   <img alt='Account Security' src='/images/essentials/cog.png' class='everybodyimg'>
   <br>
-   <h class='miniss'>This is where we look after ill accounts<br>...and the occasional candy lovers</h><br>
+   <h class='disl'>This is where we look after ill accounts<br>...and the occasional candy lovers</h><br>
 
   <div class='yalert'>Looks like your account is all clean</div>
 
 <br><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='app/pwa.html'><button class='copele'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Tried the Vrixe Progressive Web App?<br><a href='app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
 <div class='blfheadalt'></div>
   </div>
   </div>";
-
 }
 ?>
 

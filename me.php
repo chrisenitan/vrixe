@@ -461,8 +461,7 @@ echo "<div class='cards' style='$cardBack' id='$r'><br>
 <a href='desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>
 ";
 }
-     
-     echo"
+echo"
      <button onclick='share$r()' type='button' class='cardsactions' title='Share Event'><i class='material-icons'>share</i><br>share</button>
      <button onclick='a$r()' type='button' class='cardsactions' title='Delete Event'><i class='material-icons'>delete</i><br>delete</button>
      
@@ -476,10 +475,10 @@ if($status == 'invite'){
 <button class='cardsactions' style='width:auto'><i class='material-icons'>swap_horizontal_circle</i><br>move to plan</button>
 </form>";}
 else if($status == 'plan'){ 
-  echo"<button class='cardsactions' style='width:auto;color:#5bc2ec'><i class='material-icons'>widgets</i><br>this plan is in progress</button>";
+  echo"<button class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>this plan is in progress</button>";
 }
  else{
-       echo"<button class='cardsactions' style='width:auto'><i class='material-icons'>assignment_turned_in</i><br>event approved</button>";
+       echo"<button class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>event approved</button>";
  }
 
      
