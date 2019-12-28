@@ -259,29 +259,7 @@ require("garage/subhead.php");?>
 <br>
 
 <?php
-//user has a cookie but somehow we did not find that user in db so we deletethe cookie and ask for a relogin
-//checking isset here because users could be coming fromindex page where login is not going to give headcook
-if (isset($headcook) and $headcook == false){//this might be derprecated
- echo"
-<div class='pagecen'>
-<div class='pef'>
-  <div class='blfhead'>Login is required</div><br>
-
-  <img alt='Account missing' src='images/essentials/relogin.png' class='everybodyimg'>
-  <h class='miniss'>Seems you changed your account password recently.<br>Please Login again to secure your account.<br>
-  <a href='help/faq.php#relog'>Learn More</a><br><br>
-   <a href='index'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Log In</button></a><br><br>
-  <a href='help/feedbacks'>Send us a feedback</a></h>
- <br><br>
-
-   <div class='blfheadalt'></div>
-  </div>
-  </div>
-";
-}
-
-
-else if ($newUserLogInNotFound == "true"){ #give box that says it wasnt found
+if ($newUserLogInNotFound == "true"){ #give box that says it wasnt found
   echo"
 <div class='pagecen'>
 <div class='pef'>

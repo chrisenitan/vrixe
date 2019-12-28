@@ -79,10 +79,10 @@ $cid = $row['cid'];
   <h class='miniss'>There's always a position open</h><br><h class='disl'>We are refining the requirements to realistic expectations, please check back for new positions. Can't wait? Please send us your CV and we'll get back to you</h> <br><br>
    <a href='mailto:openinterest@vrixe.com'><button class='copele'><i class='material-icons' style='vertical-align: text-top;font-size: 17px;'>mail</i> MAIL US</button></a><br><br>
 
-   <h class='miniss'>More?</h><br>
+   <h class='miniss'>We have a Progressive Web App</h><br>
 
 <i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 

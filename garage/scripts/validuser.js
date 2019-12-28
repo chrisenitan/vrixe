@@ -185,7 +185,10 @@ let movetoplan = (elid, iv) => {
   var text = "This will automatically lock out friends yet to accept your invite. Please check with everyone or do you want to proceed now?";
   callabsolunia(title, text, button, buttonlink, closer);
     document.getElementById('absolunia_button').addEventListener('click', function(){
-process(elid, iv);
+      revabsolunia();//hide absolunia box
+      //remove the initial button
+      document.getElementById("polishmtp").style.display="none";      
+process(elid, iv);//send request to backend
   });
 }
 

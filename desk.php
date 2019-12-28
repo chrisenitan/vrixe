@@ -297,7 +297,7 @@ width:45%;
 <div class='pef' id='first'>
 <div class='blfhead'>Dates</div><br>
 <h class='petd' style='color: #379e65;'>starting with the basics</h><br><br>
-<h class='blf'>Current Stage<span class='asterik'>*</span></h><br>
+<h class='blf'>Current Plan Task<span class='asterik'>*</span></h><br>
 <input type='text'  id='evtyp' class='privinput' name='type' title='club, fashion show, seminar...' maxlength='58' placeholder='Looking for a venue...' value='$tag' onchange='var weidalt=\"whotag\";allwho(weidalt)' required><br>
 <input type='text' id='whotag' value='$whotag' class='rates' name='whotag' required>
 <div class='whoedit'>$whotag</div><br>
@@ -439,7 +439,7 @@ width:45%;
 <input type='text' id='whoorganiser' value='$whoorganiser' class='rates' name='whoorganiser' required>
 <div class='whoedit'>$whoorganiser</div><br><br>
 
-<h class='blf' id='scrollAccessCode'>Whatsapp Group Link</h><br>
+<h class='blf' id='scrollAccessCode'>Whatsapp Chat-group Link</h><br>
 <input type='url' value='$wapweb' id='evweb' class='privinput' name='wapweb' placeholder='... .... ...' onchange='var weidalt=\"whowapweb\";allwho(weidalt)'><br>
 <input type='text' id='whowapweb' value='$whowapweb' class='rates' name='whowapweb' required>
 <div class='whoedit'>$whowapweb</div><br><br>

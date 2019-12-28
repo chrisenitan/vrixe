@@ -235,20 +235,20 @@ else{
 echo"<br>
 <b><h class='bottoms'>$views $acceptedsofar</h></b>";
 if($class == 'private'){
-  echo "<br><h class='bottoms'>Your private access key is <b>$authkey</b></h>";
+  echo "<br><h class='miniss'>Your private access key is <b>$authkey</b></h>";
 }
 
-echo"
-<br><br>
+echo"<br><br>
 <a href='desk.php?code=$code'><button class='control' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>edit</i> Edit Invite</button></a>
 
 <a href='#pulldown'><button onclick='deleteSentInvite(iv)' class='triocontrol' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>delete</i> Delete</button></a>
 <br><br><div class='jal'></div>
 
-
+<div id='polishmtp'>
 <h class='disl'>plans let you add and edit more details together with your invitees</h><br><br>
 
 <button onclick='movetoplan(\"MOVE TO PLAN\", iv)' class='copele' type='button' id='d_pull'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>swap_horiz</i> Move To Plan</button><br>
+</div>
 
 <div id='result'></div><br>
 
@@ -393,12 +393,12 @@ if ($gotiv == 0){
 
   <img alt='$iv' src='images/essentials/error.png' class='everybodyimg'>
   <h class='miniss'>First you invite, then you plan.<br>This event has been removed from invite.<br><br>
-   <a href='/event/$iv'><button class='copele'>TO EVENT</button></a><br><br>
+   <a href='/event/$iv'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>event</i> View Event</button></a><br><br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a Progressive Web App<br>
 
 <i class='material-icons' style='color:#065cff;'>add_to_home_screen</i></i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='copele'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 
@@ -463,12 +463,12 @@ else{ //you tried the ordinary link directl via url. show advert
 
   <img alt='$iv' src='images/events/default.jpg' class='thisimage'>
   <h class='miniss'>Invite your friends to something<br>Manage invitations and move to planning stage to collaborate with your friends on that next big thing.<br><br>
-   <a href='aboutvrixe'><button class='copele'>Know More</button></a><br><br>
+   <a href='aboutvrixe'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>help</i> Know More</button></a><br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a Progressive Web App<br>
 
 <i class='material-icons' style='color:#065cff;'>add_to_home_screen</i></i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 

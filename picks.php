@@ -29,8 +29,7 @@ require("garage/passport.php");
 <?php require("garage/deskpop.php"); ?>
 
 
-<?php  
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>My Plans</button>";
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>My Plans</button>";
   require("garage/mobilehead.php"); ?>
 
 <?php 

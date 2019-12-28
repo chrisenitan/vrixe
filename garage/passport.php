@@ -43,7 +43,4 @@ else{
  document.location = '/index.php';
  </script>";
 }}
-
-
-
 ?>
