@@ -172,17 +172,17 @@ echo "<div class='postcen'>
   
   
 
-  <div class="pef" style="display:none;">
-<div class="blfhead">Connect Social Accounts</div><br>
+  <div class="pef">
+<div class="blfhead">Login Access</div><br>
 
- <img alt='Accounts Permission' src='/images/essentials/link.png' class='everybodyimg'>
-  <h class='bottoms'>Find friends already on Vrixe</h><br>
+ <img alt='Accounts Permission' src='/images/essentials/idcard.png' class='everybodyimg'><br><br>
+  <h class='bottoms'>Login via Google</h><br>
 
-  <small>We're trying to make sending invites easier, we can help you find friends from other platforms who use Vrixe. This is a big deal and we want to be careful when connecting to your accounts, so please hang in there, we've almost got it perfect</small><br>
-
+  <small>One less password to worry about. Sync your account with your Google email and never miss your data.</small><br><br>
+    
+<button class="googleAuth"><img class="googleAuthImg" src="https://developers.google.com/identity/images/g-logo.png"> Log In</button><br>
+    
 <br><div class="blfheadalt"></div>
-
-
 </div>
 
 </div>

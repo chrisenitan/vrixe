@@ -110,7 +110,7 @@ function getLocation() {
     }
 }
 
-//checks network status of every page every 3 seconds
+//checks network status of every page every 5 seconds
 window.addEventListener('load', function(){
 setInterval(function(){
 if (navigator.onLine != true){
@@ -118,7 +118,7 @@ if (navigator.onLine != true){
 }
 else{
 	document.getElementById('offline').style.display='none';
-}}, 3000);
+}}, 5000);
 });
 
 //show more description on event pages
@@ -144,7 +144,7 @@ else{
  		document.getElementById('gtr').style.display='block';
 }
  }
-   function passreset() {//show password rest div on index page
+   function passreset() {//auto show password rest div on index page
  	document.getElementById("passreset").style.height="200px";	
  	document.getElementById("login").style.height="0px"; 	
  }
@@ -163,7 +163,6 @@ function updatename(){
 	esi.src = URL.createObjectURL(event.target.files[0]);
  	document.getElementById("uit").innerHTML=sed;
  	document.getElementById('bcde').style.color='#28e828';
-  
  }
 
 function showdeact() {//shows the account deactivation div editprofile.php
@@ -171,8 +170,7 @@ function showdeact() {//shows the account deactivation div editprofile.php
  	document.getElementById("deactshower").style.display="none"; 	
  }
 
-
-//count character length of inputfields
+//count character length of input fields
 function countkeys(){
 	var words = document.getElementById('source').value;
 	var plicate = document.getElementById('plicate');
@@ -221,6 +219,7 @@ function addoninput(number){
 	number.style.paddingBottom="15px";
 }
 
+//set task for desk page
 function setbring(pr){
 	var bringing = document.getElementById("bringing");
 	var all = document.querySelectorAll(".bring");
@@ -238,7 +237,6 @@ function setbring(pr){
   if(pr == ""){//setting it back to lack incase user cleans input and does not select anything
     bringing.value = "slack";
   }
-	
 }
 
 //tickboxes selection 
@@ -289,7 +287,7 @@ function toin(des, pes, ces, push){
 	var fr = userName.search(des);
 	if(fr == -1){} else{return false;}
 
-		//count list
+	//count list
 	var counts = document.getElementById("ua").value;
 	var count = (counts.split(",").length - 1);
 	var ct = count + 1;
@@ -339,7 +337,7 @@ function refreshtoin(){
 }
 }
 
-//remove user form desk
+//remove user form invite desk
 function junkuser(user, box){
 	document.getElementById(user).value="";
 	document.getElementById(box).style.display="none";
@@ -365,15 +363,12 @@ document.getElementById("meniassss").innerHTML =
 this.responseText;
 }
 };
-
 xmlhttp.open("GET","/garage/mover.php?k="+req+"&i="+iv+"&c="+cu+"&dbid="+dbid,true);
 xmlhttp.send(); 
 } 
 }
 
-
-
-//show and hide boxes reusable
+//show and hide faq sections
 function hideshow(all, one){
   var i;
 	var x = document.querySelectorAll(".all"); 	var y = document.getElementById(one);
@@ -382,7 +377,6 @@ function hideshow(all, one){
     }
 	y.style.height="auto";
 }
-
 
 //suggest users on search bar. seperate because we have to show result in searh bar
 function checkforuser(search){ 
@@ -395,11 +389,9 @@ function checkforuser(search){
     var removeat = searchinput.value.substr(1, alllent);
     var id = removeat; 
     fetchusers(req, id, search); 
-  } 
-  }
+  }}
 }
-
-function fetchusers(req, id, search){ 
+function fetchusers(req, id, search){
 	if (req == "" && search == "hinput"){ 
 		document.getElementById("searchatprofile").innerHTML = "error";
 		return;
@@ -426,7 +418,6 @@ document.getElementById("searchatprofiledesk").innerHTML =
 this.responseText;
 }
 };
-
 xmlhttp.open("GET","/garage/mover.php?k="+req+"&i="+id+"&c="+search,true);
 xmlhttp.send(); 
 }}
@@ -476,7 +467,6 @@ function revabsolunia(){
  document.getElementById("absolunia").style.height="0px"; document.getElementById("absolunia").style.paddingTop="0px"; document.getElementById("absolunia").style.paddingBottom="0px"; document.getElementById("absolunia").style.boxShadow="none";
 }
 
-
 //web share reusable
 var cst;
 var csl;
@@ -495,8 +485,8 @@ if(navigator.share){
      }).then(() => console.log('Successful share'))
 .catch(error => console.log('Error sharing:', error));
   }
+  //fallback call absolunia
   else{
-  //call absolunia
   var closer = 'close this';
   var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\"> file_copy</i> Copy Link';
   var buttonlink = '#cateuser';
@@ -505,7 +495,7 @@ if(navigator.share){
   callabsolunia(title, text, button, buttonlink, closer);
   document.getElementById('absolunia_button').onclick= function(){
   
-    //copy link
+  //copy link
   var link = document.getElementById('copyab');
   var range = document.createRange();
   range.selectNode(link);
@@ -551,7 +541,6 @@ function nopushinbrowser(){
   callabsolunia(title, text, button, buttonlink, closer);
 }
 
-
 //checking what push should look like on eventbox
 function chesubpush(){
   var chesubpushbtn = document.getElementById("chesubpushbtn"); //only do this if the user is given
@@ -586,7 +575,7 @@ else{//permission not granted ask for it
   }
 }
 
-//change poll access code from deskpop
+//clikced on desk poll, scroll to rsvp section
 let deskChangePollCode = () =>{
 document.getElementById("accessCode").style.backgroundColor="#92ffc0";
   eventbox(fourth);//run show pef code

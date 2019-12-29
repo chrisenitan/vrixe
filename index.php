@@ -20,7 +20,7 @@ if($phpurla == 'vrixe-enn'){$phpurl = 'vrixe-enn';}else{$phpurl = 'gib';} //vali
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
   <link rel="manifest" href="manifest.json" type="application/json">
 
 <?php
@@ -47,8 +47,8 @@ OneSignal.push(function() {
   }
   ?>
   
-<?php 
-      echo"<link type='text/css' rel='stylesheet' href='/css/lipstick.css?v=$vv'>
+<?php //Google Tracking
+ echo"<link type='text/css' rel='stylesheet' href='/css/lipstick.css?v=$vv'>
 <script type='text/javascript' async src='/main.js?v=$vv'></script>";
   
 if($phpurl == 'gib'){
@@ -81,9 +81,7 @@ else{
 <script type='text/javascript' defer src='/ga_vrixe.js?v=$vv'></script>";
 }
 
-?>
-  
-<title>Vrixe | For every team event</title>
+?>  
   <!--SEO-->
 <script type="application/ld+json">
 {
@@ -102,7 +100,7 @@ else{
 }
 </script>
   
- 
+<title>Vrixe | For every team event</title>
 <meta name="robots" content="index, follow">
 <meta name="description" content="Create, edit and plan event projects with your team. Vrixe keeps all your group plan details in one web app that helps you connect with your team and get details to guests faster in a continuous and more engaging way.                ">
 <meta property="og:type" content="website" />
@@ -113,9 +111,7 @@ else{
 <meta property="og:image" content="https://vrixe.com/images/vlogie.png"/>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 <meta http-equiv='Cache-control: no-transform'>
-
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
 <link rel='icon' type='png' href='/images/vogo.png'>
 <meta name='theme-color' content='#f8f8ff'>
 <link rel='apple-touch-icon' sizes='192x192' href='/app/vlogpwa.png'>
@@ -124,30 +120,13 @@ else{
 <meta name='apple-mobile-web-app-title' content='Vrixe'>
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='black'>
-
 <?php require("garage/validuser.php"); 
   echo"<script type='text/javascript' defer src='garage/scripts/redeye.js?v=$vv'></script>";
   ?>
 
-  
-<script>
-    function checkhandle(){
-  var inputusername = document.getElementById("inputusername").value;
-  var exitusername = document.getElementById("exitusername");
-  if (inputusername == "@"){
-      exitusername.innerHTML="let's not include the '@'";
-      exitusername.style.color="red";
-  }else{
-    exitusername.innerHTML="";
-    exitusername.style.color="transparent";
-   checknameava(inputusername);
-  }}
-</script>
 </head>
 <body>
-
 <br>
-
 <header><nav id="indexhead">
 
 <a href="aboutvrixe" class="indexlink" title="Explore">about</a>
@@ -162,7 +141,6 @@ else{
 <div class="pagecen">
 
 <?php
-echo $gads;
 if (isset($_GET['q'])){
   $reason = mysqli_real_escape_string($conne, $_GET['q']); 
 
@@ -190,7 +168,7 @@ else{echo"";}
 
 ?><br>
 
-<div class="adbox"> 
+<div class="adbox">
   <img id="dsvg" src="https://vrixe.com/images/aboutvrixe/detailed.svg" alt="Collective plans with Vrixe"><br>
   <h class="intx">Create and edit events with your team.</h><br>
   <h style="color:#173652"><i>...discover a new way to collaborate on vrixe</i></h><br><br>
@@ -198,13 +176,13 @@ else{echo"";}
    <a href='aboutvrixe.php'><div id="act" title="See how Vrixe works">Features</div></a><br><br>
 
 <div class="pef"><br>
-
  <a href="#singup" title="Sign Up For A Vrixe Account"><div class="evtyhe" id="singup" style="background-position: center;">Sign Up<br><small class="loginsmall">create better group plans</small></div></a>
+  
+  
 <div id="signup">
   <img class="menuimg" src="images/vlogie.png" alt="vrixe"><br>
   <h class="bugdes">Vrixe. All Access</h><br>
   <h class="miniss">Simple | Collective | Detailed plans</h><br><br>
-
 <form autocomplete="off" style="display:block;" action="welcome.php" method="post">
 
   <input onchange="checkmailava(this.value)" type="email"  class="privinput" name="mail" required placeholder="email" id="signupemail"><br>
@@ -222,6 +200,8 @@ else{echo"";}
   <h class="petd">these topics below do apply<br> <a href="app/terms.html"><h class="miniss">Terms</h></a>, <a href="app/terms.html#prio"><h class="miniss">Privacy</h></a> and <a href="app/terms.html#cookies"><h class="miniss">Cookie</h></a> Policy.</h><br>
 </div><!--eo sign up-->
 
+  
+  
  <a href="#longin" title="Log Into Your Account"><div class="evtyhe" id="longin" style="background-position: bottom;">Log In<br><small class="loginsmall">access your vrixe profile</small></div></a>
 <div id="login">
   <img class="menuimg" src="images/vlogie.png" alt="vrixe"><br>
@@ -239,7 +219,7 @@ else{echo"";}
 
 <button class="copele" style="margin-bottom:10px">Log In</button><br></form>
 <h id="toreset" class="miniss" onclick="passreset()" style="cursor:pointer;">Forgot Password?</h><br>
-</div>
+</div><!--eo login-->
 
 
 <div id="passreset" title="Recover Vrixe Password" >
@@ -254,10 +234,9 @@ else{echo"";}
 </form>
 </div>
 
-</div><!--eo login-->
+</div><!--eo recover-->
 
   </div><br>
-
 </div>
 </main><br>
 
@@ -265,7 +244,7 @@ else{echo"";}
   
   <script defer>
     //login and sign up has div opener here cus we think event listerner is cros fring for inline js
-  document.getElementById("singup").addEventListener('click', function(){
+     document.getElementById("singup").addEventListener('click', function(){
      document.getElementById("singup").style.marginBottom="0px";
  	   document.getElementById("signup").style.height="400px"; 	
  	   document.getElementById("login").style.height="0px"; 	
@@ -273,7 +252,7 @@ else{echo"";}
  	   document.getElementById("passreset").style.height="0px";
 });
 
-  document.getElementById("longin").addEventListener('click', function(){
+     document.getElementById("longin").addEventListener('click', function(){
      document.getElementById("singup").style.marginBottom="45px";
  	   document.getElementById("longin").style.marginBottom="0px";
  	   document.getElementById("signup").style.height="0px";
