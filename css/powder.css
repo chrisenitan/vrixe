@@ -173,7 +173,7 @@ button{
 	color: #1fade4;
 }
 .miniss{
-	color: #5c9ced;
+	color: #63a8ff;
 	font-size: 13px;
 }
 .minis2{
@@ -2872,7 +2872,7 @@ width:15%;
 	border-radius: 14px;
 	overflow: hidden;
   background-size: cover;
-  background-color: rgb(37, 37, 37);
+  background-color: #151515;
   background-blend-mode: overlay;
 	vertical-align: top;
   font-family: Nunito;

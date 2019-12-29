@@ -1,69 +1,75 @@
 <?php #check cookie for registered users
 require("garage/visa.php"); 
-$cok ="user";
-$known = 0;
-$recognise ="formail"; //for mail
+//check if therewas a cookie
+if (isset($_COOKIE['user'])){
+  header('Location: me');  
+}
+
+ $signup = mysqli_real_escape_string($conne, $_POST['signup']);
+ $rate = mysqli_real_escape_string($conne, $_POST['rate']);
+ $rawusername = mysqli_real_escape_string($conne, $_POST['username']); $username = strtolower($rawusername);
+ $postEmail = mysqli_real_escape_string($conne, $_POST['mail']);
+ $password = mysqli_real_escape_string($conne, $_POST['password']);
+
+//if username is given.. or if google is given and sign up is given
+if($username > "" and $signup == "signup" and $postEmail > "" and $rate == ""){
+//start generating necessary data
+$url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
+$z = $url->countryName;//location
+  
 $gencookie = bin2hex(openssl_random_pseudo_bytes(10));
 $cutcok = substr($gencookie, 0,6);//for account verification page
-$signup = mysqli_real_escape_string($conne, $_POST['signup']);
-
-$url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
- $z = $url->countryName;
-
- $day =date("Y-m-d"); //creation date
-  $rate = mysqli_real_escape_string($conne, $_POST['rate']);
-     $fullname = "Profile Name";
- $pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
-    $rawusername = mysqli_real_escape_string($conne, $_POST['username']); $username = strtolower($rawusername);
-      $email = mysqli_real_escape_string($conne, $_POST['mail']);
-    $password = mysqli_real_escape_string($conne, $_POST['password']);
-    $bio = "";
-    $picture = "user.png";
-    $link = "vrixe.com/profile/$username";
-
-    $checkusem = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$username' or email = '$email' LIMIT 1"); 
- $checkresult = 0;
-   while($checked = mysqli_fetch_array($checkusem))
- {$checkresult = 1;
- }
+$cok ="user";
+$recognise ="formail"; //for mail
+$fullname = "Profile Name";
+$day =date("Y-m-d"); //creation date
+$pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
+$bio = "$username from $z";
+$picture = "user.png";
+$link = "vrixe.com/profile/$username";
 
 
-if (isset($_COOKIE['user'])){
-  echo "<script>
-document.location = 'me.php';
-</script>";
+
+ //check if user exists
+ $checkusem = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$username' or email = '$postEmail' LIMIT 1"); 
+ $checkIfUserExisted = false;
+   while($checked = mysqli_fetch_array($checkusem))  
+ {$checkIfUserExisted = true; }
+  
+  //if there was a user already
+ if($checkIfUserExisted == true){
+  $saveUserStatus = "duplicate";
 }
-else if(!isset($_COOKIE['user']) and $signup == "signup" and $checkresult == 1){
-echo ""; //user exists will show dont be a stranger down there
-}
-else if(!isset($_COOKIE['user']) and $signup == "signup" and $checkresult == 0 and $email > "" and $rawusername > ""){
-  //cookie is not given, user is tyring to sign up, did not find anysuch in record, email was given and new user so be nice
+ else{ //save user
+   $saveUserStatus = "save";
+   
+ $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid)
+VALUES
+('$postEmail','$fullname','$username','$password','$day','$bio','$z','$picture','$link','$gencookie','$cutcok','$pushid')";
+   
+//create cookies
 setcookie($cok, $gencookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); //newuser
 setcookie($recognise, $username, time() + (86400 * 366), "/; samesite=Lax", "", true, true); //for mail
-$known = 1;
+   
+ //close connection
+ if (!mysqli_query($conne,$create))
+  {die('Error: ' . mysqli_error($conne));}
+     }
+
 }
-else if(!isset($_COOKIE['user']) and $signup == ""){
-  echo "<script>
-document.location = 'index.php';
-</script>"; //who is this
-}
-else {
-  echo "<script>
-  document.location= 'index.php';
-  </script>";
+
+//criteria for making user is not found, yet there was no cooke redirect user whatsevr the case may be
+else{
+header('Location: index');  
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <?php
-    $email = mysqli_real_escape_string($conne, $_POST['mail']);
-    if ($email == ""){
-      echo "<title>Account Setup Incomplete</title>";
-    }
-    else if ($checkresult == 1) {echo "<title>Initials Exists</title>";}
-
-    else {echo "<title>Account Created</title> <link rel='prefetch' href='me.php'>";}
+  $postEmail = mysqli_real_escape_string($conne, $_POST['mail']);
+  if ($saveUserStatus == "duplicate"){echo "<title>Account Setup Incomplete</title>";}
+  else {echo "<title>Account Created</title> <link rel='prefetch' href='me.php'>";}
 ?>
 <link rel="manifest" href="manifest.json">
 <meta name="description" content="Create a Vrixe account, monitor your Events and grow your audience.   ">
@@ -71,36 +77,27 @@ else {
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("garage/resources.php"); ?>
-
   <style>
-  	body{ 		
-		background-color: #ffffff;
-  	}
+  	body{	background-color: #ffffff;}
     .privinput{text-align:center;}
   </style>
 </head>
 <body>
-
 <div id="gtr" onclick="closecloseb()"></div>
-<?php require("garage/deskhead.php"); ?>
-<?php require("garage/desksearch.php");  ?>
-<?php require("garage/deskpop.php"); ?>
+<?php require("garage/deskhead.php");
+  require("garage/desksearch.php");
+  require("garage/deskpop.php"); 
+  require("garage/mobilehead.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
-
-<?php require("garage/subhead.php");?>
-
-<?php require("garage/thesearch.php"); ?>
-
-
+<?php require("garage/subhead.php");
+  require("garage/thesearch.php"); ?>
 <br>
+  
 <?php
-
- if ($checkresult == 1){
-  echo"
-<div class='pagecen'>
+ if ($saveUserStatus == "duplicate"){
+  echo"<div class='pagecen'>
 <div class='pef'>
-  <div class='blfhead'>...Dont be a stranger</div><br>
+  <div class='blfhead'>...Don't be a stranger</div><br>
  
   <img alt='Bad Profile' src='images/essentials/warning.png' class='everybodyimg'><br>
   <h class='miniss'>Your Username or Email already exists<br>
@@ -113,13 +110,9 @@ else {
   <div class='blfheadalt'></div>
   </div>
   </div>
-"; 
- }
-else{
-  $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid)
-VALUES
-('$email','$fullname','$username','$password','$day','$bio','$z','$picture','$link','$gencookie','$cutcok','$pushid')";
-
+";}
+  
+else if ($saveUserStatus == "save"){
 echo "<div class='pagecen'><div class='pef'>
 <div class='blfhead'>Profile Created</div><br>
 <div class='lifted' id='sdsfj' onclick='sdsfj()'><b>We added cookies!</b><br>...cookies help us know it's you and gives you seamless access to vrixe.<br><br><button class='copele'>Cookies Are Ok</button> <a href='app/terms.html#cookies'><button class='control'>Delete Cookies</button></a></div><br><br>
@@ -128,7 +121,7 @@ echo "<div class='pagecen'><div class='pef'>
 <br><h class='sword'>Your account has been created and we emailed you for verification</h><br>
 ";
 
-$subject = 'Please verify your profile';
+$subject = 'Welcome to Vrixe';
 $feed = 'feedback@vrixe.com';
 $from = 'contact@vrixe.com';
 
@@ -146,7 +139,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-Hey Vrixer!</p>
+Please verify your account</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>...out the oven, here comes your account but before digging in.<br> Let's get you in sync with some account details...</p><br>
 
 <img alt='new features on vrixe' src='https://vrixe.com/mail/banners/welcomenewuser.jpg' style='height:auto;width:96%;margin-left:2%'>
@@ -168,7 +161,7 @@ Hey Vrixer!</p>
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;;text-align:left'>
-<b><h style='font-size:14px'>Change Password:</h></b></br>
+<b><h style='font-size:14px'>Note On Password:</h></b></br>
 <h style='font-size:14px'>To speed up your sign up, your Vrixe account was created with an auto-generated password. Please have a look under your <b><a href='https://vrixe.com/edit_profile'>Profile</a></b> just incase you feel like using something custom and more secure.</h>
 </div>
 </div><br>
@@ -215,13 +208,13 @@ Hey Vrixer!</p>
 ";
 $message .= "</body></html>";
 
-       if($phpurl == 'vrixe-enn'){
+ if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server
    }else{
-if(mail($email, $subject, $message, $headers)){
+if(mail($postEmail, $subject, $message, $headers)){
 echo "<div id='galert'>We've sent you a verification mail.</div><br>";
 } else{
-echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On! We'll fix this</div><br>";
+echo "<div id='oalert'>We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On! We'll fix this</div><br>";
 }}
 
 echo "<h class='miniss'>Your account was created with a secure password, but you can update it under your <a style='text-decoration:underline;text-underline-position:under;' href='edit_profile'>profile settings</a></h><br><br>
@@ -236,22 +229,22 @@ echo "<h class='miniss'>Your account was created with a secure password, but you
 <br>
 
 </div>";
+  //hide cookie
 echo "<script>
 function sdsfj(){
 document.getElementById('sdsfj').style.display='none';
 }
 </script>";
-if (!mysqli_query($conne,$create))
-  {
-  die('Error: ' . mysqli_error($conne));
-  }
+
 }
-
+  else{
+    //redundant
+    
+  }
 ?>
-
 <br>
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("garage/networkStatus.php"); ?>
 
 </body>
 </html>

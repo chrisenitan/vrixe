@@ -47,8 +47,8 @@ while($row = mysqli_fetch_array($axevent)) {
 
 echo "<div id='galert'>Invite has been moved to plan</div><br>
 <h class='disl'>What would you like to do first?</h><br>
-<a href='desk.php?code=$id'><button aria-label='create event' class='copele'><i class='material-icons' style='font-size:16px;vertical-align:middle'>edit</i> Edit As Plan</button></a>
-<a href='event/$id'><button aria-label='create event' class='triocontrol'><i class='material-icons' style='font-size:16px;vertical-align:middle'>event</i> View Plan</button></a>";
+<a href='desk.php?code=$id'><button aria-label='create event' class='copele'><i class='material-icons' style='font-size:16px;vertical-align:sub'>edit</i> Edit As Plan</button></a>
+<a href='event/$id'><button aria-label='create event' class='triocontrol'><i class='material-icons' style='font-size:16px;vertical-align:sub'>event</i> View Plan</button></a>";
 
 if (!mysqli_query($conne,$toplan))
   {

@@ -526,11 +526,11 @@ if($gotyourevents == 0){
 <button class='allcopele' id='ga_pmc'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>perm_contact_calendar</i> My Contacts</button>
    </div></a>
 
-    <a href='/account/profile_analytics'><div class='cards'>
-  <p class='miniss'>Invites to Events Planned</p>
-   <img alt='make plans' src='/images/essentials/contacts.svg' style='width:60%;' class='everybodyimg'>
+    <a href='edit_profile'><div class='cards'>
+  <p class='miniss'>Update your profile</p>
+   <img alt='vrixe profiles' src='/images/essentials/contacts.svg' style='width:60%;' class='everybodyimg'>
 <br>
-<button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>notifications</i> My Invitations</button>
+<button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Edit Profile</button>
    </div></a>
 
   <a href='/app/pwa.html'><div class='cards'>
