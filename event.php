@@ -30,6 +30,8 @@ $title = 0;
 $probedescription= $rowi['description'];$eventDescriptionCleaned = htmlspecialchars($probedescription, ENT_QUOTES);
 $authkeyFromServer = $rowi['authkey'];
 $eventImagethumb = $rowi['imgthumb'];
+$pollCheckButton = $rowi['pollcheck'];
+$programCheckButton = $rowi['programcheck'];
      
 //create navigation button
  $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>" . substr($eventTitleCleaned, 0, 20) . "...</button>";
@@ -81,10 +83,27 @@ else {
 
 <?php require("./garage/deskhead.php"); ?>
 <?php require("./garage/desksearch.php");  ?>
-<?php require("./garage/deskpop.php"); ?>
+<?php require("./garage/deskpop.php"); 
 
-<button id="write" onclick="pmenu()"><i class="material-icons">more_vert</i></button>
-
+  if($pollCheckButton > ""){
+    echo"<a href='/poll/$pureEventRef'><button class='floatBtn floatAddonBtn'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>poll</i></button></a>";
+  }
+  if($programCheckButton > ""){
+    echo"<button onclick='showprogram()' class='floatBtn floatAddonBtn' style='bottom:19%'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>event_note</i></button>";
+  }
+  if($programCheckButton > "" or $pollCheckButton > ""){
+    echo"<script>
+    window.addEventListener('load', function(){
+  var floatButton = document.querySelectorAll('.floatAddonBtn');
+  var inc;
+  for (inc = 0; inc < floatButton.length; inc++) {
+    floatButton[inc].style.transform = 'Scale(0.9)';
+}
+});
+</script>";
+  }
+  ?>
+  <button class="floatBtn" id="write" onclick="pmenu()"><i class="material-icons">more_vert</i></button>
 <?php require("./garage/mobilehead.php"); ?>
 
 <?php require("./garage/subhead.php");?>
