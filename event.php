@@ -81,29 +81,29 @@ else {
   
 <div id="gtr" onclick="closeclose()"></div>
 
-<?php require("./garage/deskhead.php"); ?>
-<?php require("./garage/desksearch.php");  ?>
+<?php require("./garage/deskhead.php");
+  require("./garage/desksearch.php");  ?>
+  
 <?php require("./garage/deskpop.php"); 
-
   if($pollCheckButton > ""){
     echo"<a href='/poll/$pureEventRef'><button class='floatBtn floatAddonBtn'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>poll</i></button></a>";
   }
   if($programCheckButton > ""){
-    echo"<button onclick='showprogram()' class='floatBtn floatAddonBtn' style='bottom:19%'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>event_note</i></button>";
+    if($pollCheckButton == ""){$bottom = "11.5%";}else{$bottom = "19%";}
+    echo"<button onclick='showprogram()' class='floatBtn floatAddonBtn' style='bottom:$bottom'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>event_note</i></button>";
   }
-  if($programCheckButton > "" or $pollCheckButton > ""){
-    echo"<script>
-    window.addEventListener('load', function(){
+ if($programCheckButton > "" or $pollCheckButton > ""){
+ echo"<script>
+  window.addEventListener('load', function(){
   var floatButton = document.querySelectorAll('.floatAddonBtn');
   var inc;
   for (inc = 0; inc < floatButton.length; inc++) {
-    floatButton[inc].style.transform = 'Scale(0.9)';
-}
-});
+    floatButton[inc].style.transform = 'Scale(0.99)';
+}});
 </script>";
   }
   ?>
-  <button class="floatBtn" id="write" onclick="pmenu()"><i class="material-icons">more_vert</i></button>
+<button class="floatBtn" id="write" onclick="pmenu()"><i class="material-icons">more_vert</i></button>
 <?php require("./garage/mobilehead.php"); ?>
 
 <?php require("./garage/subhead.php");?>

@@ -982,6 +982,9 @@ color: #fff;
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
 }
+.floatAddonBtn:hover{
+  background-color: #86001c;
+}
 .floatBtn{
 	text-align: center;
 	align-items: center;
