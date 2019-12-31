@@ -2,14 +2,15 @@
 
 require("../garage/visa.php");
 
-$fetchlist = mysqli_query($conne,"SELECT * FROM newsletter WHERE day !='unsubscribed' ");
+//$fetchlist = mysqli_query($conne,"SELECT * FROM newsletter WHERE day !='unsubscribed' ");
 
-while($list = mysqli_fetch_array($fetchlist)){
+//while($list = mysqli_fetch_array($fetchlist)){
 
-$email = $list['mail'];
+//$email = $list['mail'];
+$email = "ennycris1@gmail.com";
 
 
-$subject = 'Off Day today, be off - Vrixe';
+$subject = '2019 Overview';
 $feed = 'feedback@vrixe.com';
 $from = 'contact@vrixe.com';//or could be a name
 
@@ -27,7 +28,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:5px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-...wishing you the very best.</p>
+...an overview for tomorrow.</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>
 <img alt='create' src='https://vrixe.com/mail/updateimages/mcreate.png' style='width:14px;height:14px'> Create invites 
 
@@ -36,7 +37,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img alt='coedit' src='https://vrixe.com/mail/updateimages/mcoedit.png' style='width:14px;height:14px'> Plan together 
 </p><br>
 
-<img alt='new features on vrixe' src='https://vrixe.com/mail/updateimages/xmas201email.jpg' style='height:auto;width:96%;margin-left:2%'>
+<img alt='new features on vrixe' src='https://vrixe.com/mail/updateimages/review-min.jpg' style='height:auto;width:96%;margin-left:2%'>
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
 
@@ -45,7 +46,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/updateimages/christmas.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Into 2020: </h></b></br>
-<h style='font-size:14px'>The best part of 2019 is that we found you and you stuck with us. We wish you the best for 2020 and look forward to serving you the chillest webapp possible. <b>Merry Christmas!</b></h>
+<h style='font-size:14px'>We believe looking back at beautiful memories make life more fun so we want to send you a reminder for those moments from 2019 worth keeping throughout 2020. <b>Happy New Year!</b></h>
 </div>
 </div><br>
 
@@ -54,7 +55,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 
-<a href='https://vrixe.com/jobs'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>JOBS AT VRIXE</div></a><br>
+<a href='https://vrixe.com/account/profile_analytics'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>2019 MOMENTS</div></a><br>
 
 <h style='font-size:12px'>From the tiny Vrixe team.</h>
 </div><br><br>
@@ -75,7 +76,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 </div>
 
-<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'>Who unsubscribes from a Christmas email! Really? <a href='https://vrixe.com/help/feedbacks?mails=$email'>Unsubscribe.</a><br>
+<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'>Who unsubscribes from holiday emails! Really? <a href='https://vrixe.com/help/feedbacks?mails=$email'>Unsubscribe.</a><br>
 </div>
 ";
 $message .= "</body></html>";
@@ -86,7 +87,7 @@ echo "Xmas mail sent to $email";
 echo "<div id='oalert' style='display:block'><span id='vtext'>Email could not be sent</span> </div>";
 }
   
-}
+//}
 
 
 

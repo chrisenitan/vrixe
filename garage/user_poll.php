@@ -185,22 +185,20 @@ echo"
   }
   
 
-if($governoronpage == true)
-{   
+if($governoronpage == true){   
   if($pollusers == null){
     
-    echo"
- <div class='pef' style='display:inline-block;padding:0px'>
+    echo"<div class='pef' style='display:inline-block;padding:0px'>
     <div class='blfhead'>...no participants. Yet!</div><br><br>
 
   <img alt='$pollref' src='/images/essentials/loading.svg' class='everybodyimg'><br>
   <h class='miniss'>Still waiting?</h>
   <p style='width:97%;margin:auto' class='disl'>No worries, share your poll and once you have people voting, we'll make a list here for you</p> <br><br>
 
-   <h class='miniss'>More?</h><br>
+   <h class='miniss'>We have a Progressive Web App</h><br>
 
 <i class='material-icons' style='font-size:16px;vertical-align:middle;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 
