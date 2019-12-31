@@ -9,7 +9,7 @@ person_outline
 add_circle_outline
 </i></button></a><a href='/picks' title='Picks'><button aria-label='Picks' class='subhitems' id='Picks' $planscolor><i class='material-icons'>
 favorite_border
-</i></button></a><a href='/account/profile_analytics' title='Notifications'><button aria-label='Notifications' class='subhitems' id='Notifications' $notifcolor><i class='material-icons'>
+</i></button></a><a href='/account/notifications' title='Notifications'><button aria-label='Notifications' class='subhitems' id='Notifications' $notifcolor><i class='material-icons'>
 notifications_none
 </i></button></a>
 

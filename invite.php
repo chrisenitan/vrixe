@@ -104,7 +104,7 @@ if($cut == ""){
 
 
 <div class="respef">
-<form method="post" action="save.php" style="width:100%" autocomplete="off">
+<form method="post" action="save" style="width:100%" autocomplete="off">
 <div class="respbox" id="fres">
   <div class="blfhead" style='color:#c3c5cc;border-bottom:1px solid#c3c5cc'>Create an Invite</div><br><br>
 <input type="text"  class="grivinput" name="event" placeholder="TRIP, DINNER, MEETING..." required autocapitalize="characters"><br>

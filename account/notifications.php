@@ -1,12 +1,8 @@
-<?php
-require("../garage/passport.php"); 
-?>
+<?php require("../garage/passport.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php
-echo "<title>Notifications | $fullname</title>";
-?>
+<?php echo "<title>Notifications | $fullname</title>"; ?>
 <link rel="manifest" href="/manifest.json">
 <meta name="description" content="Stastitical reports on your Vrixe account and Events">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
@@ -15,7 +11,7 @@ echo "<title>Notifications | $fullname</title>";
 <style>
  @media screen and (min-width: 980px){/*responsive*/
 .cards{width:45%;}}
-  </style>
+</style>
 </head>
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
@@ -24,7 +20,7 @@ echo "<title>Notifications | $fullname</title>";
   require("../garage/desksearch.php"); 
   require("../garage/deskpop.php"); ?>
 
-<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Analytics</button>";
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Notifications</button>";
   require("../garage/mobilehead.php"); ?>
 
 <?php 
@@ -34,174 +30,14 @@ $notifcolor = "style='color:#1fade4'";
 require("../garage/subhead.php");
 require("../garage/thesearch.php"); ?>
 
-
 <br>
 <div class="postcen">
 <?php 
-#account date
-$profiledate = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$username' LIMIT 1 "); 
-   $gotdate = 0;
-   while($rowdate = mysqli_fetch_array($profiledate))
- {
-   $gotdate = 1;
-    $accountcreated = $rowdate['created'];
-    $accountpicture = $rowdate['picture'];
-}
-if ($gotdate == 0){
-  $accountcreated = 0;
-}
-
-#TOTAL PRIVATE
-$privatelocate = mysqli_query($conne,"SELECT COUNT(event) AS event FROM events WHERE hype = '$username' AND class = 'private' or organiser = '$username' AND class = 'private' ");
-
-   $gotprivatecount = 0;
-   while($rowprievent = mysqli_fetch_array($privatelocate))
- {
-   $gotprivatecount = 1;
-   $totalprivatecount = $rowprievent['event'];
-}
-if ($gotprivatecount == 0){
-  $totalprivatecount = "nil";
-}
-
-#TOTAL PUBLIC
-$publiclocate = mysqli_query($conne,"SELECT COUNT(event) AS event FROM events WHERE hype = '$username' AND class = 'public' or organiser = '$username' AND class = 'public' ");
-
-   $gotpubliccount = 0;
-   while($rowpubevent = mysqli_fetch_array($publiclocate))
- {
-   $gotpubliccount = 1;
-   $totalpubliccount = $rowpubevent['event'];
-}
-if ($gotpubliccount == 0){
-  $totalpubliccount = "nil";
-}
-
-#views count
-$viewscount = mysqli_query($conne,"SELECT SUM(views) AS views FROM events WHERE hype = '$username' or organiser = '$username' "); 
-   $gotevuser = 0;
-   while($rows = mysqli_fetch_array($viewscount))
- {
-   $gotevuser = 1;
-    $totalviews = $rows['views'];
-}
-if ($gotevuser == 0 or $totalviews == 0){
-  $totalviews = "nil";
-}
-
-#best event 
-$bestevent = mysqli_query($conne,"SELECT * FROM events WHERE hype = '$username' ORDER BY views DESC LIMIT 1"); 
-   $gotbestevent = 0;
-   while($mstvd = mysqli_fetch_array($bestevent))
- {
-   $gotbestevent = 1;
-    $thebestevent = $mstvd['views'];
-    $thebestlinkstr = $mstvd['refs'];
-    $thebestlink = "/event/" . $thebestlinkstr;
-     $probethebestname =   $mstvd['event']; $thebestname = htmlspecialchars($probethebestname, ENT_QUOTES);
-    $thebestshortnamed = substr($thebestname, 0, 10) . "...";
-}
-if ($gotbestevent == 0 or $thebestevent == 0){
-  $thebestevent = "nil";
-  $thebestlink = "#";
-  $thebestshortnamed = "";
-}
-
-#TOTAL INSTANT
-$instantlocate = mysqli_query($conne,"SELECT COUNT(event) AS event FROM events WHERE hype = '$username' AND status = 'invite' or organiser = '$username' AND status = 'invite' ");
-
-   $gotinstantcount = 0;
-   while($rowinstant = mysqli_fetch_array($instantlocate))
- {
-   $gotpinstantount = 1;
-   $totalinstantcount = $rowinstant['event'];
-}
-if ($gotpinstantount == 0){
-  $totalinstantcount = "nil";
-}
-
-#TOTAL NOT INVITE
-$basiclocate = mysqli_query($conne,"SELECT COUNT(event) AS event FROM events WHERE hype = '$username' AND status = 'plan' ");
-
-   $gotbasiccount = 0;
-   while($rowbasic = mysqli_fetch_array($basiclocate))
- {
-   $gotpbasicount = 1;
-   $totalbasiccount = $rowbasic['event'];
-}
-if ($gotpbasicount == 0){
-  $totalbasiccount = "nil";
-}
-$totalevents = $totalprivatecount + $totalpubliccount;
-if ($totalevents == 0){
-  $customtxtreport = "You have not created any Event.";
-}
-else if ($totalevents == 1){
-  $customtxtreport = "You have created <h class='miniss'>$totalevents</h> Event.";
-}
-else {
-  $customtxtreport = "You have created a total of <h class='miniss'>$totalevents</h> Events.";
-}
-
-#
-
-echo"<div class='pef'>
-
-<div class='blfhead'>Profile Analytics</div><br>
-
-
-<h id='type'>JOINED - $accountcreated</h><br>
-
-<img src='/images/profiles/$accountpicture' class='profilephoto' alt='$username'><br>
-
-<h class='blf'>$fullname </h><h class='miniss'>@$username</h><br>
-
-<h class='petd'>$customtxtreport</h><br><br>
-
-
-<div class='analybox'>
-<h class='analytxt'>$totalprivatecount</h><br>
-<h class='petd'>private events</h><br><br>
-</div>
-
-<div class='analybox'>
-<h class='analytxt'> $totalpubliccount</h><br>
-<h class='petd'>public events</h><br><br>
-</div>
-
-<div class='analybox'>
-<h class='analytxt'>$totalinstantcount</h><br>
-<h class='petd'>in invite</h><br><br>
-</div>
-
-<div class='analybox'>
-<h class='analytxt'>$totalbasiccount</h><br>
-<h class='petd'>in plan</h><br><br>
-</div>
-
-<div class='analybox'>
-<h class='analytxt'>$totalviews</h><br>
-<h class='petd'>total views</h><br><br>
-</div>
-
-<a href='$thebestlink'><div class='analybox'>
-<h class='miniss'>$thebestshortnamed</h><br>
-<h class='analytxt'>$thebestevent</h><br>
-<h class='petd'>highest view</h><br><br>
-</div></a>
-
-<br>
-<div class='blfheadalt' id='ntifs'></div>
-
-</div>";
-
-
-
 echo"<div class='pef'>
 
 <div class='blfhead'>Received Invitations</div><br>";
 
-  $invitelocate = mysqli_query($conne,"SELECT * FROM events WHERE cua = '$username' AND status = 'invite' or cub = '$username' AND status = 'invite' or cuc = '$username' AND status = 'invite' or cud = '$username' AND status = 'invite' or cue = '$username' AND status = 'invite' or cuf = '$username' AND status = 'invite' ");
+ $invitelocate = mysqli_query($conne,"SELECT * FROM events WHERE cua = '$username' AND status = 'invite' or cub = '$username' AND status = 'invite' or cuc = '$username' AND status = 'invite' or cud = '$username' AND status = 'invite' or cue = '$username' AND status = 'invite' or cuf = '$username' AND status = 'invite' ");
 
    $gotinvite = 0;
    while($rowinvite = mysqli_fetch_array($invitelocate))
