@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="/manifest.json" />
+<link rel="manifest" href="/manifest.json" />
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <?php
    if($phpurl == 'vrixe-enn'){$appID = '527b2883-5dff-4a9b-88bd-5e2e3e74c9f4';}else{$appID = '151afe3d-500c-49f3-b682-dd9c5084a863';}
@@ -104,33 +104,6 @@ function confirmPosition(position) {
 <?php require("../garage/subhead.php");
   require("../garage/thesearch.php"); ?>
 <br>
-<?php
-
- $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $confirm = 0;
-   while($gotuser = mysqli_fetch_array($start))
- {$confirm = 1;
-$cookie = $gotuser['cookie'];
-$username = $gotuser['username'];
-$email = $gotuser['email'];
-$bio = $gotuser['bio'];
-$link = $gotuser['link'];
-$location = $gotuser['location'];
-$password = $gotuser['password'];
-$picture = $gotuser['picture'];
-$category = $gotuser['category'];
-
-
-echo "<div class='postcen'>
-
-
-
-</div>
-";
-
-}#end of while
-
-?>
 
 <p id='valert' onclick='closealert()'> </p>
 
@@ -142,10 +115,10 @@ echo "<div class='postcen'>
  <img alt='Location Permission' src='/images/essentials/gps.svg' class='everybodyimg'><br><br>
   <h class='bottoms'>Control your GPS access</h><br>
 
-  <small>When creating an event, you'd want to add a venue, its best to use your GPS location for precision. Sounds good? just allow GPS access and we'll remember that next time.</small><br>
+  <small>When creating an event, you'd want to add a venue, its best to use your GPS location for precision. Sounds good? just location service and we'll remember that next time.</small><br>
 
   <br>
-   <button class="copele" onclick="asklocation()"><i class='material-icons' style='vertical-align:sub;font-size:17px'>gps_fixed</i> ALLOW GPS</button><br>
+   <button class="copele" onclick="asklocation()"><i class='material-icons' style='vertical-align:sub;font-size:17px'>gps_fixed</i> Allow GPS</button><br>
 
 <br><div class="blfheadalt"></div>
 </div>

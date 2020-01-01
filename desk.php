@@ -262,7 +262,7 @@ width:45%;
 }}
 </style>
 
-<form style='width:100%' action='update_event.php' method='post' autocomplete='off' enctype='multipart/form-data'>
+<form style='width:100%' action='update_event' method='post' autocomplete='off' enctype='multipart/form-data'>
 <div style='text-align: center;'> 
 
 
@@ -673,7 +673,7 @@ require('garage/validuser.php'); //call mover script
 </style>
 <div class='respef'>
 
-<form method='post' action='update_event.php' style='width:100%' autocomplete='off'>
+<form method='post' action='update_event' style='width:100%' autocomplete='off'>
 <div class='respbox' id='fres'>
   <div class='blfhead' style='color:#c3c5cc;border-bottom:1px solid#'>Edit your Invite</div><br><br>
 <input type='text' value=\"$event\" class='grivinput' name='event' placeholder='... .... ...' required><br>
@@ -1078,13 +1078,13 @@ echo"
     <div class='blfhead'>...we're almost there</div><br><br>
 
   <img alt='$code' src='images/essentials/loading.svg' class='everybodyimg'><br>
-  <h class='miniss'>What is happening here?</h><br><h class='disl'><a href='profile/$hype'>@$hype</a> has not moved this invite to a group plan.<br>You'll be able to edit after this.</h> <br><br>
+  <h class='miniss'>What is happening here?</h><br><h class='disl'><a href='profile/$hype'>@$hype</a> has not moved this invite to the planning stage.<br>You'll be able to edit after this.</h> <br><br>
    <a href='/event/$code'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>event</i> View Event</button></a><br><br>
 
-   <h class='miniss'>More?</h><br>
+   <h class='miniss'>We have a Progressive Web App</h><br>
 
 <i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 

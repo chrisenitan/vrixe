@@ -30,6 +30,11 @@ require("../garage/thesearch.php"); ?>
 <br>
 <div class="postcen">
 <?php 
+ if ($cut == ""){
+    //check if to allow user temp or block and send to blue
+require("../garage/unverifiedEmailAccessStatus.php");
+  }
+  
 #account date
 $profiledate = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$username' LIMIT 1 "); 
    $gotdate = 0;
@@ -134,6 +139,20 @@ else if ($totalevents == 1){
 else {
   $customtxtreport = "You have created a total of <h class='miniss'>$totalevents</h> Events.";
 }
+  
+  
+#TOTAL CONTRIBUTONS
+$fetchTotalContributions = mysqli_query($conne,"SELECT COUNT(code) AS code FROM contributors WHERE code > '' AND cua = '$username' or cub = '$username' or cuc = '$username' or cud = '$username' or cue = '$username' or cuf = '$username' ");
+
+   $gottotalContributions = 0;
+   while($totalContributionsArray = mysqli_fetch_array($fetchTotalContributions))
+ {
+   $gottotalContributions = 1;
+   $totalContributions = $totalContributionsArray['code'];
+}
+if ($gottotalContributions == 0){
+  $totalinstantcount = "0";
+}
 
 
 echo"<div class='pef'>
@@ -181,6 +200,10 @@ echo"<div class='pef'>
 <h class='petd'>highest view</h><br><br>
 </div></a>
 
+<div class='analybox' title='Events you have planned with other users'>
+<h class='analytxt'>$totalContributions</h><br>
+<h class='petd'>contributions</h><br><br>
+</div>
 <br>
 <div class='blfheadalt' id='ntifs'></div>
 

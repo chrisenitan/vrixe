@@ -2,15 +2,15 @@
 
 require("../garage/visa.php");
 
-//$fetchlist = mysqli_query($conne,"SELECT * FROM newsletter WHERE day !='unsubscribed' ");
+$fetchlist = mysqli_query($conne,"SELECT * FROM newsletter WHERE day !='unsubscribed' ");
 
-//while($list = mysqli_fetch_array($fetchlist)){
+while($list = mysqli_fetch_array($fetchlist)){
 
-//$email = $list['mail'];
-$email = "ennycris1@gmail.com";
+$email = $list['mail'];
+//$email = "ennycris1@gmail.com";
 
 
-$subject = '2019 Overview';
+$subject = 'A wink at 2019...';
 $feed = 'feedback@vrixe.com';
 $from = 'contact@vrixe.com';//or could be a name
 
@@ -45,8 +45,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/christmas.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Into 2020: </h></b></br>
-<h style='font-size:14px'>We believe looking back at beautiful memories make life more fun so we want to send you a reminder for those moments from 2019 worth keeping throughout 2020. <b>Happy New Year!</b></h>
+<b><h style='font-size:14px'>Love. </h></b></br>
+<h style='font-size:14px'>We believe looking back at beautiful memories make life more fun, so we want to send you a reminder for those moments from 2019 worth keeping throughout 2020. <b>Happy New Year!</b></h>
 </div>
 </div><br>
 
@@ -55,9 +55,9 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 
 
-<a href='https://vrixe.com/account/profile_analytics'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>2019 MOMENTS</div></a><br>
+<a href='https://vrixe.com/account/profile_analytics'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>THOSE 2019 MOMENTS</div></a><br>
 
-<h style='font-size:12px'>From the tiny Vrixe team.</h>
+<h style='font-size:12px'>From the Vrixe team.</h>
 </div><br><br>
 
 
@@ -82,12 +82,12 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 $message .= "</body></html>";
 
   if(mail($email, $subject, $message, $headers)){
-echo "Xmas mail sent to $email";
+echo "Xmas mail sent to $email <br>";
 } else{
-echo "<div id='oalert' style='display:block'><span id='vtext'>Email could not be sent</span> </div>";
+echo "Email could not be sent <br>";
 }
   
-//}
+}
 
 
 
