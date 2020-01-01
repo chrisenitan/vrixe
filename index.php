@@ -190,7 +190,7 @@ else{echo"";}
 <label for="signupemail" class="petd" id="email">start with your email</label><br><br>
 
 <h class="petd" id="exitusername"></h>
-<input oninput="checkhandle();" type="text" pattern="[^'@.#, \x22]+" title="username cannot contain any spaces or '@' '.' ',' ''' " class="privinput" name="username" required placeholder="username" autocomplete="username" autocapitalize="none" style="width:85%;padding-right:2%" id="inputusername" minlength="4" value="fhsbfbshfb"><br>
+<input oninput="checkhandle();" type="text" pattern="[^'@.#, \x22]+" title="username cannot contain any spaces or '@' '.' ',' ''' " class="privinput" name="username" required placeholder="username" autocomplete="username" autocapitalize="none" style="width:85%;padding-right:2%" id="inputusername" minlength="4"><br>
 <label for="inputusername" class="petd" id="username">pick the perfect username</label><br><br>
 
 <input class="rates" name="signup" value="signup" id="signuprates">
@@ -264,7 +264,7 @@ else{echo"";}
  	   document.getElementById("signup").style.height="0px";
  	   document.getElementById("login").style.height="400px";
  	   document.getElementById("passreset").style.height="0px";
-});    
+});  
   </script>
 </body>
 </html>

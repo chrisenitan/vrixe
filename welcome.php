@@ -20,7 +20,7 @@ if($username > "" and $signup > "" and $postEmail > "" and $rate == ""){
     
   }else{
     $fullname = "Profile Name";
-    $pictureUrl =  "user.png";
+    $pictureUrl =  "https://vrixe.com/images/profiles/user.png";
   }
 //start generating necessary data
 $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
@@ -110,7 +110,7 @@ header('Location: index');
   <img alt='Bad Profile' src='images/essentials/warning.png' class='everybodyimg'><br>
   <h class='miniss'>Your Username or Email already exists<br>
   If you believe something is wrong, please send us feedback<br><br>
-   <a href='index'><button class='copele'>TRY AGAIN</button></a><br><br>
+   <a href='index'><button class='copele'>Try Again</button></a><br><br>
 
  <a href='index.php?q=recover_password'>Forgot Password?</a></h>
   <br><br>
