@@ -2,7 +2,7 @@
 //check if username exists
 function checknameava(str){
 	if (str == ""){
-		document.getElementById("username").innerHTML = "try a planet's name";singup
+		document.getElementById("username").innerHTML = "try a planet's name";
 		return;
 	}
 	else {
@@ -230,4 +230,33 @@ let deleteContact = (cu, dbid) =>{
     document.getElementById('absolunia_button').addEventListener('click', function(){
 process("delete contact", cu, dbid);
   });
+}
+
+//invoke google signin
+document.getElementById("signin").addEventListener("click", function(){
+ 
+});
+
+function prepareUser(userEmail, userFullName, userPicture){
+   document.getElementById("signuprates").value="signupwithgoogle";
+   document.getElementById("googleuserFullName").value=userFullName;
+   document.getElementById("googleUserPicUrl").value=userPicture;
+  //create a username
+  var userName = userEmail.substring(0,5);
+  document.getElementById("inputusername").value=userName;
+   document.getElementById("signupemail").value=userEmail;
+   checkmailava(userEmail);//check email availability
+   //document.getElementById("submitSignup").click();//submit form
+}
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  var userEmail = profile.getEmail();
+  var userFullName = profile.getName();
+  var userPicture = profile.getImageUrl();
+  prepareUser(userEmail, userFullName, userPicture);
 }

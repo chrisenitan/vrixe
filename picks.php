@@ -12,14 +12,17 @@ require("garage/passport.php");
 <?php require("garage/resources.php"); ?>
 <?php require("garage/validuser.php"); ?>
   
-  <style>
+<style>
   	body{
   		background-color: #f5f5f5;
   	}
   </style>
 </head>
 <body>
-    <?php require("./garage/absolunia.php"); ?>
+  
+<?php
+  require("garage/googleauth.php");
+  require("./garage/absolunia.php"); ?>
   
 <div id="gtr" onclick="closecloseb()"></div>
 

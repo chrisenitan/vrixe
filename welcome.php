@@ -10,9 +10,18 @@ if (isset($_COOKIE['user'])){
  $rawusername = mysqli_real_escape_string($conne, $_POST['username']); $username = strtolower($rawusername);
  $postEmail = mysqli_real_escape_string($conne, $_POST['mail']);
  $password = mysqli_real_escape_string($conne, $_POST['password']);
+ $fullname = mysqli_real_escape_string($conne, $_POST['password']);
+ $pictureUrl = mysqli_real_escape_string($conne, $_POST['pictureUrl']);
 
 //if username is given.. or if google is given and sign up is given
-if($username > "" and $signup == "signup" and $postEmail > "" and $rate == ""){
+if($username > "" and $signup > "" and $postEmail > "" and $rate == ""){
+//use default values if needed
+  if($signup == "signupwithgoogle"){
+    
+  }else{
+    $fullname = "Profile Name";
+    $pictureUrl =  "user.png";
+  }
 //start generating necessary data
 $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
 $z = $url->countryName;//location
@@ -21,11 +30,10 @@ $gencookie = bin2hex(openssl_random_pseudo_bytes(10));
 $cutcok = substr($gencookie, 0,6);//for account verification page
 $cok ="user";
 $recognise ="formail"; //for mail
-$fullname = "Profile Name";
+
 $day =date("Y-m-d"); //creation date
 $pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
 $bio = "$username from $z";
-$picture = "user.png";
 $link = "vrixe.com/profile/$username";
 
 
@@ -45,7 +53,7 @@ $link = "vrixe.com/profile/$username";
    
  $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid)
 VALUES
-('$postEmail','$fullname','$username','$password','$day','$bio','$z','$picture','$link','$gencookie','$cutcok','$pushid')";
+('$postEmail','$fullname','$username','$password','$day','$bio','$z','$pictureUrl','$link','$gencookie','$cutcok','$pushid')";
    
 //create cookies
 setcookie($cok, $gencookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); //newuser

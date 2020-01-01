@@ -231,7 +231,6 @@ else {echo "<title>No User Found</title>";}#redirect would have hanled this
 <?php require("garage/validuser.php"); ?>
     <meta name="robots" content="noindex">
   <meta name="googlebot" content="noindex">
-  
  <style>
     body{
       background-color: #f5f5f5;

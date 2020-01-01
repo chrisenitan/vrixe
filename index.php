@@ -123,7 +123,8 @@ else{
 <?php require("garage/validuser.php"); 
   echo"<script type='text/javascript' defer src='garage/scripts/redeye.js?v=$vv'></script>";
   ?>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="550611812237-mt2280d8j767c5u4o6rqkodv36te9727.apps.googleusercontent.com">
 </head>
 <body>
 <br>
@@ -189,14 +190,19 @@ else{echo"";}
 <label for="signupemail" class="petd" id="email">start with your email</label><br><br>
 
 <h class="petd" id="exitusername"></h>
-<input oninput="checkhandle();" type="text" pattern="[^'@.#, \x22]+" title="username cannot contain any spaces or '@' '.' ',' ''' " class="privinput" name="username" required placeholder="username" autocomplete="username" autocapitalize="none" style="width:85%;padding-right:2%" id="inputusername" minlength="4"><br>
+<input oninput="checkhandle();" type="text" pattern="[^'@.#, \x22]+" title="username cannot contain any spaces or '@' '.' ',' ''' " class="privinput" name="username" required placeholder="username" autocomplete="username" autocapitalize="none" style="width:85%;padding-right:2%" id="inputusername" minlength="4" value="fhsbfbshfb"><br>
 <label for="inputusername" class="petd" id="username">pick the perfect username</label><br><br>
 
-<input class="rates" name="signup" value="signup">
-  <input type="text" name="rate" class="rates">
+<input class="rates" name="signup" value="signup" id="signuprates">
+<input type="text" name="userFullName" class="rates" id="googleuserFullName">
+<input type="text" name="pictureUrl" class="rates" id="googleUserPicUrl">
+<input type="text" name="rate" class="rates">
 <?php echo"<input class='rates' name='password' required value='wug$cult'>"; ?>
 
-<button class="copele">Sign Up</button><br></form>
+<button class="copele" id="submitSignup">Sign Up</button><br></form><br>
+  <h class="miniss">Or sign in with your Google account</h><br>
+<div class="g-signin2" data-onsuccess="onSignIn" id="signin"></div><br>
+   
   <h class="petd">these topics below do apply<br> <a href="app/terms.html"><h class="miniss">Terms</h></a>, <a href="app/terms.html#prio"><h class="miniss">Privacy</h></a> and <a href="app/terms.html#cookies"><h class="miniss">Cookie</h></a> Policy.</h><br>
 </div><!--eo sign up-->
 
@@ -246,7 +252,7 @@ else{echo"";}
     //login and sign up has div opener here cus we think event listerner is cros fring for inline js
      document.getElementById("singup").addEventListener('click', function(){
      document.getElementById("singup").style.marginBottom="0px";
- 	   document.getElementById("signup").style.height="400px"; 	
+ 	   document.getElementById("signup").style.height="480px"; 	
  	   document.getElementById("login").style.height="0px"; 	
  	   document.getElementById("longin").style.marginBottom="45px";
  	   document.getElementById("passreset").style.height="0px";

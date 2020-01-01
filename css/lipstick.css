@@ -160,8 +160,6 @@ color: #018fa7;
 .rates{
 	display: none;
 }
-
-
 form{
 	display: inline-block;
 }
@@ -378,4 +376,14 @@ form{
     padding-bottom: 10px;
     z-index: 800;
     background-color: #7d9c01;
+}
+.abcRioButton{
+  margin: auto;
+ color: #484848;
+    margin-top: 10px;
+    border-radius: 5px !important;
+    border-color: #5e797a;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: none !important;
 }
