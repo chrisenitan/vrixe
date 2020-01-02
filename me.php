@@ -301,19 +301,9 @@ document.location = 'index.php?q=profile';
 <html lang="en">
 <head>
 <?php
-  //fetch gapi if $newUserLogInNotFound
+ //fetch gapi if $newUserLogInNotFound
  if($newUserLogInNotFound == true){
 require("garage/googleauth.php");
-   //log user out
-  echo"
-  <script>  
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-  </script>";
  }
 if ($cookie > ""){echo "<title> $fullname | Vrixe</title>
   <meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>";
@@ -326,16 +316,12 @@ else {echo "<title>No User Found</title>";}#redirect would have hanled this
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("garage/resources.php"); ?>
 <?php require("garage/validuser.php"); ?>
-    <meta name="robots" content="noindex">
-  <meta name="googlebot" content="noindex">
- <style>
-    body{
-      background-color: #f5f5f5;
-    }
-  </style>
+<meta name="robots" content="noindex">
+<meta name="googlebot" content="noindex">
+<style> body{ background-color: #f5f5f5; } </style>
 </head>
 <body>
-  <?php require("./garage/absolunia.php"); ?>
+<?php require("./garage/absolunia.php"); ?>
   
 <div id="gtr" onclick="closecloseb()"></div>
 
@@ -353,16 +339,16 @@ require("garage/subhead.php");?>
 <?php require("garage/thesearch.php"); ?>
 
 <br>
-
 <?php
-if ($newUserLogInNotFound == true){ #give box that says it wasnt found
+ // user wasnt found
+if ($newUserLogInNotFound == true){
   echo"
 <div class='pagecen'>
 <div class='pef'>
 <div class='blfhead'>...almost caught</div><br>
 <img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>";
 
-  //for users waiting tosyn gmail
+//for users waiting to sync gmail
 if($toSyncMessage == true){
   echo"
   <h class='miniss'>What is happening here?</h>
@@ -387,8 +373,8 @@ else{
  <div class='blfheadalt'></div>
   </div>
   </div>";
-}
-}
+}}
+  
 else {
     $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' AND username = '$username' LIMIT 1"); 
  $confirm = 0;

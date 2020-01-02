@@ -8,7 +8,8 @@ if($reqpage == "confirm"){//for confirm email
 else if ($reqpage == "updates"){//for monthly update and newsletter
   $setsubject = "What's New In Update $genAppVersion";
   $bannerimage = "appupdate.jpg";
-}else{  $setsubject = "What's New In Update $genAppVersion";
+}
+else{ $setsubject = "What's New In Update $genAppVersion";
      $bannerimage = "appupdate.jpg";}
 
  $subject = $setsubject;

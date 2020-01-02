@@ -17,6 +17,17 @@ echo"<script src='https://apis.google.com/js/platform.js' async defer></script>"
 //invoke button
 echo"<div class='g-signin2' data-onsuccess='onSignIn' id='signin' style='display:none'></div>";
 
+  //log user out
+echo"
+  <script>  
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+  </script>";
+
 //get user data
 /*
 echo"

@@ -17,13 +17,15 @@ if (isset($_COOKIE['user'])){
 //if username is given.. or if google is given and sign up is given
 if($username > "" and $signup > "" and $postEmail > "" and $rate == ""){
 //use default values if needed
-  if($signup == "signupwithgoogle"){
-    
-  }else{
+if($signup == "signupwithgoogle"){
+  
+  
+}
+else{
     $fullname = "Profile Name";
     $pictureUrl =  "https://vrixe.com/images/profiles/user.png";
     $authtoken = "";
-  }
+}
 //start generating necessary data
 $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
 $z = $url->countryName;//location
@@ -33,7 +35,7 @@ $cutcok = substr($gencookie, 0,6);//for account verification page
 $cok ="user";
 $recognise ="formail"; //for mail
 
-$day =date("Y-m-d"); //creation date
+$day = date("Y-m-d"); //creation date
 $pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
 $bio = "$username from $z";
 $link = "vrixe.com/profile/$username";
@@ -53,9 +55,24 @@ $link = "vrixe.com/profile/$username";
  else{//save user
    $saveUserStatus = "save";
    
- $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid, authtoken)
+ //skip google users verification
+   if($signup == "signupwithgoogle"){
+  $freqval =  date("Y-m-d");
+  $confirmval = $cutcok;
+
+  $subscribeToNewsletter = "INSERT INTO newsletter (mail, day, place) VALUES ('$postEmail', '$freqval', '$z') ";//add to newsletter
+   if (!mysqli_query($conne,$subscribeToNewsletter))
+  { die('Error: ' . mysqli_error($conne)); } 
+}
+ else{
+  $freqval =  $cutcok;
+   $confirmval = "";
+   }
+   
+//create the user
+ $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid, authtoken, confirm)
 VALUES
-('$postEmail','$fullname','$username','$password','$day','$bio','$z','$pictureUrl','$link','$gencookie','$cutcok','$pushid','$authtoken')";
+('$postEmail','$fullname','$username','$password','$day','$bio','$z','$pictureUrl','$link','$gencookie','$freqval','$pushid','$authtoken','$confirmval')";
    
 //create cookies
 setcookie($cok, $gencookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); //newuser
@@ -64,11 +81,12 @@ setcookie($recognise, $username, time() + (86400 * 366), "/; samesite=Lax", "", 
  //close connection
  if (!mysqli_query($conne,$create))
   {die('Error: ' . mysqli_error($conne));}
-     }
+   
+ }
 
 }
 
-//criteria for making user is not found, yet there was no cooke redirect user whatsevr the case may be
+//criteria for making user is not found, yet there was no cookie redirect user whatsevr the case may be
 else{
 header('Location: index');  
 }
@@ -77,7 +95,6 @@ header('Location: index');
 <html lang="en">
 <head>
 <?php
-  $postEmail = mysqli_real_escape_string($conne, $_POST['mail']);
   if ($saveUserStatus == "duplicate"){echo "<title>Account Setup Incomplete</title>";}
   else {echo "<title>Account Created</title> <link rel='prefetch' href='me.php'>";}
 ?>
@@ -130,96 +147,40 @@ echo "<div class='pagecen'><div class='pef'>
  <img alt='Account Created' src='images/essentials/contacts.svg' class='everybodyimg'><br><br>
 <br><h class='sword'>Your account has been created and we emailed you for verification</h><br>
 ";
-
-$subject = 'Welcome to Vrixe';
-$feed = 'feedback@vrixe.com';
-$from = 'contact@vrixe.com';
-
-$headers = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-
-$headers .= "Organization: Vrixe\r\n";
-$headers .= "X-Priority: 3\r\n";
-$headers .= "Return-Path: $feed\r\n";
-
-$headers .= 'From: Vrixe '.$from."\r\n".
-      'Reply-To: '.$feed."\r\n" .
-      'X-Mailer: PHP/' . phpversion();
-
-$message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
-
-<p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-Please verify your account</p>
-<p style='margin-top:2px;font-size:14px;text-align:center'>...out the oven, here comes your account but before digging in.<br> Let's get you in sync with some account details...</p><br>
-
-<img alt='new features on vrixe' src='https://vrixe.com/mail/banners/welcomenewuser.jpg' style='height:auto;width:96%;margin-left:2%'>
-
-
-<div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/at.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;;text-align:left'>
-<b><h style='font-size:14px'>Why Verify?</h></b></br>
-<h style='font-size:14px'>Get access to create, edit, poll and use other vrixe features without making anyone doubt you're real.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/key.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;;text-align:left'>
-<b><h style='font-size:14px'>Note On Password:</h></b></br>
-<h style='font-size:14px'>To speed up your sign up, your Vrixe account was created with an auto-generated password. Please have a look under your <b><a href='https://vrixe.com/edit_profile'>Profile</a></b> just incase you feel like using something custom and more secure.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/updateimages/updetails.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;;text-align:left'>
-<b><h style='font-size:14px'>Update your Details:</h></b></br>
-<h style='font-size:14px'>Help your friends find you easier, don't forget to update your account details.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<a href='https://vrixe.com/account/confirm?refs=$cutcok'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#ec3832;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#ec3832;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>VERIFY EMAIL</div></a><br>
-
-<h style='font-size:12px'>One last thing is to verify your account's email.</h>
-
-
-</div><br><br>
-
-
-
-<div style='text-align:center;width:auto;word-spacing:15px'>
-
-<a href='https://twitter.com/vrixeapp'><img alt='Twitter' src='https://vrixe.com/mail/mtweet.png' style='width:25px;height:25px;display:inline-block'></a>
-
-<a href='https://www.linkedin.com/company/vrixe'><img alt='LinkedIn' alt='linkedin' src='https://www.vrixe.com/mail/mlink.png' style='width:25px;height:25px;display:inline-block'></a>
-
-<a href='https://instagram.com/vrixe'><img alt='Instagram' src='https://vrixe.com/mail/mgram.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://youtube.com/channel/UCNDZP6M3t_L7Fxxc-a9rYWQ'><img alt='Youtube' alt='youtube' src='https://www.vrixe.com/mail/mtube.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://facebook.com/vrixe'><img alt='Facebook' src='https://vrixe.com/mail/mface.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-</div>
-
-<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'> This email was used to create a Vrixe account. Not you? please contact us at https://vrixe.com/help/feedbacks<br>
-</div>
-";
-$message .= "</body></html>";
+//send mail
+  //pure signup email
+  if($signup == "signup"){
+    $customMailSubject = "Welcome to Vrixe";
+    $customMailHeader = "Please verify your account";
+    $customMailsectionHeader = "Why Verify?";
+    $customMailsectionMessage = "Get access to create, edit, poll and use other vrixe features without making anyone doubt you're real.";
+    $customMailcta = "VERIFY EMAIL";
+    $customMailsuccessMessage = "<div id='galert'>We've sent you a verification mail.</div><br>";
+    $customMailfailedMessage = "<div id='oalert'>We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On!</div><br>";
+    $customMailctaLink = "https://vrixe.com/account/confirm?refs=$cutcok";
+    $customMailctaNudge = "Now you're onboarded.";
+    $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";
+    
+    require("mail/genericMailer.php");
+  }
+  //sign up with google
+  else{
+    $customMailSubject = "Welcome to Vrixe";
+    $customMailHeader = "...get the juicy part first.";
+    $customMailsectionHeader = "How It Works";
+    $customMailsectionMessage = "Start with an invite, add all your friends then make it a plan and add a poll or take a agenda, or add comments, dresscodes, pictures";
+    $customMailcta = "GET THE WEB APP";
+    $customMailsuccessMessage = "<div id='galert'>We sent you a welcome guide.</div><br>";
+    $customMailfailedMessage = "<div id='oalert'>There was an error in sending you a welcome guide<br>Not a big deal, we already have a fix for this.<br>Carry On!</div><br>";
+    $customMailctaLink = "https://vrixe.com/app/pwa.html";
+    $customMailctaNudge = "We have a progressive web app for you";
+    $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";
+    
+  require("mail/genericMailer.php");
+  }
 
  if($phpurl == 'vrixe-enn'){
-     //do nothing this code only check if we are on developement server
+ //do nothing this code only check if we are on developement server
    }else{
 if(mail($postEmail, $subject, $message, $headers)){
 echo "<div id='galert'>We've sent you a verification mail.</div><br>";
