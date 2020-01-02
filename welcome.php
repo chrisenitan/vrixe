@@ -51,6 +51,7 @@ $link = "vrixe.com/profile/$username";
   //if there was a user already
  if($checkIfUserExisted == true){
   $saveUserStatus = "duplicate";
+  $username = "";//strip username to avoid mixed features eg subhead data
 }
  else{//save user
    $saveUserStatus = "save";

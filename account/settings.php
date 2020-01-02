@@ -94,7 +94,8 @@ function confirmPosition(position) {
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
 
-<?php require("../garage/deskhead.php");
+<?php require("../garage/googleauth.php");
+  require("../garage/deskhead.php");
   require("../garage/desksearch.php");
   require("../garage/deskpop.php"); ?>
 
@@ -153,7 +154,8 @@ function confirmPosition(position) {
 
   <small>One less password to worry about. Sync your account with your Google email and never miss your data.</small><br><br>
     
-<button class="googleAuth"><img class="googleAuthImg" src="https://developers.google.com/identity/images/g-logo.png"> Log In</button><br>
+<button class="copele" id="settingsGoogleAuth"></button>
+    <div class='g-signin2' data-onsuccess='onSignIn' id='signin'></div><br>
     
 <br><div class="blfheadalt"></div>
 </div>
@@ -162,7 +164,23 @@ function confirmPosition(position) {
 
 <br><br>
 
-
+<script defer>
+  //sign user out from settings
+ function set(){
+   //change text to sign out and enact signout on click
+   if(document.getElementById("googleauthemail").value > ""){//if googleauth.php fetched a user
+    document.getElementById("settingsGoogleAuth").innerHTML="<i class='material-icons' style='vertical-align:sub;font-size:17px;'>person_add_disabled</i> Sign Out";//seta signout button
+  document.getElementById("settingsGoogleAuth").addEventListener("click", function(){//onclick the signout button
+    signOut();
+    document.getElementById("settingsGoogleAuth").innerHTML="<i class='material-icons' style='vertical-align:sub;font-size:17px;'>person_add_disabled</i> Signed Out";
+  });
+}
+else{
+  //hide the signout button and let gauth handle the users auth status
+    document.getElementById("settingsGoogleAuth").style.display="none";
+} }
+setTimeout(set, 2000);//timeout to allow google return a user
+  </script>
 
 
 <?php require("../garage/networkStatus.php"); ?>
