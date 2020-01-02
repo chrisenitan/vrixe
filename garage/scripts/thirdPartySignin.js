@@ -47,7 +47,10 @@ function onSignIn(googleUser){
   var id_token = googleUser.getAuthResponse().id_token;
   profile.token = id_token;
   profile.destination = document.getElementById("formDestination").value;//set where to send form
-  document.getElementById("returningText").innerHTML="Welcome back <b>" + profile.getName() + "</b> do you want to continue with your Google account?";//if user was logged in 
-  prepareUser(profile);
+  document.getElementById("returningText").innerHTML="Welcome back <b>" + profile.getName() + "</b>, do you want to continue with your Google account?";//if user was logged in 
+  
+  //prepare form?
+   prepareUser(profile);
+
 }
 

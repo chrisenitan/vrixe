@@ -21,8 +21,7 @@ if($phpurla == 'vrixe-enn'){$phpurl = 'vrixe-enn';}else{$phpurl = 'gib';} //vali
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="manifest.json" type="application/json">
-
+<link rel="manifest" href="manifest.json" type="application/json">
 <?php
   //remove user push if user logout out. actual code is below page becaus eof async script 
  if ($signout > "" and $signout == "signout"){
@@ -120,12 +119,13 @@ else{
 <meta name='apple-mobile-web-app-title' content='Vrixe'>
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='black'>
-<?php require("garage/validuser.php"); 
+<?php 
+  require("garage/googleauth.php");//google authentication
+  require("garage/validuser.php"); 
   require("garage/thirdPartySignin.php"); 
   echo"<script type='text/javascript' defer src='garage/scripts/redeye.js?v=$vv'></script>";
+
   ?>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="550611812237-mt2280d8j767c5u4o6rqkodv36te9727.apps.googleusercontent.com">
 </head>
 <body>
 <br>
@@ -173,7 +173,7 @@ else{echo"";}
 <div class="adbox">
   <img id="dsvg" src="https://vrixe.com/images/aboutvrixe/detailed.svg" alt="Collective plans with Vrixe"><br>
   <h class="intx">Create and edit events with your team.</h><br>
-  <h style="color:#173652"><i>...discover a new way to collaborate on vrixe</i></h><br><br>
+  <h style="color:#173652"><i>...discover the new way to plan events</i></h><br><br>
 
  <a href='aboutvrixe.php'><div id="act" title="See how Vrixe works">Features</div></a><br><br>
 <input class="rates" name="formDestination" id="formDestination">
@@ -202,7 +202,7 @@ else{echo"";}
 <input type="text" name="rate" class="rates">
 <?php echo"<input class='rates' name='password' required value='wug$cult'>"; ?>
 
-<button class="copele">Sign Up</button><br></form><br>
+<button class="copele" id="submitSignup">Sign Up</button><br></form><br>
 <h class="bugdes">Or sign in with your Google account</h><br>
 <h class="miniss">If you would like to choose a preferred username, please use the username field above.</h><br>
 <div class="g-signin2" data-onsuccess="onSignIn" id="signin"></div><br>
@@ -274,6 +274,13 @@ else{echo"";}
  	   document.getElementById("login").style.height="500px";
  	   document.getElementById("passreset").style.height="0px";
 });  
+//revert google auth for email auth
+  document.getElementById("submitLogin").addEventListener("click", function(){
+  document.getElementById("loginrates").value="valid";
+});
+document.getElementById("submitSignup").addEventListener("click", function(){
+  document.getElementById("signuprates").value="signup";
+});
   </script>
 </body>
 </html>

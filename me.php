@@ -26,30 +26,6 @@ if (isset($_COOKIE['user']) and $loginValue == "" and $update == ""){
   require("garage/passport.php");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //New login from index
 else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
   //use default values if needed
@@ -117,36 +93,13 @@ else {
   
 if ($founds == 0){$newUserLogInNotFound = true;}#its an old user who doesnt know his credentials
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}//oeof new login from index
 
 //New user edit profile
 else if (isset($_COOKIE['user']) and $loginValue == "" and $update == "available"){
-  $uploadOk = 1;
-$cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
+   $uploadOk = 1;
+   $cookie = $_COOKIE['user'];
+   $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
    while($founduser = mysqli_fetch_array($result)){
    $picture = $founduser['picture']; //get the users old picture name
    $oldpass = $founduser['password']; //get the users old pass to know chage
@@ -292,25 +245,24 @@ if (!mysqli_query($conne,$finallyupdate))
 }
 
 
-}
-else {  echo "<script>
-document.location = 'index.php?q=profile';
-</script>";} #its prolly a sinner typing ordinary url 
+}//eof user edit profile
+//user is not editing, returning or loggin in
+else { 
+header("Location: index"); 
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <?php
- //fetch gapi if $newUserLogInNotFound
+//fetch gapi if $newUserLogInNotFound
  if($newUserLogInNotFound == true){
 require("garage/googleauth.php");
  }
-if ($cookie > ""){echo "<title> $fullname | Vrixe</title>
-  <meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>";
-$pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>$fullname</button>";
-}
+if ($cookie > ""){echo "<title> $fullname | Vrixe</title>"; }
 else {echo "<title>No User Found</title>";}#redirect would have hanled this
 ?>
+<meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>
 <link rel="manifest" href="manifest.json">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
@@ -329,7 +281,8 @@ else {echo "<title>No User Found</title>";}#redirect would have hanled this
 <?php require("garage/desksearch.php"); ?>
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>$fullname</button>";
+  require("garage/mobilehead.php"); ?>
 <?php 
 //set icon color
 $mecolor = "style='color:#1fade4'";
@@ -352,7 +305,7 @@ if ($newUserLogInNotFound == true){
 if($toSyncMessage == true){
   echo"
   <h class='miniss'>What is happening here?</h>
-  <h class=disl>Looks like your old account has not been connected to your gmail login channel.</h><br><br>
+  <h class=disl>Looks like your account has not been connected to a gmail login channel.</h><br><br>
   <h class='miniss'>What can I do?</h>
   <h class=disl>Please login using the old method and sync your login channels under your <b>Account Settings</b></h><br><br>
    <a href='index'><button class='copele' onclick='signOut()'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Use Old Login</button></a><br><br>
