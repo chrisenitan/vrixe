@@ -231,23 +231,3 @@ let deleteContact = (cu, dbid) =>{
 process("delete contact", cu, dbid);
   });
 }
-
-//prepar user for sign up on index
-function prepareUser(profile){
-   document.getElementById("signuprates").value="signupwithgoogle";
-   document.getElementById("googleuserFullName").value=profile.getName();
-   document.getElementById("googleUserPicUrl").value=profile.getImageUrl();
-  document.getElementById("inputusername").value= profile.getEmail().substring(0,5); //create a username
-   document.getElementById("signupemail").value=profile.getEmail();
-   checkmailava(profile.getEmail());//check email availability 
-   //document.getElementById("submitSignup").click();//submit form
-}
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  prepareUser(profile);
-}

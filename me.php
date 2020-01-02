@@ -2,11 +2,12 @@
 require("garage/visa.php"); 
 
 //New user detailes from login page
-    $loginUsername = mysqli_real_escape_string($conne, $_POST['username']);
+    $loginUsername = mysqli_real_escape_string($conne, $_POST['username']);//might be a password
     $loginPassword = mysqli_real_escape_string($conne, $_POST['password']);
     $loginValue = mysqli_real_escape_string($conne, $_POST['lcheck']);
     $rememberme = mysqli_real_escape_string($conne, $_POST['remdev']); //deprecated
     $rate = mysqli_real_escape_string($conne, $_POST['rate']);
+    $authtoken = mysqli_real_escape_string($conne, $_POST['token']);
 
   #New user detailes from edit profile page
     $editimage = $_FILES['editimage']['name'];
@@ -25,9 +26,68 @@ if (isset($_COOKIE['user']) and $loginValue == "" and $update == ""){
   require("garage/passport.php");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //New login from index
-elseif (!isset($_COOKIE['user']) and $loginValue == "valid" and $update == ""){
-   $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$loginUsername' AND password = '$loginPassword' OR email = '$loginUsername' AND password = '$loginPassword' LIMIT 1"); 
+else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
+  //use default values if needed
+  if($loginValue == "loginwithgoogle"){   
+ $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = '$authtoken' LIMIT 1"); 
+ $founds = 0;
+   while($loguser = mysqli_fetch_array($trylog)){
+     $founds = 1;
+    $cookie = $loguser['cookie'];
+     $userauth = $loguser['authtoken'];
+    $fullname = $loguser['fullname'];
+    $username = $loguser['username'];
+    $userheadimg = $loguser['picture'];
+    //check auth and log user in
+     if($userauth == $authtoken){       
+    setcookie("user", $cookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); 
+     }
+     else{$founds = 0;}//kill login process
+} 
+    
+//check if there was actually a user. only if we did not find normal google login
+ if($founds == 0){
+    $checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' LIMIT 1"); 
+ $shouldsync = 0;
+   while($tosync = mysqli_fetch_array($checkuser)){
+     $shouldsync = 1;
+    $tosyncemail = $loguser['email'];
+} if($tosyncemail == $loginUsername){//there was a user
+     $toSyncMessage = true;
+   }else{$toSyncMessage = false;}
+}
+
+  
+}
+  
+  //try login with normal values
+  else{
+ $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$loginUsername' AND password = '$loginPassword' OR email = '$loginUsername' AND password = '$loginPassword' LIMIT 1"); 
  $founds = 0;
    while($loguser = mysqli_fetch_array($trylog)){
      $founds = 1;
@@ -36,13 +96,14 @@ elseif (!isset($_COOKIE['user']) and $loginValue == "valid" and $update == ""){
     $username = $loguser['username'];
     $userheadimg = $loguser['picture'];
     setcookie("user", $cookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); 
-
-     //Check the cookie for new login mails
+  }}
+    
+ //Check the cookie for new login mails
 if (isset($_COOKIE['formail']) ){
   if ($_COOKIE['formail'] == $username){ 
  $known = 0; 
 }
-  //remove old user and update as new user logging in
+ //remove old user and update as new user logging in
 else{
   $known = 1;
   setcookie("formail", "", time() - 3600, "/"); //delete old person
@@ -54,10 +115,33 @@ else {
   $known = 1;
  setcookie("formail", $username, time() + (86400 * 366), "/; samesite=Lax", "", true, true);//lets remeber him now
 }
-}
-if ($founds == 0){$newUserLogInNotFound = "true";}#its an old user who doesnt know his credentials
+  
+if ($founds == 0){$newUserLogInNotFound = true;}#its an old user who doesnt know his credentials
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //New user edit profile
 else if (isset($_COOKIE['user']) and $loginValue == "" and $update == "available"){
@@ -218,6 +302,20 @@ document.location = 'index.php?q=profile';
 <html lang="en">
 <head>
 <?php
+  //fetch gapi if $newUserLogInNotFound
+ if($newUserLogInNotFound == true){
+require("garage/googleauth.php");
+   //log user out
+  echo"
+  <script>  
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+  </script>";
+ }
 if ($cookie > ""){echo "<title> $fullname | Vrixe</title>
   <meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>";
 $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>$fullname</button>";
@@ -258,23 +356,40 @@ require("garage/subhead.php");?>
 <br>
 
 <?php
-if ($newUserLogInNotFound == "true"){ #give box that says it wasnt found
+if ($newUserLogInNotFound == true){ #give box that says it wasnt found
   echo"
 <div class='pagecen'>
 <div class='pef'>
 <div class='blfhead'>...almost caught</div><br>
+<img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>";
 
-
-  <img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>
-  <h class='miniss'>We could not find your account.<br>Either the password or username you entered is incorrect.<br><br>
-   <a href='index'><button class='copele'>TRY AGAIN</button></a><br><br>
-  <a href='index.php?q=recover_password'>Forgot Password?</a></h>
+  //for users waiting tosyn gmail
+if($toSyncMessage = true){
+  echo"
+  <h class='miniss'>What is happening here?</h>
+  <h class=disl>Looks like your old account has not been connected to your gmail login channel.</h><br><br>
+  <h class='miniss'>What can I do?</h>
+  <h class=disl>Please login with your old method and sync your login channels under your <b>Account Settings</b></h><br><br>
+   <a href='index'><button class='copele' onclick='signOut()'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Use Old Login</button></a><br><br>
+  <h class='miniss'><a href='index.php?q=recover_password'>Forgot Password?</a></h>
  <br><br>
 
  <div class='blfheadalt'></div>
   </div>
+  </div>";
+}
+else{
+  echo"
+  <h class='miniss'>We could not find your account.<br>Either the password or username you entered is incorrect.<br><br>
+   <a href='index'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>refresh</i> Try Again</button></a><br><br>
+ <h class='miniss'><a href='index.php?q=recover_password'>Forgot Password?</a></h>
+ <br><br>
+
+ <div class='blfheadalt'></div>
   </div>
-";}
+  </div>";
+}
+}
 else {
     $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' AND username = '$username' LIMIT 1"); 
  $confirm = 0;

@@ -12,6 +12,7 @@ if (isset($_COOKIE['user'])){
  $password = mysqli_real_escape_string($conne, $_POST['password']);
  $fullname = mysqli_real_escape_string($conne, $_POST['password']);
  $pictureUrl = mysqli_real_escape_string($conne, $_POST['pictureUrl']);
+ $authtoken = mysqli_real_escape_string($conne, $_POST['token']);
 
 //if username is given.. or if google is given and sign up is given
 if($username > "" and $signup > "" and $postEmail > "" and $rate == ""){
@@ -21,6 +22,7 @@ if($username > "" and $signup > "" and $postEmail > "" and $rate == ""){
   }else{
     $fullname = "Profile Name";
     $pictureUrl =  "https://vrixe.com/images/profiles/user.png";
+    $authtoken = "";
   }
 //start generating necessary data
 $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
@@ -51,9 +53,9 @@ $link = "vrixe.com/profile/$username";
  else{ //save user
    $saveUserStatus = "save";
    
- $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid)
+ $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid, authtoken)
 VALUES
-('$postEmail','$fullname','$username','$password','$day','$bio','$z','$pictureUrl','$link','$gencookie','$cutcok','$pushid')";
+('$postEmail','$fullname','$username','$password','$day','$bio','$z','$pictureUrl','$link','$gencookie','$cutcok','$pushid','$authtoken')";
    
 //create cookies
 setcookie($cok, $gencookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); //newuser

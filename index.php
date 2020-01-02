@@ -121,6 +121,7 @@ else{
 <meta name='apple-mobile-web-app-capable' content='yes'>
 <meta name='apple-mobile-web-app-status-bar-style' content='black'>
 <?php require("garage/validuser.php"); 
+  require("garage/thirdPartySignin.php"); 
   echo"<script type='text/javascript' defer src='garage/scripts/redeye.js?v=$vv'></script>";
   ?>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -174,8 +175,9 @@ else{echo"";}
   <h class="intx">Create and edit events with your team.</h><br>
   <h style="color:#173652"><i>...discover a new way to collaborate on vrixe</i></h><br><br>
 
-   <a href='aboutvrixe.php'><div id="act" title="See how Vrixe works">Features</div></a><br><br>
-
+ <a href='aboutvrixe.php'><div id="act" title="See how Vrixe works">Features</div></a><br><br>
+<input class="rates" name="formDestination" id="formDestination">
+  
 <div class="pef"><br>
  <a href="#singup" title="Sign Up For A Vrixe Account"><div class="evtyhe" id="singup" style="background-position: center;">Sign Up<br><small class="loginsmall">create better group plans</small></div></a>
   
@@ -184,7 +186,7 @@ else{echo"";}
   <img class="menuimg" src="images/vlogie.png" alt="vrixe"><br>
   <h class="bugdes">Vrixe. All Access</h><br>
   <h class="miniss">Simple | Collective | Detailed plans</h><br><br>
-<form autocomplete="off" style="display:block;" action="welcome.php" method="post">
+<form autocomplete="off" style="display:block;" action="welcome.php" method="post" id="welcome">
 
   <input onchange="checkmailava(this.value)" type="email"  class="privinput" name="mail" required placeholder="email" id="signupemail"><br>
 <label for="signupemail" class="petd" id="email">start with your email</label><br><br>
@@ -196,11 +198,12 @@ else{echo"";}
 <input class="rates" name="signup" value="signup" id="signuprates">
 <input type="text" name="userFullName" class="rates" id="googleuserFullName">
 <input type="text" name="pictureUrl" class="rates" id="googleUserPicUrl">
+<input type="text" name="token" class="rates" id="authtoken">
 <input type="text" name="rate" class="rates">
 <?php echo"<input class='rates' name='password' required value='wug$cult'>"; ?>
 
-<button class="copele" id="submitSignup">Sign Up</button><br></form><br>
-  <h class="miniss">Or sign in with your Google account</h><br>
+<button class="copele">Sign Up</button><br></form><br>
+<h class="bugdes">Or sign in with your Google account</h><br>
 <div class="g-signin2" data-onsuccess="onSignIn" id="signin"></div><br>
    
   <h class="petd">these topics below do apply<br> <a href="app/terms.html"><h class="miniss">Terms</h></a>, <a href="app/terms.html#prio"><h class="miniss">Privacy</h></a> and <a href="app/terms.html#cookies"><h class="miniss">Cookie</h></a> Policy.</h><br>
@@ -214,17 +217,20 @@ else{echo"";}
   <h class="bugdes">Log In</h><br>
   <h class="miniss">Manage your Vrixe Profile on any device</h><br>
 <br>
-<form autocomplete="on" style="display:block;" action="me.php" method="post">
+<form autocomplete="on" style="display:block;" action="me.php" method="post"  id="me">
 <input style="text-align:left;" type="text" autocomplete="username" class="privinput" name="username" required placeholder="... .... ..." autocapitalize="none" minlength="4" id="usernamelogin"><br>
 <label for="usernamelogin" class="petd">your username or email</label><br><br>
 
-<input class="rates" name="lcheck" value="valid">
-  <input type="text" name="rate" class="rates">
+<input class="rates" name="lcheck" value="valid" id="loginrates">
+<input type="text" name="rate" class="rates">
 <input id="cindy" type="password" name="password" required placeholder="... .... ..." autocomplete="on"><button class="therecins" type="button" id="recindy" title="Show Password">show</button><button class="therecins" type="button" id="recindo" title="Hide Password">hide</button><br>
 <label for="cindy" class="petd" style='width:50%;text-align:left;float:left;margin-left:23px;'>password</label><br><br><br><br>
 
-<button class="copele" style="margin-bottom:10px">Log In</button><br></form>
-<h id="toreset" class="miniss" onclick="passreset()" style="cursor:pointer;">Forgot Password?</h><br>
+<button class="copele" style="margin-bottom:10px" id="submitLogin">Log In</button><br></form><br>
+<h id="toreset" class="miniss" onclick="passreset()" style="cursor:pointer;">Forgot Password?</h><br><br>
+  
+<h class="bugdes" id="returningText">Or log in with your Google account</h><br>
+<div class="g-signin2" data-onsuccess="onSignIn"></div><br><br>
 </div><!--eo login-->
 
 
@@ -251,18 +257,20 @@ else{echo"";}
   <script defer>
     //login and sign up has div opener here cus we think event listerner is cros fring for inline js
      document.getElementById("singup").addEventListener('click', function(){
+     document.getElementById("formDestination").value="welcome";
      document.getElementById("singup").style.marginBottom="0px";
  	   document.getElementById("signup").style.height="480px"; 	
  	   document.getElementById("login").style.height="0px"; 	
  	   document.getElementById("longin").style.marginBottom="45px";
  	   document.getElementById("passreset").style.height="0px";
 });
-
+//login pef
      document.getElementById("longin").addEventListener('click', function(){
+     document.getElementById("formDestination").value="me";
      document.getElementById("singup").style.marginBottom="45px";
  	   document.getElementById("longin").style.marginBottom="0px";
  	   document.getElementById("signup").style.height="0px";
- 	   document.getElementById("login").style.height="400px";
+ 	   document.getElementById("login").style.height="500px";
  	   document.getElementById("passreset").style.height="0px";
 });  
   </script>
