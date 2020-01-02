@@ -204,6 +204,7 @@ else{echo"";}
 
 <button class="copele">Sign Up</button><br></form><br>
 <h class="bugdes">Or sign in with your Google account</h><br>
+<h class="miniss">A random username would be used. If you would like to customise this, please fill the username field above first.</h><br>
 <div class="g-signin2" data-onsuccess="onSignIn" id="signin"></div><br>
    
   <h class="petd">these topics below do apply<br> <a href="app/terms.html"><h class="miniss">Terms</h></a>, <a href="app/terms.html#prio"><h class="miniss">Privacy</h></a> and <a href="app/terms.html#cookies"><h class="miniss">Cookie</h></a> Policy.</h><br>
@@ -259,7 +260,7 @@ else{echo"";}
      document.getElementById("singup").addEventListener('click', function(){
      document.getElementById("formDestination").value="welcome";
      document.getElementById("singup").style.marginBottom="0px";
- 	   document.getElementById("signup").style.height="480px"; 	
+ 	   document.getElementById("signup").style.height="520px"; 	
  	   document.getElementById("login").style.height="0px"; 	
  	   document.getElementById("longin").style.marginBottom="45px";
  	   document.getElementById("passreset").style.height="0px";

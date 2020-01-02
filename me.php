@@ -53,7 +53,7 @@ if (isset($_COOKIE['user']) and $loginValue == "" and $update == ""){
 //New login from index
 else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
   //use default values if needed
-  if($loginValue == "loginwithgoogle"){   
+  if($loginValue == "loginwithgoogle"){  
  $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = '$authtoken' LIMIT 1"); 
  $founds = 0;
    while($loguser = mysqli_fetch_array($trylog)){
@@ -64,11 +64,11 @@ else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
     $username = $loguser['username'];
     $userheadimg = $loguser['picture'];
     //check auth and log user in
-     if($userauth == $authtoken){       
+     if($userauth == $authtoken){     
     setcookie("user", $cookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); 
      }
      else{$founds = 0;}//kill login process
-} 
+}
     
 //check if there was actually a user. only if we did not find normal google login
  if($founds == 0){
@@ -76,12 +76,11 @@ else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
  $shouldsync = 0;
    while($tosync = mysqli_fetch_array($checkuser)){
      $shouldsync = 1;
-    $tosyncemail = $loguser['email'];
+    $tosyncemail = $tosync['email'];
 } if($tosyncemail == $loginUsername){//there was a user
      $toSyncMessage = true;
    }else{$toSyncMessage = false;}
 }
-
   
 }
   
@@ -364,12 +363,12 @@ if ($newUserLogInNotFound == true){ #give box that says it wasnt found
 <img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>";
 
   //for users waiting tosyn gmail
-if($toSyncMessage = true){
+if($toSyncMessage == true){
   echo"
   <h class='miniss'>What is happening here?</h>
   <h class=disl>Looks like your old account has not been connected to your gmail login channel.</h><br><br>
   <h class='miniss'>What can I do?</h>
-  <h class=disl>Please login with your old method and sync your login channels under your <b>Account Settings</b></h><br><br>
+  <h class=disl>Please login using the old method and sync your login channels under your <b>Account Settings</b></h><br><br>
    <a href='index'><button class='copele' onclick='signOut()'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Use Old Login</button></a><br><br>
   <h class='miniss'><a href='index.php?q=recover_password'>Forgot Password?</a></h>
  <br><br>

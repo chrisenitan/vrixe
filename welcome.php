@@ -50,7 +50,7 @@ $link = "vrixe.com/profile/$username";
  if($checkIfUserExisted == true){
   $saveUserStatus = "duplicate";
 }
- else{ //save user
+ else{//save user
    $saveUserStatus = "save";
    
  $create="INSERT INTO profiles (email, fullname, username, password, created, bio, location, picture, link, cookie, freq, pushid, authtoken)
