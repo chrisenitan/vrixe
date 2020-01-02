@@ -160,7 +160,7 @@ echo "<div class='pagecen'><div class='pef'>
     $customMailfailedMessage = "<div id='oalert'>We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On!</div><br>";
     $customMailctaLink = "https://vrixe.com/account/confirm?refs=$cutcok";
     $customMailctaNudge = "Now you're onboarded.";
-    $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";
+    $customMailBanner = "https://vrixe.com/mail/banners/welcomenewuser.jpg";
     
     require("mail/genericMailer.php");
   }
@@ -175,7 +175,7 @@ echo "<div class='pagecen'><div class='pef'>
     $customMailfailedMessage = "<div id='oalert'>There was an error in sending you a welcome guide<br>Not a big deal, we already have a fix for this.<br>Carry On!</div><br>";
     $customMailctaLink = "https://vrixe.com/app/pwa.html";
     $customMailctaNudge = "We have a progressive web app for you";
-    $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";
+    $customMailBanner = "https://vrixe.com/mail/banners/welcomenewuser.jpg";
     
   require("mail/genericMailer.php");
   }

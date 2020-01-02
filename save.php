@@ -148,14 +148,6 @@ else {
   $puprnotif = "Your event has been created, you can share it with anyone and anyone can now view it on Vrixe";
 }
    
-        $customMailSubject = "Your invite has been created";
-        $customMailHeader = "Event Saved";
-        $customMailsectionHeader = "Some quick bits";
-        $customMailsectionMessage = $puprnotif;
-        $customMailsuccessMessage = "<div id='galert'>We'll email you in details shortly.</div><br>";
-        $customMailfailedMessage = "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Your Event A OK!</div><br>";
-
-   
  echo "
 <div class='pef' >
 <div class='blfhead'>Invite Created.</div><br>
@@ -172,6 +164,17 @@ else {
 
    
 //send email to creator
+ $customMailSubject = "Your invite has been created";
+ $customMailHeader = "Event Saved";
+ $customMailsectionHeader = "Some quick bits";
+ $customMailsectionMessage = $puprnotif;
+ $customMailsuccessMessage = "<div id='galert'>We'll email you in details shortly.</div><br>";
+ $customMailfailedMessage = "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not a big deal, we already have a fix for this.<br>Your Event A OK!</div><br>";
+ $customMailcta = "OPEN INVITE";
+ $customMailctaLink = "https://vrixe.com/event/$string";
+ $customMailctaNudge = "...and we're here, if you ever need us.";
+ $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";
+
 require("mail/genericMailer.php");
 
 
