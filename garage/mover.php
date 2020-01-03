@@ -739,6 +739,41 @@ else if ($req == "SUGGEST" and $id == ""){
 
   
   
+
+  
+//add auth token from backend
+else if ($req == "addAuth"){
+
+  $addAuth = "UPDATE profiles SET authtoken='$cu' WHERE email = '$id'";
+
+
+if (!mysqli_query($conne,$addAuth))
+  {
+  die('Error: ' . mysqli_error($conne));
+  }
+
+}
+  
+  
+//remove auth token from backend
+else if ($req == "removeAuth"){
+
+  $removeAuth = "UPDATE profiles SET authtoken=NULL WHERE email = '$id'";
+
+echo "Disconnected your Google channel";
+
+if (!mysqli_query($conne,$removeAuth))
+  {
+  die('Error: ' . mysqli_error($conne));
+  }
+
+}
+  
+  
+  
+  
+  
+  
   
   
   //fetch some users for invite. also fetch only if id is given else we spit rand

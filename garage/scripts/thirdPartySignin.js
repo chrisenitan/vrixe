@@ -1,4 +1,5 @@
-//script for signup pages google
+//handle sohphistocaed sign up process for index page
+
 //prepar user for google sign up on index
 function prepareUser(profile){
   document.getElementById("signuprates").value="signupwithgoogle";

@@ -1,4 +1,7 @@
+
+<input class='rates' id='googleauthemail'>
 <?php
+require("versions.php");
 //call api. must be befor visa so we know which server
 //if dev
 if($phpurla == 'vrixe-enn'){
@@ -17,30 +20,8 @@ echo"<script src='https://apis.google.com/js/platform.js' async defer></script>"
 //invoke button
 echo"<div class='g-signin2' data-onsuccess='onSignIn' id='signin' style='display:none'></div>";
 
-  //log user out
-echo"
-  <script>  
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-  </script>";
+//all js for google. required pages only
+echo"<script type='text/javascript' defer src='/garage/scripts/googleauthSettings.js?v=$vv'></script>";
 
-//get user data
-
-echo"
-<input class='rates' id='googleauthemail'>
-<script>
-  function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
- document.getElementById('googleauthemail').value=profile.getEmail();
- //send token to backend. wip
-}
-</script>
-";
-
-  
 
 ?>

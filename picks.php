@@ -20,9 +20,7 @@ require("garage/passport.php");
 </head>
 <body>
   
-<?php
-  require("garage/googleauth.php");
-  require("./garage/absolunia.php"); ?>
+<?php require("./garage/absolunia.php"); ?>
   
 <div id="gtr" onclick="closecloseb()"></div>
 

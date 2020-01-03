@@ -146,7 +146,7 @@ function confirmPosition(position) {
   
   
 
-  <div class="pef">
+  <div class="pef" id="auth">
 <div class="blfhead">Login Access</div><br>
 
  <img alt='Accounts Permission' src='/images/essentials/idcard.png' class='everybodyimg'><br><br>
@@ -163,24 +163,6 @@ function confirmPosition(position) {
 </div>
 
 <br><br>
-
-<script defer>
-  //sign user out from settings
- function set(){
-   //change text to sign out and enact signout on click
-   if(document.getElementById("googleauthemail").value > ""){//if googleauth.php fetched a user
-    document.getElementById("settingsGoogleAuth").innerHTML="<i class='material-icons' style='vertical-align:sub;font-size:17px;'>person_add_disabled</i> Sign Out";//seta signout button
-  document.getElementById("settingsGoogleAuth").addEventListener("click", function(){//onclick the signout button
-    signOut();
-    document.getElementById("settingsGoogleAuth").innerHTML="<i class='material-icons' style='vertical-align:sub;font-size:17px;'>person_add_disabled</i> Signed Out";
-  });
-}
-else{
-  //hide the signout button and let gauth handle the users auth status
-    document.getElementById("settingsGoogleAuth").style.display="none";
-} }
-setTimeout(set, 2000);//timeout to allow google return a user
-  </script>
 
 
 <?php require("../garage/networkStatus.php"); ?>
