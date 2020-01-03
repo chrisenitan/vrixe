@@ -152,7 +152,7 @@ function confirmPosition(position) {
  <img alt='Accounts Permission' src='/images/essentials/idcard.png' class='everybodyimg'><br><br>
   <h class='bottoms'>Login via Google</h><br>
 
-  <small>One less password to worry about. Sync your account with your Google email and never miss your data.</small><br><br>
+  <small>One less password to worry about. Connect your Vrixe account with your Google email so the next time you need to log in on any device, it'll be one click away.</small><br><br>
     
 <button class="copele" id="settingsGoogleAuth"></button>
     <div class='g-signin2' data-onsuccess='onSignIn' id='signin'></div><br>
