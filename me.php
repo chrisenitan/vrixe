@@ -8,7 +8,7 @@ require("garage/visa.php");
     $rememberme = mysqli_real_escape_string($conne, $_POST['remdev']); //deprecated
     $rate = mysqli_real_escape_string($conne, $_POST['rate']);
     $longauthtoken = mysqli_real_escape_string($conne, $_POST['token']);
-$authtoken = substr($longauthtoken,0,481);//the static version of the token only
+    $authtoken = substr($longauthtoken,0,480);//the static version of the token only
 
   #New user detailes from edit profile page
     $editimage = $_FILES['editimage']['name'];
@@ -33,7 +33,7 @@ else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
   if($loginValue == "loginwithgoogle"){
  $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = '$authtoken' LIMIT 1"); 
  $founds = false;
-   while($loguser = mysqli_fetch_array($trylog)){$scram = "screma";
+   while($loguser = mysqli_fetch_array($trylog)){
      $founds = true;
     $cookie = $loguser['cookie'];
     $userauth = $loguser['authtoken'];
@@ -49,11 +49,11 @@ else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
     
 //check if there was actually a user. only if we did not find normal google login
  if($founds == false){
-    $checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = NULL LIMIT 1"); 
+    $checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' LIMIT 1"); 
  $shouldsync = 0;
    while($tosync = mysqli_fetch_array($checkuser)){
      $shouldsync = 1;
-    $tosyncemail = $tosync['email'];
+    $tosyncemail = $tosync['email']; 
 } if($tosyncemail == $loginUsername){//there was a user
      $toSyncMessage = true;
    }else{$toSyncMessage = false;}
@@ -255,10 +255,6 @@ header("Location: index");
 <html lang="en">
 <head>
 <?php
-//fetch gapi if $newUserLogInNotFound
- if($newUserLogInNotFound == true){
-require("garage/googleauth.php");
- }
 if ($cookie > ""){echo "<title> $fullname | Vrixe</title>"; }
 else {echo "<title>No User Found</title>";}#redirect would have hanled this
 ?>
@@ -298,9 +294,8 @@ if ($newUserLogInNotFound == true){
   echo"
 <div class='pagecen'>
 <div class='pef'>
-<div class='blfhead'>...almost caught $scram</div><br>
-<img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>
-<br><br>userauth $userauth <br><br>authtoken $authtoken";
+<div class='blfhead'>...almost caught</div><br>
+<img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>";
 
 //for users waiting to sync gmail
 if($toSyncMessage == true){
@@ -308,8 +303,9 @@ if($toSyncMessage == true){
   <h class='miniss'>What is happening here?</h>
   <h class=disl>Looks like your account has not been connected to a gmail login channel.</h><br><br>
   <h class='miniss'>What can I do?</h>
-  <h class=disl>Please login using the old method and sync your login channels under your <b>Account Settings</b></h><br><br>
-   <a href='index'><button class='copele' onclick='signOut()'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Use Old Login</button></a><br><br>
+  <h class=disl>Please login using your email and password<br>
+  Then authorise Google as your login channel under your <b>Account Settings</b></h><br><br>
+   <a href='index'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Password Login</button></a><br><br>
   <h class='miniss'><a href='index.php?q=recover_password'>Forgot Password?</a></h>
  <br><br>
 

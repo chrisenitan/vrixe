@@ -744,7 +744,7 @@ else if ($req == "SUGGEST" and $id == ""){
 //add auth token from backend
 else if ($req == "addAuth"){
 //shorten authkey
-  $authtoken = substr($cu,0,481);//the static version of the token only
+  $authtoken = substr($cu,0,480);//the static version of the token only
   $addAuth = "UPDATE profiles SET authtoken='$authtoken' WHERE email = '$id'";
 
 if (!mysqli_query($conne,$addAuth)){ die('Error: ' . mysqli_error($conne)); }
