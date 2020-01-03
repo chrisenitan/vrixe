@@ -223,6 +223,7 @@ else{echo"";}
 <label for="usernamelogin" class="petd">your username or email</label><br><br>
 
 <input class="rates" name="lcheck" value="valid" id="loginrates">
+<input type="text" name="token" class="rates" id="authtokenLogin">
 <input type="text" name="rate" class="rates">
 <input id="cindy" type="password" name="password" required placeholder="... .... ..." autocomplete="on"><button class="therecins" type="button" id="recindy" title="Show Password">show</button><button class="therecins" type="button" id="recindo" title="Hide Password">hide</button><br>
 <label for="cindy" class="petd" style='width:50%;text-align:left;float:left;margin-left:23px;'>password</label><br><br><br><br>

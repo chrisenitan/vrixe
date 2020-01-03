@@ -110,7 +110,7 @@ function confirmPosition(position) {
 
 <div class="postcen">
 
-  <div class="pef">
+<div class="pef">
 <div class="blfhead">Location Access</div><br><br>
 
  <img alt='Location Permission' src='/images/essentials/gps.svg' class='everybodyimg'><br><br>
@@ -127,7 +127,7 @@ function confirmPosition(position) {
 
   
   
-    <div class="pef" id="pushn">
+<div class="pef" id="pushn">
 <div class="blfhead">Push Notifications</div><br><br>
 
  <img alt='Notification Permission' src='/images/essentials/notif.svg' class='everybodyimg'><br><br>
@@ -146,7 +146,7 @@ function confirmPosition(position) {
   
   
 
-  <div class="pef" id="auth">
+<div class="pef" id="auth">
 <div class="blfhead">Login Access</div><br>
 
  <img alt='Accounts Permission' src='/images/essentials/idcard.png' class='everybodyimg'><br><br>
@@ -159,9 +159,9 @@ function confirmPosition(position) {
     
 <br><div class="blfheadalt"></div>
 </div>
-
+  
+  
 </div>
-
 <br><br>
 
 

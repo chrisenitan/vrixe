@@ -7,7 +7,8 @@ require("garage/visa.php");
     $loginValue = mysqli_real_escape_string($conne, $_POST['lcheck']);
     $rememberme = mysqli_real_escape_string($conne, $_POST['remdev']); //deprecated
     $rate = mysqli_real_escape_string($conne, $_POST['rate']);
-    $authtoken = mysqli_real_escape_string($conne, $_POST['token']);
+    $longauthtoken = mysqli_real_escape_string($conne, $_POST['token']);
+$authtoken = substr($longauthtoken,0,481);//the static version of the token only
 
   #New user detailes from edit profile page
     $editimage = $_FILES['editimage']['name'];
@@ -29,13 +30,13 @@ if (isset($_COOKIE['user']) and $loginValue == "" and $update == ""){
 //New login from index
 else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
   //use default values if needed
-  if($loginValue == "loginwithgoogle"){  
+  if($loginValue == "loginwithgoogle"){
  $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = '$authtoken' LIMIT 1"); 
- $founds = 0;
-   while($loguser = mysqli_fetch_array($trylog)){
-     $founds = 1;
+ $founds = false;
+   while($loguser = mysqli_fetch_array($trylog)){$scram = "screma";
+     $founds = true;
     $cookie = $loguser['cookie'];
-     $userauth = $loguser['authtoken'];
+    $userauth = $loguser['authtoken'];
     $fullname = $loguser['fullname'];
     $username = $loguser['username'];
     $userheadimg = $loguser['picture'];
@@ -43,12 +44,12 @@ else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
      if($userauth == $authtoken){     
     setcookie("user", $cookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); 
      }
-     else{$founds = 0;}//kill login process
+    else{$founds = false;}//kill login process
 }
     
 //check if there was actually a user. only if we did not find normal google login
- if($founds == 0){
-    $checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' LIMIT 1"); 
+ if($founds == false){
+    $checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = NULL LIMIT 1"); 
  $shouldsync = 0;
    while($tosync = mysqli_fetch_array($checkuser)){
      $shouldsync = 1;
@@ -63,9 +64,8 @@ else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
   //try login with normal values
   else{
  $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$loginUsername' AND password = '$loginPassword' OR email = '$loginUsername' AND password = '$loginPassword' LIMIT 1"); 
- $founds = 0;
-   while($loguser = mysqli_fetch_array($trylog)){
-     $founds = 1;
+   while($loguser = mysqli_fetch_array($trylog)){ 
+     $founds = true;
     $cookie = $loguser['cookie'];
     $fullname = $loguser['fullname'];
     $username = $loguser['username'];
@@ -91,7 +91,7 @@ else {
  setcookie("formail", $username, time() + (86400 * 366), "/; samesite=Lax", "", true, true);//lets remeber him now
 }
   
-if ($founds == 0){$newUserLogInNotFound = true;}#its an old user who doesnt know his credentials
+if ($founds == false){$newUserLogInNotFound = true;}#its an old user who doesnt know his credentials
 
 }//oeof new login from index
 
@@ -298,8 +298,9 @@ if ($newUserLogInNotFound == true){
   echo"
 <div class='pagecen'>
 <div class='pef'>
-<div class='blfhead'>...almost caught</div><br>
-<img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>";
+<div class='blfhead'>...almost caught $scram</div><br>
+<img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>
+<br><br>userauth $userauth <br><br>authtoken $authtoken";
 
 //for users waiting to sync gmail
 if($toSyncMessage == true){

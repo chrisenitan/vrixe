@@ -743,15 +743,11 @@ else if ($req == "SUGGEST" and $id == ""){
   
 //add auth token from backend
 else if ($req == "addAuth"){
+//shorten authkey
+  $authtoken = substr($cu,0,481);//the static version of the token only
+  $addAuth = "UPDATE profiles SET authtoken='$authtoken' WHERE email = '$id'";
 
-  $addAuth = "UPDATE profiles SET authtoken='$cu' WHERE email = '$id'";
-
-
-if (!mysqli_query($conne,$addAuth))
-  {
-  die('Error: ' . mysqli_error($conne));
-  }
-
+if (!mysqli_query($conne,$addAuth)){ die('Error: ' . mysqli_error($conne)); }
 }
   
   
@@ -762,11 +758,7 @@ else if ($req == "removeAuth"){
 
 echo "Disconnected your Google channel";
 
-if (!mysqli_query($conne,$removeAuth))
-  {
-  die('Error: ' . mysqli_error($conne));
-  }
-
+if (!mysqli_query($conne,$removeAuth)){ die('Error: ' . mysqli_error($conne)); }
 }
   
   
@@ -774,9 +766,8 @@ if (!mysqli_query($conne,$removeAuth))
   
   
   
-  
-  
-  //fetch some users for invite. also fetch only if id is given else we spit rand
+
+//fetch some users for invite. also fetch only if id is given else we spit rand
 else if ($req == "fetchforusers"){
 $axeprofile = mysqli_query($conne,"SELECT * FROM profiles WHERE username LIKE '%$id%' AND confirm > '' OR email LIKE '%$id%' AND confirm > '' LIMIT 8 ");
 $got = 0;

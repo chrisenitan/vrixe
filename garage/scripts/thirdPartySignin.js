@@ -20,10 +20,11 @@ function prepareUser(profile){
   
   //fill login form 
   document.getElementById("usernamelogin").value=profile.getEmail();
+  document.getElementById("authtokenLogin").value=profile.token;//redo this for login
   document.getElementById("loginrates").value="loginwithgoogle";
   
   //style the input fields
-   //document.getElementById("usernamelogin").style.color="#e0e8f9";//recolor loginusername field
+  //document.getElementById("usernamelogin").style.color="#e0e8f9";//recolor loginusername field
   // document.getElementById("cindy").style.color="#e0e8f9";//cleaningpassword field
   // document.getElementById("inputusername").style.color="#e0e8f9";//recolor signp username field
   // document.getElementById("signupemail").style.color="#e0e8f9";//recolor email field
@@ -41,10 +42,6 @@ function prepareUser(profile){
 //on google signin
 function onSignIn(googleUser){
   var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   var id_token = googleUser.getAuthResponse().id_token;
   profile.token = id_token;
   profile.destination = document.getElementById("formDestination").value;//set where to send form
