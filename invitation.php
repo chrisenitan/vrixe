@@ -186,38 +186,38 @@ echo"<div class='pef'>
 $countallcu = 0; //just oreset so we dntcall unset var
 if($cuam > ""){
   echo "
-<a href='profile/$cuam'><div class='lilput'><img src='images/profiles/profilethumbs/$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cuam</div></a>";
+<a href='profile/$cuam'><div class='lilput'><img src='$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cuam</div></a>";
 $countcua = 1;
 }
 
 
 if($cubm > ""){
   echo "
-<a href='profile/$cubm'><div class='lilput'><img src='images/profiles/profilethumbs/$cubimg' class='lilprofilephoto'><div class='jal'></div>$cubm</div></a>";
+<a href='profile/$cubm'><div class='lilput'><img src='$cubimg' class='lilprofilephoto'><div class='jal'></div>$cubm</div></a>";
 $countcub = 1;
 }
 
 if($cucm > ""){
   echo "
-<a href='profile/$cucm'><div class='lilput'><img src='images/profiles/profilethumbs/$cucimg' class='lilprofilephoto'><div class='jal'></div>$cucm</div></a>";
+<a href='profile/$cucm'><div class='lilput'><img src='$cucimg' class='lilprofilephoto'><div class='jal'></div>$cucm</div></a>";
 $countcuc = 1;
 }
 
 if($cudm > ""){
   echo "
-<a href='profile/$cudm'><div class='lilput'><img src='images/profiles/profilethumbs/$cudimg' class='lilprofilephoto'><div class='jal'></div>$cudm</div></a>";
+<a href='profile/$cudm'><div class='lilput'><img src='$cudimg' class='lilprofilephoto'><div class='jal'></div>$cudm</div></a>";
 $countcud = 1;
 }
 
 if($cuem > ""){
   echo "
-<a href='profile/$cuem'><div class='lilput'><img src='images/profiles/profilethumbs/$cueimg' class='lilprofilephoto'><div class='jal'></div>$cuem</div></a>";
+<a href='profile/$cuem'><div class='lilput'><img src='$cueimg' class='lilprofilephoto'><div class='jal'></div>$cuem</div></a>";
 $countcue = 1;
 }
 
 if($cufm > ""){
   echo "
-<a href='profile/$cufm'><div class='lilput'><img src='images/profiles/profilethumbs/$cufimg' class='lilprofilephoto'><div class='jal'></div>$cufm</div></a>";
+<a href='profile/$cufm'><div class='lilput'><img src='$cufimg' class='lilprofilephoto'><div class='jal'></div>$cufm</div></a>";
 $countcuf = 1;
 }
 
@@ -310,41 +310,41 @@ if($cua > "" and $cua != "$username" or $cub > "" and $cub != "$username" or $cu
 
 if($cua > "" and $cua != "$username"){
   echo "
-  <a href='profile/$cua'><div class='lilput'><img src='images/profiles/profilethumbs/$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cua</div></a>
+  <a href='profile/$cua'><div class='lilput'><img src='$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cua</div></a>
   ";
 }
 
 
 if($cub > "" and $cub != "$username"){
   echo "
-  <a href='profile/$cub'><div class='lilput'><img src='images/profiles/profilethumbs/$cubimg' class='lilprofilephoto'><div class='jal'></div>$cub</div></a>
+  <a href='profile/$cub'><div class='lilput'><img src='$cubimg' class='lilprofilephoto'><div class='jal'></div>$cub</div></a>
   ";
 }
 
 if($cuc > "" and $cuc != "$username"){
   echo "
-  <a href='profile/$cuc'><div class='lilput'><img src='images/profiles/profilethumbs/$cucimg' class='lilprofilephoto'><div class='jal'></div>$cuc</div></a>
+  <a href='profile/$cuc'><div class='lilput'><img src='$cucimg' class='lilprofilephoto'><div class='jal'></div>$cuc</div></a>
   ";
 }
 
 
 if($cud > "" and $cud != "$username"){
   echo "
-  <a href='profile/$cud'><div class='lilput'><img src='images/profiles/profilethumbs/$cudimg' class='lilprofilephoto'><div class='jal'></div>$cud</div></a>
+  <a href='profile/$cud'><div class='lilput'><img src='$cudimg' class='lilprofilephoto'><div class='jal'></div>$cud</div></a>
   ";
 }
 
 
 if($cue > "" and $cue != "$username"){
   echo "
-  <a href='profile/$cue'><div class='lilput'><img src='images/profiles/profilethumbs/$cueimg' class='lilprofilephoto'><div class='jal'></div>$cue</div></a>
+  <a href='profile/$cue'><div class='lilput'><img src='$cueimg' class='lilprofilephoto'><div class='jal'></div>$cue</div></a>
   ";
 }
 
 
 if($cuf > "" and $cuf != "$username"){
   echo "
-  <a href='profile/$cuf'><div class='lilput'><img src='images/profiles/profilethumbs/$cufimg' class='lilprofilephoto'><div class='jal'></div>$cuf</div></a>
+  <a href='profile/$cuf'><div class='lilput'><img src='$cufimg' class='lilprofilephoto'><div class='jal'></div>$cuf</div></a>
   ";
 }
 

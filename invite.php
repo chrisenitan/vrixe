@@ -249,7 +249,7 @@ $invitepusharray = explode(",", $invitelistpush); //from contact mails
 if($invitearray[0] > ""){
   echo"
     <div id='boxaa' class='lilput' style='display:inline-block;'>
-    <img src='images/profiles/profilethumbs/$invitepicarray[0]' class='lilprofilephoto'><div class='jal'></div><h id='boxa'>@$invitearray[0]</h>    
+    <img src='$invitepicarray[0]' class='lilprofilephoto'><div class='jal'></div><h id='boxa'>@$invitearray[0]</h>    
 <input type='text' name='cua' id='cua' value='$invitearray[0]' class='rates'>
   </div>
   ";
@@ -257,7 +257,7 @@ if($invitearray[0] > ""){
 else{
   echo"
    <div id='boxaa' class='lilput'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h>    
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h>    
 <input type='text' name='cua' id='cua' class='rates'>
   </div>
   ";
@@ -267,7 +267,7 @@ else{
 if($invitearray[1] > ""){
   echo"
     <div id='boxba' class='lilput' style='display:inline-block;'>
-    <img src='images/profiles/profilethumbs/$invitepicarray[1]' class='lilprofilephoto'><div class='jal'></div><h id='boxb'>@$invitearray[1]</h>    
+    <img src='$invitepicarray[1]' class='lilprofilephoto'><div class='jal'></div><h id='boxb'>@$invitearray[1]</h>    
 <input type='text' name='cub' id='cub' value='$invitearray[1]' class='rates'>
   </div>
   ";
@@ -275,7 +275,7 @@ if($invitearray[1] > ""){
 else{
   echo"
 <div id='boxba' class='lilput'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h>    
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h>    
 <input type='text' name='cub' id='cub' class='rates'>
   </div>
   ";
@@ -285,7 +285,7 @@ else{
 if($invitearray[2] > ""){
   echo"
     <div id='boxca' class='lilput' style='display:inline-block;'>
-    <img src='images/profiles/profilethumbs/$invitepicarray[2]' class='lilprofilephoto'><div class='jal'></div><h id='boxc'>@$invitearray[2]</h>    
+    <img src='$invitepicarray[2]' class='lilprofilephoto'><div class='jal'></div><h id='boxc'>@$invitearray[2]</h>    
 <input type='text' name='cuc' id='cuc' value='$invitearray[2]' class='rates'>
   </div>
   ";
@@ -293,7 +293,7 @@ if($invitearray[2] > ""){
 else{
   echo"
 <div id='boxca' class='lilput'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h>    
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h>    
 <input type='text' name='cuc' id='cuc' class='rates'>
   </div>
   ";
@@ -303,7 +303,7 @@ else{
 if($invitearray[3] > ""){
   echo"
     <div id='boxda' class='lilput' style='display:inline-block;'>
-    <img src='images/profiles/profilethumbs/$invitepicarray[3]' class='lilprofilephoto'><div class='jal'></div><h id='boxd'>@$invitearray[3]</h>    
+    <img src='$invitepicarray[3]' class='lilprofilephoto'><div class='jal'></div><h id='boxd'>@$invitearray[3]</h>    
 <input type='text' name='cud' id='cud' value='$invitearray[3]' class='rates'>
   </div>
   ";
@@ -311,7 +311,7 @@ if($invitearray[3] > ""){
 else{
   echo"
 <div id='boxda' class='lilput'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h>    
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h>    
 <input type='text' name='cud' id='cud' class='rates'>
   </div>
   ";
@@ -322,7 +322,7 @@ else{
 if($invitearray[4] > ""){
   echo"
     <div id='boxea' class='lilput' style='display:inline-block;'>
-    <img src='images/profiles/profilethumbs/$invitepicarray[4]' class='lilprofilephoto'><div class='jal'></div><h id='boxe'>@$invitearray[4]</h>    
+    <img src='$invitepicarray[4]' class='lilprofilephoto'><div class='jal'></div><h id='boxe'>@$invitearray[4]</h>    
 <input type='text' name='cue' id='cue' value='$invitearray[4]' class='rates'>
   </div>
   ";
@@ -330,7 +330,7 @@ if($invitearray[4] > ""){
 else{
   echo"
 <div id='boxea' class='lilput'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h>    
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h>    
 <input type='text' name='cue' id='cue' class='rates'>
   </div>
   ";
@@ -341,7 +341,7 @@ else{
 if($invitearray[5] > ""){
   echo"
     <div id='boxfa' class='lilput' style='display:inline-block;'>
-    <img src='images/profiles/profilethumbs/$invitepicarray[5]' class='lilprofilephoto'><div class='jal'></div><h id='boxf'>@$invitearray[5]</h>    
+    <img src='$invitepicarray[5]' class='lilprofilephoto'><div class='jal'></div><h id='boxf'>@$invitearray[5]</h>    
 <input type='text' name='cuf' id='cuf' value='$invitearray[5]' class='rates'>
   </div>
   ";
@@ -349,7 +349,7 @@ if($invitearray[5] > ""){
 else{
   echo"
 <div id='boxfa' class='lilput'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h>    
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h>    
 <input type='text' name='cuf' id='cuf' class='rates'>
   </div>
   ";

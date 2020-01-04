@@ -826,17 +826,17 @@ if($cua > ""){
 </script>
 
 
-<div class='lilput' id='boxcua'><img src='images/profiles/profilethumbs/$cuaimg' class='lilprofilephoto'><div class='jal'></div>@$cua <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cua, dbid$cua);junkuser(dbid$cua, box$cua)'>remove</div></div>
+<div class='lilput' id='boxcua'><img src='$cuaimg' class='lilprofilephoto'><div class='jal'></div>@$cua <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cua, dbid$cua);junkuser(dbid$cua, box$cua)'>remove</div></div>
 <input type='text' id='cua' name='cua' value='$cua' class='rates' placeholder='... .... ...'>
  <div id='boxaa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
     </div>
 ";
 }
   else{
     echo "
     <div id='boxaa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
     </div>
 <input type='text' id='cua' name='cua' class='rates'>";
   }
@@ -858,17 +858,17 @@ if($cub > ""){
     var box$cub = 'boxcub';
 </script>
 
-<div class='lilput' id='boxcub'><img src='images/profiles/profilethumbs/$cubimg' class='lilprofilephoto'><div class='jal'></div>@$cub <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cub, dbid$cub);junkuser(dbid$cub, box$cub)'>remove</div></div>
+<div class='lilput' id='boxcub'><img src='$cubimg' class='lilprofilephoto'><div class='jal'></div>@$cub <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cub, dbid$cub);junkuser(dbid$cub, box$cub)'>remove</div></div>
 <input type='text' id='cub' name='cub' value='$cub' class='rates'>
    <div id='boxba' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
     </div>
 ";
 }
   else{
     echo "
     <div id='boxba' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
     </div>
 <input type='text' id='cub' name='cub' class='rates'>";
   }
@@ -889,17 +889,17 @@ if($cuc > ""){
     var box$cuc = 'boxcuc';
 </script>
 
-<div class='lilput' id='boxcuc'><img src='images/profiles/profilethumbs/$cucimg' class='lilprofilephoto'><div class='jal'></div>@$cuc <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuc, dbid$cuc);junkuser(dbid$cuc, box$cuc)'>remove</div></div>
+<div class='lilput' id='boxcuc'><img src='$cucimg' class='lilprofilephoto'><div class='jal'></div>@$cuc <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuc, dbid$cuc);junkuser(dbid$cuc, box$cuc)'>remove</div></div>
 <input type='text' id='cuc' name='cuc' value='$cuc' class='rates'>
     <div id='boxca' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
     </div>
 ";
 }
   else{
     echo "
     <div id='boxca' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
     </div>
 <input type='text' id='cuc' name='cuc' class='rates'>";
   }
@@ -920,17 +920,17 @@ if($cud > ""){
     var box$cud = 'boxcud';
 </script>
 
-<div class='lilput' id='boxcud'><img src='images/profiles/profilethumbs/$cudimg' class='lilprofilephoto'><div class='jal'></div>@$cud <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cud, dbid$cud);junkuser(dbid$cud, box$cud)'>remove</div></div>
+<div class='lilput' id='boxcud'><img src='$cudimg' class='lilprofilephoto'><div class='jal'></div>@$cud <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cud, dbid$cud);junkuser(dbid$cud, box$cud)'>remove</div></div>
 <input type='text' id='cud' name='cud' value='$cud' class='rates'>
     <div id='boxda' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
     </div>
     ";
 }
   else{
     echo "
     <div id='boxda' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
     </div>
 <input type='text' id='cud' name='cud' class='rates'>";
   }
@@ -951,17 +951,17 @@ if($cue > ""){
     var box$cue = 'boxcue';
 </script>
 
-<div class='lilput' id='boxcue'><img src='images/profiles/profilethumbs/$cueimg' class='lilprofilephoto'><div class='jal'></div>@$cue <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cue, dbid$cue);junkuser(dbid$cue, box$cue)'>remove</div></div>
+<div class='lilput' id='boxcue'><img src='$cueimg' class='lilprofilephoto'><div class='jal'></div>@$cue <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cue, dbid$cue);junkuser(dbid$cue, box$cue)'>remove</div></div>
 <input type='text' id='cue' name='cue' value='$cue' class='rates'>
    <div id='boxea' class='lilput' style='display:none;'>
-     <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
+     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
      </div>
      ";
 }
   else{
     echo "
     <div id='boxea' class='lilput' style='display:none;'>
-     <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
+     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
      </div>
 <input type='text' id='cue' name='cue' class='rates'>";
   }
@@ -982,17 +982,17 @@ if($cuf > ""){
     var box$cuf = 'boxcuf';
 </script>
 
-<div class='lilput' id='boxcuf'><img src='images/profiles/profilethumbs/$cufimg' class='lilprofilephoto'><div class='jal'></div>@$cuf <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuf, dbid$cuf);junkuser(dbid$cuf, box$cuf)'>remove</div></div>
+<div class='lilput' id='boxcuf'><img src='$cufimg' class='lilprofilephoto'><div class='jal'></div>@$cuf <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuf, dbid$cuf);junkuser(dbid$cuf, box$cuf)'>remove</div></div>
 <input type='text' id='cuf' name='cuf' value='$cuf' class='rates'>
     <div id='boxfa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
     </div>
     ";
 }
   else{
     echo "
     <div id='boxfa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
     </div>
 <input type='text' id='cuf' name='cuf' class='rates'>";
   }

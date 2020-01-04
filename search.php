@@ -258,7 +258,7 @@ var req$usercid = 'delete contact';
 <button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='process(req$usercid, iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
 
 
-<a href='/profile/$probefusername'><img src='/images/profiles/profilethumbs/$ufimg' class='contactphoto'></a>
+<a href='/profile/$probefusername'><img src='$ufimg' class='contactphoto'></a>
 <b>$probefname</b><br>
 <span style='font-size:13px'>@$probefusername</span><br><br>
 </div>
@@ -275,7 +275,7 @@ var req$usercid = 'add contact';
 <button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='process(req$usercid, iv$usercid, cu$usercid)'><i class='material-icons'>person_add</i></button>
 
 
-<a href='/profile/$probefusername'><img src='/images/profiles/profilethumbs/$ufimg' class='contactphoto'></a>
+<a href='/profile/$probefusername'><img src='$ufimg' class='contactphoto'></a>
 <b>$probefname</b><br>
 <span style='font-size:13px'>@$probefusername</span><br><br>
 </div>";

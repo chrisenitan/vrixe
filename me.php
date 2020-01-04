@@ -102,6 +102,7 @@ else if (isset($_COOKIE['user']) and $loginValue == "" and $update == "available
    $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
    while($founduser = mysqli_fetch_array($result)){
    $picture = $founduser['picture']; //get the users old picture name
+   $pictureWithoutUrl = substr($picture, 0, 33)//remove the link
    $oldpass = $founduser['password']; //get the users old pass to know chage
    $oldcook = $founduser['cookie']; //get the users old pass to know chage
 }
@@ -124,13 +125,13 @@ if (!mysqli_query($conne,$refreshcook))
 if ($ii == ""){
    $newimage = $picture; //image to database is now what was there before
 }
-else{ //user posted something check if old is ours
+else{//user posted something check if old is ours
   if ($ii == "user"){
 
-    if($picture != "user.png"){
+    if($picture != "https://vrixe.com/images/profiles/user.png"){
   //if its not ours unhook
- unlink("images/profiles/$picture");
-unlink("images/profiles/profilethumbs/$picture");
+ unlink("images/profiles/$pictureWithoutUrl");
+unlink("images/profiles/profilethumbs/$pictureWithoutUrl");
 }else{//nothing ah
 }
   
@@ -142,7 +143,7 @@ $target_file = $storein . $giby; //where to store + ran numb + uploaded img
 $uploadOk = 1;
 $imageFileType = pathinfo($editimage,PATHINFO_EXTENSION);
 
- $newimage = $giby;//we will then save what was newly sent as imagename
+$newimage = "https://vrixe.com/images/profiles/" .$giby;//set image to be sql updated as link + exran.fileextnsion
 
     
 // Check file size
@@ -159,13 +160,13 @@ elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "
     }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-  $newimage = "user.png"; 
+  $newimage = "https://vrixe.com/images/profiles/user.png"; 
   unlink("images/profiles/$giby");
 unlink("images/profiles/profilethumbs/$giby");
-    echo "<div id='valert' onclick='closealert()'>Could not compress image</div>";
+ echo "<div id='valert' onclick='closealert()'>Could not compress image</div>";
 }
     
-     else {      
+     else {
           //crop image code here
        $what = getimagesize($_FILES["editimage"]["tmp_name"]); $widths = $what[0];  $heights = $what[1]; 
        
@@ -214,13 +215,13 @@ unlink("images/profiles/profilethumbs/$giby");
         
         
     if ($thumbpass == 'true') {
-   //everything passed 
+   //everything passed. image uploaded
       
     } else {
-         $newimage = "user.png";
-      unlink("images/profiles/$giby");
-unlink("images/profiles/profilethumbs/$giby");
-       echo "<div id='valert' onclick='closealert()'>Error with image format.</div>";
+         $newimage = "https://vrixe.com/images/profiles/user.png";
+     unlink("images/profiles/$giby");
+     unlink("images/profiles/profilethumbs/$giby");
+     echo "<div id='valert' onclick='closealert()'>Error with image format.</div>";
     }
      }//end of uploadok safe to save
 }// end of user posted an image for us to upload
@@ -364,7 +365,7 @@ echo "<div class='postcen'>
 
 <button onclick='prcshare()' aria-label='edit profile' id='profilesettings' title='Share Link. vrixe.com/profile/$username'><i class='material-icons'>share</i></button><br><br>
 
-<img src='images/profiles/$picture' class='profilephoto' alt='$username'><br><br>
+<img src='$picture' class='profilephoto' alt='$username'><br><br>
 <div id='pwb'>
 $fullname<br><div id='cateuser'> @$username </div>
 <p class='minis' style='width:96%;margin:auto'>$bio</p>

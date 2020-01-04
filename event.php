@@ -427,39 +427,39 @@ echo "<div id='contributorList'>
 if($contributora > ""){
  echo"<a class='poslik' href='/profile/$contributora'>
 <div class='lilput' style='display: inline-block;'>
-<img src='/images/profiles/profilethumbs/$imageContributora' class='lilprofilephoto'><h style='display: inline-block;'>@$contributora</h></div>";}
+<img src='$imageContributora' class='lilprofilephoto'><h style='display: inline-block;'>@$contributora</h></div>";}
           
           
  if($contributorb > ""){
          echo"<a class='poslik' href='/profile/$contributorb'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorb' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorb</h></div></a>";}
+    <img src='$imageContributorb' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorb</h></div></a>";}
    
  if($contributorc > ""){
          echo"<a class='poslik' href='/profile/$contributorc'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorc' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorc</h></div></a>";}
+    <img src='$imageContributorc' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorc</h></div></a>";}
    
  if($contributord > ""){
          echo"<a class='poslik' href='/profile/$contributord'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributord' class='lilprofilephoto'><h style='display: inline-block;'>@$contributord</h></div></a>";}
+    <img src='$imageContributord' class='lilprofilephoto'><h style='display: inline-block;'>@$contributord</h></div></a>";}
    
   if($contributore > ""){
          echo"<a class='poslik' href='/profile/$contributore'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributore' class='lilprofilephoto'><h style='display: inline-block;'>@$contributore</h></div></a>";}
+    <img src='$imageContributore' class='lilprofilephoto'><h style='display: inline-block;'>@$contributore</h></div></a>";}
    
   if($contributorf > ""){
 echo"<a class='poslik' href='/profile/$contributorf'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorf' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorf</h></div></a>";}
+    <img src='$imageContributorf' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorf</h></div></a>";}
    
  echo "</div>"; }
  else{ }
    
 echo "<div id='meniac'>
-<div id='menias'><a class='poslik' href='/profile/$poster'><img src='/images/profiles/profilethumbs/$picture' id='eventprofilephoto'><br><span style='font-size:12px'><span style='color:white'>Created by</span> @$poster</a>";
+<div id='menias'><a class='poslik' href='/profile/$poster'><img src='$picture' id='eventprofilephoto'><br><span style='font-size:12px'><span style='color:white'>Created by</span> @$poster</a>";
  
      if($totalContributorCount > 1){
        if($contributorMinusOwnerCount == 1){

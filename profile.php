@@ -106,7 +106,7 @@ echo "<div class='postcen' style='margin-top:0px'>
 <button title='Report Profile' aria-label='profile actions' id='editpencil'><i class='material-icons'>info</i></button><br><br>
 </form>
 
-<img src='/images/profiles/$picture' class='profilephoto' alt='$pusername'><br><br>
+<img src='$picture' class='profilephoto' alt='$pusername'><br><br>
 <div id='pwb'>
 $pfullname <br><div id='cateuser'> @$pusername </div>
 <p class='minis' style='width:98%;margin:auto'> $bio </p>

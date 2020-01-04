@@ -442,12 +442,12 @@ $fetchreviews = mysqli_query($conne,"SELECT * FROM reviews WHERE user = '$userna
    $revux = $founduserviews['ux'];
    $revfeatures = $founduserviews['features'];
    $revsupport = $founduserviews['support'];
-     $puawco = $founduserviews['reviewdate'];
+   $puawco = $founduserviews['reviewdate'];
 
 echo "
 <div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/profilethumbs/$userheadimg' class='revpi'><br>
+<img src='$userheadimg' class='revpi'><br>
 <b>$fullname</b><br>
 $puawco
 </div>
@@ -472,7 +472,7 @@ if ($gotuserviews == 0){
 	echo"
 	<div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/profilethumbs/$userheadimg' class='revpi'><br>
+<img src='$userheadimg' class='revpi'><br>
 <b>$fullname</b><br>
 @$username
 </div>
@@ -503,7 +503,7 @@ else{
 echo "
 	<div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/user.png' class='revpi'><br>
+<img src='https://vrixe.com/images/profiles/user.png' class='revpi'><br>
 <b>Your Review</b><br>
 @username
 </div>
@@ -552,7 +552,7 @@ $fetchallreviews = mysqli_query($conne,"SELECT * FROM reviews WHERE user > '' an
  
 echo "<div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/profilethumbs/$alluserpic' class='revpi'><br>
+<img src='$alluserpic' class='revpi'><br>
 <b>$allfullname</b><br>
 $uawco
 </div>

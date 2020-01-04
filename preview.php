@@ -143,7 +143,7 @@ $tpreview = "INSERT INTO store (searchquery,sqy,profile,sc) VALUES('$eig','$z','
 
 <div id='meniac' style='text-align:center;'>
 <div id='menias'>
-<img src='/images/profiles/profilethumbs/user.png' id='eventprofilephoto'><br><span style='font-size:12px'>Created by you</span>
+<img src='https://vrixe.com/images/profiles/profilethumbs/user.png' id='eventprofilephoto'><br><span style='font-size:12px'>Created by you</span>
 </div>
 
 <button id='meniass'><span style='text-transform:capitalize'>Private Event in</span> $venue</button><br>

@@ -2,7 +2,7 @@
 $dam = date("F"); //mobile search
 
 if($userheadimg == ""){
-  $userheadimg = "user.png";
+  $userheadimg = "https://vrixe.com/images/profiles/user.png";
 }
   ?>
 <div id="searchboxes"><br>
@@ -29,7 +29,7 @@ if($userheadimg == ""){
 
 <div id="menuboxes">
   <?php
-echo"<a href='/me' aria-label='my_profile'><img id='mbbimg' src='/images/profiles/profilethumbs/$userheadimg' alt='avatar'></a>";
+echo"<a href='/me' aria-label='my_profile'><img id='mbbimg' src='$userheadimg' alt='avatar'></a>";
 ?>
 <a href="/account/settings.php"><button class="mbb"><i class='material-icons' style='vertical-align:bottom;font-size:21px'>settings</i> &nbsp Settings</button></a>
     

@@ -162,7 +162,7 @@ echo"<div class='pef'>
 
 <h id='type'>JOINED - $accountcreated</h><br>
 
-<img src='/images/profiles/$accountpicture' class='profilephoto' alt='$username'><br>
+<img src='$accountpicture' class='profilephoto' alt='$username'><br>
 
 <h class='blf'>$fullname </h><h class='miniss'>@$username</h><br>
 

@@ -69,7 +69,7 @@ var os$usercid = '$pushid';
 <button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
 
 
-<a href='/profile/$user'><img src='/images/profiles/profilethumbs/$userpic' class='contactphoto'>
+<a href='/profile/$user'><img src='$userpic' class='contactphoto'>
 <b>$fulluser</b><br>
 <span style='font-size:13px'>@$user</span></a><br><br>
 

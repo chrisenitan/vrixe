@@ -66,7 +66,7 @@ echo "<div class='pagecen'>
 <div class='blfhead'>Edit Profile</div><br>
 
 <form enctype='multipart/form-data' style='display:block' method='post' action='me.php'>
-<img accept='image/*' src='images/profiles/$picture' id='esi' class='profilephoto' alt='$fullname'>
+<img accept='image/*' src='$picture' id='esi' class='profilephoto' alt='$fullname'>
 <input type='text' style='display:none;' name='imgname' id='ii'><br>
 
 <div id='imageadd'>
