@@ -9,6 +9,8 @@ if (isset($_COOKIE['user'])){
    $headcook = true;
    $fullname = $founduser['fullname'];
    $username = $founduser['username'];
+   $userBio = $founduser['bio'];
+   $userLocation = $founduser['location'];
    $email = $founduser['email'];
    $cut = $founduser['confirm'];
    $accountCreationDate = $founduser['created'];

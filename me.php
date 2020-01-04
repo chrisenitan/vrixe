@@ -102,7 +102,12 @@ else if (isset($_COOKIE['user']) and $loginValue == "" and $update == "available
    $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
    while($founduser = mysqli_fetch_array($result)){
    $picture = $founduser['picture']; //get the users old picture name
-   $pictureWithoutUrl = substr($picture, 0, 33)//remove the link
+     
+    $pwrfLenght = strlen($picture); //get full url lenght    
+    $pwrcutback = $pwrfLenght - strlen($serverAndImageUrl);//remove lenght of server image url from full picture lenght
+    $pictureWithoutUrl = substr($picture,-$pwrcutback);//cut out that text leghnt from the full text
+     
+    
    $oldpass = $founduser['password']; //get the users old pass to know chage
    $oldcook = $founduser['cookie']; //get the users old pass to know chage
 }
@@ -143,7 +148,7 @@ $target_file = $storein . $giby; //where to store + ran numb + uploaded img
 $uploadOk = 1;
 $imageFileType = pathinfo($editimage,PATHINFO_EXTENSION);
 
-$newimage = "https://vrixe.com/images/profiles/" .$giby;//set image to be sql updated as link + exran.fileextnsion
+$newimage = $serverAndImageUrl .$giby;//set image to be sql updated as link + exran.fileextnsion
 
     
 // Check file size
