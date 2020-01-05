@@ -591,7 +591,20 @@ echo "<div id='oalert' >We tried to update your team but the Emails could not be
    }else{
       //send email list 
 if($emaillist > ""){
-     require("garage/invitelistmail.php"); 
+    //send email invitees
+ $customMailSubject = "You have a new invite";
+ $customMailHeader = "From @$hype";
+ $customMailsectionHeader = "Hi There";
+ $customMailsectionMessage = "We want to let you know that <b>@$hype</b> has added you to <b>'$event'</b>. Interested? Edit and complete this plan together on Vrixe.";
+ $customMailsuccessMessage = "";
+ $customMailfailedMessage = "<div id='oalert' >We tried to update your team but the Emails could not be sent<br>Not a big deal, we already have a fix for this.<br>Carry On!</div><br>";
+ $customMailcta = "VIEW INVITE";
+ $customMailctaLink = "https://vrixe.com/invitation.php?iv=$postRefCode";
+ $customMailctaNudge = "Go on, edit what's new with your team.";
+ $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";   
+   $Mailemail = chop($emaillist,", ");
+   
+  require("mail/genericMailer.php"); 
    }else{
   //do nothing
    }} 

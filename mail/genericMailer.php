@@ -87,7 +87,7 @@ $message .= "</body></html>";
 if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server   
    }else{
-if(mail($email, $customMailSubject, $message, $headers)){
+if(mail($Mailemail, $customMailSubject, $message, $headers)){
  $customMailsuccessMessage; 
 } else{
  $customMailfailedMessage;  

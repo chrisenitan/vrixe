@@ -160,7 +160,8 @@ OneSignal.sendTag('nature', 'deleted');
     $customMailctaLink = "https://vrixe.com/help/feedbacks?ext=lvtw";
     $customMailctaNudge = "If this was not you or it was a mistake, please write us.";
     $customMailBanner = "https://vrixe.com/mail/updateimages/exit.jpg";
-    
+        $Mailemail = $email;
+   
     require("../mail/genericMailer.php");   
 
 }

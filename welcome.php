@@ -161,6 +161,7 @@ echo "<div class='pagecen'><div class='pef'>
     $customMailctaLink = "https://vrixe.com/account/confirm?refs=$cutcok";
     $customMailctaNudge = "Now you're onboarded.";
     $customMailBanner = "https://vrixe.com/mail/banners/welcomenewuser.jpg";
+    $Mailemail = $email;
     
     require("mail/genericMailer.php");
   }
@@ -176,6 +177,7 @@ echo "<div class='pagecen'><div class='pef'>
     $customMailctaLink = "https://vrixe.com/app/pwa.html";
     $customMailctaNudge = "We have a progressive web app for you";
     $customMailBanner = "https://vrixe.com/mail/banners/welcomenewuser.jpg";
+        $Mailemail = $email;
     
   require("mail/genericMailer.php");
   }
