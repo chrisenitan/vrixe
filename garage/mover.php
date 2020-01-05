@@ -20,45 +20,44 @@ die('Could not connect: ' . mysqli_error($conne));
 mysqli_select_db($conne,"events");
 
 if ($req == "MOVE TO PLAN"){
-$axevent = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$id' ");
+  
+  //get the event
+    $axevent = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$id' ");
 
-$axcontributor = mysqli_query($conne,"SELECT * FROM contributors WHERE code = '$id' ");
-$got = 0;
+   //get the event contributors. 
+    $axcontributor = mysqli_query($conne,"SELECT * FROM contributors WHERE code = '$id' ");
+    $got = 0;
 
- //get from contributor where ref is code...
- //set cua... as value gotten or empty
-while($rowc = mysqli_fetch_array($axcontributor)) {
- $got = 1;
-    $cua = $rowc['cua'];
-    $cub = $rowc['cub'];
-    $cuc = $rowc['cuc'];
-    $cud = $rowc['cud'];
-    $cue = $rowc['cue'];
-    $cuf = $rowc['cuf'];
- }
+    while($rowc = mysqli_fetch_array($axcontributor)) {
+     $got = 1;
+        $cua = $rowc['cua'];
+        $cub = $rowc['cub'];
+        $cuc = $rowc['cuc'];
+        $cud = $rowc['cud'];
+        $cue = $rowc['cue'];
+        $cuf = $rowc['cuf'];
+     }
 
-echo "<br>";
-while($row = mysqli_fetch_array($axevent)) {
- $got = 1;
+    echo "<br>";
+    while($row = mysqli_fetch_array($axevent)) {
+     $got = 1;
 
- //update event set cua... as new values.
- //absenties should be erased then
-  $toplan = "UPDATE events SET status='plan', cua='$cua', cub='$cub', cuc='$cuc', cud='$cud', cue='$cue', cuf='$cuf' WHERE refs = '$id'";
+     //update event set cua... as new values. absenties should be erased then
+      $toplan = "UPDATE events SET status='plan', cua='$cua', cub='$cub', cuc='$cuc', cud='$cud', cue='$cue', cuf='$cuf' WHERE refs = '$id'";
 
-echo "<div id='galert'>Invite has been moved to plan</div><br>
-<h class='disl'>What would you like to do first?</h><br>
-<a href='desk.php?code=$id'><button aria-label='create event' class='copele'><i class='material-icons' style='font-size:16px;vertical-align:sub'>edit</i> Edit As Plan</button></a>
-<a href='event/$id'><button aria-label='create event' class='triocontrol'><i class='material-icons' style='font-size:16px;vertical-align:sub'>event</i> View Plan</button></a>";
+    echo "<div id='galert'>Invite has been moved to plan</div><br>
+    <h class='disl'>What would you like to do first?</h><br>
+    <a href='desk.php?code=$id'><button aria-label='create event' class='copele'><i class='material-icons' style='font-size:16px;vertical-align:sub'>edit</i> Edit As Plan</button></a>
+    <a href='event/$id'><button aria-label='create event' class='triocontrol'><i class='material-icons' style='font-size:16px;vertical-align:sub'>event</i> View Plan</button></a>";
+      
+      //send push or email to contributors. 
 
-if (!mysqli_query($conne,$toplan))
-  {
-  die('Error: ' . mysqli_error($conne));
-  }
+      //check for errors
+    if (!mysqli_query($conne,$toplan)) { die('Error: ' . mysqli_error($conne));  }
 
-}
-if ($got == 0){
-echo "<div id='oalert'>There was an error moving this invite</div>";
-}
+    }
+  //if no event was gotten
+    if ($got == 0){ echo "<div id='oalert'>There was an error moving this invite</div>";  }
 
 }
 

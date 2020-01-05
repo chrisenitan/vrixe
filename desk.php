@@ -1048,14 +1048,14 @@ echo"
  <h class='miniss' id='classdetails'></h><br><br>
 
 <!--check analytics-->
+
+<button class='copele' title='Create Event'><i class='material-icons' style='vertical-align:sub;font-size:17px'>done_all</i> Save Changes</button>
+
  <form style='width:100%' action='/invitation.php' method='post'>
 <input type='text' class='rates' value='$code' name='iv'>
 <input type='text' class='rates' value='owner' name='claim'>
- <button formaction='/invitation.php#result' class='triocopele' style='background-color:#f8f8ff;width:auto;color:#dd4b54'><i class='material-icons' style='vertical-align:middle'>swap_horiz</i> move to plan</button>
+<button formaction='/invitation.php#result' class='triocontrol' style='width:auto;'><i class='material-icons' style='vertical-align:sub;font-size:17px'>swap_horiz</i> move to plan</button>
 </form>
-
-<button class='triocopele' title='Create Event'><i class='material-icons' style='vertical-align:middle'>done_all</i> save</button>
-
 
 </div>
 

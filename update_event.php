@@ -113,8 +113,8 @@ $notificationstat = mysqli_real_escape_string($conne, $_POST['notifstat']);
  $year = "$iniy.$inimot$inid"; //year.month.day to calculate picks 
  $week = date("l",gmmktime(0,0,0,$inimot,$inid,$iniy));
  $bringing = mysqli_real_escape_string($conne, $_POST['bringing']);
-  $emaillist = mysqli_real_escape_string($conne, $_POST['emaillist']);//mailinglist
-$pushlist = mysqli_real_escape_string($conne, $_POST['pushlist']);//pushmessagelist
+  $emaillist = mysqli_real_escape_string($conne, $_POST['emaillist']);//mailinglist for newly added users
+$pushlist = mysqli_real_escape_string($conne, $_POST['pushlist']);//pushmessagelist for newly added users
 
   $cua = mysqli_real_escape_string($conne, $_POST['cua']);
   $cub = mysqli_real_escape_string($conne, $_POST['cub']);
@@ -495,7 +495,8 @@ echo "<div id='galert'>You'll get an email from us shortly.</div><br>";
 echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Please retry and if this happens again.<br>Please write us.</div><br>";
 }}
   //SEND PUSH $allpushes
-  require("garage/approvedlistpush.php"); 
+  $requestPushAs = "approvedEvent";
+  require("garage/genericPush.php"); 
 }//end of if status is approved
 
 else{//status is either approved or not but notification must have been selected
@@ -576,14 +577,15 @@ echo "<div id='oalert' >We tried to update your team but the Emails could not be
 }}
   
   //SEND PUSH $allpushes recent cahnes
-  require("garage/changeslistpush.php"); 
+    $requestPushAs = "updatedEvent";
+  require("garage/genericPush.php"); 
 }
   
   
 
 }//end of email
 
-   //ONLY FOR INVITE DESK PUSH AND MAIL
+ //ONLY FOR INVITE DESK PUSH AND MAIL FOR NEWLY ADDED USERS
       if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server
    }else{
@@ -592,10 +594,11 @@ if($emaillist > ""){
      require("garage/invitelistmail.php"); 
    }else{
   //do nothing
-   }}
+   }} 
  
       if($pushlist > ""){
-     require("garage/invitelistpush.php"); 
+    $requestPushAs = "createdInvite";
+  require("garage/genericPush.php");  
    }else{
      //do not push
    }

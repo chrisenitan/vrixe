@@ -189,7 +189,9 @@ if($phpurl == 'vrixe-enn'){
   
    //send push to push list
  if($pushlist > ""){
-     require("garage/invitelistpush.php"); 
+    $requestPushAs = "createdInvite";
+  $postRefCode =$string;
+  require("garage/genericPush.php");  
    }else{
   //do not push
    }
