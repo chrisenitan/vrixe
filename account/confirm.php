@@ -1,31 +1,14 @@
 <?php
-require("../garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $usernotfly = 0;
-   while($founduser = mysqli_fetch_array($result))
- {
-  $usernotfly = 1;
-   $cid = $founduser['cid'];
-     $fullname = $founduser['fullname'];
-    $username = $founduser['username'];
-      $freq = $founduser['freq'];
-    $email = $founduser['email'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>Confirm Account</button>";
-    $userheadimg = $founduser['picture'];
-}
-if ($usernotfly == 0){
-     $fullname = "relog";
-   $username = "";
-   setcookie("user", "", time() - 3600, "/");
-}}
-else{
-     $fullname = "";
-   $username = "";
-}
-  ?>
-  <!DOCTYPE html>
+//do not require user account
+$defaultAllowNoUser = true;
+require("../garage/passport.php");
+//if user revisiting or none user visiting. why are you here, send away
+ if ($cut > "") { header("Location: /me"); }
+
+ $day =date("d m Y");
+ $refCut = mysqli_real_escape_string($conne, $_GET['refs']);
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Verify Account - Vrixe</title>
@@ -34,71 +17,51 @@ else{
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
-
-
 </head>
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
 
+<?php require("../garage/deskhead.php");
+  require("../garage/deskpop.php"); ?>
 
-<?php require("../garage/deskhead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>Confirm Account</button>";
+  require("../garage/mobilehead.php"); ?>
 
-<?php require("../garage/deskpop.php"); ?>
-
-<?php require("../garage/mobilehead.php"); ?>
-
-<?php require("../garage/subhead.php");?>
-
-<?php require("../garage/thesearch.php"); ?>
-
-
+<?php require("../garage/subhead.php");
+  require("../garage/thesearch.php"); ?>
 <br>
 	
-<?php 
- $day =date("d m Y");
-  $cut = mysqli_real_escape_string($conne, $_GET['refs']);
-
-//if no user but with code, new user. tell them they need the right browser
- if ($cut > '' and $cookie == '') {
- 	echo "
-  <div class='pagecen'>
+<?php   
+  //for users who have not logged in
+ if ($refCut > '' and $cookie == '') {
+ 	echo "<div class='pagecen'>
 <div class='pef'>
-<div class='blfhead'>Using multiple browsers?</div><br> 
+<div class='blfhead'>You're not logged in</div><br> 
 
-It happens...<br><br>
+<h class='bottom'>rocking a new device?...</h><br><br><br>
 
 <img alt='Unconfirmed' src='https://vrixe.com/images/essentials/browser.svg' class='everybodyimg'>
-   <br>
-Looks like you're not logged in this browser. If you are, please log out and back in again.<br>That should do it.<br><br>
+<br><h class='disl'>Looks like you're not logged in this browser. If you are, please log out and back in again.<br>That should do it.</h><br><br>
 
-
-	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
+	<h class='minis'>do you keep getting this page?<br><a href='/help/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
 	<h class='minis'>or please try:</h><br>
-  <h class='miniss'>log into your account <a href='/index' style='text-decoration:underline;text-underline-position:under;'>here</a> and retry verification</h><br>
+  <h class='miniss'>log into your account <a href='/index?q=login' style='text-decoration:underline;text-underline-position:under;'>here</a> and retry verification</h><br>
 
 	<br><br>
-
   <div class='blfheadalt'></div>
    </div>
   </div>
   <br>";
  }
-//if user revisiting or none user visiting. why are you here, send away
- else  if ($cut == '' and $cookie == '' or $cut == '' and $cookie > '') {
-  echo "
-<script>
- document.location = '/index.php';
- </script>
-  ";
- }
+  
  //cool people getting it all right, verify them
- else if ($cut > '' and $cookie > '' and $freq == $cut){
+ else if ($refCut > '' and $cookie > '' and $freq == $refCut){
   $url = json_decode(file_get_contents("http://api.ipinfodb.com/v3/ip-city/?key=06bfc66ceaf02708dafb98bf50c15cbb49e2532ba69fedf6f7da78a1805ad281&ip=".$_SERVER['REMOTE_ADDR']."&format=json"));
  $z = $url->countryName;
 
   $newsday =date("Y-m-d");
 
- 	$sql = "UPDATE profiles SET confirm='$cut', freq='$newsday' WHERE cookie = '$cookie'";
+ 	$sql = "UPDATE profiles SET confirm='$refCut', freq='$newsday' WHERE cookie = '$cookie'";
 
   $confm = "INSERT INTO newsletter (mail, day, place) VALUES ('$email', '$newsday', '$z') ";
 
@@ -107,7 +70,7 @@ Looks like you're not logged in this browser. If you are, please log out and bac
   //send updates email
  require("../mail/letter.php");
    
-    if($phpurl == 'vrixe-enn'){
+ if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server
    }else{
 if(mail($email, $subject, $message, $headers)){
@@ -116,10 +79,8 @@ echo "";
 echo "";
 }}
 
-  echo "
-<div class='pagecen'>
+  echo "<div class='pagecen'>
 <div class='pef'>
-
   <div class='blfhead'>Account Verified<br></div>
  <br>
   <h class='miniss'>Your account is all setup</h><br>
@@ -153,34 +114,26 @@ echo "";
    <img alt='make plans' src='/images/essentials/pwadevice.svg' class='everybodyimg' style='width:67%'>
 <br>
 <button class='allcopele' id='ga_ci'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>add_to_home_screen</i> Install</button>
-   </div></a>
+   </div></a><br><br>
 
-  
-
-   <br><br>
-
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a Progressive Web App<br>
 
 <i class='material-icons' style='color:#065cff;'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
 <div class='blfheadalt'></div>
   </div>
   </div>
-  <br>
-  ";
+  <br>";
   if (!mysqli_query($conne,$sql) or !mysqli_query($conne,$confm))
-  {
-  die('Error: ' . mysqli_error($conne));
-  }
+  { die('Error: ' . mysqli_error($conne)); }
 
 mysqli_close($conne);
 
 }//end of else
   
-  else{
-     	echo "
-  <div class='pagecen'>
+ else{
+     	echo "<div class='pagecen'>
 <div class='pef'>
 <div class='blfhead'>Mix up somewhere</div><br> 
 
@@ -191,7 +144,7 @@ It happens...<br><br>
 Looks like you found a bug in the code. Please log out and back in again.<br>That should do it.<br><br>
 
 
-	<h class='minis'>do you keep getting this page?<br><a href='/feedbacks'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
+	<h class='minis'>do you keep getting this page?<br><a href='/help/feedbacks?ext=lvtw'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>report</i> Report It </button></a></h><br><br>
 	<h class='minis'>don't have time to send report?</h><br>
   <h class='miniss'>try logging out of your account <a href='/index' style='text-decoration:underline;text-underline-position:under;'>here</a></h><br>
 
@@ -202,12 +155,10 @@ Looks like you found a bug in the code. Please log out and back in again.<br>Tha
   </div>
   <br>";
   }
-
-
 ?>
 <br><br>
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 </body>
 </html>

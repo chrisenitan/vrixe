@@ -1,27 +1,9 @@
 <?php
-require("garage/visa.php");  
-
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];//finds the promoter
-   $email = $founduser['email'];
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  $cookie = "";
-  $fullname = "relog";
-   $username = "";
-   $email = "";
-}
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php");
 ?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <script> window.addEventListener("wheel", {passive: true} );</script>
@@ -161,7 +143,7 @@ $tpreview = "INSERT INTO store (searchquery,sqy,profile,sc) VALUES('$eig','$z','
 
 <div id='meniac' style='text-align:center;'>
 <div id='menias'>
-<img src='/images/profiles/profilethumbs/user.png' id='eventprofilephoto'><br><span style='font-size:12px'>Created by you</span>
+<img src='https://vrixe.com/images/profiles/profilethumbs/user.png' id='eventprofilephoto'><br><span style='font-size:12px'>Created by you</span>
 </div>
 
 <button id='meniass'><span style='text-transform:capitalize'>Private Event in</span> $venue</button><br>

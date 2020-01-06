@@ -2,7 +2,7 @@
 //check if username exists
 function checknameava(str){
 	if (str == ""){
-		document.getElementById("username").innerHTML = "try a planet's name";singup
+		document.getElementById("username").innerHTML = "try a planet's name";
 		return;
 	}
 	else {
@@ -149,7 +149,7 @@ document.getElementById(elem).style.width="98%";
   }
   else if(dbid == "unverifieduser"){
     var closer = 'close this';
-  var button = 'HOW TO VERIFY';
+  var button = "<i class='material-icons' style='font-size:14px;vertical-align:middle'>help</i> How To Verify";
   var buttonlink = '/help/faq#privatepoll';
   var title = 'Please verify your account';
   var text = "Private polls need a verified account<br>Having issues verifying your account? <a href='/help/feedbacks' style='text-decoration:underline'> Send us a feedback <i class='material-icons' style='font-size:14px;vertical-align:middle'>arrow_forward</i></a>";
@@ -158,7 +158,7 @@ document.getElementById(elem).style.width="98%";
   }
   else{
    var closer = 'close this';
-  var button = 'ADD USERNAME';
+  var button = "<i class='material-icons' style='font-size:14px;vertical-align:middle'>person_add</i> Add Username";
   var buttonlink = '#usernameforvote';
   var title = 'Username Required';
   var text = "Please choose a username and write your comment.<br>Even better! Create a Vrixe profile and have this saved specially for you. <a href='/index?q=profile_required#signup' style='text-decoration:underline'> Start here <i class='material-icons' style='font-size:14px;vertical-align:middle'>arrow_forward</i></a>";
@@ -185,7 +185,10 @@ let movetoplan = (elid, iv) => {
   var text = "This will automatically lock out friends yet to accept your invite. Please check with everyone or do you want to proceed now?";
   callabsolunia(title, text, button, buttonlink, closer);
     document.getElementById('absolunia_button').addEventListener('click', function(){
-process(elid, iv);
+      revabsolunia();//hide absolunia box
+      //remove the initial button
+      document.getElementById("polishmtp").style.display="none";      
+process(elid, iv);//send request to backend
   });
 }
 

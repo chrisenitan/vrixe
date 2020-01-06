@@ -1,25 +1,5 @@
 <?php
-require("garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $mycontacts = $founduser['contacts'];
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>My Plans</button>";
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-     echo "<script> document.location = 'index';</script>";
-}}
-else{
- echo "<script>
- document.location = 'index.php';
- </script>";
-}
+require("garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +12,15 @@ else{
 <?php require("garage/resources.php"); ?>
 <?php require("garage/validuser.php"); ?>
   
-  <style>
+<style>
   	body{
   		background-color: #f5f5f5;
   	}
   </style>
 </head>
 <body>
-    <?php require("./garage/absolunia.php"); ?>
+  
+<?php require("./garage/absolunia.php"); ?>
   
 <div id="gtr" onclick="closecloseb()"></div>
 
@@ -49,7 +30,8 @@ else{
 <?php require("garage/deskpop.php"); ?>
 
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>My Plans</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php 
 //set icon color

@@ -20,42 +20,49 @@ die('Could not connect: ' . mysqli_error($conne));
 mysqli_select_db($conne,"events");
 
 if ($req == "MOVE TO PLAN"){
-$axevent = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$id' ");
+  
+  //get the event
+    $axevent = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$id' ");
 
-$axcontributor = mysqli_query($conne,"SELECT * FROM contributors WHERE code = '$id' ");
-$got = 0;
+   //get the event contributors. 
+    $axcontributor = mysqli_query($conne,"SELECT * FROM contributors WHERE code = '$id' ");
+    $got = 0;
 
- //get from contributor where ref is code...
- //set cua... as value gotten or empty
-while($rowc = mysqli_fetch_array($axcontributor)) {
- $got = 1;
-    $cua = $rowc['cua'];
-    $cub = $rowc['cub'];
-    $cuc = $rowc['cuc'];
-    $cud = $rowc['cud'];
-    $cue = $rowc['cue'];
-    $cuf = $rowc['cuf'];
- }
+    while($rowc = mysqli_fetch_array($axcontributor)) {
+     $got = 1;
+       $hype = $rowc['owner']; $username = $hype;
+        $cua = $rowc['cua'];
+        $cub = $rowc['cub'];
+        $cuc = $rowc['cuc'];
+        $cud = $rowc['cud'];
+        $cue = $rowc['cue'];
+        $cuf = $rowc['cuf'];
+     }
+  require("getAllContributorToken.php");
+   //SEND PUSH $allpushes
+  $requestPushAs = "moveToPlan";
+  require("genericPush.php"); 
 
-echo "<br>";
-while($row = mysqli_fetch_array($axevent)) {
- $got = 1;
+    echo "<br>";
+    while($row = mysqli_fetch_array($axevent)) {
+     $got = 1;
 
- //update event set cua... as new values.
- //absenties should be erased then
-  $toplan = "UPDATE events SET status='plan', cua='$cua', cub='$cub', cuc='$cuc', cud='$cud', cue='$cue', cuf='$cuf' WHERE refs = '$id'";
+     //update event set cua... as new values. absenties should be erased then
+      $toplan = "UPDATE events SET status='plan', cua='$cua', cub='$cub', cuc='$cuc', cud='$cud', cue='$cue', cuf='$cuf' WHERE refs = '$id'";
 
-echo "<div id='galert'>Moved to Plans! <a href='desk.php?code=$id'><button aria-label='create event' class='gboxit'> VIEW  <i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
+    echo "<div id='galert'>Invite has been moved to plan</div><br>
+    <h class='disl'>What would you like to do first?</h><br>
+    <a href='desk.php?code=$id'><button aria-label='create event' class='copele'><i class='material-icons' style='font-size:16px;vertical-align:sub'>edit</i> Edit As Plan</button></a>
+    <a href='event/$id'><button aria-label='create event' class='triocontrol'><i class='material-icons' style='font-size:16px;vertical-align:sub'>event</i> View Plan</button></a>";
+      
+      //send push or email to contributors. 
 
-if (!mysqli_query($conne,$toplan))
-  {
-  die('Error: ' . mysqli_error($conne));
-  }
+      //check for errors
+    if (!mysqli_query($conne,$toplan)) { die('Error: ' . mysqli_error($conne));  }
 
-}
-if ($got == 0){
-echo "<div id='oalert'>There was an error moving this invite</div>";
-}
+    }
+  //if no event was gotten
+    if ($got == 0){ echo "<div id='oalert'>There was an error moving this invite</div>";  }
 
 }
 
@@ -184,7 +191,7 @@ echo "<div id='oalert'>There was an error accepting this invite</div>";
 
 
 
-
+//remove user from an invite list
 else if ($req == "remove"){
 $axevent = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$id' ");
 $got = 0;
@@ -197,7 +204,7 @@ while($row = mysqli_fetch_array($axevent)) {
   $remcontr = "UPDATE contributors SET $dbid='' WHERE code='$id'";
 
 
-    echo "<img src='images/profiles/profilethumbs/user.png' class='tinypp'>
+    echo "<img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='tinypp'>
 <div id='sugtxt'>
 <b>Done</b><br>
 <h id='sugname'>user has been removed</h>
@@ -210,7 +217,7 @@ if (!mysqli_query($conne,$remevcontr) or !mysqli_query($conne,$remcontr))
 
 }
 if ($got == 0){
-    echo "<img src='images/profiles/profilethumbs/user.png' class='tinypp'>
+    echo "<img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='tinypp'>
 <div id='sugtxt'>
 <b>Error</b><br>
 <h id='sugname'>user not removed, please retry</h>
@@ -689,7 +696,7 @@ $tocont = "UPDATE events SET pollcheck='' WHERE refs='$id' ";
 
 
 
-//fetch some users for invite. also fetch only if id is given else we spit rand
+//suggest some users for invite. also fetch only if id is given else we spit rand
 else if ($req == "SUGGEST" and $id > ""){
 $axeprofile = mysqli_query($conne,"SELECT * FROM profiles WHERE username LIKE '%$id%' AND username != '$cu' AND confirm > '' OR  email LIKE '%$id%' AND username != '$cu' AND confirm > '' LIMIT 1 ");
 $got = 0;
@@ -702,7 +709,7 @@ while($row = mysqli_fetch_array($axeprofile)) {
  $sugpush = $row['pushid'];
  $sugfullname = $row['fullname'];
 
-echo "<img src='images/profiles/profilethumbs/$sugpic' class='tinypp'>
+echo "<img src='$sugpic' class='tinypp'>
 <div id='sugtxt'>
 <input type='text' class='rates' value='$sugmail' id='sugmail'>
 <input type='text' class='rates' value='$sugpush' id='sugpush'>
@@ -715,7 +722,7 @@ echo "<img src='images/profiles/profilethumbs/$sugpic' class='tinypp'>
 
 }
 if ($got == 0){
-echo "<img src='images/profiles/profilethumbs/user.png' class='tinypp'>
+echo "<img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='tinypp'>
 <div id='sugtxt'>
 <input type='text' class='rates' value='error' id='sugusername'>
 <b>No user found</b><br>
@@ -725,7 +732,7 @@ echo "<img src='images/profiles/profilethumbs/user.png' class='tinypp'>
 }}
 
 else if ($req == "SUGGEST" and $id == ""){
-    echo "<img src='images/profiles/profilethumbs/user.png' class='tinypp'>
+    echo "<img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='tinypp'>
 <div id='sugtxt'>
 <input type='text' class='rates' value='error' id='sugusername'>
 <b>Username or Email</b><br>
@@ -736,9 +743,35 @@ else if ($req == "SUGGEST" and $id == ""){
 
   
   
+
+  
+//add auth token from backend
+else if ($req == "addAuth"){
+//shorten authkey
+  $authtoken = substr($cu,0,480);//the static version of the token only
+  $addAuth = "UPDATE profiles SET authtoken='$authtoken' WHERE email = '$id'";
+
+if (!mysqli_query($conne,$addAuth)){ die('Error: ' . mysqli_error($conne)); }
+}
   
   
-  //fetch some users for invite. also fetch only if id is given else we spit rand
+//remove auth token from backend
+else if ($req == "removeAuth"){
+
+  $removeAuth = "UPDATE profiles SET authtoken=NULL WHERE email = '$id'";
+
+echo "Disconnected your Google channel";
+
+if (!mysqli_query($conne,$removeAuth)){ die('Error: ' . mysqli_error($conne)); }
+}
+  
+  
+  
+  
+  
+  
+
+//fetch some users in the search bar
 else if ($req == "fetchforusers"){
 $axeprofile = mysqli_query($conne,"SELECT * FROM profiles WHERE username LIKE '%$id%' AND confirm > '' OR email LIKE '%$id%' AND confirm > '' LIMIT 8 ");
 $got = 0;
@@ -752,13 +785,13 @@ while($row = mysqli_fetch_array($axeprofile)) {
 
   if ($cu == "hinput"){
 echo "
-<a href='/profile/$sugname'><div class='lilput' style='display:inline-block;'><img src='/images/profiles/profilethumbs/$sugpic' class='lilprofilephoto'><div class='jal'></div>@$sugname</div></a>
+<a href='/profile/$sugname'><div class='lilput' style='display:inline-block;'><img src='$sugpic' class='lilprofilephoto'><div class='jal'></div>@$sugname</div></a>
 ";
   }
   
   else{
     echo "
-<a href='/profile/$sugname'><div class='lilput' style='display:inline-block;'><img src='/images/profiles/profilethumbs/$sugpic' class='lilprofilephoto'><div class='jal'></div>@$sugname</div></a>
+<a href='/profile/$sugname'><div class='lilput' style='display:inline-block;'><img src='$sugpic' class='lilprofilephoto'><div class='jal'></div>@$sugname</div></a>
 ";
   }
 }

@@ -67,12 +67,14 @@ echo"
  <input type='text' id='pollprivateid' value='$popr' required class='rates' name='popr'>
 <div class='classholdertext'><i class='material-icons' style='vertical-align:sub;font-size:17px'>lock</i> PRIVATE</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='pollprivateclassbtn' onclick='var chjs=\"pollprivate\";allclass(chjs)'><i class='material-icons' style='vertical-align:bottom;font-size:16px'>lock</i></button> 
  </div><br>
-<h class='petd' style='color: #379e65;'>your poll's secure code is </h><h class='minis'><b>'$authkey'</b></h><br>
+<h class='petd' style='color: #379e65;'>your poll's secure code is </h><h class='minis'><b>'$authkey'</b></h><br>";
+    
+ if($governoOnPage == true){
+   echo" <button type='button' class='textButton' onclick='deskChangePollCode()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>vpn_key</i> Change Secure Code</button>";
+ }
  
- <button type='button' class='textButton' onclick='deskChangePollCode()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>vpn_key</i> Change Secure Code</button><br><br>
- 
- 
-<br>
+ echo"
+<br><br><br>
 <div class='blfheadalt'></div>
 <br>
 </div>
@@ -160,10 +162,13 @@ echo"
  <input type='text' id='pollprivateid' value='false' required class='rates' name='popr'>
 <div class='classholdertext'><i class='material-icons' style='vertical-align:sub;font-size:17px'>lock</i> PRIVATE</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='pollprivateclassbtn' onclick='var chjs=\"pollprivate\";allclass(chjs)'><i class='material-icons' style='vertical-align:bottom;font-size:16px'>lock</i></button> 
  </div><br>
- <h class='petd' style='color: #379e65;'>your poll's secure code is </h> <h class='minis'><b>'$authkey'</b></h><br>
- 
-  <button type='button' class='textButton' onclick='deskChangePollCode()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>vpn_key</i> Change Secure Code</button><br><br>
+ <h class='petd' style='color: #379e65;'>your poll's secure code is </h> <h class='minis'><b>'$authkey'</b></h><br>";
   
+   if($governoOnPage == true){
+   echo"<button type='button' class='textButton' onclick='deskChangePollCode()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>vpn_key</i> Change Secure Code</button>";
+ }
+ 
+  echo"<br><br>  
  <a href='help/faq#privatepoll' target='_blank'><h class='petd'>learn more about private polls<i class='material-icons' style='vertical-align:middle;font-size:14px'>arrow_forward</i></h></a><br><br>
  
  

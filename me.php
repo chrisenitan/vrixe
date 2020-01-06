@@ -2,11 +2,13 @@
 require("garage/visa.php"); 
 
 //New user detailes from login page
-    $loginUsername = mysqli_real_escape_string($conne, $_POST['username']);
+    $loginUsername = mysqli_real_escape_string($conne, $_POST['username']);//might be a password
     $loginPassword = mysqli_real_escape_string($conne, $_POST['password']);
     $loginValue = mysqli_real_escape_string($conne, $_POST['lcheck']);
     $rememberme = mysqli_real_escape_string($conne, $_POST['remdev']); //deprecated
     $rate = mysqli_real_escape_string($conne, $_POST['rate']);
+    $longauthtoken = mysqli_real_escape_string($conne, $_POST['token']);
+    $authtoken = substr($longauthtoken,0,480);//the static version of the token only
 
   #New user detailes from edit profile page
     $editimage = $_FILES['editimage']['name'];
@@ -21,46 +23,62 @@ require("garage/visa.php");
 
 //User returning to me page unique
 if (isset($_COOKIE['user']) and $loginValue == "" and $update == ""){
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $usernotfly = 0;
-   while($founduser = mysqli_fetch_array($result)){
-  $usernotfly = 1;
-   $fullname = $founduser['fullname'];
-    $username = $founduser['username'];
-    $checkpasswordsecurity = $founduser['password'];
-    $userheadimg = $founduser['picture'];
-}
-if ($usernotfly == 0){
-  $usernotflyother = "true";
- setcookie("user", "", time() - 3600, "/");
-  }
-  
-  //Check if user account has been locked
-if (substr($checkpasswordsecurity, -14) == "blockedbyvrixe"){
-    setcookie("user", "", time() - 3600, "/"); //delete user login
-    header('Location: index?q=b');
-    }
+  //log user in normal
+  require("garage/passport.php");
 }
 
 //New login from index
-elseif (!isset($_COOKIE['user']) and $loginValue == "valid" and $update == ""){
-   $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$loginUsername' AND password = '$loginPassword' OR email = '$loginUsername' AND password = '$loginPassword' LIMIT 1"); 
- $founds = 0;
+else if (!isset($_COOKIE['user']) and $loginValue > "" and $update == ""){
+  //use default values if needed
+  if($loginValue == "loginwithgoogle"){
+ $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' AND authtoken = '$authtoken' LIMIT 1"); 
+ $founds = false;
    while($loguser = mysqli_fetch_array($trylog)){
-     $founds = 1;
+     $founds = true;
+    $cookie = $loguser['cookie'];
+    $userauth = $loguser['authtoken'];
+    $fullname = $loguser['fullname'];
+    $username = $loguser['username'];
+    $userheadimg = $loguser['picture'];
+    //check auth and log user in
+     if($userauth == $authtoken){     
+    setcookie("user", $cookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); 
+     }
+    else{$founds = false;}//kill login process
+}
+    
+//check if there was actually a user. only if we did not find normal google login
+ if($founds == false){
+    $checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$loginUsername' LIMIT 1"); 
+ $shouldsync = 0;
+   while($tosync = mysqli_fetch_array($checkuser)){
+     $shouldsync = 1;
+    $tosyncemail = $tosync['email']; 
+} if($tosyncemail == $loginUsername){//there was a user
+     $toSyncMessage = true;
+   }else{$toSyncMessage = false;}
+}
+  
+}
+  
+  //try login with normal values
+  else{
+ $trylog = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$loginUsername' AND password = '$loginPassword' OR email = '$loginUsername' AND password = '$loginPassword' LIMIT 1"); 
+   while($loguser = mysqli_fetch_array($trylog)){ 
+     $founds = true;
     $cookie = $loguser['cookie'];
     $fullname = $loguser['fullname'];
     $username = $loguser['username'];
     $userheadimg = $loguser['picture'];
     setcookie("user", $cookie, time() + (86400 * 366), "/; samesite=Lax", "", true, true); 
-
-     //Check the cookie for new login mails
+  }}
+    
+ //Check the cookie for new login mails
 if (isset($_COOKIE['formail']) ){
   if ($_COOKIE['formail'] == $username){ 
  $known = 0; 
 }
-  //remove old user and update as new user logging in
+ //remove old user and update as new user logging in
 else{
   $known = 1;
   setcookie("formail", "", time() - 3600, "/"); //delete old person
@@ -72,18 +90,24 @@ else {
   $known = 1;
  setcookie("formail", $username, time() + (86400 * 366), "/; samesite=Lax", "", true, true);//lets remeber him now
 }
-}
-if ($founds == 0){$newUserLogInNotFound = "true";}#its an old user who doesnt know his credentials
+  
+if ($founds == false){$newUserLogInNotFound = true;}#its an old user who doesnt know his credentials
 
-}
+}//oeof new login from index
 
 //New user edit profile
 else if (isset($_COOKIE['user']) and $loginValue == "" and $update == "available"){
-  $uploadOk = 1;
-$cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
+   $uploadOk = 1;
+   $cookie = $_COOKIE['user'];
+   $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
    while($founduser = mysqli_fetch_array($result)){
    $picture = $founduser['picture']; //get the users old picture name
+     
+    $pwrfLenght = strlen($picture); //get full url lenght    
+    $pwrcutback = $pwrfLenght - strlen($serverAndImageUrl);//remove lenght of server image url from full picture lenght
+    $pictureWithoutUrl = substr($picture,-$pwrcutback);//cut out that text leghnt from the full text
+     
+    
    $oldpass = $founduser['password']; //get the users old pass to know chage
    $oldcook = $founduser['cookie']; //get the users old pass to know chage
 }
@@ -106,13 +130,13 @@ if (!mysqli_query($conne,$refreshcook))
 if ($ii == ""){
    $newimage = $picture; //image to database is now what was there before
 }
-else{ //user posted something check if old is ours
+else{//user posted something check if old is ours
   if ($ii == "user"){
 
-    if($picture != "user.png"){
+    if($picture != "https://vrixe.com/images/profiles/user.png"){
   //if its not ours unhook
- unlink("images/profiles/$picture");
-unlink("images/profiles/profilethumbs/$picture");
+ unlink("images/profiles/$pictureWithoutUrl");
+unlink("images/profiles/profilethumbs/$pictureWithoutUrl");
 }else{//nothing ah
 }
   
@@ -124,7 +148,7 @@ $target_file = $storein . $giby; //where to store + ran numb + uploaded img
 $uploadOk = 1;
 $imageFileType = pathinfo($editimage,PATHINFO_EXTENSION);
 
- $newimage = $giby;//we will then save what was newly sent as imagename
+$newimage = $serverAndImageUrl .$giby;//set image to be sql updated as link + exran.fileextnsion
 
     
 // Check file size
@@ -141,13 +165,13 @@ elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "
     }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-  $newimage = "user.png"; 
+  $newimage = "https://vrixe.com/images/profiles/user.png"; 
   unlink("images/profiles/$giby");
 unlink("images/profiles/profilethumbs/$giby");
-    echo "<div id='valert' onclick='closealert()'>Could not compress image</div>";
+ echo "<div id='valert' onclick='closealert()'>Could not compress image</div>";
 }
     
-     else {      
+     else {
           //crop image code here
        $what = getimagesize($_FILES["editimage"]["tmp_name"]); $widths = $what[0];  $heights = $what[1]; 
        
@@ -196,13 +220,13 @@ unlink("images/profiles/profilethumbs/$giby");
         
         
     if ($thumbpass == 'true') {
-   //everything passed 
+   //everything passed. image uploaded
       
     } else {
-         $newimage = "user.png";
-      unlink("images/profiles/$giby");
-unlink("images/profiles/profilethumbs/$giby");
-       echo "<div id='valert' onclick='closealert()'>Error with image format.</div>";
+         $newimage = "https://vrixe.com/images/profiles/user.png";
+     unlink("images/profiles/$giby");
+     unlink("images/profiles/profilethumbs/$giby");
+     echo "<div id='valert' onclick='closealert()'>Error with image format.</div>";
     }
      }//end of uploadok safe to save
 }// end of user posted an image for us to upload
@@ -227,37 +251,31 @@ if (!mysqli_query($conne,$finallyupdate))
 }
 
 
-}
-else {  echo "<script>
-document.location = 'index.php?q=profile';
-</script>";} #its prolly a sinner typing ordinary url 
+}//eof user edit profile
+//user is not editing, returning or loggin in
+else { 
+header("Location: index"); 
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <?php
-if ($cookie > ""){echo "<title> $fullname | Vrixe</title>
-  <meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>";
-$pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>$fullname</button>";
-}
+if ($cookie > ""){echo "<title> $fullname | Vrixe</title>"; }
 else {echo "<title>No User Found</title>";}#redirect would have hanled this
 ?>
+<meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>
 <link rel="manifest" href="manifest.json">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("garage/resources.php"); ?>
 <?php require("garage/validuser.php"); ?>
-    <meta name="robots" content="noindex">
-  <meta name="googlebot" content="noindex">
-  
- <style>
-    body{
-      background-color: #f5f5f5;
-    }
-  </style>
+<meta name="robots" content="noindex">
+<meta name="googlebot" content="noindex">
+<style> body{ background-color: #f5f5f5; } </style>
 </head>
 <body>
-  <?php require("./garage/absolunia.php"); ?>
+<?php require("./garage/absolunia.php"); ?>
   
 <div id="gtr" onclick="closecloseb()"></div>
 
@@ -265,7 +283,8 @@ else {echo "<title>No User Found</title>";}#redirect would have hanled this
 <?php require("garage/desksearch.php"); ?>
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe'>$fullname</button>";
+  require("garage/mobilehead.php"); ?>
 <?php 
 //set icon color
 $mecolor = "style='color:#1fade4'";
@@ -275,46 +294,43 @@ require("garage/subhead.php");?>
 <?php require("garage/thesearch.php"); ?>
 
 <br>
-
 <?php
-//user has a cookie but somehow we did not find that user in db so we deletethe cookie and ask for a relogin
-if ($usernotflyother == "true"){
- echo"
-<div class='pagecen'>
-<div class='pef'>
-  <div class='blfhead'>Login is required</div><br>
-
-  <img alt='Account missing' src='images/essentials/relogin.png' class='everybodyimg'>
-  <h class='miniss'>Seems you changed your account password recently.<br>Please Login again to secure your account.<br>
-  <a href='help/faq.php#relog'>Learn More</a><br><br>
-   <a href='index'><button class='copele'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Log In</button></a><br><br>
-  <a href='help/feedbacks'>Send us a feedback</a></h>
- <br><br>
-
-   <div class='blfheadalt'></div>
-  </div>
-  </div>
-";
-}
-
-
-else if ($newUserLogInNotFound == "true"){ #give box that says it wasnt found
+ // user wasnt found
+if ($newUserLogInNotFound == true){
   echo"
 <div class='pagecen'>
 <div class='pef'>
 <div class='blfhead'>...almost caught</div><br>
+<img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>";
 
-
-  <img alt='Account missing' src='https://vrixe.com/images/essentials/nodata.svg' class='everybodyimg'>
-  <h class='miniss'>We could not find your account.<br>Either the password or username you entered is incorrect.<br><br>
-   <a href='index'><button class='copele'>TRY AGAIN</button></a><br><br>
-  <a href='index.php?q=recover_password'>Forgot Password?</a></h>
+//for users waiting to sync gmail
+if($toSyncMessage == true){
+  echo"
+  <h class='miniss'>What is happening here?</h>
+  <h class=disl>Looks like your account has not been connected to a gmail login channel.</h><br><br>
+  <h class='miniss'>What can I do?</h>
+  <h class=disl>Please login using your email and password<br>
+  Then authorise Google as your login channel under your <b>Account Settings</b></h><br><br>
+   <a href='index'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Password Login</button></a><br><br>
+  <h class='miniss'><a href='index.php?q=recover_password'>Forgot Password?</a></h>
  <br><br>
 
  <div class='blfheadalt'></div>
   </div>
+  </div>";
+}
+else{
+  echo"
+  <h class='miniss'>We could not find your account.<br>Either the password or username you entered is incorrect.<br><br>
+   <a href='index'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>refresh</i> Try Again</button></a><br><br>
+ <h class='miniss'><a href='index.php?q=recover_password'>Forgot Password?</a></h>
+ <br><br>
+
+ <div class='blfheadalt'></div>
   </div>
-";}
+  </div>";
+}}
+  
 else {
     $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' AND username = '$username' LIMIT 1"); 
  $confirm = 0;
@@ -354,7 +370,7 @@ echo "<div class='postcen'>
 
 <button onclick='prcshare()' aria-label='edit profile' id='profilesettings' title='Share Link. vrixe.com/profile/$username'><i class='material-icons'>share</i></button><br><br>
 
-<img src='images/profiles/$picture' class='profilephoto' alt='$username'><br><br>
+<img src='$picture' class='profilephoto' alt='$username'><br><br>
 <div id='pwb'>
 $fullname<br><div id='cateuser'> @$username </div>
 <p class='minis' style='width:96%;margin:auto'>$bio</p>
@@ -478,8 +494,7 @@ echo "<div class='cards' style='$cardBack' id='$r'><br>
 <a href='desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>
 ";
 }
-     
-     echo"
+echo"
      <button onclick='share$r()' type='button' class='cardsactions' title='Share Event'><i class='material-icons'>share</i><br>share</button>
      <button onclick='a$r()' type='button' class='cardsactions' title='Delete Event'><i class='material-icons'>delete</i><br>delete</button>
      
@@ -493,10 +508,10 @@ if($status == 'invite'){
 <button class='cardsactions' style='width:auto'><i class='material-icons'>swap_horizontal_circle</i><br>move to plan</button>
 </form>";}
 else if($status == 'plan'){ 
-  echo"<button class='cardsactions' style='width:auto'><i class='material-icons'>widgets</i><br>plan in progress</button>";
+  echo"<button class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>this plan is in progress</button>";
 }
  else{
-       echo"<button class='cardsactions' style='width:auto'><i class='material-icons'>assignment_turned_in</i><br>event approved</button>";
+       echo"<button class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>event approved</button>";
  }
 
      
@@ -566,11 +581,11 @@ if($gotyourevents == 0){
 <button class='allcopele' id='ga_pmc'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>perm_contact_calendar</i> My Contacts</button>
    </div></a>
 
-    <a href='/account/profile_analytics'><div class='cards'>
-  <p class='miniss'>Invites to Events Planned</p>
-   <img alt='make plans' src='/images/essentials/contacts.svg' style='width:60%;' class='everybodyimg'>
+    <a href='edit_profile'><div class='cards'>
+  <p class='miniss'>Update your profile</p>
+   <img alt='vrixe profiles' src='/images/essentials/contacts.svg' style='width:60%;' class='everybodyimg'>
 <br>
-<button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:text-top'>notifications</i> My Invitations</button>
+<button class='allcopele' id='ga_pmi'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Edit Profile</button>
    </div></a>
 
   <a href='/app/pwa.html'><div class='cards'>

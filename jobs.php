@@ -1,26 +1,7 @@
 <?php
-require("garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Jobs</button>";
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Jobs</button>";
-}}
-else{
-     $fullname = "";
-   $username = "";
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Jobs</button>";
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +22,8 @@ else{
 <?php require("garage/desksearch.php");  ?>
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Jobs</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 
@@ -97,23 +79,17 @@ $cid = $row['cid'];
   <h class='miniss'>There's always a position open</h><br><h class='disl'>We are refining the requirements to realistic expectations, please check back for new positions. Can't wait? Please send us your CV and we'll get back to you</h> <br><br>
    <a href='mailto:openinterest@vrixe.com'><button class='copele'><i class='material-icons' style='vertical-align: text-top;font-size: 17px;'>mail</i> MAIL US</button></a><br><br>
 
-   <h class='miniss'>More?</h><br>
+   <h class='miniss'>We have a Progressive Web App</h><br>
 
 <i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 
   </div>";
  }
   
-  
-  
-  
-  
-  
-  
-  ?>
+?>
   
   
   

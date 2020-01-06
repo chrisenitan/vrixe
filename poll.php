@@ -1,9 +1,11 @@
 <?php
-require("garage/visa.php"); 
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php"); 
 //poll page to show user. will generate actual poll from user_poll
  $ppaccesscode = mysqli_real_escape_string($conne, $_POST['authkey']);
 if($ppaccesscode > ""){
-     $pollref = mysqli_real_escape_string($conne, $_GET['id']); #turn ref into ordinary text
+$pollref = mysqli_real_escape_string($conne, $_GET['id']); #turn ref into ordinary text
   
   $geteventname = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$pollref' LIMIT 1"); 
    while($rowfep = mysqli_fetch_array($geteventname)){
@@ -48,32 +50,6 @@ else{
   header('Location: me');
 }
 
-
-
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $userisverified = $founduser['confirm'];
-   $mycontacts = $founduser['contacts'];
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>$neventname</button>";
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-   $fullname = "relog";
-   $username = "";
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>$neventname</button>";
-}}
-else{
-     $fullname = "";
-   $username = "";
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>$neventname</button>";
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +78,8 @@ else{
 <?php require("./garage/deskpop.php"); ?>
 
 
-<?php require("./garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>$neventname</button>";
+  require("./garage/mobilehead.php"); ?>
 
 <?php 
 

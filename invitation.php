@@ -1,24 +1,7 @@
 <?php
-require("garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $useremail = $founduser['email'];
-      $link = $founduser['link'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Invitations</button>";
-      $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  echo "<script> document.location = 'me';</script>";
-}}
-else{
- // later
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +29,8 @@ width:45%;
 
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Invitations</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 
@@ -82,7 +66,6 @@ $probecue =  $rowiv['cue']; $cue = htmlspecialchars($probecue, ENT_QUOTES);
 $probecuf =  $rowiv['cuf']; $cuf = htmlspecialchars($probecuf, ENT_QUOTES);
 
 
-    $email = $rowiv['email'];
     $code = $rowiv['refs'];
     $view = $rowiv['views']; if($view == 1){$views = "$view view";}else{$views = "$view views";}
     $owner = $rowiv['hype'];
@@ -190,7 +173,7 @@ if ($claim == "owner" and $username == $owner) { //its your event see it naked
 echo"<div class='pef'>
 <script>
   var iv = '$code';
-   var cu = '$useremail';
+   var cu = '$email';
 </script>
 <br>
 
@@ -203,38 +186,38 @@ echo"<div class='pef'>
 $countallcu = 0; //just oreset so we dntcall unset var
 if($cuam > ""){
   echo "
-<a href='profile/$cuam'><div class='lilput'><img src='images/profiles/profilethumbs/$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cuam</div></a>";
+<a href='profile/$cuam'><div class='lilput'><img src='$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cuam</div></a>";
 $countcua = 1;
 }
 
 
 if($cubm > ""){
   echo "
-<a href='profile/$cubm'><div class='lilput'><img src='images/profiles/profilethumbs/$cubimg' class='lilprofilephoto'><div class='jal'></div>$cubm</div></a>";
+<a href='profile/$cubm'><div class='lilput'><img src='$cubimg' class='lilprofilephoto'><div class='jal'></div>$cubm</div></a>";
 $countcub = 1;
 }
 
 if($cucm > ""){
   echo "
-<a href='profile/$cucm'><div class='lilput'><img src='images/profiles/profilethumbs/$cucimg' class='lilprofilephoto'><div class='jal'></div>$cucm</div></a>";
+<a href='profile/$cucm'><div class='lilput'><img src='$cucimg' class='lilprofilephoto'><div class='jal'></div>$cucm</div></a>";
 $countcuc = 1;
 }
 
 if($cudm > ""){
   echo "
-<a href='profile/$cudm'><div class='lilput'><img src='images/profiles/profilethumbs/$cudimg' class='lilprofilephoto'><div class='jal'></div>$cudm</div></a>";
+<a href='profile/$cudm'><div class='lilput'><img src='$cudimg' class='lilprofilephoto'><div class='jal'></div>$cudm</div></a>";
 $countcud = 1;
 }
 
 if($cuem > ""){
   echo "
-<a href='profile/$cuem'><div class='lilput'><img src='images/profiles/profilethumbs/$cueimg' class='lilprofilephoto'><div class='jal'></div>$cuem</div></a>";
+<a href='profile/$cuem'><div class='lilput'><img src='$cueimg' class='lilprofilephoto'><div class='jal'></div>$cuem</div></a>";
 $countcue = 1;
 }
 
 if($cufm > ""){
   echo "
-<a href='profile/$cufm'><div class='lilput'><img src='images/profiles/profilethumbs/$cufimg' class='lilprofilephoto'><div class='jal'></div>$cufm</div></a>";
+<a href='profile/$cufm'><div class='lilput'><img src='$cufimg' class='lilprofilephoto'><div class='jal'></div>$cufm</div></a>";
 $countcuf = 1;
 }
 
@@ -252,20 +235,20 @@ else{
 echo"<br>
 <b><h class='bottoms'>$views $acceptedsofar</h></b>";
 if($class == 'private'){
-  echo "<br><h class='bottoms'>Your private access key is <b>$authkey</b></h>";
+  echo "<br><h class='miniss'>Your private access key is <b>$authkey</b></h>";
 }
 
-echo"
-<br><br>
+echo"<br><br>
 <a href='desk.php?code=$code'><button class='control' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>edit</i> Edit Invite</button></a>
 
 <a href='#pulldown'><button onclick='deleteSentInvite(iv)' class='triocontrol' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>delete</i> Delete</button></a>
 <br><br><div class='jal'></div>
 
-
+<div id='polishmtp'>
 <h class='disl'>plans let you add and edit more details together with your invitees</h><br><br>
 
 <button onclick='movetoplan(\"MOVE TO PLAN\", iv)' class='copele' type='button' id='d_pull'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>swap_horiz</i> Move To Plan</button><br>
+</div>
 
 <div id='result'></div><br>
 
@@ -327,41 +310,41 @@ if($cua > "" and $cua != "$username" or $cub > "" and $cub != "$username" or $cu
 
 if($cua > "" and $cua != "$username"){
   echo "
-  <a href='profile/$cua'><div class='lilput'><img src='images/profiles/profilethumbs/$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cua</div></a>
+  <a href='profile/$cua'><div class='lilput'><img src='$cuaimg' class='lilprofilephoto'><div class='jal'></div>$cua</div></a>
   ";
 }
 
 
 if($cub > "" and $cub != "$username"){
   echo "
-  <a href='profile/$cub'><div class='lilput'><img src='images/profiles/profilethumbs/$cubimg' class='lilprofilephoto'><div class='jal'></div>$cub</div></a>
+  <a href='profile/$cub'><div class='lilput'><img src='$cubimg' class='lilprofilephoto'><div class='jal'></div>$cub</div></a>
   ";
 }
 
 if($cuc > "" and $cuc != "$username"){
   echo "
-  <a href='profile/$cuc'><div class='lilput'><img src='images/profiles/profilethumbs/$cucimg' class='lilprofilephoto'><div class='jal'></div>$cuc</div></a>
+  <a href='profile/$cuc'><div class='lilput'><img src='$cucimg' class='lilprofilephoto'><div class='jal'></div>$cuc</div></a>
   ";
 }
 
 
 if($cud > "" and $cud != "$username"){
   echo "
-  <a href='profile/$cud'><div class='lilput'><img src='images/profiles/profilethumbs/$cudimg' class='lilprofilephoto'><div class='jal'></div>$cud</div></a>
+  <a href='profile/$cud'><div class='lilput'><img src='$cudimg' class='lilprofilephoto'><div class='jal'></div>$cud</div></a>
   ";
 }
 
 
 if($cue > "" and $cue != "$username"){
   echo "
-  <a href='profile/$cue'><div class='lilput'><img src='images/profiles/profilethumbs/$cueimg' class='lilprofilephoto'><div class='jal'></div>$cue</div></a>
+  <a href='profile/$cue'><div class='lilput'><img src='$cueimg' class='lilprofilephoto'><div class='jal'></div>$cue</div></a>
   ";
 }
 
 
 if($cuf > "" and $cuf != "$username"){
   echo "
-  <a href='profile/$cuf'><div class='lilput'><img src='images/profiles/profilethumbs/$cufimg' class='lilprofilephoto'><div class='jal'></div>$cuf</div></a>
+  <a href='profile/$cuf'><div class='lilput'><img src='$cufimg' class='lilprofilephoto'><div class='jal'></div>$cuf</div></a>
   ";
 }
 
@@ -369,9 +352,9 @@ if($cuf > "" and $cuf != "$username"){
 echo "
 <br><br>
 
-<button onclick='process(\"ACCEPT\", iv, cu, dbid)' class='copele' type='utton'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>how_to_reg</i> ACCEPT</button>
+<button onclick='process(\"ACCEPT\", iv, cu, dbid)' class='copele' type='utton'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>how_to_reg</i> Accept</button>
 
-<button onclick='ignoreInvite(iv, cu, dbid)' class='triocontrol' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>person_add_disabled</i> IGNORE</button>
+<button onclick='ignoreInvite(iv, cu, dbid)' class='triocontrol' type='button'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>person_add_disabled</i> Ignore</button>
 
 
 <div id='result'></div>
@@ -410,12 +393,12 @@ if ($gotiv == 0){
 
   <img alt='$iv' src='images/essentials/error.png' class='everybodyimg'>
   <h class='miniss'>First you invite, then you plan.<br>This event has been removed from invite.<br><br>
-   <a href='/event/$iv'><button class='copele'>TO EVENT</button></a><br><br>
+   <a href='/event/$iv'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>event</i> View Event</button></a><br><br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a Progressive Web App<br>
 
 <i class='material-icons' style='color:#065cff;'>add_to_home_screen</i></i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='copele'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 
@@ -480,12 +463,12 @@ else{ //you tried the ordinary link directl via url. show advert
 
   <img alt='$iv' src='images/events/default.jpg' class='thisimage'>
   <h class='miniss'>Invite your friends to something<br>Manage invitations and move to planning stage to collaborate with your friends on that next big thing.<br><br>
-   <a href='aboutvrixe'><button class='copele'>KNOW MORE</button></a><br><br>
+   <a href='aboutvrixe'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>help</i> Know More</button></a><br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a Progressive Web App<br>
 
 <i class='material-icons' style='color:#065cff;'>add_to_home_screen</i></i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 
@@ -499,6 +482,6 @@ else{ //you tried the ordinary link directl via url. show advert
 
 
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("garage/networkStatus.php"); ?>
 </body>
 </html>

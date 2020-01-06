@@ -1,26 +1,4 @@
-<?php #check cookie for registered users
-require("garage/visa.php"); 
-   # $username = mysqli_real_escape_string($conne, $_POST['username']);
-
-if (isset($_COOKIE['user'])){#its someone we know and knows us
- $cookie = $_COOKIE['user'];
-  $result = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
-  $canedit = 0;
-   while($founduser = mysqli_fetch_array($result))
- {
-    $canedit = 1;
-   $fullname = $founduser['fullname'];
-      $username = $founduser['username'];
-      $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Profile</button>";
-      $userheadimg = $founduser['picture'];
-}if ($canedit == 0){
-echo "<script> document.location = 'me';</script>";
-}
-}
-else {  echo "<script>
-document.location = 'index.php';
-</script>";} #its prolly a sinner typing ordinaru url 
-?>
+<?php require("garage/passport.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +14,8 @@ else {
 <meta name="description" content="Edit your Vrixe account.">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-<?php require("garage/resources.php"); ?>
-  
- <style>
-    body{
-      background-color: #f5f5f5;
-    }
-  </style>
+<?php require("garage/resources.php"); ?>  
+ <style> body{ background-color: #f5f5f5; } </style>
 </head>
 <body>
 
@@ -52,40 +25,29 @@ else {
 <?php require("garage/desksearch.php");  ?>
 <?php require("garage/deskpop.php"); ?>
 
-<?php require("garage/mobilehead.php"); ?>
+<?php  $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Profile</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 
 <?php require("garage/thesearch.php"); ?>
 
 <br>
-
 <?php
 
-    $start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
+$start = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
  $confirm = 0;
    while($gotuser = mysqli_fetch_array($start))
  {$confirm = 1;
-$cookie = $gotuser['cookie'];
-$username = $gotuser['username'];
-$email = $gotuser['email'];
-$bio = $gotuser['bio'];
-$link = $gotuser['link'];
-$location = $gotuser['location'];
-$password = $gotuser['password'];
-$picture = $gotuser['picture'];
-$category = $gotuser['category'];
-
 
 echo "<div class='pagecen'>
 <div class='profilebox'>
-
 
 <div class='pef'>
 <div class='blfhead'>Edit Profile</div><br>
 
 <form enctype='multipart/form-data' style='display:block' method='post' action='me.php'>
-<img accept='image/*' src='images/profiles/$picture' id='esi' class='profilephoto' alt='$fullname'>
+<img accept='image/*' src='$userheadimg' id='esi' class='profilephoto' alt='$fullname'>
 <input type='text' style='display:none;' name='imgname' id='ii'><br>
 
 <div id='imageadd'>
@@ -98,18 +60,18 @@ echo "<div class='pagecen'>
 <input maxlength='25' type='text' value='$fullname' class='privinput' name='editfullname' placeholder='... .... ...' required><br>
 <h class='petd'>account name</h><br><br>
 
-<input type='text' id='source' oninput='countkeys()' maxlength='160' class='privinput' name='editbio' placeholder='What I do...' value='$bio'><br>
+<input type='text' id='source' oninput='countkeys()' maxlength='160' class='privinput' name='editbio' placeholder='What I do...' value='$userBio'><br>
 <h class='petd' id='plicate'>Tell people your best skills.</h><br><br>
 
 
-<input maxlength='27' type='text' value='$location' class='privinput' name='editlocation' placeholder='... .... ...'><br>
+<input maxlength='27' type='text' value='$userLocation' class='privinput' name='editlocation' placeholder='... .... ...'><br>
 <h class='petd'>Location</h><br><br>
 
 
 <input type='text' value='$link' class='privinput' name='editlink' placeholder='example.com'><br>
 <h class='petd'>Link</h><br><br>
 
-<input type='text' value='$password' class='privinput' name='editpassword' placeholder='********' id='passin' required><br>
+<input type='text' value='$checkpasswordsecurity' class='privinput' name='editpassword' placeholder='********' id='passin' required><br>
 <h class='petd'>Password</h><br>
 <input type='text' value='available' name='update' class='rates'>
 
@@ -143,12 +105,9 @@ echo "<div class='pagecen'>
 ";
 
 }#end of while
-?>
 
-
-
-
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+  
+require("garage/networkStatus.php"); ?>
 
 </body>
 </html>
