@@ -61,7 +61,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/updateimages/desk.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Simpler Is Better: </h></b></br>
-<h style='font-size:14px'>Minor redesign, new intentful buttons and tooltips now help you understand how to use Vrixe without a PHD.</h>
+<h style='font-size:14px'>App redesign, new intentful buttons and tooltips now help you understand how to use Vrixe without a PHD.</h>
 </div>
 </div><br>
 

@@ -25,15 +25,13 @@ if($phpurla == 'vrixe-enn'){$phpurl = 'vrixe-enn';}else{$phpurl = 'gib';} //vali
 <?php
   //remove user push if user logout out. actual code is below page becaus eof async script 
  if ($signout > "" and $signout == "signout"){
- echo "<script type='application/javascript' src='https://cdn.onesignal.com/sdks/OneSignalSDK.js' async></script>";
-    
-   if($phpurl == 'vrixe-enn'){$appID = '527b2883-5dff-4a9b-88bd-5e2e3e74c9f4';}else{$appID = '151afe3d-500c-49f3-b682-dd9c5084a863';}
-echo"
+ echo "<script type='application/javascript' src='https://cdn.onesignal.com/sdks/OneSignalSDK.js' async></script>
+ 
   <script defer>
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
-      appId: '$appID',
+      appId: '$oneSignalAppId',
     });
   });
 
@@ -42,10 +40,8 @@ OneSignal.push(function() {
 });
 
 </script>
-";
-  }
-  ?>
-  
+";}
+?>  
 <?php //Google Tracking
  echo"<link type='text/css' rel='stylesheet' href='/css/lipstick.css?v=$vv'>
 <script type='text/javascript' async src='/main.js?v=$vv'></script>";
@@ -81,7 +77,7 @@ else{
 }
 
 ?>  
-  <!--SEO-->
+<!--SEO-->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -97,8 +93,7 @@ else{
     "https://www.youtube.com/channel/UCNDZP6M3t_L7Fxxc-a9rYWQ"
   ]
 }
-</script>
-  
+</script>  
 <title>Vrixe | For every team event</title>
 <meta name="robots" content="index, follow">
 <meta name="description" content="Create, edit and plan event projects with your team. Vrixe keeps all your group plan details in one web app that helps you connect with your team and get details to guests faster in a continuous and more engaging way.                ">
