@@ -30,6 +30,7 @@ if ($req == "MOVE TO PLAN"){
 
     while($rowc = mysqli_fetch_array($axcontributor)) {
      $got = 1;
+       $hype = $rowc['owner']; $username = $hype;
         $cua = $rowc['cua'];
         $cub = $rowc['cub'];
         $cuc = $rowc['cuc'];
@@ -37,6 +38,10 @@ if ($req == "MOVE TO PLAN"){
         $cue = $rowc['cue'];
         $cuf = $rowc['cuf'];
      }
+  require("getAllContributorToken.php");
+   //SEND PUSH $allpushes
+  $requestPushAs = "moveToPlan";
+  require("genericPush.php"); 
 
     echo "<br>";
     while($row = mysqli_fetch_array($axevent)) {

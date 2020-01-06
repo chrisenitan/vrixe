@@ -1,5 +1,6 @@
 <?php
 //sends push as defined
+//pushrefcode might be deprecated... wip
 
 //if dev server
   if($phpurl == 'vrixe-enn'){
@@ -14,17 +15,24 @@
 
               //if event approved page on dev
           else if($requestPushAs == "updatedEvent"){
-              $pushTempId = "754c4eaa-713a-4ede-a2d6-df4155230c1f";
+             $pushTempId = "754c4eaa-713a-4ede-a2d6-df4155230c1f";
              $postRefCode = $postRefCode;
-               $pushLink = $serverUrl."/event/".$postRefCode;
+             $pushLink = $serverUrl."/event/".$postRefCode;
             }
 
           //if invite on dev
          else if($requestPushAs == "createdInvite"){
-              $pushTempId = "3aa42c49-4807-443f-a3be-c315c5d8ad41";
+           $pushTempId = "3aa42c49-4807-443f-a3be-c315c5d8ad41";
            $allpushes = str_replace(",,", ",", $pushlist);//santise array
            $postRefCode = $postRefCode;
-            $pushLink = $serverUrl."/event/".$postRefCode;
+           $pushLink = $serverUrl."/event/".$postRefCode;
+            }
+    
+     //if move to plan on dev WIP
+         else if($requestPushAs == "moveToPlan"){
+           $pushTempId = "bf387bd2-19d3-4377-953e-aef1fa14cc2c";
+           $postRefCode = $id;
+           $pushLink = $serverUrl."/event/".$id;
             }
   }
 
@@ -34,24 +42,31 @@ else{
 
           //if event approved page on live
          if($requestPushAs == "approvedEvent"){
-              $pushTempId = "b7a18100-4eba-4968-ad2f-243d827aaf97";
+           $pushTempId = "b7a18100-4eba-4968-ad2f-243d827aaf97";
            $postRefCode = $postRefCode;
-            $pushLink = $serverUrl."/event/".$postRefCode;
+           $pushLink = $serverUrl."/event/".$postRefCode;
             }
 
             //if event approved page on live
          else if($requestPushAs == "updatedEvent"){
-              $pushTempId = "8e5bca1d-2755-4877-913e-a91e8584c2c0";
+           $pushTempId = "8e5bca1d-2755-4877-913e-a91e8584c2c0";
            $postRefCode = $postRefCode;
-            $pushLink = $serverUrl."/event/".$postRefCode;
+           $pushLink = $serverUrl."/event/".$postRefCode;
             }
 
               //if invite on live
          else if($requestPushAs == "createdInvite"){
-              $pushTempId = "da019b3a-7e60-4148-ac16-0234f9c99c8b";
+           $pushTempId = "da019b3a-7e60-4148-ac16-0234f9c99c8b";
            $allpushes = str_replace(",,", ",", $pushlist);//santise array
            $postRefCode = $postRefCode;
-            $pushLink = $serverUrl."/event/".$postRefCode;
+           $pushLink = $serverUrl."/event/".$postRefCode;
+            }
+  
+       //if move to plan on live WIP
+         else if($requestPushAs == "moveToPlan"){
+           $pushTempId = "82e65900-8b51-4594-b1ce-3f9df00d9a0c";
+           $postRefCode = $id;
+           $pushLink = $serverUrl."/event/".$id;
             }
 
 }
