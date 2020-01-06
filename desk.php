@@ -1,30 +1,6 @@
 <?php
-require("garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-    $useremail = $founduser['email']; $email = $useremail;
-    $cut = $founduser['confirm'];
-     $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
-   $userheadimg = $founduser['picture'];
-     $accountCreationDate = $founduser['created'];
-     $cutcok = $founduser['cookie'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-}
-}
-else{ 
- echo "<script>
- document.location = 'index.php?q=account_needed';
- </script>";
-}
+require("garage/passport.php"); 
+//$defaultErrorLink = "index.php?q=account_needed";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +78,9 @@ window.addEventListener('drop', function(dd){
 <?php require("garage/deskpop.php"); ?>
 
 
-<?php require("garage/mobilehead.php"); ?>
+<?php 
+$pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Edit Plans</button>";
+  require("garage/mobilehead.php"); ?>
 
 <?php require("garage/subhead.php");?>
 
@@ -204,6 +182,8 @@ $imgname = $row['imgname'];
 $imgthumb = $row['imgthumb'];
 $year = $row['year']; 
 $npdate = substr($year, 7); 
+ //check for governoOnPage
+ if($username == $hype){$governoOnPage = true;}else{$governoOnPage = false;}
 
 $probecua =  $row['cua']; $cua = htmlspecialchars($probecua, ENT_QUOTES);
 $probecub =  $row['cub']; $cub = htmlspecialchars($probecub, ENT_QUOTES);
@@ -282,7 +262,7 @@ width:45%;
 }}
 </style>
 
-<form style='width:100%' action='update_event.php' method='post' autocomplete='off' enctype='multipart/form-data'>
+<form style='width:100%' action='update_event' method='post' autocomplete='off' enctype='multipart/form-data'>
 <div style='text-align: center;'> 
 
 
@@ -317,7 +297,7 @@ width:45%;
 <div class='pef' id='first'>
 <div class='blfhead'>Dates</div><br>
 <h class='petd' style='color: #379e65;'>starting with the basics</h><br><br>
-<h class='blf'>Current Stage<span class='asterik'>*</span></h><br>
+<h class='blf'>Current Plan Task<span class='asterik'>*</span></h><br>
 <input type='text'  id='evtyp' class='privinput' name='type' title='club, fashion show, seminar...' maxlength='58' placeholder='Looking for a venue...' value='$tag' onchange='var weidalt=\"whotag\";allwho(weidalt)' required><br>
 <input type='text' id='whotag' value='$whotag' class='rates' name='whotag' required>
 <div class='whoedit'>$whotag</div><br>
@@ -459,7 +439,7 @@ width:45%;
 <input type='text' id='whoorganiser' value='$whoorganiser' class='rates' name='whoorganiser' required>
 <div class='whoedit'>$whoorganiser</div><br><br>
 
-<h class='blf' id='scrollAccessCode'>Whatsapp Group Link</h><br>
+<h class='blf' id='scrollAccessCode'>Whatsapp Chat-group Link</h><br>
 <input type='url' value='$wapweb' id='evweb' class='privinput' name='wapweb' placeholder='... .... ...' onchange='var weidalt=\"whowapweb\";allwho(weidalt)'><br>
 <input type='text' id='whowapweb' value='$whowapweb' class='rates' name='whowapweb' required>
 <div class='whoedit'>$whowapweb</div><br><br>
@@ -475,9 +455,9 @@ width:45%;
 <input type='text' id='whorsvpmail' value='$whorsvpmail' class='rates' name='whorsvpmail' required>
 <div class='whoedit'>$whorsvpmail</div><br><br>";
 
- //jus a way to change auth key
+ //just a way to change auth key
 
-if ($username == $hype){
+if ($governoOnPage == true){
   echo " <h class='blf'>Your Secure Access Code</h><br>
 <input type='text' value='$authkey' class='privinput' name='authkey' placeholder='... .... ...' id=accessCode><br>
 <h class='petd'>password to lock private events. only you can see this</h><br><br>";
@@ -693,7 +673,7 @@ require('garage/validuser.php'); //call mover script
 </style>
 <div class='respef'>
 
-<form method='post' action='update_event.php' style='width:100%' autocomplete='off'>
+<form method='post' action='update_event' style='width:100%' autocomplete='off'>
 <div class='respbox' id='fres'>
   <div class='blfhead' style='color:#c3c5cc;border-bottom:1px solid#'>Edit your Invite</div><br><br>
 <input type='text' value=\"$event\" class='grivinput' name='event' placeholder='... .... ...' required><br>
@@ -846,17 +826,17 @@ if($cua > ""){
 </script>
 
 
-<div class='lilput' id='boxcua'><img src='images/profiles/profilethumbs/$cuaimg' class='lilprofilephoto'><div class='jal'></div>@$cua <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cua, dbid$cua);junkuser(dbid$cua, box$cua)'>remove</div></div>
+<div class='lilput' id='boxcua'><img src='$cuaimg' class='lilprofilephoto'><div class='jal'></div>@$cua <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cua, dbid$cua);junkuser(dbid$cua, box$cua)'>remove</div></div>
 <input type='text' id='cua' name='cua' value='$cua' class='rates' placeholder='... .... ...'>
  <div id='boxaa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
     </div>
 ";
 }
   else{
     echo "
     <div id='boxaa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h> 
     </div>
 <input type='text' id='cua' name='cua' class='rates'>";
   }
@@ -878,17 +858,17 @@ if($cub > ""){
     var box$cub = 'boxcub';
 </script>
 
-<div class='lilput' id='boxcub'><img src='images/profiles/profilethumbs/$cubimg' class='lilprofilephoto'><div class='jal'></div>@$cub <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cub, dbid$cub);junkuser(dbid$cub, box$cub)'>remove</div></div>
+<div class='lilput' id='boxcub'><img src='$cubimg' class='lilprofilephoto'><div class='jal'></div>@$cub <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cub, dbid$cub);junkuser(dbid$cub, box$cub)'>remove</div></div>
 <input type='text' id='cub' name='cub' value='$cub' class='rates'>
    <div id='boxba' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
     </div>
 ";
 }
   else{
     echo "
     <div id='boxba' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h> 
     </div>
 <input type='text' id='cub' name='cub' class='rates'>";
   }
@@ -909,17 +889,17 @@ if($cuc > ""){
     var box$cuc = 'boxcuc';
 </script>
 
-<div class='lilput' id='boxcuc'><img src='images/profiles/profilethumbs/$cucimg' class='lilprofilephoto'><div class='jal'></div>@$cuc <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuc, dbid$cuc);junkuser(dbid$cuc, box$cuc)'>remove</div></div>
+<div class='lilput' id='boxcuc'><img src='$cucimg' class='lilprofilephoto'><div class='jal'></div>@$cuc <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuc, dbid$cuc);junkuser(dbid$cuc, box$cuc)'>remove</div></div>
 <input type='text' id='cuc' name='cuc' value='$cuc' class='rates'>
     <div id='boxca' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
     </div>
 ";
 }
   else{
     echo "
     <div id='boxca' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h> 
     </div>
 <input type='text' id='cuc' name='cuc' class='rates'>";
   }
@@ -940,17 +920,17 @@ if($cud > ""){
     var box$cud = 'boxcud';
 </script>
 
-<div class='lilput' id='boxcud'><img src='images/profiles/profilethumbs/$cudimg' class='lilprofilephoto'><div class='jal'></div>@$cud <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cud, dbid$cud);junkuser(dbid$cud, box$cud)'>remove</div></div>
+<div class='lilput' id='boxcud'><img src='$cudimg' class='lilprofilephoto'><div class='jal'></div>@$cud <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cud, dbid$cud);junkuser(dbid$cud, box$cud)'>remove</div></div>
 <input type='text' id='cud' name='cud' value='$cud' class='rates'>
     <div id='boxda' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
     </div>
     ";
 }
   else{
     echo "
     <div id='boxda' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h> 
     </div>
 <input type='text' id='cud' name='cud' class='rates'>";
   }
@@ -971,17 +951,17 @@ if($cue > ""){
     var box$cue = 'boxcue';
 </script>
 
-<div class='lilput' id='boxcue'><img src='images/profiles/profilethumbs/$cueimg' class='lilprofilephoto'><div class='jal'></div>@$cue <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cue, dbid$cue);junkuser(dbid$cue, box$cue)'>remove</div></div>
+<div class='lilput' id='boxcue'><img src='$cueimg' class='lilprofilephoto'><div class='jal'></div>@$cue <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cue, dbid$cue);junkuser(dbid$cue, box$cue)'>remove</div></div>
 <input type='text' id='cue' name='cue' value='$cue' class='rates'>
    <div id='boxea' class='lilput' style='display:none;'>
-     <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
+     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
      </div>
      ";
 }
   else{
     echo "
     <div id='boxea' class='lilput' style='display:none;'>
-     <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
+     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h> 
      </div>
 <input type='text' id='cue' name='cue' class='rates'>";
   }
@@ -1002,17 +982,17 @@ if($cuf > ""){
     var box$cuf = 'boxcuf';
 </script>
 
-<div class='lilput' id='boxcuf'><img src='images/profiles/profilethumbs/$cufimg' class='lilprofilephoto'><div class='jal'></div>@$cuf <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuf, dbid$cuf);junkuser(dbid$cuf, box$cuf)'>remove</div></div>
+<div class='lilput' id='boxcuf'><img src='$cufimg' class='lilprofilephoto'><div class='jal'></div>@$cuf <div class='remlilput'   onclick='process(this.innerHTML, iv, cu$cuf, dbid$cuf);junkuser(dbid$cuf, box$cuf)'>remove</div></div>
 <input type='text' id='cuf' name='cuf' value='$cuf' class='rates'>
     <div id='boxfa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
     </div>
     ";
 }
   else{
     echo "
     <div id='boxfa' class='lilput' style='display:none;'>
-    <img src='images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
+    <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h> 
     </div>
 <input type='text' id='cuf' name='cuf' class='rates'>";
   }
@@ -1068,14 +1048,14 @@ echo"
  <h class='miniss' id='classdetails'></h><br><br>
 
 <!--check analytics-->
+
+<button class='copele' title='Create Event'><i class='material-icons' style='vertical-align:sub;font-size:17px'>done_all</i> Save Changes</button>
+
  <form style='width:100%' action='/invitation.php' method='post'>
 <input type='text' class='rates' value='$code' name='iv'>
 <input type='text' class='rates' value='owner' name='claim'>
- <button formaction='/invitation.php#result' class='triocopele' style='background-color:#f8f8ff;width:auto;color:#dd4b54'><i class='material-icons' style='vertical-align:middle'>swap_horiz</i> move to plan</button>
+<button formaction='/invitation.php#result' class='triocontrol' style='width:auto;'><i class='material-icons' style='vertical-align:sub;font-size:17px'>swap_horiz</i> move to plan</button>
 </form>
-
-<button class='triocopele' title='Create Event'><i class='material-icons' style='vertical-align:middle'>done_all</i> save</button>
-
 
 </div>
 
@@ -1098,13 +1078,13 @@ echo"
     <div class='blfhead'>...we're almost there</div><br><br>
 
   <img alt='$code' src='images/essentials/loading.svg' class='everybodyimg'><br>
-  <h class='miniss'>What is happening here?</h><br><h class='disl'><a href='profile/$hype'>@$hype</a> has not moved this invite to a group plan.<br>You'll be able to edit after this.</h> <br><br>
-   <a href='/event/$code'><button class='copele'>VIEW EVENT</button></a><br><br>
+  <h class='miniss'>What is happening here?</h><br><h class='disl'><a href='profile/$hype'>@$hype</a> has not moved this invite to the planning stage.<br>You'll be able to edit after this.</h> <br><br>
+   <a href='/event/$code'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>event</i> View Event</button></a><br><br>
 
-   <h class='miniss'>More?</h><br>
+   <h class='miniss'>We have a Progressive Web App</h><br>
 
 <i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 

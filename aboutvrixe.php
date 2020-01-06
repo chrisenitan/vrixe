@@ -1,28 +1,9 @@
 <?php 
 header("Feature-Policy: geolocation 'none'");
 error_reporting( error_reporting() & ~E_NOTICE ); //prevent error repr
-require("garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $email = $founduser['email'];
-   $link = $founduser['link'];
-   $mycontacts = $founduser['contacts'];
-   $pagename = "Contacts";//not needed
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  echo "<script> document.location = '/me.php';</script>";
-}}
-else{
-	$username = "";
-}
-
+//do not require user account
+$defaultAllowNoUser = true;
+require("garage/passport.php");
 ?>
 
 <!DOCTYPE html>
@@ -158,8 +139,8 @@ document.location = "tour.php";
 <br>
 
 
-<h class="cyansm"><i class="material-icons">group_work</i> Edit plans together</h><br>
-		Edit and contribute details, see what others are adding, who changed what and collectively finalize decisions.
+<h class="cyansm"><i class="material-icons">group_work</i> Create invites and plans</h><br>
+		Start by sending an invite to your co-planners then move your invite to a plan, everyone can edit and view the updates together.
 <br><br>
   
   <h class="cyansm"><i class="material-icons">subject</i> Add all the details you want</h><br>
@@ -461,14 +442,14 @@ $fetchreviews = mysqli_query($conne,"SELECT * FROM reviews WHERE user = '$userna
    $revux = $founduserviews['ux'];
    $revfeatures = $founduserviews['features'];
    $revsupport = $founduserviews['support'];
-     $puawco = $founduserviews['created'];
+   $puawco = $founduserviews['reviewdate'];
 
 echo "
 <div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/profilethumbs/$userheadimg' class='revpi'><br>
+<img src='$userheadimg' class='revpi'><br>
 <b>$fullname</b><br>
-
+$puawco
 </div>
 
 <div class='revfr'>
@@ -484,20 +465,14 @@ $revtext
 <a href='help/feedbacks.php?rate=o'><div class='altpellets'><i class='material-icons' style='font-size:16px;'>edit</i></div></a>
 
 </div>
-
-
-</div>
-
-
-
-";
+</div>";
 }
 
 if ($gotuserviews == 0){
 	echo"
 	<div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/profilethumbs/$userheadimg' class='revpi'><br>
+<img src='$userheadimg' class='revpi'><br>
 <b>$fullname</b><br>
 @$username
 </div>
@@ -528,7 +503,7 @@ else{
 echo "
 	<div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/user.png' class='revpi'><br>
+<img src='https://vrixe.com/images/profiles/user.png' class='revpi'><br>
 <b>Your Review</b><br>
 @username
 </div>
@@ -568,17 +543,16 @@ $fetchallreviews = mysqli_query($conne,"SELECT * FROM reviews WHERE user > '' an
     $allrevux = $foundalluserviews['ux'];
     $allrevfeatures = $foundalluserviews['features'];
     $allrevsupport = $foundalluserviews['support'];
+    $uawco = $foundalluserviews['reviewdate'];
     
      $getusersimagedirect = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$allusername' ");
      while($founduserimagedirect = mysqli_fetch_array($getusersimagedirect)){
         $alluserpic = $founduserimagedirect['picture'];
-       $uawco = $founduserimagedirect['created'];
      }
  
-echo "
-<div class='scrollrevs'>
+echo "<div class='scrollrevs'>
 <div class='revfl'>
-<img src='images/profiles/profilethumbs/$alluserpic' class='revpi'><br>
+<img src='$alluserpic' class='revpi'><br>
 <b>$allfullname</b><br>
 $uawco
 </div>
@@ -600,29 +574,16 @@ $allrevtext
 </form>
 </div>
 
-
-
-</div>
-
-
-
-";
+</div>";
 }
 
 if ($gotuserviews == 0){
-	//if no review is found
+	//if no review is found.this is impossible at this point
 }
-
-
-
-
 
 ?>
 </div>
 </div>
-
-
-
 
 </div><!--end of reviews-->
 <br>

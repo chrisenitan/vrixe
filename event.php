@@ -1,39 +1,13 @@
 <?php
-require("./garage/visa.php");  
+//do not require user account
+$defaultAllowNoUser = true;
+require("./garage/passport.php"); 
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header("Cache-Control: no-cache");
 header("Pragma: no-cache");
 
 //collect authkey from form if available
 $authkey = mysqli_real_escape_string($conne, $_POST['authkey']);
-
-
-#CHECK FOR COOKIE
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];//finds the promoter
-   $email = $founduser['email'];
-   $pushid = $founduser['pushid'];
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  $cookie = "";
-  $fullname = "relog";
-   $username = "";
-   $email = "";
-}
-}
-else{
-$cookie = "";
-  $fullname = "";
-   $username = "";
-   $email = "";
-}
 
 ?>
 <!DOCTYPE html>
@@ -56,6 +30,8 @@ $title = 0;
 $probedescription= $rowi['description'];$eventDescriptionCleaned = htmlspecialchars($probedescription, ENT_QUOTES);
 $authkeyFromServer = $rowi['authkey'];
 $eventImagethumb = $rowi['imgthumb'];
+$pollCheckButton = $rowi['pollcheck'];
+$programCheckButton = $rowi['programcheck'];
      
 //create navigation button
  $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>" . substr($eventTitleCleaned, 0, 20) . "...</button>";
@@ -105,12 +81,29 @@ else {
   
 <div id="gtr" onclick="closeclose()"></div>
 
-<?php require("./garage/deskhead.php"); ?>
-<?php require("./garage/desksearch.php");  ?>
-<?php require("./garage/deskpop.php"); ?>
-
-<button id="write" onclick="pmenu()"><i class="material-icons">more_vert</i></button>
-
+<?php require("./garage/deskhead.php");
+  require("./garage/desksearch.php");  ?>
+  
+<?php require("./garage/deskpop.php"); 
+  if($pollCheckButton > ""){
+    echo"<a href='/poll/$pureEventRef'><button class='floatBtn floatAddonBtn'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>poll</i></button></a>";
+  }
+  if($programCheckButton > ""){
+    if($pollCheckButton == ""){$bottom = "11.5%";}else{$bottom = "19%";}
+    echo"<button onclick='showprogram()' class='floatBtn floatAddonBtn' style='bottom:$bottom'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>event_note</i></button>";
+  }
+ if($programCheckButton > "" or $pollCheckButton > ""){
+ echo"<script>
+  window.addEventListener('load', function(){
+  var floatButton = document.querySelectorAll('.floatAddonBtn');
+  var inc;
+  for (inc = 0; inc < floatButton.length; inc++) {
+    floatButton[inc].style.transform = 'Scale(0.99)';
+}});
+</script>";
+  }
+  ?>
+<button class="floatBtn" id="write" onclick="pmenu()"><i class="material-icons">more_vert</i></button>
 <?php require("./garage/mobilehead.php"); ?>
 
 <?php require("./garage/subhead.php");?>
@@ -434,39 +427,39 @@ echo "<div id='contributorList'>
 if($contributora > ""){
  echo"<a class='poslik' href='/profile/$contributora'>
 <div class='lilput' style='display: inline-block;'>
-<img src='/images/profiles/profilethumbs/$imageContributora' class='lilprofilephoto'><h style='display: inline-block;'>@$contributora</h></div>";}
+<img src='$imageContributora' class='lilprofilephoto'><h style='display: inline-block;'>@$contributora</h></div>";}
           
           
  if($contributorb > ""){
          echo"<a class='poslik' href='/profile/$contributorb'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorb' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorb</h></div></a>";}
+    <img src='$imageContributorb' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorb</h></div></a>";}
    
  if($contributorc > ""){
          echo"<a class='poslik' href='/profile/$contributorc'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorc' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorc</h></div></a>";}
+    <img src='$imageContributorc' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorc</h></div></a>";}
    
  if($contributord > ""){
          echo"<a class='poslik' href='/profile/$contributord'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributord' class='lilprofilephoto'><h style='display: inline-block;'>@$contributord</h></div></a>";}
+    <img src='$imageContributord' class='lilprofilephoto'><h style='display: inline-block;'>@$contributord</h></div></a>";}
    
   if($contributore > ""){
          echo"<a class='poslik' href='/profile/$contributore'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributore' class='lilprofilephoto'><h style='display: inline-block;'>@$contributore</h></div></a>";}
+    <img src='$imageContributore' class='lilprofilephoto'><h style='display: inline-block;'>@$contributore</h></div></a>";}
    
   if($contributorf > ""){
 echo"<a class='poslik' href='/profile/$contributorf'>
 <div class='lilput' style='display: inline-block;'>
-    <img src='/images/profiles/profilethumbs/$imageContributorf' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorf</h></div></a>";}
+    <img src='$imageContributorf' class='lilprofilephoto'><h style='display: inline-block;'>@$contributorf</h></div></a>";}
    
  echo "</div>"; }
  else{ }
    
 echo "<div id='meniac'>
-<div id='menias'><a class='poslik' href='/profile/$poster'><img src='/images/profiles/profilethumbs/$picture' id='eventprofilephoto'><br><span style='font-size:12px'><span style='color:white'>Created by</span> @$poster</a>";
+<div id='menias'><a class='poslik' href='/profile/$poster'><img src='$picture' id='eventprofilephoto'><br><span style='font-size:12px'><span style='color:white'>Created by</span> @$poster</a>";
  
      if($totalContributorCount > 1){
        if($contributorMinusOwnerCount == 1){

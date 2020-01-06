@@ -1,26 +1,7 @@
 <?php
-require("../garage/visa.php");
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-     $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-     $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Feedbacks</button>";
-    $userheadimg = $founduser['picture'];
-     $userheadconfirm = $founduser['confirm'];
-}
-if ($headcook == 0){
-     $fullname = "relog";
-   $username = "";
-}}
-else{
-     $fullname = "";
-   $username = "";
-   $userheadconfirm = "";
-}
+//do not require user account
+$defaultAllowNoUser = true;
+require("../garage/passport.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,35 +12,25 @@ else{
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 <?php require("../garage/resources.php"); ?>
-
 </head>
 <body onload="uas()">
-
-
 <div id="gtr" onclick="closecloseb()"></div>
+  
+<?php require("../garage/deskhead.php");
+  require("../garage/desksearch.php"); 
+  require("../garage/deskpop.php"); ?>
 
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Feedbacks</button>";
+  require("../garage/mobilehead.php"); ?>
 
-<?php require("../garage/deskhead.php"); ?>
-<?php require("../garage/desksearch.php");  ?>
-<?php require("../garage/deskpop.php"); ?>
-
-
-<?php require("../garage/mobilehead.php"); ?>
-
-<?php require("../garage/subhead.php");?>
-
-<?php require("../garage/thesearch.php"); ?>
-
+<?php require("../garage/subhead.php");
+  require("../garage/thesearch.php"); ?>
 
 
 <br>
-
-
 <div id="bugform" >
 
-
 <?php
-
 if (isset($_GET['ext'])) #if ref is passed as llcv loged out lost login initail cant verify
 {
 $ext = mysqli_real_escape_string($conne, $_GET['ext']);
@@ -75,33 +46,28 @@ if (isset($_GET['rate'])) #if ref is passed as user is trying to rate
 $rate = mysqli_real_escape_string($conne, $_GET['rate']);
 }else {$rate = "";}
 
-$sech = mysqli_real_escape_string($conne, $_POST['refs']); //privding feedback on...
+$sech = mysqli_real_escape_string($conne, $_POST['refs']); //normal privding feedback on...
 
 
 
 if($unmail > ""){ //user is trying to unsubscribe
 $deletemail = mysqli_query($conne,"UPDATE newsletter SET day='unsubscribed' WHERE mail='$unmail' "); 
 
-  echo "
+echo "
    <div class='pef' style='min-height:10px'>
-    <div class='blfhead'>Subscriptions</div><br><br>
+  <div class='blfhead'>Subscriptions</div><br><br>
 
-    <img alt='unsubscribed' src='/images/essentials/removemail.png' class='everybodyimg'><br>
+ <img alt='unsubscribed' src='/images/essentials/removemail.png' class='everybodyimg'><br>
 
     <br><h class='bugdes'>That's it! no more update emails for you...</h><br>
-
-
 <br>
 <div class='blfheadalt'></div></div>
     ";
-
-
 }
 
 
 if($username > "" and $ext == "" and $rate == ""){ //user is simply giving feedback
-
-echo "  <div class='pef'>
+echo "<div class='pef'>
     <div class='blfhead'>Feedbacks</div><br>
 
     <form action='filed.php' method='post' style='width:100%'>
@@ -115,7 +81,6 @@ echo "<br><h class='bugdes'>Providing feedback on <span style='color:#1fade4;'>'
 
 <input type='text' class='rates' value='$username' name='user'>
 <input type='text' class='rates' value='feedback' name='via'>
-
 
 <input type='text' style='display:none;' class='privnput' name='uas' id='bt' required><br>
 <script>
@@ -144,7 +109,6 @@ function threes(){
 function fours(){
   document.getElementById('autofeed').value='Content is a duplicate of';document.getElementById('autofeed').focus()
 }
-
 </script>
 
 ";
@@ -171,8 +135,7 @@ document.getElementById('bt').value=navigator.userAgent;
 }
 
 
-echo"
-<input type='text' name='ranref' class='rates' id='ranref'>
+echo"<input type='text' name='ranref' class='rates' id='ranref'>
 
 <input type='text' name='rate' class='rates'>
 <button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>check</i> Submit</button>
@@ -229,10 +192,9 @@ document.getElementById('bt').value=navigator.userAgent;
 }
 
 
-else if($username > "" and $ext == "" and $rate > "" and $userheadconfirm > ""){ //user is trying to rate us
+else if($username > "" and $ext == "" and $rate > "" and $cut > ""){ //user is trying to rate us
 
-echo " 
-<div class='pef'>
+echo "<div class='pef'>
     <div class='blfhead'>Your Review</div><br>
 
 <i class='material-icons' style='color: #ffdc64;'>star</i>
@@ -324,14 +286,10 @@ document.getElementById('bt').value=navigator.userAgent;
 </select><span style='font-size: 20px;'> %</span>
 </button>
 
-
 <br><br><br>
 
 
-
 <textarea required style='height:90px;' class='privinput' id='autofeed' placeholder='What do you think about vrixe... ...' name='review' required maxlength='200'></textarea><br>
-
-
 
 <br>
 <h class='petd'>reviews are protected by our <br> <a href='/app/terms.html#reviews'><h class='miniss'>Terms & Policies</h></a>.</h><br><br>
@@ -346,36 +304,28 @@ document.getElementById('bt').value=navigator.userAgent;
 
 
 else{ //nobody, just a tourist 
-  echo"
-    <div class='pef'>
+  echo"<div class='pef'>
     <div class='blfhead'>Feedbacks</div><br>
 
-  <img alt='$iv' src='/images/essentials/error.png' class='everybodyimg'>
+  <img alt='$iv' src='/images/essentials/error.png' class='everybodyimg'><br>
+  
   <h class='miniss'>What is Vrixe?</h>
 <br>
-
-  <h class='miniss'>I did not get my emails</h>
+  <h class='miniss'>I do not get any emails from Vrixe</h>
 <br>
+ <h class='miniss'>I can't find my phone!</h>
+<br><br>
+ <h class='disl'>Have you tried Vrixe and found a bug somewhere? or you'd like to ask us some other questions, we'd love to hear from you.<br>..but you have to start by signing up for an account.</h>
+<br><br>
 
+   <a href='/index?q=profile_required'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Sign Up</button></a><br><br><br>
 
-
-
- <h class='miniss'>I can't find my pencil!</h>
-<br>
-
- <h class='bottom'>Tried Vrixe, found a bug? we'd love to hear from you</h>
-<br>
-
-<br>
-   <a href='/index'><button class='copele'>TRY VRIXE</button></a><br><br>
-
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a progressive web app<br>
 
 <i class='material-icons' style='color: #065cff;'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you<br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
 
-<br>
 <div class='blfheadalt'></div></div><br>
 <input type='text' class='rates' id='bt'><br>
 <script>
@@ -386,13 +336,10 @@ document.getElementById('bt').value=navigator.userAgent;
     ";
 }
 
-
-
-
 ?>
 
 </div><br><br>
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 </body>
 </html>

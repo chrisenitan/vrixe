@@ -1,64 +1,36 @@
 <?php
-require("../garage/visa.php"); 
-if (isset($_COOKIE['user'])){
- $cookie = $_COOKIE['user'];
- $cooked = mysqli_query($conne,"SELECT * FROM profiles WHERE cookie = '$cookie' LIMIT 1"); 
- $headcook = 0;
-   while($founduser = mysqli_fetch_array($cooked)){
-    $headcook = 1;
-   $fullname = $founduser['fullname'];
-   $username = $founduser['username'];
-   $email = $founduser['email'];
-   $link = $founduser['link'];
-   $mycontacts = $founduser['contacts'];
-   $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Contacts</button>";
-   $userheadimg = $founduser['picture'];
-}
-if ($headcook == 0){
-  echo "<script> document.location = '/me.php';</script>";
-}}
-else{
- echo "<script>
- document.location = '/index.php';
- </script>";
-}
+require("../garage/passport.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php
-echo "<title>Contacts | $fullname</title>";
-?>
+<?php echo "<title>Contacts | $fullname</title>"; ?>
 <link rel="manifest" href="/manifest.json">
 <meta name="description" content="Keep a list of your friends and team">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-<?php require("../garage/resources.php"); ?>
-
-<?php require("../garage/validuser.php"); ?>
+<?php require("../garage/resources.php");
+  require("../garage/validuser.php"); ?>
 </head>
 <body>
 <?php require("../garage/absolunia.php"); ?>
 <div id="gtr" onclick="closecloseb()"></div>
 
-<?php require("../garage/deskhead.php"); ?>
-<?php require("../garage/desksearch.php");  ?>
+<?php require("../garage/deskhead.php"); 
+  require("../garage/desksearch.php");
+  require("../garage/deskpop.php"); ?>
 
-<?php require("../garage/deskpop.php"); ?>
-
-<?php require("../garage/mobilehead.php"); ?>
+<?php $pagename = "<button class='hbut' id='mbut' aria-label='vrixe' onclick='window.history.back()'><i class='material-icons' style='vertical-align: top;'>keyboard_arrow_left</i>Contacts</button>";
+  require("../garage/mobilehead.php"); ?>
 <?php require("../garage/subhead.php");?>
 <?php require("../garage/thesearch.php"); ?>
 
 
 <br>
-
 <div class="postcen">
-
 <?php
 if ($mycontacts > ""){
   echo"<div class='blfhead'>...select contacts to invite</div>
-  
 <form style='width:100%;' action='/invite.php' method='post'>
 <input class='rates' id='ua' name='ua' required>
 <input class='rates' id='pa' name='pa' required>
@@ -97,7 +69,7 @@ var os$usercid = '$pushid';
 <button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
 
 
-<a href='/profile/$user'><img src='/images/profiles/profilethumbs/$userpic' class='contactphoto'>
+<a href='/profile/$user'><img src='$userpic' class='contactphoto'>
 <b>$fulluser</b><br>
 <span style='font-size:13px'>@$user</span></a><br><br>
 
@@ -112,9 +84,9 @@ var os$usercid = '$pushid';
 else{
      echo "
  <div class='pef'><div class='blfhead'>...your contacts on vrixe</div><br>
-  <h>Know someone you'd like here?</h><br><br><br>
-   <img alt='invite' src='/images/essentials/inviteuser.png' class='everybodyimg'>
-   <br><br><button class='copele' onclick='customshare();'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Invite To Vrixe</button><br>
+ <h>Know someone you'd like here?</h><br><br><br>
+ <img alt='invite' src='/images/essentials/inviteuser.png' class='everybodyimg'>
+ <br><br><button class='copele' onclick='customshare();'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Invite To Vrixe</button><br>
  <br>
  
  <div class='blfheadalt'></div>
@@ -126,10 +98,7 @@ else{
 <br><br>
 
 
-
-
-
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("../garage/networkStatus.php"); ?>
 <br><br>
 </body>
 </html>

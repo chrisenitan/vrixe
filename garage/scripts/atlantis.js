@@ -35,11 +35,10 @@ function ldprice(){
 	}
 }
 
-//finalstep of adding username. predefined
+//finalstep of adding username to invite. predefined
 function insertusername(id, item, itempic, dynobox, itemmail, itempush){
-	var link = 'images/profiles/profilethumbs/';
 	document.getElementById(id).innerHTML= "@" + item;
-	document.getElementById(dynobox).src = link + itempic;
+	document.getElementById(dynobox).src = itempic;
 	document.getElementById(id).style.display="inline-block";
 	document.getElementById("cualt").focus();
 	document.getElementById("cualt").value="";//clear cualt to prevent readding. safety check done by loopusers 	

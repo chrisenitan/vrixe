@@ -629,8 +629,8 @@ background: linear-gradient(to right, #e67c82, #434576)
     overflow: hidden;
 }
 #screenshot{
-  height:auto;
-  width:90%;
+  height:71vh;
+  width:auto;
   margin-top:2%;
   border-radius: 4px;
 }
