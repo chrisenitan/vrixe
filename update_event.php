@@ -396,197 +396,54 @@ $rawallmail = $fmailcua . $fmailcub . $fmailcuc . $fmailcud . $fmailcue . $fmail
   //set all push and last push is owner
 $allpushes = $pushsubscribers . $fpushcua . $fpushcub . $fpushcuc . $fpushcud . $fpushcue . $fpushcuf . $fpushhype;
 
-if($status == "approved"){ //send to all only approved email, no need for notif
+if($status == "approved"){ 
+  
+ //send to all only approved email, no need for notif
+ $customMailSubject = "Signed, sealed, go deliver";
+ $customMailHeader = "...plan approved";
+ $customMailsectionHeader = "Too Soon?";
+ $customMailsectionMessage = "Event approved by @$hype. If you still need to make changes, you can move events back to <b>PLAN</b>. Just open the event menu and click on <b>Revert To Plan</b>";
+ $customMailsuccessMessage = "<div id='galert'>You'll get an email from us shortly.</div><br>";
+ $customMailfailedMessage = "<div id='oalert' >We tried to mail you but Email could not be sent<br>Please retry and if this happens again.<br>Please write us.</div><br>";
+ $customMailcta = "VIEW EVENT";
+ $customMailctaLink = "https://vrixe.com/event/$postRefCode";
+ $customMailctaNudge = "We wish you a great time";
+ $customMailBanner = "https://vrixe.com/mail/banners/eventupdated.jpg";   
+ $Mailemail = $allmail;
+   
+  require("mail/genericMailer.php"); 
 
-$subject = 'Signed, sealed, go deliver';
-$feed = 'feedback@vrixe.com';
-$from = 'contact@vrixe.com';
-
-$headers = 'MIME-Version: 1.0' . "\r\n";
-$headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
-
-$headers .= "Organization: Vrixe\r\n";
-$headers .= "X-Priority: 3\r\n";
-$headers .= "Return-Path: $feed\r\n";
-
-$headers .= 'From: Vrixe '.$from."\r\n".
-      'Reply-To: '.$feed."\r\n" .
-      'X-Mailer: PHP/' . phpversion();
-
-$message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
-
-<p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-Plan Approved!</p>
-
-<p style='margin-top:2px;font-size:14px;text-align:center'>@$hype just approved $probeevent</p><br>
-
-<img alt='new features on vrixe' src='https://vrixe.com/mail/banners/eventupdated.jpg' style='height:auto;width:96%;margin-left:2%'>
-
-
-<div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/event/qa.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Have A Blast: </h></b></br>
-<h style='font-size:14px'>We hope you've enjoyed using Vrixe. Any ideas, complaints, feedback? Please <a href='https://vrixe.com/help/feedbacks'>update us</a> and we'll be happy to work on them with you.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/event/alert.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Early Approval?: </h></b></br>
-<h style='font-size:14px'>If you still need to make changes, you can move events back to <b>PLAN</b>. Just open the event menu and click on <b>Revert To Plan</b>.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/event/tip.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Weird Tip: </h></b></br>
-<h style='font-size:14px'>Did you know that some users never approve plans but just keep reusing for different purposes? You decide if that's being green.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<a href='https://vrixe.com/event/$postRefCode'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#ec3832;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#ec3832;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>VIEW EVENT</div></a><br>
-
-<h style='font-size:12px'>...and we wish you the best time.</h>
-
-
-</div><br><br>
-
-
-
-<div style='text-align:center;width:auto;word-spacing:15px'>
-
-<a href='https://twitter.com/vrixeapp'><img alt='Twitter' src='https://vrixe.com/mail/mtweet.png' style='width:25px;height:25px;display:inline-block'></a>
-
-<a href='https://www.linkedin.com/company/vrixe'><img alt='LinkedIn' alt='linkedin' src='https://www.vrixe.com/mail/mlink.png' style='width:25px;height:25px;display:inline-block'></a>
-
-<a href='https://instagram.com/vrixe'><img alt='Instagram' src='https://vrixe.com/mail/mgram.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://youtube.com/channel/UCNDZP6M3t_L7Fxxc-a9rYWQ'><img alt='Youtube' alt='youtube' src='https://www.vrixe.com/mail/mtube.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://facebook.com/vrixe'><img alt='Facebook' src='https://vrixe.com/mail/mface.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-</div>
-
-<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'>This is a one time email<br>
-</div>
-";
-$message .= "</body></html>";
-
-   if($phpurl == 'vrixe-enn'){
-     //do nothing this code only check if we are on developement server
-   }else{
-if(mail($allmail, $subject, $message, $headers)){
-echo "<div id='galert'>You'll get an email from us shortly.</div><br>";
-} else{
-echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Please retry and if this happens again.<br>Please write us.</div><br>";
-}}
   //SEND PUSH $allpushes
   $requestPushAs = "approvedEvent";
   require("garage/genericPush.php"); 
 }//end of if status is approved
 
 else{//status is either approved or not but notification must have been selected
-
-$subject = 'New update on event';
-$feed = 'feedback@vrixe.com';
-$from = 'contact@vrixe.com';
-
-$headers = 'MIME-Version: 1.0' . "\r\n";
-$headers = 'Content-type: text/html; charset=utf-8' . "\r\n";
-
-$headers .= "Organization: Vrixe\r\n";
-$headers .= "X-Priority: 3\r\n";
-$headers .= "Return-Path: $feed\r\n";
-
-$headers .= 'From: Vrixe '.$from."\r\n".
-      'Reply-To: '.$feed."\r\n" .
-      'X-Mailer: PHP/' . phpversion();
-
-$message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
-
-<p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-Plan Updated!</p>
-
-<p style='margin-top:2px;font-size:14px;text-align:center'>$username just made some changes to <b>$probeevent</b></p><br>
-
-<img alt='your vrixe event' src='https://vrixe.com/mail/banners/eventupdated.jpg' style='height:auto;width:96%;margin-left:2%'>
-
-
-<div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img src='https://vrixe.com/mail/event/greendate.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>From $username: </h></b></br>
-<h style='font-size:14px'>$customusermessage</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<a href='https://vrixe.com/event/$postRefCode'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#ec3832;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#ec3832;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>VIEW EVENT</div></a><br>
-
-<h style='font-size:12px'>Have a peek, make your own changes.</h>
-
-
-</div><br><br>
-
-
-
-<div style='text-align:center;width:auto;word-spacing:15px'>
-
-<a href='https://twitter.com/vrixeapp'><img alt='Twitter' src='https://vrixe.com/mail/mtweet.png' style='width:25px;height:25px;display:inline-block'></a>
-
-<a href='https://plus.google.com/b/104974081981652839346/104974081981652839346?hl=en'><img alt='Google Plus' src='https://vrixe.com/mail/mplus.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://instagram.com/vrixe'><img alt='Instagram' src='https://vrixe.com/mail/mgram.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://youtube.com/channel/UCNDZP6M3t_L7Fxxc-a9rYWQ'><img alt='Youtube' alt='youtube' src='https://www.vrixe.com/mail/mtube.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-<a href='https://facebook.com/vrixe'><img alt='Facebook' src='https://vrixe.com/mail/mface.png' style='width:25px;height:25px;display:inline-block'></a> 
-
-</div>
-
-<div style='background-color:transparent;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:11px'>You got this email because one of your team planners updated your plan and chose to notify you.<br>
-</div>
-";
-$message .= "</body></html>";
-
-   if($phpurl == 'vrixe-enn'){
-     //do nothing this code only check if we are on developement server
-   }else{
-if(mail($allmail, $subject, $message, $headers)){
-echo "";
-} else{
-echo "<div id='oalert' >We tried to update your team but the Emails could not be sent<br>Please retry and if this happens again.<br>Please write us.</div><br>";
-}}
+  
+  //send mail for event changes updates
+ $customMailSubject = "New update on event";
+ $customMailHeader = "...event updated";
+ $customMailsectionHeader = "From $username";
+ $customMailsectionMessage = "$customusermessage";
+ $customMailsuccessMessage = "";
+ $customMailfailedMessage = "<div id='oalert' >We tried to update your team but the Emails could not be sent<br>Please retry and if this happens again.<br>Please write us.</div><br>";
+ $customMailcta = "VIEW EVENT";
+ $customMailctaLink = "https://vrixe.com/event/$postRefCode";
+ $customMailctaNudge = "Take a peek and make your own changes.";
+ $customMailBanner = "https://vrixe.com/mail/banners/eventupdated.jpg";   
+ $Mailemail = $allmail;
+   
+  require("mail/genericMailer.php"); 
   
   //SEND PUSH $allpushes recent cahnes
-    $requestPushAs = "updatedEvent";
+  $requestPushAs = "updatedEvent";
   require("garage/genericPush.php"); 
 }
   
-  
-
 }//end of email
 
  //ONLY FOR INVITE DESK PUSH AND MAIL FOR NEWLY ADDED USERS
-      if($phpurl == 'vrixe-enn'){
+  if($phpurl == 'vrixe-enn'){
      //do nothing this code only check if we are on developement server
    }else{
       //send email list 
@@ -609,13 +466,15 @@ if($emaillist > ""){
   //do nothing
    }} 
  
-      if($pushlist > ""){
+  if($pushlist > ""){
     $requestPushAs = "createdInvite";
   require("garage/genericPush.php");  
    }else{
      //do not push
    }
-
+   
+   
+//continue print
 if ($eventImage == "default.png" or $eventImage == "default.jpg"){
     echo "<div class='eventimage'>$event</div><br>";
 }
@@ -656,6 +515,6 @@ mysqli_close($conne);
 <div class="blfheadalt"></div>
 </div><br><br><br>
 
-<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span id="smoff">Some features will not be available</span></div>
+<?php require("garage/networkStatus.php"); ?>
 </body>
 </html>

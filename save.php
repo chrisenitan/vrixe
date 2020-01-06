@@ -195,7 +195,7 @@ if($phpurl == 'vrixe-enn'){
  $customMailctaLink = "https://vrixe.com/invitation.php?iv=$string";
  $customMailctaNudge = "Go on, edit what's new with your team.";
  $customMailBanner = "https://vrixe.com/mail/banners/eventsaved.jpg";   
-   $Mailemail = chop($emaillist,", ");
+ $Mailemail = chop($emaillist,", ");
    
   require("mail/genericMailer.php"); 
    }else{ }
