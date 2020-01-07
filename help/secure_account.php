@@ -27,14 +27,13 @@ require("../garage/passport.php");
 
 <br>	
 <?php 
- $reportday =date("d M Y");
+  $reportday =date("d M Y");
   $postusername = mysqli_real_escape_string($conne, $_POST['accountuser']);
   $action = mysqli_real_escape_string($conne, $_POST['reqaction']);
   $postemail = mysqli_real_escape_string($conne, $_POST['accountemail']);
-  $postcode = mysqli_real_escape_string($conne, $_POST['securecode']);
 
 if ($action == "ila"){
-$checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$postemail' and freq = '$postcode' LIMIT 1"); 
+$checkuser = mysqli_query($conne,"SELECT * FROM profiles WHERE email = '$postemail' LIMIT 1"); 
 $varuser = 0;
    while($founduser = mysqli_fetch_array($checkuser)){ 
 $varuser= 1;
@@ -60,13 +59,13 @@ if ($varuser == 0){
 }
 else {
 //log the query and block the users account
-  $saverecord="INSERT INTO ammo (day, name, reqaction, email, securecode)
+  $saverecord="INSERT INTO ammo (day, name, reqaction, email)
 VALUES
-('$reportday','$postusername','$action','$postemail','$postcode')";
+('$reportday','$postusername','$action','$postemail')";
 
 //do the updatE
 $blockedpass = "$pass" . "blockedbyvrixe";
-$blocker = "UPDATE profiles SET password='$blockedpass' WHERE email = '$postemail' and freq = '$postcode' ";
+$blocker = "UPDATE profiles SET password='$blockedpass' WHERE email = '$postemail' ";
 
   echo"
 <div class='pagecen'>

@@ -30,6 +30,7 @@ require("../garage/passport.php");
 <br>	
 <?php 
 if (isset($_GET['refs']) and isset($_GET['q'])){
+  //should be checking for ila as q but who cares
   $user = mysqli_real_escape_string($conne, $_GET['refs']); 
   $query = mysqli_real_escape_string($conne, $_GET['q']);
 
@@ -38,8 +39,8 @@ if (isset($_GET['refs']) and isset($_GET['q'])){
 
   <div class='blfhead'>Take a deep breath, we can fix this</div>
  <br>
-
-  <i class='material-icons' style='color:#e21b1b;font-size:27px'>add_circle</i><br>
+  <img src='/images/essentials/profileid.png' class='everybodyimg'>
+  <br>
 
  <h class='miniss'>We just need to verify some account information from you</h><br>
  <h class='miniss'>Then we shut things down temporarily.</h>
@@ -55,12 +56,8 @@ if (isset($_GET['refs']) and isset($_GET['q'])){
 <input type='email' required class='privinput' placeholder='... .... ...' name='accountemail'><br>
 <h class='petd'>your account email</h><br><br>
 
-<input type='text' class='privinput' placeholder='... .... ...' name='securecode' required><br>
-<h class='petd'>your accounts secure code</h><br>
-<h class='miniss'>[cant remember? please request it <a href='mailto:contact@vrixe.com'>here</a>]</h><br>
-
 <br>
-<h class='miniss'>that's all we need for step one<br>You will not be able to access your account while we verify all access on it.
+<h class='miniss'>that's all we need for now<br>Please note that you will not be able to access your account while we verify all access on it.
 <br><br><button class='copele' title='Next'><i class='material-icons' style='vertical-align:sub;font-size:17px'>check</i> Submit</button></h><br><br>
 
 
