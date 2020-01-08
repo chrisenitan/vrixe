@@ -240,6 +240,7 @@ $whodayedit =date("d - M - Y");
 }
   require('garage/validatebasic.php');//prepare to validate edits 
 //fetch contributor setion
+   $pureEventRef = $code;
   require("garage/contributorsList.php");
    
 echo "
@@ -544,7 +545,6 @@ echo"
 ";
 
   //just a way to control who moves to approved
-
 if ($username == $hype){
   echo "<div class='classholder' style='float:right;margin-right:2%;'>
       <input type='text' name='status' value='$statval' id='approveid' class='rates'>
@@ -559,7 +559,7 @@ else{
 }
 
 echo"
-<div class='classholder' style='float:left;clear:both'>
+<div class='classholder' style='clear:both'>
       <input type='text' name='notifstat' value='false' id='notifyid' class='rates'>
 
       <div class='classholdertext'><i class='material-icons' style='vertical-align:bottom;font-size:17px'>notifications</i> NOTIFY</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='notifyclassbtn' onclick='var chjs=\"notify\";allclass(chjs)'><i class='material-icons' style='vertical-align:sub;font-size:16px'>notifications</i></button>

@@ -1204,16 +1204,6 @@ color: #fff;
 	overflow: hidden;
 	height: auto;
 }
-#contributorList{
-	overflow: hidden;
-	height: auto;
-  width: 100%;
-  text-align: center;
-  height: 0px;
-   -transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-}
 .meniadi{
     width: 70%;
     height: 40px;
@@ -3823,7 +3813,7 @@ display: none;
     display: block;
   overflow: hidden;
     position: fixed;
-    z-index: 349;
+    z-index: 442;
     margin-left: 2.5%;
   top:100%;
 }

@@ -769,6 +769,22 @@ $gotContributors = false;
     $roled = $contributorsArray['ringd'];
     $rolee = $contributorsArray['ringe'];
     $rolef = $contributorsArray['ringf'];
+    $hypeTask = $contributorsArray['ringo'];
+   
+    
+    
+    
+ $getH = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$hype' LIMIT 1"); 
+ while($gotH = mysqli_fetch_array($getH)){
+$imageH = $gotH['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$hype'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageH' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$hypeTask</h><br>@$hype</h></div></a>
+ ";
+    
+    
     
   if ($a > ""){
     $cuaTask = $contributorsArray['ringa'];
@@ -860,7 +876,9 @@ echo "<a class='poslik' href='/profile/$f'>
     
     
   }
-  
+  if($gotContributors == false){
+    echo"ouch";
+  }
 
 }
   

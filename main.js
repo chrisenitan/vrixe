@@ -22,7 +22,7 @@ this.responseText;
 }
 };
 
-xmlhttp.open("GET","garage/mover.php?k="+req+"&i="+iv+"&c="+cu+"&dbid="+dbid,true);
+xmlhttp.open("GET","../garage/mover.php?k="+req+"&i="+iv+"&c="+cu+"&dbid="+dbid,true);
 xmlhttp.send(); 
 }  
 }
@@ -608,32 +608,28 @@ document.getElementById("accessCode").style.backgroundColor="#92ffc0";
   document.location = '#scrollAccessCode';
 }
 
-//show contributors list on event
-let displayContributorList = () =>{
-  document.getElementById("contributorList").style.height="324px";
-}
-
-//hide contributors list on event
-let hideContributorList = () =>{
-  document.getElementById("contributorList").style.height="0px";
-}
-
 //list of contributors
 window.addEventListener("load", function(){
     if(document.getElementById("viewEditors")){
     document.getElementById("viewEditors").addEventListener("click", function(){
       //get code and 
      var req = "getContributors";
-     var refs = document.getElementById("code").value;
+     var refs = document.getElementById("contributorsListCode").value;
        
       //send request
       mainsprocess("contributorsList",req, refs);
+      
+      //hide menia for event pageXOffset
+      if(document.getElementById('menia')){
+         document.getElementById('menia').style.height='0';
+      }
     //display section
-      document.getElementById("contributorsListSection").style.display="block";
-      document.getElementById("contributorsListSection").style.top='20%';
+      document.getElementById("gtr").style.display="block";
+      document.getElementById("contributorsListSection").style.top='15%';
     });
       //close list
    document.getElementById("closeEditors").addEventListener("click", function(){
+     document.getElementById("gtr").style.display="none";
       document.getElementById("contributorsListSection").style.top='100%';
     });
       
