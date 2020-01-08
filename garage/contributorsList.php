@@ -8,5 +8,5 @@
     
     
   </div>  
-  <button type='button' class='leftFadeButton' id="closeEditors"><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> Close List</button>
+  <button type='button' class='leftFadeButton' id="closeEditors"><i class='material-icons' style='font-size:17px;vertical-align:sub'>minimize</i> Close List</button>
 </div>

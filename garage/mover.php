@@ -743,9 +743,6 @@ else if ($req == "SUGGEST" and $id == ""){
 
   
   
-  
-  
-  
  
   
   //get contributors list
@@ -770,18 +767,15 @@ $gotContributors = false;
     $rolee = $contributorsArray['ringe'];
     $rolef = $contributorsArray['ringf'];
     $hypeTask = $contributorsArray['ringo'];
-   
-    
-    
+ 
     
  $getH = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$hype' LIMIT 1"); 
  while($gotH = mysqli_fetch_array($getH)){
 $imageH = $gotH['picture'];
 }
 //ECHO RESULT
-echo "<a class='poslik' href='/profile/$hype'>
-<div class='lilput' style='display: inline-block;'>
-    <img src='$imageH' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$hypeTask</h><br>@$hype</h></div></a>
+echo "<a class='poslik' href='/profile/$hype'><div class='lilput' style='display: inline-block;'>
+<img src='$imageH' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$hypeTask</h><br>@$hype</h></div></a>
  ";
     
     
@@ -832,7 +826,7 @@ echo "<a class='poslik' href='/profile/$c'>
     
     
   if ($d > ""){
-    $cudTask = $contributorsArray['ringd'];
+ $cudTask = $contributorsArray['ringd'];
     
  $getD = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$d' LIMIT 1"); 
  while($gotD = mysqli_fetch_array($getD)){
@@ -847,7 +841,7 @@ echo "<a class='poslik' href='/profile/$d'>
     
     
  if ($e > ""){
-    $cueTask = $contributorsArray['ringe'];
+ $cueTask = $contributorsArray['ringe'];
     
  $getE = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$e' LIMIT 1"); 
  while($gotE = mysqli_fetch_array($getE)){
@@ -862,7 +856,7 @@ echo "<a class='poslik' href='/profile/$e'>
     
     
 if ($f > ""){
-    $cueTask = $contributorsArray['ringf'];
+$cueTask = $contributorsArray['ringf'];
     
  $getF = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$f' LIMIT 1"); 
  while($gotF = mysqli_fetch_array($getF)){
@@ -872,19 +866,19 @@ $imageF = $gotF['picture'];
 echo "<a class='poslik' href='/profile/$f'>
 <div class='lilput' style='display: inline-block;'>
     <img src='$imageF' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$rolef</h><br>@$f</h></div></a>
-  ";}
+ ";}
     
     
   }
   if($gotContributors == false){
-    echo"ouch";
+    echo"<img alt='Error fecthing list' src='/images/essentials/nodata.svg' class='everybodyimg'><br>
+  <h class='miniss'>No names found for this event</h><br>
+  <h class='disl'>Please refresh the page and try again. If you keep getting this error, please send us a feedback report.</h> <br><br>
+  ";
   }
 
 }
-  
-  
-
-  
+   
   
   
   
@@ -899,7 +893,6 @@ else if ($req == "addAuth"){
 
 if (!mysqli_query($conne,$addAuth)){ die('Error: ' . mysqli_error($conne)); }
 }
-  
   
 //remove auth token from backend
 else if ($req == "removeAuth"){

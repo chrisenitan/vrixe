@@ -17,8 +17,7 @@ xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 }
 xmlhttp.onreadystatechange = function() {
 if (this.readyState == 4 && this.status == 200) {
-document.getElementById(outputId).innerHTML =
-this.responseText;
+document.getElementById(outputId).innerHTML = this.responseText;
 }
 };
 
@@ -610,26 +609,25 @@ document.getElementById("accessCode").style.backgroundColor="#92ffc0";
 
 //list of contributors
 window.addEventListener("load", function(){
-    if(document.getElementById("viewEditors")){
-    document.getElementById("viewEditors").addEventListener("click", function(){
+   if(document.getElementById("viewEditors")){
+     document.getElementById("viewEditors").addEventListener("click", function(){
       //get code and 
      var req = "getContributors";
-     var refs = document.getElementById("contributorsListCode").value;
-       
+     var refs = document.getElementById("contributorsListCode").value;       
       //send request
-      mainsprocess("contributorsList",req, refs);
-      
+      mainsprocess("contributorsList",req, refs);      
       //hide menia for event pageXOffset
       if(document.getElementById('menia')){
          document.getElementById('menia').style.height='0';
       }
     //display section
+      document.getElementById("contributorsListSection").style.display="block";
       document.getElementById("gtr").style.display="block";
       document.getElementById("contributorsListSection").style.top='15%';
     });
       //close list
-   document.getElementById("closeEditors").addEventListener("click", function(){
-     document.getElementById("gtr").style.display="none";
+      document.getElementById("closeEditors").addEventListener("click", function(){
+      document.getElementById("gtr").style.display="none";
       document.getElementById("contributorsListSection").style.top='100%';
     });
       
