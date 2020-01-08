@@ -743,6 +743,134 @@ else if ($req == "SUGGEST" and $id == ""){
 
   
   
+  
+  
+  
+ 
+  
+  //get contributors list
+else if ($req == "getContributors"){
+//shorten authkey
+$getContributors = mysqli_query($conne, "SELECT * FROM events WHERE refs = '$id' LIMIT 1 ");
+$gotContributors = false;
+  while($contributorsArray = mysqli_fetch_array($getContributors)){
+    $gotContributors = true;
+    $hype = $contributorsArray['hype'];
+    $a = $contributorsArray['cua'];
+    $b = $contributorsArray['cub'];
+    $c = $contributorsArray['cuc'];
+    $d = $contributorsArray['cud'];
+    $e = $contributorsArray['cue'];
+    $f = $contributorsArray['cuf'];
+    
+    $rolea = $contributorsArray['ringa'];
+    $roleb = $contributorsArray['ringb'];
+    $rolec = $contributorsArray['ringc'];
+    $roled = $contributorsArray['ringd'];
+    $rolee = $contributorsArray['ringe'];
+    $rolef = $contributorsArray['ringf'];
+    
+  if ($a > ""){
+    $cuaTask = $contributorsArray['ringa'];
+    
+ $getA = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$a' LIMIT 1"); 
+ while($gotA = mysqli_fetch_array($getA)){
+$imageA = $gotA['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$a'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageA' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$rolea</h><br>@$a</h></div></a>
+  ";}
+    
+    
+    
+if ($b > ""){
+    $cubTask = $contributorsArray['ringb'];
+    
+ $getB = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$b' LIMIT 1"); 
+ while($gotB = mysqli_fetch_array($getB)){
+$imageB = $gotB['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$b'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageB' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$roleb</h><br>@$b</h></div></a>
+  ";}
+    
+    
+    
+   if ($c > ""){
+    $cucTask = $contributorsArray['ringc'];
+    
+ $getC = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$c' LIMIT 1"); 
+ while($gotC = mysqli_fetch_array($getC)){
+$imageC = $gotC['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$c'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageC' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$rolec</h><br>@$c</h></div></a>
+  ";}
+    
+    
+    
+  if ($d > ""){
+    $cudTask = $contributorsArray['ringd'];
+    
+ $getD = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$d' LIMIT 1"); 
+ while($gotD = mysqli_fetch_array($getD)){
+$imageD = $gotD['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$d'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageD' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$roled</h><br>@$d</h></div></a>
+  ";}
+    
+    
+    
+ if ($e > ""){
+    $cueTask = $contributorsArray['ringe'];
+    
+ $getE = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$e' LIMIT 1"); 
+ while($gotE = mysqli_fetch_array($getE)){
+$imageE = $gotE['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$e'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageE' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$rolee</h><br>@$e</h></div></a>
+  ";}
+    
+    
+    
+if ($f > ""){
+    $cueTask = $contributorsArray['ringf'];
+    
+ $getF = mysqli_query($conne,"SELECT * FROM profiles WHERE username = '$f' LIMIT 1"); 
+ while($gotF = mysqli_fetch_array($getF)){
+$imageF = $gotF['picture'];
+}
+//ECHO RESULT
+echo "<a class='poslik' href='/profile/$f'>
+<div class='lilput' style='display: inline-block;'>
+    <img src='$imageF' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$rolef</h><br>@$f</h></div></a>
+  ";}
+    
+    
+  }
+  
+
+}
+  
+  
+
+  
+  
+  
+  
+  
 
   
 //add auth token from backend

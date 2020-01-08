@@ -1,6 +1,32 @@
 //script for vrixe 
 window.addEventListener("wheel", {passive: true} );
 
+//same as process but used on main
+function mainsprocess(outputId,req, iv, cu, dbid){
+	if (req == ""){
+		document.getElementById(outputId).innerHTML = "error";
+		return;
+	}
+	else {
+if (window.XMLHttpRequest) {
+// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+} else {
+// code for IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById(outputId).innerHTML =
+this.responseText;
+}
+};
+
+xmlhttp.open("GET","garage/mover.php?k="+req+"&i="+iv+"&c="+cu+"&dbid="+dbid,true);
+xmlhttp.send(); 
+}  
+}
+
 function search(){
  document.getElementById('searchboxes').style.height="395px";
    document.getElementById('gtr').style.display='block';
@@ -591,5 +617,28 @@ let displayContributorList = () =>{
 let hideContributorList = () =>{
   document.getElementById("contributorList").style.height="0px";
 }
+
+//list of contributors
+window.addEventListener("load", function(){
+    if(document.getElementById("viewEditors")){
+    document.getElementById("viewEditors").addEventListener("click", function(){
+      //get code and 
+     var req = "getContributors";
+     var refs = document.getElementById("code").value;
+       
+      //send request
+      mainsprocess("contributorsList",req, refs);
+    //display section
+      document.getElementById("contributorsListSection").style.display="block";
+      document.getElementById("contributorsListSection").style.top='20%';
+    });
+      //close list
+   document.getElementById("closeEditors").addEventListener("click", function(){
+      document.getElementById("contributorsListSection").style.top='100%';
+    });
+      
+  }
+});
+
 
 

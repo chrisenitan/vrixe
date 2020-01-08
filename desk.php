@@ -238,8 +238,10 @@ $ringf = $row['ringf'];
   $whokeynote = $actorsare['keynote'];if($whokeynote == ""){$whokeynote = $poster;}
 $whodayedit =date("d - M - Y");
 }
-  require('garage/validatebasic.php');
-
+  require('garage/validatebasic.php');//prepare to validate edits 
+//fetch contributor setion
+  require("garage/contributorsList.php");
+   
 echo "
 <script>
   var meals = 'meals';
@@ -510,7 +512,8 @@ echo"
 
 
 <div id='dnewsub'>
-<div class='blfhead'>Choose what to edit</div><br><br>
+<div class='blfhead'>Choose what to edit</div><br>
+<button type='button' class='leftFadeButton' id='viewEditors'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> View Editors</button>
 
         <a href='#zero'><div class='bring' onclick='eventbox(zero)'><br><img src='images/essentials/d_title.png' class='fiwb'><br>titles<div class='jal'></div><button type='button' class='basicconfirmdot' id='bcdo' style='color:#5c9ced'><i class='material-icons' style='font-size: 14px;vertical-align:sub;'>fiber_manual_record</i></button></div></a>
 
