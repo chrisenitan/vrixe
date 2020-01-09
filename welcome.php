@@ -86,7 +86,6 @@ setcookie($recognise, $username, time() + (86400 * 366), "/; samesite=Lax", "", 
  }
 
 }
-
 //criteria for making user is not found, yet there was no cookie redirect user whatsevr the case may be
 else{
 header('Location: index');  

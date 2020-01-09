@@ -99,7 +99,9 @@ if (!mysqli_query($conne,$indras) or !mysqli_query($conne,$incontown) or !mysqli
 
 mysqli_close($conne);
 }
-
+else{
+  header("Location: me");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

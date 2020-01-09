@@ -60,7 +60,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/updateimages/desk.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Simpler Is Better: </h></b></br>
+<b><h style='font-size:14px'>Simpler As Better: </h></b></br>
 <h style='font-size:14px'>App redesign, new intentful buttons and tooltips now help you understand how to use Vrixe without a PHD.</h>
 </div>
 </div><br>
@@ -73,8 +73,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Email Verification: </h></b></br>
-<h style='font-size:14px'>New users can now use the App for a trial period before, we've pushed the verification step further for you.</h>
+<b><h style='font-size:14px'>Work At Vrixe: </h></b></br>
+<h style='font-size:14px'>We're always looking for new teammates, someone to scream, someone to clap at us. So join us via our <a href='https://vrixe.com/jobs'>job board</a>.</h>
 </div>
 </div><br>
 
@@ -85,7 +85,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 <a href='https://vrixe.com'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>WHAT'S NEW</div></a><br>
 
-<h style='font-size:12px'>Go on, start your next plan with friends.</h>
+<h style='font-size:12px'>Come check us out...</h>
 </div><br><br>
 
 
