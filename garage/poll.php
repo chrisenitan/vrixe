@@ -169,7 +169,7 @@ echo"
  }
  
   echo"<br><br>  
- <a href='help/faq#privatepoll' target='_blank'><h class='petd'>learn more about private polls<i class='material-icons' style='vertical-align:middle;font-size:14px'>arrow_forward</i></h></a><br><br>
+ <a href='help/faq?q=accounts_on_polls' target='_blank'><h class='petd'>learn more about private polls<i class='material-icons' style='vertical-align:middle;font-size:14px'>arrow_forward</i></h></a><br><br>
  
  
  <div class='blfheadalt'></div>

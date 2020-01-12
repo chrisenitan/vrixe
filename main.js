@@ -396,12 +396,17 @@ xmlhttp.send();
 //show and hide faq sections
 function hideshow(all, one){
   var i;
-	var x = document.querySelectorAll(".all"); 	var y = document.getElementById(one);
-	 for (i = 0; i < x.length; i++) {
-        x[i].style.height="0px"; 
+  if(document.getElementById(one)){
+   var allSections = document.querySelectorAll(".all"); 	var section = document.getElementById(one);
+	 for (i = 0; i < allSections.length; i++) {
+        allSections[i].style.height="0px"; 
     }
-	y.style.height="auto";
-}
+	section.style.height="auto";
+  }
+  //id given is not in dom
+  else{
+   //consider adding fallback for bug report.
+  }}
 
 //suggest users on search bar. seperate because we have to show result in searh bar
 function checkforuser(search){ 
