@@ -26,7 +26,7 @@ xmlhttp.send();
 }  
 }
 
-function search(){
+let search = () =>{ 
  document.getElementById('searchboxes').style.height="395px";
    document.getElementById('gtr').style.display='block';
 }
@@ -54,7 +54,7 @@ function hidesearch(){
 function closecloseb(){
   document.getElementById('gtr').style.display='none';
   document.getElementById('searchboxes').style.height="0";
- document.getElementById('sbut').style.display="inline-block";
+  document.getElementById('sbut').style.display="inline-block";
  }
 //show deskmenu
 function deskpop(){

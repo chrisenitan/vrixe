@@ -117,7 +117,7 @@ function fours(){
 else{ //user has nohingto complain about but is here
   echo "
 <br><h class='bugdes'>How may we help you?</h><br>
-<h class='miniss'>Profile Management, Usage settings & Everything else</h><br>
+<a href='faq' class='miniss'>or checkout our faq here</a><br>
 
 <input type='text' class='rates' value='$username' name='user'>
 
