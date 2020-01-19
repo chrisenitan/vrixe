@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php echo "<title>$fullname | Profile Analysis</title>"; ?>
+<?php echo "<title>$fullname | Analytics</title>"; ?>
 <link rel="manifest" href="/manifest.json">
 <meta name="description" content="Stastitical reports on your Vrixe account and Events">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>

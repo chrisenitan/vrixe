@@ -8,7 +8,7 @@ $visitedProfile = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a
 
 //check if user is same as ref requested if so send to profile page instead
 if ($visitedProfile == $username){ 
-header('Location: me');
+header('Location: /me');
 }}
 else{}
 ?>

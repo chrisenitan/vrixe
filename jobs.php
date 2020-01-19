@@ -57,7 +57,7 @@ $cid = $row['cid'];
 
   <img alt='$code' src='images/jobs/$image.svg' class='everybodyimg'><br>
   <h class='miniss'>$phrase</h><br><h class='disl'>$details</h> <br><br>
-   <a href='mailto:openinterest@vrixe.com?subject=Application:%20$positionEncoded%20at%20Vrixe%20-%20$cid'><button class='copele'><i class='material-icons' style='vertical-align: text-top;font-size: 17px;'>mail</i> mail us</button></a>
+   <a href='mailto:jobs@vrixe.com?subject=Application:%20$positionEncoded%20at%20Vrixe%20-%20$cid'><button class='copele'><i class='material-icons' style='vertical-align: text-top;font-size: 17px;'>mail</i> mail us</button></a>
    
    <button class='triocontrol' onclick='customshare(cst, csl)'><i class='material-icons' style='vertical-align: text-top;font-size: 17px;'>share</i> share</button>
       

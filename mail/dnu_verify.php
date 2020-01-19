@@ -1,15 +1,16 @@
 <?php 
 require("../garage/visa.php");
 
-$fetchlist = mysqli_query($conne,"SELECT * FROM profiles WHERE created LIKE '%10 2019%' AND confirm IS NULL ");
+$fetchlist = mysqli_query($conne,"SELECT * FROM profiles WHERE created LIKE '%2019%' AND confirm IS NULL ");
 
 while($list = mysqli_fetch_array($fetchlist))
 {
-
+$co = true;
 $email = $list['email'];
 $cutcok = $list['freq'];
+$created = $list['created'];
 
- $subject = 'Still a Vrixer?';
+$subject = 'Still a Vrixer?';
 $feed = 'feedback@vrixe.com';
 $from = 'contact@vrixe.com';//or could be a name
 
@@ -27,7 +28,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:10px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-Making simpler plans...</p>
+...bigs things passing by</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>Not yet verified your account, was it our Thanos joke?...</p><br>
 
 <img alt='new features on vrixe' src='https://vrixe.com/mail/updateimages/update.jpg' style='height:auto;width:96%;margin-left:2%'>
@@ -35,33 +36,12 @@ Making simpler plans...</p>
 
 <div style='background-color:#f7f8fa;width:92%;text-align:center;height:auto;padding-bottom:5%;padding-top:5%;padding-left:2%;padding-right:2%;margin-left:2%;color:#16253f;font-size:14px'>
 
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img alt='lost in spambox' src='https://vrixe.com/mail/verifyemail/email.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Spam Boxed?</h></b></br>
-<h style='font-size:14px'>If you did not get your verification email, it might be lost in your spam folder. Not to worry, see that button down there? 'VERIFY ACCOUNT' it does the trick.</h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
 
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img alt='multiple browser bug' src='https://vrixe.com/mail/verifyemail/browsers.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Browser Issues?</h></b></br>
-<h style='font-size:14px'>If you are having an error page, we can fix that. Please use your preferred browser, log out and log in again, then visit <a href='https://vrixe.com/account/confirm?refs=$cutcok'> https://vrixe.com/account/confirm </a> </h>
-</div>
-</div><br>
-
-<div style='width:90%;margin:auto;height:1px;background-color:#a2a4a6;clear:both'></div><br>
-
-
-<div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
-<img alt='login issues' src='https://vrixe.com/mail/verifyemail/login.png' style='float:left;width:50px;height:50px'>
-<div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Reset Everything</h></b></br>
-<h style='font-size:14px'>A good old account refresh sometimes is all you need. Click here to <a href='https://vrixe.com/help/feedbacks?ext=llcv'>request for an account refresh.</a> and we'll sort that out in a flash for you.</h>
+<b><h style='font-size:14px'>Beep!</h></b></br>
+<h style='font-size:14px'>You opened a Vrixe account on $created but have not verified this email. Why not do that and start using some of the newer features we've released since your last visit. <a href='https://vrixe.com/account/confirm?refs=$cutcok'>Verify Account</a> </h>
 </div>
 </div><br>
 
@@ -72,12 +52,10 @@ Making simpler plans...</p>
 <a href='https://vrixe.com/account/confirm?refs=$cutcok'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>VERIFY ACCOUNT</div></a><br>
 
 
-<h style='font-size:12px'>We're adding some cool features on the next update and we want you to be around for it.</h>
+<h style='font-size:12px'>The next update is around the corner and we want you around for it.</h>
 
 
 </div><br><br>
-
-
 
 <div style='text-align:center;width:auto;word-spacing:15px'>
 
@@ -102,6 +80,10 @@ if(mail($email, $subject, $message, $headers)){
 echo "Message: update sent $email,<br>";
 } else{
 echo "Message not sent to $email <br>";
-}
+}}
+
+
+if($co == false){
+  echo"users not found";
 }
 ?>
