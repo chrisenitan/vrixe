@@ -261,7 +261,7 @@ header("Location: index");
 <html lang="en">
 <head>
 <?php
-if ($cookie > ""){echo "<title> $fullname | Vrixe</title>"; }
+if ($cookie > ""){echo "<title> $fullname - @$username | Vrixe </title>"; }
 else {echo "<title>No User Found</title>";}#redirect would have hanled this
 ?>
 <meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>
@@ -407,7 +407,7 @@ $altgotyourevents = 1; $popviews = $altrow2['views']; $whichpopviews = $altrow2[
 echo"<div id='galert'>Having verification troubles? <a href='help/feedbacks'><button style='width:auto' aria-label='view invites' class='gboxit'><i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
   }
   else if ($gotinvite == 1){
- echo"<div id='galert'><a href='account/profile_analytics#ntifs'>You have an invite waiting <button style='width:auto' aria-label='view invites' class='gboxit'><i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
+ echo"<div id='galert'><a href='account/notifications'>You have an invite waiting <button style='width:auto' aria-label='view invites' class='gboxit'><i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
   }
   else if($altgotyourevents == 1 and $gotinvite == 0){
     if($smartstatus == "plan" or $smartstatus == "invite"){

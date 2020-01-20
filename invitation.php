@@ -441,7 +441,7 @@ echo"<div class='pef'>
 
 <h class='miniss'>Created by <b><a href='profile/$owner'>@$owner</a></b>. Open invite to see more details</h><br><br>
 
-<a href='account/profile_analytics.php#ntifs'><button class='copele'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>email</i> VIEW INVITE</button></a>
+<a href='account/notifications'><button class='copele'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>email</i> VIEW INVITE</button></a>
 <a href='event/$ivr'><button class='triocontrol'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>event</i> EVENT</button></a>
 <br><br>
 
