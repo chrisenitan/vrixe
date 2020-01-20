@@ -39,7 +39,7 @@ if (isset($_GET['refs']) and isset($_GET['q'])){
 
   <div class='blfhead'>Take a deep breath, we can fix this</div>
  <br>
-  <img src='/images/essentials/profileid.png' class='everybodyimg'>
+  <img src='/images/essentials/secure.svg' class='everybodyimg'>
   <br>
 
  <h class='miniss'>We just need to verify some account information from you</h><br>
@@ -50,7 +50,7 @@ if (isset($_GET['refs']) and isset($_GET['q'])){
 <input type='text' class='rates' value='$user' name='accountuser'>
 <input type='text' class='rates' value='$query' name='reqaction'>
 
-<input type='text' class='privinput' placeholder='... .... ...' name='accountdate'><br>
+<input type='text' required class='privinput' placeholder='... .... ...' name='accountdate'><br>
 <h class='petd'>when did you create your account<br>[date does not have to be exact]</h><br><br>
 
 <input type='email' required class='privinput' placeholder='... .... ...' name='accountemail'><br>
@@ -73,7 +73,7 @@ else{
 
   <div class='blfhead'>Clean as a whistle</div>
  <br>
-  <img alt='Account Security' src='/images/essentials/cog.png' class='everybodyimg'>
+  <img alt='Account Security' src='/images/essentials/secure.svg' class='everybodyimg'>
   <br>
    <h class='miniss'>This is where we look after ill accounts<br>...and the occasional candy lovers</h><br>
 

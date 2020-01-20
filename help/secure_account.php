@@ -75,7 +75,7 @@ if ($action == "ila"){
       <div class='pef'>
         <div class='blfhead'>Account secured<br></div>
        <br>
-        <img alt='Account Secured' src='/images/essentials/statusok.png' class='everybodyimg'><br>
+        <img alt='Account Secured' src='/images/essentials/secure.svg' class='everybodyimg'><br>
         <h class='miniss'>Now you just wait and we'll contact you.</h><br>
 
         <div class='disl'>
@@ -104,7 +104,7 @@ else{
 
   <div class='blfhead'>All good here</div>
  <br>
-  <img alt='Account Security' src='/images/essentials/cog.png' class='everybodyimg'>
+  <img alt='Account Security' src='/images/essentials/secure.svg' class='everybodyimg'>
   <br>
    <h class='disl'>This is where we look after ill accounts<br>...and the occasional candy lovers</h><br>
 
