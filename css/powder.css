@@ -3298,59 +3298,43 @@ width:15%;
     border-radius: 50px;
 }
 #clist{
-	color: #335376;
-	text-align: center;
-    border-radius: 40px;
+	  color: #335376;
+	  text-align: center;
     position: fixed;
-    top: 140px;
+    top: 1400vh;
     font-size: 14px;
     overflow:hidden;
-    width: 0%;
+    width: 100%;
+    max-width: 500px;
     margin:auto;
-    margin-left: 55%;
     margin-top: 10px;
-    max-width: 250px;
-    height: 0px;
-    max-height: 21px;
+    height: auto;
     padding-top: 9px;
     padding-bottom: 12px;
     z-index: 800;
-    background-color: ghostwhite;
-      transition: 0.3s;
-	-webkit-transition: 0.3s;
-	-moz-transition: 0.3s;
-}
-#invitelist{
-	margin-bottom: 0px;
-	height: auto;
-	float: none;
-	border: none;
-	color: #21d88c;
-	cursor: pointer;
-	font-family: Skranji;
     background-color: transparent;
-    text-align: center;
-	outline: none;
-	width:31%;
-	font-size: 16px;
-	display: inline-block;
-	margin-left: 0px;
-	margin-right: 0px;
-	padding-top: 3px;
+    transition: 0.3s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
 }
 .sil{
 	border: none;
-    outline: none;
-    font-size: 16px;
-    float: right;
-    width: 31%;
-    cursor: pointer;
-    margin-right: 4px;
-    margin-top: 2px;
-    height: auto;
-    background-color: transparent;
-    padding-right: 2%;
-}#xsil{color:#f12f6f;}
+  outline: none;
+  font-size: 14px;
+  width: 31%;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-top: 2px;
+  height: auto;
+  background-color: #151515;
+  color: #fff;
+  border-radius: 3px;
+  padding-right: 2%;
+  font-family: Nunito;
+  font-weight: bold;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}#xsil{color:#f12f6f;}#addsil{color:#00a93d;}
 #passin{
 	color: transparent;
 	background-color: #b1b9c5;

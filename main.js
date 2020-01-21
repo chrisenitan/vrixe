@@ -326,21 +326,19 @@ function toin(des, pes, ces, push){
 	if(userName == ""){var newUserName = des + ","; var newUserPic = pes + ","; var newUserMail = ces + ","; var newPushid = push + ",";}
   
   //add the old contentthen a comma and later details
-	else{var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
+	else{
+    var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
 	document.getElementById("ua").value=newUserName; //set names
 	document.getElementById("pa").value=newUserPic; //set pics	
   document.getElementById("ma").value=newUserMail; //set mail	
   document.getElementById("os").value=newPushid; //set push id
   
   //style the adding div
-	var clist = document.getElementById("clist");
-	clist.style.width="40%";
-	clist.style.height="auto";
-  clist.style.boxShadow="0px 0px 3px 1px #a9a9a9";
+	document.getElementById("clist").style.top='140px';
 	
   //style the selected user
 	var iddes = document.getElementById(`id${des}`);
-  	iddes.style.background="none";
+  iddes.style.background="none";
 	iddes.style.backgroundColor="#372538";
 }
 
@@ -351,10 +349,7 @@ function refreshtoin(){
 	document.getElementById("invitelist").innerHTML="";
   document.getElementById("ma").value="";
   document.getElementById("os").value="";
-	var clist = document.getElementById("clist");
-	clist.style.width="0px";
-	clist.style.height="0px";
-    clist.style.boxShadow="none";
+	document.getElementById("clist").style.top='1400vh';//hide count
 	var callpc;
 	var allpc = document.querySelectorAll(".cards");
 	for (callpc = 0; callpc < allpc.length; callpc++) {
