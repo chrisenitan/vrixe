@@ -254,7 +254,7 @@ echo"<br><br>
 
 <div class='cards' onclick='movetoplan(\"MOVE TO PLAN\", iv)'><br>  
    <img alt='update details' src='/images/essentials/vote.svg' class='everybodyimg'>
-   <p class='miniss'>Add a poll</p>
+   <p class='miniss'>Take a poll</p>
    </div>
    
    <div class='cards' style='padding-top:2%' onclick='movetoplan(\"MOVE TO PLAN\", iv)'><br>  
@@ -269,7 +269,7 @@ echo"<br><br>
    
     <div class='cards' style='padding-top:2%' onclick='movetoplan(\"MOVE TO PLAN\", iv)'><br>  
    <img alt='update details' src='/images/essentials/contacts.svg' class='everybodyimg'>
-   <p class='miniss'>Allow friends edit details too...</p>
+   <p class='miniss'>Add and edit more details with friends</p>
    </div>
    
    
