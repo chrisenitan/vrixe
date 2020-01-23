@@ -238,7 +238,7 @@ if($cut == ""){
 </div>
 <br>
 <?php
-
+//explode string into array
 $invitearray = explode(",", $invitelist);//from contact names
 $invitemailarray = explode(",", $invitelistmail); //from contact mails 
 $invitepicarray = explode(",", $invitelistpics); //from contact pictures

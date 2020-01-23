@@ -304,10 +304,21 @@ function allclass(chjs){
 
 //add to invite
 function toin(des, pes, ces, push){
+  //if person field isfilled, move to next
+  var number = 1;
+  var personInput = "person" + number;
+  
+for(number = 1; document.getElementById(personInput).value == ""; number++){
+// alert("person1");
+  
+  //break;
+}
+
+  /*
 	var userName = document.getElementById("ua").value; //name
 	var upic = document.getElementById("pa").value;//image
   var umail = document.getElementById("ma").value;//email
-  var pushid = document.getElementById("os").value;//push
+  var pushid = document.getElementById("os").value;//push id
 	//find if value exists and stop readding
 	var fr = userName.search(des);
 	if(fr == -1){} else{return false;}
@@ -340,6 +351,7 @@ function toin(des, pes, ces, push){
 	var iddes = document.getElementById(`id${des}`);
   iddes.style.background="none";
 	iddes.style.backgroundColor="#372538";
+  */
 }
 
 //clear invite list/contact

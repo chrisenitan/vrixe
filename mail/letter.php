@@ -61,7 +61,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/updateimages/desk.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Simpler Is Better: </h></b></br>
-<h style='font-size:14px'>App redesign, new intentful buttons and tooltips now help you understand how to use Vrixe.</h>
+<h style='font-size:14px'>We redesigned the app, added some new intentful buttons and tooltips to help you use Vrixe like a Pro.</h>
 </div>
 </div><br>
 
@@ -73,8 +73,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Work At Vrixe: </h></b></br>
-<h style='font-size:14px'>We're always looking for new teammates, someone to scream, someone to clap at us. So join us via our <a href='https://vrixe.com/jobs'>job board</a>.</h>
+<b><h style='font-size:14px'>Work With Us: </h></b></br>
+<h style='font-size:14px'>We're always looking for new teammates, someone to scream, someone take the bugs. Is that you? Join us via our <a href='https://vrixe.com/jobs'>job board</a>.</h>
 </div>
 </div><br>
 
@@ -85,7 +85,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 <a href='https://vrixe.com'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>WHAT'S NEW</div></a><br>
 
-<h style='font-size:12px'>Go on, see what's new...</h>
+<h style='font-size:12px'>Come see what's new here...</h>
 </div><br><br>
 
 

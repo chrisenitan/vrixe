@@ -98,7 +98,9 @@ else{
 
   </div>
 <br><br>
-
+<input id="person1" type="text" value=""><br>
+  <input id="person2" type="text"><br>
+  <input id="person3" type="text"><br>
 
 <?php require("../garage/networkStatus.php"); ?>
 <br><br>
