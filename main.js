@@ -305,14 +305,9 @@ function allclass(chjs){
 //add to invite
 function toin(des, pes, ces, push){
   //if person field isfilled, move to next
-  var number = 1;
-  var personInput = "person" + number;
-  
-for(number = 1; document.getElementById(personInput).value == ""; number++){
-// alert("person1");
-  
-  //break;
-}
+
+
+
 
   /*
 	var userName = document.getElementById("ua").value; //name
