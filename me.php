@@ -515,8 +515,8 @@ else if($status == 'plan'){
  }
 
      
-if ($elent > 21){
-$newee = substr($eem, 0, 20);
+if ($elent > 18){
+$newee = substr($eem, 0, 17);
 $shortee = "$newee...";
 }
 else { $shortee = $eem;

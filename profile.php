@@ -161,6 +161,7 @@ $date = $row2['dates'];
 $probeeem =  $row2['event']; $eem = htmlspecialchars($probeeem, ENT_QUOTES);
 $status = $row2['status'];
 $month = $row2['month'];
+$year = substr($row2['year'], 0,4);
 $imagename = $row2['imgthumb'];
 $kilas = $row2['class'];
 $views = $row2['views'];
@@ -174,8 +175,8 @@ if($imagename == "default.png"){
  }
 echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";    
-if ($elent > 21){
-$newee = substr($eem, 0, 20);
+if ($elent > 18){
+$newee = substr($eem, 0, 17);
 $shortee = "$newee...";
 }
 else { $shortee = $eem; }
@@ -187,9 +188,9 @@ echo "<a href='event/$r'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$pusername'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$pusername. this $month</h></a>";
+echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$pusername'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$pusername | $month $year</h></a>";
 }
-else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$pusername'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$pusername. this $month</h></a>";}
+else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$pusername'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$pusername | $month $year</h></a>";}
     
 
 echo "<br><br></div>

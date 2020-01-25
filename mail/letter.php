@@ -74,7 +74,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Work With Us: </h></b></br>
-<h style='font-size:14px'>We're always looking for new teammates, someone to scream, someone take the bugs. Is that you? Join us via our <a href='https://vrixe.com/jobs'>job board</a>.</h>
+<h style='font-size:14px'>We're always looking for new teammates, someone to draw, someone take the bugs outs. Is that you? Join us via our <a href='https://vrixe.com/jobs'>job board</a>.</h>
 </div>
 </div><br>
 

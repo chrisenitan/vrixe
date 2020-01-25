@@ -202,7 +202,7 @@ echo"<div class='pef'>
 
 <div class='analybox' title='Events you have planned with other users'>
 <h class='analytxt'>$totalContributions</h><br>
-<h class='petd'>contributions</h><br><br>
+<h class='petd'>event contributions</h><br><br>
 </div>
 <br>
 <div class='blfheadalt' id='ntifs'></div>

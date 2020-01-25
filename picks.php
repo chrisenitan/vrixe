@@ -62,7 +62,8 @@ $dlent = strlen($description);
 $imagename = $row['imgthumb'];
 $state = $row['zip'];
 $themea = $row['type'];
- $month = $row['month'];
+$month = $row['month'];
+$year = substr($row['year'], 0,4);
 $evorganiser = $row['organiser'];
 $elent = strlen($ee);
 $poster = $row['hype'];
@@ -124,8 +125,8 @@ var dbid = '$userposition';
   }
   
   
-if ($elent > 21){
-$newee = substr($ee, 0, 20);
+if ($elent > 18){
+$newee = substr($ee, 0, 17);
 $shortee = "$newee...";
 }
 else { $shortee = $ee;
@@ -140,9 +141,9 @@ echo "<a href='event/$r'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster happening $month</h></a>";
+echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $month $year</h></a>";
 }
-else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster happening $month</h></a>";
+else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $month $year</h></a>";
 }
 
 
