@@ -103,9 +103,9 @@ echo "<a href='event/$r'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster in $month</h></a>";
+echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster in $month</h></a>";
 }
-else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster in $month</h></a>";}
+else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster in $month</h></a>";}
     
 
 echo "<br><br></div>
@@ -192,9 +192,9 @@ echo "<a href='event/$rla'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$rla'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $weekday $year</h></a>";
+echo "<a href='event/$rla'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster | $weekday $year</h></a>";
 }
-else {echo "<a href='event/$rla'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $weekday $year</h></a>";}
+else {echo "<a href='event/$rla'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster | $weekday $year</h></a>";}
     
 
 echo "<br><br></div>
@@ -353,9 +353,9 @@ echo "<a href='event/$rla'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$rla'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $month $year</h></a>";
+echo "<a href='event/$rla'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster | $month $year</h></a>";
 }
-else {echo "<a href='event/$rla'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $month $year</h></a>";}
+else {echo "<a href='event/$rla'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster | $month $year</h></a>";}
     
 
 echo "<br><br></div>
@@ -433,9 +433,9 @@ echo "<a href='event/$r'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $month $year</h></a>";
+echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster | $month $year</h></a>";
 }
-else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>by @$poster | $month $year</h></a>";}
+else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <a href='profile/$poster'><h class='cardsdescription underlink'>by @$poster | $month $year</h></a>";}
     
 
 echo "<br><br></div>

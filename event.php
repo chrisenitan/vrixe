@@ -869,16 +869,15 @@ mysqli_close($conne);
   #if refs was not posted
 else{
 $refcheck = 0;
-  echo "<br>
-<div class='pagecen'>
+  echo "<br><div class='pagecen'>
 <div class='pef'>
   <div class='blfhead'>...plans events together</div>
  <br>
-  <img alt='Vrixe Events' src='images/essentials/vrixeevent.png' class='everybodyimg'>
-  <h class='miniss'>Create your own event and make plans with friends on Vrixe<br><br>
-   <a href='/invite'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>add_circle</i> Start Here</button></a><br><br>
+  <img alt='Vrixe Events' src='/images/essentials/create.svg' class='everybodyimg'>
+  <h class='miniss'>Create an event, invite friends, take polls, add agenda and do much more on Vrixe<br><br>
+   <a href='/invite'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>add_circle</i> Start Here</button></a><br><br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a progressive Web App<br>
 
 <i class='material-icons' style='vertical-align: sub;'>add_to_home_screen</i><br>
 <h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>

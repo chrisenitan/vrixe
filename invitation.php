@@ -300,7 +300,7 @@ echo"<div class='pef'>
 <h class='bottoms' id='evin'>$description</h></a><br>
 <h class='bottoms'><b>$caleng</b> at <b>$time</b></h><br><br>
 
-<h class='miniss'><a href='profile/$owner'>@$owner</a> has added you to this invite list<br>Accept to plan details together or Ignore to delete the invite</h><br>
+<h class='miniss'><a href='profile/$owner'>@$owner</a> has added you to <a href='event/$code' class='underlink'>this invite</a> list<br>Accept to plan details together or Ignore to delete the invite</h><br>
 
 ";
 

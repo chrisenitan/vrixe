@@ -24,6 +24,10 @@ a{ text-decoration: none; color:inherit; }
 	padding-bottom: 2%;
 	background-color: #f8f8ff;
 }
+.underlink{
+  text-decoration: underline;
+  text-underline-position: under;
+}
 ::placeholder {
   color: #57717b;
   opacity: 1; /* Firefox */
@@ -2185,11 +2189,6 @@ margin-top: 10px;
     padding-right:2%;
     display: inline-block;
     cursor: pointer;
-}
-.profilemini{
-    font-size: 12px;
-    text-decoration: underline;
-    text-underline-position: under;
 }
 .dedit{
 	color: #1fade4;

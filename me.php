@@ -373,12 +373,15 @@ echo "<div class='postcen'>
 <img src='$picture' class='profilephoto' alt='$username'><br><br>
 <div id='pwb'>
 $fullname<br><div id='cateuser'> @$username </div>
-<p class='minis' style='width:96%;margin:auto'>$bio</p>
+<p class='minis' style='width:96%;margin:auto'>$bio<br>
 
-<a href='https://$link'><small class='profilemini'> $link </small></a>
+<a href='https://$link' class='underlink'> $link </a>
+</p>
 
 
-<br><br><br>
+
+
+<br><br>
 <div id='locationfl'><i class='material-icons' style='font-size: 17px;vertical-align: sub;'>location_on</i> $location</div>
 <div title='Share Link. vrixe.com/profile/$username' id='usernamefl'></div>
 </div>
@@ -530,9 +533,9 @@ echo "<a href='event/$r'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>$kilas - $status - $views views</h>";}
+echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
      
-else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>$kilas - $status - $views views</h>";}
+else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
 
 
 

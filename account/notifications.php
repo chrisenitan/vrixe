@@ -146,7 +146,7 @@ if ($sentinvite == 0){
   echo "
     <h class='bottoms'>Find your plans and invites here.</h><br><br><br>
   <img alt='Plans on Vrixe' src='/images/essentials/create.svg' class='everybodyimg'><br>
-  <h class='miniss'>Invites and plans created by your <b><a href='/account/contacts'>Contacts</a></b> can be found on <b><a href='/picks'>Picks</a></b>.<br><br>
+  <h class='miniss'>Invites and plans created by your <a href='/account/contacts' class='underlink'>Contacts</a> can be found in your <a href='/picks' class='underlink'>Picks</a><br><br>
 <a href='/invite'><button style='margin-top:5px' class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px;'>add_circle</i> New Invite</button></a><br><br>";
 }
 echo"

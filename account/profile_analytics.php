@@ -134,10 +134,10 @@ if ($totalevents == 0){
   $customtxtreport = "You have not created any Event.";
 }
 else if ($totalevents == 1){
-  $customtxtreport = "You have created <h class='miniss'>$totalevents</h> Event.";
+  $customtxtreport = "You have <b>$totalevents event</b>";
 }
 else {
-  $customtxtreport = "You have created a total of <h class='miniss'>$totalevents</h> Events.";
+  $customtxtreport = "You have a total of <b>$totalevents events</b>";
 }
   
   

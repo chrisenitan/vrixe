@@ -56,29 +56,25 @@ echo"
 
   <h class='miniss'>What is happening here?</h><br>
  <img alt='$pollref' src='/images/essentials/vote.svg' class='everybodyimg'>
-<br><h class='disl'>Let's be fair, no changes but you can still delete this poll and make a new one.</h> <br><br>
+<br><h class='disl'>No changes to live polls but you can delete it and make a new one.</h><br><br>
 
 <a href='/poll/$code#event'><button type='button' class='control'><i class='material-icons' style='vertical-align:bottom;font-size:21px'>delete_forever</i> Delete Poll</button></a><br><br>
 
 
-  <h class='miniss'>...and you always get privacy control.</h><br>
+  <h class='miniss'>your poll's access code is <b>'$authkey'</b></h><br><br>
 <input type='text' name='pollcomments' value='$pollcomments' class='rates'>
 <div class='classholder'>
  <input type='text' id='pollprivateid' value='$popr' required class='rates' name='popr'>
 <div class='classholdertext'><i class='material-icons' style='vertical-align:sub;font-size:17px'>lock</i> PRIVATE</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='pollprivateclassbtn' onclick='var chjs=\"pollprivate\";allclass(chjs)'><i class='material-icons' style='vertical-align:bottom;font-size:16px'>lock</i></button> 
- </div><br>
-<h class='petd' style='color: #379e65;'>your poll's secure code is </h><h class='minis'><b>'$authkey'</b></h><br>";
+ </div><br><br>";
     
  if($governoOnPage == true){
    echo" <button type='button' class='textButton' onclick='deskChangePollCode()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>vpn_key</i> Change Secure Code</button>";
  }
  
- echo"
-<br><br><br>
+ echo"<br>
 <div class='blfheadalt'></div>
-<br>
 </div>
-
 ";
 
   }
