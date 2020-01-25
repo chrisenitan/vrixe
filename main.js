@@ -305,11 +305,7 @@ function allclass(chjs){
 //add to invite
 function toin(des, pes, ces, push){
   //if person field isfilled, move to next
-
-
-
-
-  /*
+  
 	var userName = document.getElementById("ua").value; //name
 	var upic = document.getElementById("pa").value;//image
   var umail = document.getElementById("ma").value;//email
@@ -323,7 +319,16 @@ function toin(des, pes, ces, push){
 	var count = (counts.split(",").length - 1);
 	var ct = count + 1;
   //if users added are more than 5, user must be 6
-   if(count > 5){return false;}
+   if(count > 5){
+     //call absolunia
+  var closer = 'close';
+  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">mail</i> Contact Us';
+  var buttonlink = 'mailto:contact@vrixe.com';
+  var title = 'Maximum invitees reached';
+  var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
+  callabsolunia(title, text, button, buttonlink, closer);
+     return false;
+   }
    else{
      //write number of users added
    	document.getElementById("invitelist").innerHTML=ct;
@@ -346,7 +351,7 @@ function toin(des, pes, ces, push){
 	var iddes = document.getElementById(`id${des}`);
   iddes.style.background="none";
 	iddes.style.backgroundColor="#372538";
-  */
+  
 }
 
 //clear invite list/contact
