@@ -235,7 +235,7 @@ else{
 echo"<br>
 <b><h class='bottoms'>$views $acceptedsofar</h></b>";
 if($class == 'private'){
-  echo "<br><h class='miniss'>Your private access key is <b>$authkey</b></h>";
+  echo "<br><h class='miniss'>Your invite's access code is <b>$authkey</b></h>";
 }
 
 echo"<br><br>
@@ -254,7 +254,7 @@ echo"<br><br>
 
 <div class='cards' onclick='movetoplan(\"MOVE TO PLAN\", iv)'><br>  
    <img alt='update details' src='/images/essentials/vote.svg' class='everybodyimg'>
-   <p class='miniss'>Add a poll</p>
+   <p class='miniss'>Take a poll</p>
    </div>
    
    <div class='cards' style='padding-top:2%' onclick='movetoplan(\"MOVE TO PLAN\", iv)'><br>  
@@ -269,7 +269,7 @@ echo"<br><br>
    
     <div class='cards' style='padding-top:2%' onclick='movetoplan(\"MOVE TO PLAN\", iv)'><br>  
    <img alt='update details' src='/images/essentials/contacts.svg' class='everybodyimg'>
-   <p class='miniss'>Allow friends edit details too...</p>
+   <p class='miniss'>Add and edit more details with friends</p>
    </div>
    
    
@@ -300,7 +300,7 @@ echo"<div class='pef'>
 <h class='bottoms' id='evin'>$description</h></a><br>
 <h class='bottoms'><b>$caleng</b> at <b>$time</b></h><br><br>
 
-<h class='miniss'><a href='profile/$owner'>@$owner</a> has added you to this invite list<br>Accept to plan details together or Ignore to delete the invite</h><br>
+<h class='miniss'><a href='profile/$owner'>@$owner</a> has added you to <a href='event/$code' class='underlink'>this invite</a> list<br>Accept to plan details together or Ignore to delete the invite</h><br>
 
 ";
 
@@ -441,7 +441,7 @@ echo"<div class='pef'>
 
 <h class='miniss'>Created by <b><a href='profile/$owner'>@$owner</a></b>. Open invite to see more details</h><br><br>
 
-<a href='account/profile_analytics.php#ntifs'><button class='copele'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>email</i> VIEW INVITE</button></a>
+<a href='account/notifications'><button class='copele'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>email</i> VIEW INVITE</button></a>
 <a href='event/$ivr'><button class='triocontrol'><i class='material-icons' style='font-size: 18px;vertical-align: sub;'>event</i> EVENT</button></a>
 <br><br>
 

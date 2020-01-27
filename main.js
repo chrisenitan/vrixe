@@ -1,7 +1,32 @@
 //script for vrixe 
 window.addEventListener("wheel", {passive: true} );
 
-function search(){
+//same as process but used on main
+function mainsprocess(outputId,req, iv, cu, dbid){
+	if (req == ""){
+		document.getElementById(outputId).innerHTML = "error";
+		return;
+	}
+	else {
+if (window.XMLHttpRequest) {
+// code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+} else {
+// code for IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById(outputId).innerHTML = this.responseText;
+}
+};
+
+xmlhttp.open("GET","../garage/mover.php?k="+req+"&i="+iv+"&c="+cu+"&dbid="+dbid,true);
+xmlhttp.send(); 
+}  
+}
+
+let search = () =>{ 
  document.getElementById('searchboxes').style.height="395px";
    document.getElementById('gtr').style.display='block';
 }
@@ -29,7 +54,7 @@ function hidesearch(){
 function closecloseb(){
   document.getElementById('gtr').style.display='none';
   document.getElementById('searchboxes').style.height="0";
- document.getElementById('sbut').style.display="inline-block";
+  document.getElementById('sbut').style.display="inline-block";
  }
 //show deskmenu
 function deskpop(){
@@ -279,10 +304,12 @@ function allclass(chjs){
 
 //add to invite
 function toin(des, pes, ces, push){
+  //if person field isfilled, move to next
+  
 	var userName = document.getElementById("ua").value; //name
 	var upic = document.getElementById("pa").value;//image
   var umail = document.getElementById("ma").value;//email
-  var pushid = document.getElementById("os").value;//push
+  var pushid = document.getElementById("os").value;//push id
 	//find if value exists and stop readding
 	var fr = userName.search(des);
 	if(fr == -1){} else{return false;}
@@ -292,7 +319,16 @@ function toin(des, pes, ces, push){
 	var count = (counts.split(",").length - 1);
 	var ct = count + 1;
   //if users added are more than 5, user must be 6
-   if(count > 5){return false;}
+   if(count > 5){
+     //call absolunia
+  var closer = 'close';
+  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">mail</i> Contact Us';
+  var buttonlink = 'mailto:contact@vrixe.com';
+  var title = 'Maximum invitees reached';
+  var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
+  callabsolunia(title, text, button, buttonlink, closer);
+     return false;
+   }
    else{
      //write number of users added
    	document.getElementById("invitelist").innerHTML=ct;
@@ -301,22 +337,21 @@ function toin(des, pes, ces, push){
 	if(userName == ""){var newUserName = des + ","; var newUserPic = pes + ","; var newUserMail = ces + ","; var newPushid = push + ",";}
   
   //add the old contentthen a comma and later details
-	else{var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
+	else{
+    var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
 	document.getElementById("ua").value=newUserName; //set names
 	document.getElementById("pa").value=newUserPic; //set pics	
   document.getElementById("ma").value=newUserMail; //set mail	
   document.getElementById("os").value=newPushid; //set push id
   
   //style the adding div
-	var clist = document.getElementById("clist");
-	clist.style.width="40%";
-	clist.style.height="auto";
-  clist.style.boxShadow="0px 0px 3px 1px #a9a9a9";
+	document.getElementById("clist").style.top='140px';
 	
   //style the selected user
 	var iddes = document.getElementById(`id${des}`);
-  	iddes.style.background="none";
+  iddes.style.background="none";
 	iddes.style.backgroundColor="#372538";
+  
 }
 
 //clear invite list/contact
@@ -326,10 +361,7 @@ function refreshtoin(){
 	document.getElementById("invitelist").innerHTML="";
   document.getElementById("ma").value="";
   document.getElementById("os").value="";
-	var clist = document.getElementById("clist");
-	clist.style.width="0px";
-	clist.style.height="0px";
-    clist.style.boxShadow="none";
+	document.getElementById("clist").style.top='1400vh';//hide count
 	var callpc;
 	var allpc = document.querySelectorAll(".cards");
 	for (callpc = 0; callpc < allpc.length; callpc++) {
@@ -371,12 +403,17 @@ xmlhttp.send();
 //show and hide faq sections
 function hideshow(all, one){
   var i;
-	var x = document.querySelectorAll(".all"); 	var y = document.getElementById(one);
-	 for (i = 0; i < x.length; i++) {
-        x[i].style.height="0px"; 
+  if(document.getElementById(one)){
+   var allSections = document.querySelectorAll(".all"); 	var section = document.getElementById(one);
+	 for (i = 0; i < allSections.length; i++) {
+        allSections[i].style.height="0px"; 
     }
-	y.style.height="auto";
-}
+	section.style.height="auto";
+  }
+  //id given is not in dom
+  else{
+   //consider adding fallback for bug report.
+  }}
 
 //suggest users on search bar. seperate because we have to show result in searh bar
 function checkforuser(search){ 
@@ -582,14 +619,32 @@ document.getElementById("accessCode").style.backgroundColor="#92ffc0";
   document.location = '#scrollAccessCode';
 }
 
-//show contributors list on event
-let displayContributorList = () =>{
-  document.getElementById("contributorList").style.height="324px";
-}
+//list of contributors
+window.addEventListener("load", function(){
+   if(document.getElementById("viewEditors")){
+     document.getElementById("viewEditors").addEventListener("click", function(){
+      //get code and 
+     var req = "getContributors";
+     var refs = document.getElementById("contributorsListCode").value;       
+      //send request
+      mainsprocess("contributorsList",req, refs);      
+      //hide menia for event pageXOffset
+      if(document.getElementById('menia')){
+         document.getElementById('menia').style.height='0';
+      }
+    //display section
+      document.getElementById("contributorsListSection").style.display="block";
+      document.getElementById("gtr").style.display="block";
+      document.getElementById("contributorsListSection").style.top='15%';
+    });
+      //close list
+      document.getElementById("closeEditors").addEventListener("click", function(){
+      document.getElementById("gtr").style.display="none";
+      document.getElementById("contributorsListSection").style.top='100%';
+    });
+      
+  }
+});
 
-//hide contributors list on event
-let hideContributorList = () =>{
-  document.getElementById("contributorList").style.height="0px";
-}
 
 

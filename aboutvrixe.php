@@ -5,7 +5,6 @@ error_reporting( error_reporting() & ~E_NOTICE ); //prevent error repr
 $defaultAllowNoUser = true;
 require("garage/passport.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

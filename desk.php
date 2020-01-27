@@ -238,8 +238,11 @@ $ringf = $row['ringf'];
   $whokeynote = $actorsare['keynote'];if($whokeynote == ""){$whokeynote = $poster;}
 $whodayedit =date("d - M - Y");
 }
-  require('garage/validatebasic.php');
-
+  require('garage/validatebasic.php');//prepare to validate edits 
+//fetch contributor setion
+   $pureEventRef = $code;
+  require("garage/contributorsList.php");
+   
 echo "
 <script>
   var meals = 'meals';
@@ -352,7 +355,7 @@ width:45%;
 <br>
 
 <h class='blf'>Venue Landmark<span class='asterik'>*</span></h><br>
-<input onchange='var weidalt=\"wholandmark\";allwho(weidalt)' type='text' value=\"$landmark\" class='privinput' id='evldm' name='landmark' required placeholder='... .... ...'><br>
+<input onchange='var weidalt=\"wholandmark\";allwho(weidalt)' type='text' value=\"$landmark\" class='privinput' id='evldm' name='landmark' required placeholder='behind the..., 2nd floor of...'><br>
 <input type='text' id='wholandmark' value='$wholandmark' class='rates' name='wholandmark' required>
 <div class='whoedit'>$wholandmark</div><br><br>
 
@@ -369,7 +372,7 @@ width:45%;
 <div class='whoedit'>$whokeynote</div><br><br>
 
 <h class='blf'>Dress Code</h><br>
-<input onchange='var weidalt=\"whodresscode\";allwho(weidalt)' type='text' value=\"$dress\" class='privinput' id='evdrc' name='dresscode' placeholder='... .... ...'><br>
+<input onchange='var weidalt=\"whodresscode\";allwho(weidalt)' type='text' value=\"$dress\" class='privinput' id='evdrc' name='dresscode' placeholder='Casual, ...'><br>
 <input type='text' id='whodresscode' value='$whodresscode' class='rates' name='whodresscode' required>
 <div class='whoedit'>$whodresscode</div><br><br>
 
@@ -510,7 +513,8 @@ echo"
 
 
 <div id='dnewsub'>
-<div class='blfhead'>Choose what to edit</div><br><br>
+<div class='blfhead'>Choose what to edit</div><br>
+<button type='button' class='leftFadeButton' id='viewEditors'><i class='material-icons' style='font-size:17px;vertical-align:sub'>person</i> View Editors</button>
 
         <a href='#zero'><div class='bring' onclick='eventbox(zero)'><br><img src='images/essentials/d_title.png' class='fiwb'><br>titles<div class='jal'></div><button type='button' class='basicconfirmdot' id='bcdo' style='color:#5c9ced'><i class='material-icons' style='font-size: 14px;vertical-align:sub;'>fiber_manual_record</i></button></div></a>
 
@@ -541,7 +545,6 @@ echo"
 ";
 
   //just a way to control who moves to approved
-
 if ($username == $hype){
   echo "<div class='classholder' style='float:right;margin-right:2%;'>
       <input type='text' name='status' value='$statval' id='approveid' class='rates'>
@@ -556,7 +559,7 @@ else{
 }
 
 echo"
-<div class='classholder' style='float:left;clear:both'>
+<div class='classholder' style='clear:both'>
       <input type='text' name='notifstat' value='false' id='notifyid' class='rates'>
 
       <div class='classholdertext'><i class='material-icons' style='vertical-align:bottom;font-size:17px'>notifications</i> NOTIFY</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='notifyclassbtn' onclick='var chjs=\"notify\";allclass(chjs)'><i class='material-icons' style='vertical-align:sub;font-size:16px'>notifications</i></button>
@@ -565,7 +568,7 @@ echo"
 <p id='formerror'>Select 'Notify' to update everyone on your changes.<br><b><a href='account/settings' target='_blank'>Notification settings <i class='material-icons' style='vertical-align:text-top;font-size:17px'>arrow_forward</i></a></b></p>
 
 <span id='usercnotif' style='display:none'>
-<textarea style='height:70px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
+<textarea style='height:70px;padding-top:5px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
 <h class='petd' id='plicate'>notify your team with a custom message</h><br><br>
 </span>
 

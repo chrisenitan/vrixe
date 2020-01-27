@@ -60,7 +60,7 @@ echo "<div class='pagecen'>
 <input maxlength='25' type='text' value='$fullname' class='privinput' name='editfullname' placeholder='... .... ...' required><br>
 <h class='petd'>account name</h><br><br>
 
-<input type='text' id='source' oninput='countkeys()' maxlength='160' class='privinput' name='editbio' placeholder='What I do...' value='$userBio'><br>
+<textarea type='text' style='height:80px' id='source' oninput='countkeys()' maxlength='160' class='privinput' name='editbio' placeholder='What I do...'>$userBio</textarea><br>
 <h class='petd' id='plicate'>Tell people your best skills.</h><br><br>
 
 

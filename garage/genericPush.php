@@ -4,8 +4,7 @@
 
 //if dev server
   if($phpurl == 'vrixe-enn'){
-            $appID = "527b2883-5dff-4a9b-88bd-5e2e3e74c9f4";
-
+    
             //if event approved page on dev
             if($requestPushAs == "approvedEvent"){
               $pushTempId = "d76ad75d-3a3c-4628-b87e-e395a7f27009";
@@ -38,8 +37,6 @@
 
 //if live server
 else{
-          $appID = "151afe3d-500c-49f3-b682-dd9c5084a863";
-
           //if event approved page on live
          if($requestPushAs == "approvedEvent"){
            $pushTempId = "b7a18100-4eba-4968-ad2f-243d827aaf97";
@@ -85,12 +82,12 @@ $initialplso = $allpusharrayids[6]; if($initialplso > ""){$plso = $allpusharrayi
   
  
 
-	function sendMessage($postRefCode, $pushTempId, $pushLink, $appID, $plsa, $plsb, $plsc, $plsd, $plse, $plsf, $plso){
+	function sendMessage($postRefCode, $pushTempId, $pushLink, $oneSignalAppId, $plsa, $plsb, $plsc, $plsd, $plse, $plsf, $plso){
 		
     
 		
 		$fields = array(
-			'app_id' => $appID,
+			'app_id' => $oneSignalAppId,
 			'include_player_ids' => array("$plsa","$plsb","$plsc","$plsd","$plse","$plsf","$plso"),
 			'data' => array("foo" => "bar"),
       'template_id' => $pushTempId,
@@ -114,7 +111,7 @@ $initialplso = $allpusharrayids[6]; if($initialplso > ""){$plso = $allpusharrayi
 		return $response;
 	}
 	
-	$response = sendMessage($postRefCode, $pushTempId, $pushLink, $appID, $plsa, $plsb, $plsc, $plsd, $plse, $plsf, $plso);
+	$response = sendMessage($postRefCode, $pushTempId, $pushLink, $oneSignalAppId, $plsa, $plsb, $plsc, $plsd, $plse, $plsf, $plso);
 	$return["allresponses"] = $response;
 	$return = json_encode( $return);
 

@@ -36,10 +36,12 @@ if ($mycontacts > ""){
 <input class='rates' id='pa' name='pa' required>
 <input class='rates' id='ma' name='ma' required>
 <input class='rates' id='os' name='os' required>
-<div id='clist'><button title='Create invite' class='sil'><i class='material-icons' style='vertical-align:bottom;font-size:17px;'>send</i></button></form>
-<button title='Delete list' class='sil' id='xsil' type='button' onclick='refreshtoin()'><i class='material-icons' style='vertical-align:bottom;font-size:17px;'>cancel_presentation</i></button>
-<button id='invitelist' type='button'></button>
+<div id='clist'>
+<button id='invitelist' class='sil' type='button' style='width:10%'></button>
+<button title='Delete list' class='sil' id='xsil' type='button' onclick='refreshtoin()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>
+<button title='Create invite' class='sil' id='addsil'><i class='material-icons' style='font-size:17px;vertical-align:sub'>how_to_reg</i> Invite</button>
 </div>
+</form>
 
 <div id='result'></div>";
   
@@ -96,7 +98,6 @@ else{
 
   </div>
 <br><br>
-
 
 <?php require("../garage/networkStatus.php"); ?>
 <br><br>

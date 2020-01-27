@@ -94,7 +94,7 @@ echo"<title>$event ON VRIXE</title>";
 
 <div id="gtr" onclick="closeclose()"></div>
 
-<button id="write" onclick="pmenu()"><i class='material-icons'>more_vert</i></button>
+<button id="write" class="floatBtn" onclick="pmenu()"><i class='material-icons'>more_vert</i></button>
 
 <?php require("garage/mobilehead.php"); ?>
 <?php require("garage/subhead.php");?>
@@ -180,10 +180,10 @@ echo "</h><br>";
 
 echo "$newtheme";
 
-echo "<div class='o' style='background-color:#5bc2ec;'>continous editing</div>
+echo "<div class='o' style='background-color:#5bc2ec;'>edit, save, edit again...</div>
 <div class='o' style='background-color:#ec5b76'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>notifications</i> get timely notifications</div>
 
-<div class='o'><b style='color:#fbb8b8'>Current Task:</b> add quick notes on event news</div>";
+<div class='o'><b style='color:#fbb8b8'>Current Task: </b>update your guests on every step</div>";
 
 echo "<br><br><h id='event' style='font-size:20px;display:inline-block;width:95%'>$event";
 echo "</h><br>";
@@ -192,7 +192,7 @@ echo "</h><br>";
 echo "<img src='/images/essentials/preview/$evimg' class='thisimage' alt='Vrixe Events'><br>";
 
 
-echo "<div id='evina' style='max-height:300px;'><h class='bottoms' id='evin'>Add more details to your event, keep things organised and do all that with your team.<br> ...sign up for a free account.</h></div>";
+echo "<div id='evina' style='max-height:300px;'><h class='bottoms' id='evin'>Add more details to your event, keep things organised and much more, all that with your team.<br> ...sign up for a free account.</h></div>";
 
 
 echo "<div class='dategnt'>";

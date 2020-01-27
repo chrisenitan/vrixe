@@ -40,7 +40,7 @@ echo"<a href='/me' aria-label='my_profile'><img id='mbbimg' src='$userheadimg' a
     echo"
     <a href='/account/profile_analytics'><button class='mbb'><i class='material-icons' style='vertical-align:bottom;font-size:21px'>pie_chart</i> &nbsp Profile Analytics</button></a>
 
-<a href='/account/contacts'><button class='mbb'><i class='material-icons' style='vertical-align:bottom;font-size:21px'>perm_contact_calendar</i> &nbsp My Contacts</button></a>
+<a href='/account/contacts'><button class='mbb'><i class='material-icons' style='vertical-align:bottom;font-size:21px'>perm_contact_calendar</i> &nbsp Contacts</button></a>
 
 <form action='/index.php' method='post' style='width:100%;'>
 <input type='text' value='signout' name='signout' class='rates'>

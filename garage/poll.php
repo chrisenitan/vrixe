@@ -56,29 +56,25 @@ echo"
 
   <h class='miniss'>What is happening here?</h><br>
  <img alt='$pollref' src='/images/essentials/vote.svg' class='everybodyimg'>
-<br><h class='disl'>Let's be fair, no changes but you can still delete this poll and make a new one.</h> <br><br>
+<br><h class='disl'>No changes to live polls but you can delete it and make a new one.</h><br><br>
 
 <a href='/poll/$code#event'><button type='button' class='control'><i class='material-icons' style='vertical-align:bottom;font-size:21px'>delete_forever</i> Delete Poll</button></a><br><br>
 
 
-  <h class='miniss'>...and you always get privacy control.</h><br>
+  <h class='miniss'>your poll's access code is <b>'$authkey'</b></h><br><br>
 <input type='text' name='pollcomments' value='$pollcomments' class='rates'>
 <div class='classholder'>
  <input type='text' id='pollprivateid' value='$popr' required class='rates' name='popr'>
 <div class='classholdertext'><i class='material-icons' style='vertical-align:sub;font-size:17px'>lock</i> PRIVATE</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='pollprivateclassbtn' onclick='var chjs=\"pollprivate\";allclass(chjs)'><i class='material-icons' style='vertical-align:bottom;font-size:16px'>lock</i></button> 
- </div><br>
-<h class='petd' style='color: #379e65;'>your poll's secure code is </h><h class='minis'><b>'$authkey'</b></h><br>";
+ </div><br><br>";
     
  if($governoOnPage == true){
    echo" <button type='button' class='textButton' onclick='deskChangePollCode()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>vpn_key</i> Change Secure Code</button>";
  }
  
- echo"
-<br><br><br>
+ echo"<br>
 <div class='blfheadalt'></div>
-<br>
 </div>
-
 ";
 
   }
@@ -109,20 +105,20 @@ echo"
 
  <div class='blfhead'>Add a poll</div><br>
  
- <input name='pollquestion' id='pollquestion' type='text' class='grivinput' placeholder='poll question...' autocapitalize='characters'>
+ <input name='pollquestion' id='pollquestion' type='text' class='grivinput' placeholder='your poll question here...' autocapitalize='characters'>
  <br><br>
  
- <h class='petd'>add up to 5 choices</h><br><br>
  <button class='sobox' type='button' onclick='addoninput(thirteen)' style='border-top-left-radius: 50px;border-bottom-left-radius: 50px;'><h>1</h></button>
  
  <button class='sobox' type='button' onclick='addoninput(fourteen)'><h>2</h></button>
   
  <button class='sobox' type='button' onclick='addoninput(fifthteen)'><h>3</h></button>
    
-  <button class='sobox' type='button' onclick='addoninput(sixteen)'><h>4</h></button>
+ <button class='sobox' type='button' onclick='addoninput(sixteen)'><h>4</h></button>
     
-  <button class='sobox' type='button' onclick='addoninput(seventeen)' style='border-top-right-radius: 50px;border-bottom-right-radius: 50px;'><h>5</h></button>
- <br>
+  <button class='sobox' type='button' onclick='addoninput(seventeen)' style='border-top-right-radius: 50px;border-bottom-right-radius: 50px;'><h>5</h></button><br>
+
+<h class='petd'>add up to 5 choice options</h><br><br>
  
  
 <div class='proginput' id='thirteen'>
@@ -169,7 +165,7 @@ echo"
  }
  
   echo"<br><br>  
- <a href='help/faq#privatepoll' target='_blank'><h class='petd'>learn more about private polls<i class='material-icons' style='vertical-align:middle;font-size:14px'>arrow_forward</i></h></a><br><br>
+ <a href='help/faq?q=accounts_on_polls' target='_blank'><h class='petd'>learn more about private polls<i class='material-icons' style='vertical-align:middle;font-size:14px'>arrow_forward</i></h></a><br><br>
  
  
  <div class='blfheadalt'></div>

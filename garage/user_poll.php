@@ -1,7 +1,6 @@
 <?php
-//actual poll for users
-echo"
-<div class='pef' style='padding:0px'> 
+//actual poll page for users
+echo"<div class='pef' style='padding:0px'> 
  <div class='pollimage' alt='$pollref' style='background-image:url(\"/images/events/$eventimage\")'>";
 
 
@@ -157,7 +156,7 @@ deletepoll(pollid);
    <h class='miniss'>Having issues with comments?</h><br>
 
 <i class='material-icons' style='font-size:16px;vertical-align:middle;color:#065cff'>contact_support</i><br>
-<h class='miniss'>Let us know <br><a href='/help/feedbacks'><button class='control'>FEEDBACK</button></a></h><br><br>
+<h class='miniss'>Let us know <br><a href='/help/feedbacks'><button class='control'><i class='material-icons' style='font-size:16px;vertical-align:middle;'>feedback</i> Feedback</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 

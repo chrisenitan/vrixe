@@ -30,7 +30,7 @@ $headers .= 'From: Vrixe '.$from."\r\n".
 $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium Web, Roboto, sans serif;padding:1%'>
 
 <p style='padding-top:5px;padding-bottom:5px;margin-bottom:5px;font-size:30px;font-weight:bold;width:100%;text-align:center;color:#404141'><img src='https://vrixe.com/mail/vtrans.png' style='width:60px;height:50px;border-radius:50%;'><br>
-...the big bang.</p>
+...18 new feature updates.</p>
 <p style='margin-top:2px;font-size:14px;text-align:center'>
 <img alt='create' src='https://vrixe.com/mail/updateimages/mcreate.png' style='width:14px;height:14px'> Create invites 
 
@@ -48,7 +48,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/verifyemail/login.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Google Sign In: </h></b></br>
-<h style='font-size:14px'>Signing into Vrixe got a lot easier and familiar with Google sign in. Just one tap and all your events come to you.</h>
+<h style='font-size:14px'>Signing into Vrixe just got a lot easier with Google SignIn. Just one tap now and all your events come to you.</h>
 </div>
 </div><br>
 
@@ -61,7 +61,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <img src='https://vrixe.com/mail/updateimages/desk.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
 <b><h style='font-size:14px'>Simpler Is Better: </h></b></br>
-<h style='font-size:14px'>Minor redesign, new intentful buttons and tooltips now help you understand how to use Vrixe without a PHD.</h>
+<h style='font-size:14px'>We redesigned the app, added some new intentful buttons and tooltips to help you use Vrixe like a Pro.</h>
 </div>
 </div><br>
 
@@ -73,8 +73,8 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 <div style='width:97%;margin:auto;height:auto;overflow:hidden;'>
 <img src='https://vrixe.com/mail/event/key.png' style='float:left;width:50px;height:50px'>
 <div style='float:right;width:80%;padding-right:1%;text-align:left'>
-<b><h style='font-size:14px'>Email Verification: </h></b></br>
-<h style='font-size:14px'>New users can now use the App for a trial period before, we've pushed the verification step further for you.</h>
+<b><h style='font-size:14px'>Work With Us: </h></b></br>
+<h style='font-size:14px'>We're always looking for new teammates, someone to draw, someone take the bugs outs. Is that you? Join us via our <a href='https://vrixe.com/jobs'>job board</a>.</h>
 </div>
 </div><br>
 
@@ -85,7 +85,7 @@ $message = "<html><body style='margin:auto;max-width:500px;font-family:Titillium
 
 <a href='https://vrixe.com'><div style='width:44%;height: auto;font-size: 12px;outline:none;font-weight:bolder;padding: 5px;display: inline-block;color:#f7f8fa;background-color:#00bbce;border-style: solid;border-width: 1px;border-radius: 3px;border-color:#00bbce;cursor: pointer;overflow:hidden;font-family:Titillium Web, Roboto, sans serif;text-align: center;margin-bottom: 5px;'>WHAT'S NEW</div></a><br>
 
-<h style='font-size:12px'>Go on, start your next plan with friends.</h>
+<h style='font-size:12px'>Come see what's new here...</h>
 </div><br><br>
 
 

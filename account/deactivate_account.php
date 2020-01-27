@@ -85,25 +85,22 @@ while($founduser = mysqli_fetch_array($cooked)){
 <?php
   //remove user push if user logout out. actual code is below page becaus eof async script 
   if ($candeactivate == true){
-    echo "<script src='https://cdn.onesignal.com/sdks/OneSignalSDK.js' async=''></script>";
+echo "<script src='https://cdn.onesignal.com/sdks/OneSignalSDK.js' async=''></script>
     
-   if($phpurl == 'vrixe-enn'){$appID = '527b2883-5dff-4a9b-88bd-5e2e3e74c9f4';}else{$appID = '151afe3d-500c-49f3-b682-dd9c5084a863';}
-echo"
   <script defer>
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
-      appId: '$appID',
+      appId: '$oneSignalAppId',
     });
   });
 
 OneSignal.push(function() {
 OneSignal.sendTag('nature', 'deleted');
-       OneSignal.setSubscription(false);      
+OneSignal.setSubscription(false);      
 });
 
-</script>";
-}
+</script>";}
 ?>  
 <meta name="description" content="Delete your Vrixe account">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
@@ -165,7 +162,6 @@ OneSignal.sendTag('nature', 'deleted');
     require("../mail/genericMailer.php");   
 
 }
-
 ?>
 </div>
 <br><br>

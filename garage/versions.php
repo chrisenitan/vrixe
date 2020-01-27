@@ -1,5 +1,5 @@
 <?php
-$vv = "2.29";
-$genAppVersion = "2.21.1340";
-$releaseDateToString = "Dec - 23 - 2019";
+$vv = "2.30";
+$genAppVersion = "2.21.2600";
+$releaseDateToString = "Jan - 27 - 2020";
 ?>

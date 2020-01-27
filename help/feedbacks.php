@@ -117,7 +117,7 @@ function fours(){
 else{ //user has nohingto complain about but is here
   echo "
 <br><h class='bugdes'>How may we help you?</h><br>
-<h class='miniss'>Profile Management, Usage settings & Everything else</h><br>
+<h class='miniss'>or checkout our <a href='faq' class='underlink'>faq</a> here</h><br>
 
 <input type='text' class='rates' value='$username' name='user'>
 
@@ -315,10 +315,11 @@ else{ //nobody, just a tourist
 <br>
  <h class='miniss'>I can't find my phone!</h>
 <br><br>
- <h class='disl'>Have you tried Vrixe and found a bug somewhere? or you'd like to ask us some other questions, we'd love to hear from you.<br>..but you have to start by signing up for an account.</h>
+ <h class='disl'>Report bugs or ask us questions, we'd love to hear from you ...but you have to start by signing up for an account.</h>
 <br><br>
 
-   <a href='/index?q=profile_required'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Sign Up</button></a><br><br><br>
+   <a href='/index?q=profile_required'><button class='copele'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Sign Up</button></a>
+    <a href='faq'><button class='triocontrol'><i class='material-icons' style='vertical-align:bottom;font-size:17px'>question_answer</i> Our FAQs</button></a><br><br><br>
 
    <h class='miniss'>We have a progressive web app<br>
 

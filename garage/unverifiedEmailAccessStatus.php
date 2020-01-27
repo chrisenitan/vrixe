@@ -89,7 +89,7 @@ echo "<div id='oalert' >We tried to mail you but Email could not be sent<br>Not 
 else{//users account is still in trial period
   $daysRemaining = 8 - $accountAge;  
 echo "<div id='oalert'>Please verify your account's email within $daysRemaining days.<br>
-  <a href='help/faq#spamfilter'>Issues with email verification? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
+  <a href='help/faq?q=missing_verification_email'>Issues with email verification? <i class='material-icons' style='font-size:16px;vertical-align:text-top'>arrow_forward</i></a></div>
 <br>";
 }
 

@@ -10,7 +10,7 @@ echo"<br>
 <div class='pef'>
 <div class='blfhead'>This content is private</div><br>
 $errorBox
-<img src='https://vrixe.com/images/essentials/secure.svg' class='everybodyimg'>
+<img src='/images/essentials/secure.svg' class='everybodyimg'>
   <br>
  
   <form method='post' action='$sendformto' autocomplete='off'>

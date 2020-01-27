@@ -31,7 +31,7 @@ function prepareUser(profile){
 
   //submit form?
   if(profile.destination == ""){
-    //wait for user action. page was loaded without any intentions
+    //wait for user action. page was loaded without any url params
   }else{
    document.getElementById(profile.destination).submit();//submit form
   }
@@ -46,7 +46,7 @@ function onSignIn(googleUser){
   profile.token = id_token;
   profile.destination = document.getElementById("formDestination").value;//set where to send form
   document.getElementById("returningText").innerHTML="Welcome back <b>" + profile.getName() + "</b>, do you want to continue with your Google account?";//if user was logged in 
-  
+  //console.log(profile.token);
   //prepare form?
    prepareUser(profile);
 

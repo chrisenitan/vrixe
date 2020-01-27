@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php echo "<title>$fullname | Profile Analysis</title>"; ?>
+<?php echo "<title>$fullname | Analytics</title>"; ?>
 <link rel="manifest" href="/manifest.json">
 <meta name="description" content="Stastitical reports on your Vrixe account and Events">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" x-undefined=""/>
@@ -134,10 +134,10 @@ if ($totalevents == 0){
   $customtxtreport = "You have not created any Event.";
 }
 else if ($totalevents == 1){
-  $customtxtreport = "You have created <h class='miniss'>$totalevents</h> Event.";
+  $customtxtreport = "You have <b>$totalevents event</b>";
 }
 else {
-  $customtxtreport = "You have created a total of <h class='miniss'>$totalevents</h> Events.";
+  $customtxtreport = "You have a total of <b>$totalevents events</b>";
 }
   
   
@@ -202,7 +202,7 @@ echo"<div class='pef'>
 
 <div class='analybox' title='Events you have planned with other users'>
 <h class='analytxt'>$totalContributions</h><br>
-<h class='petd'>contributions</h><br><br>
+<h class='petd'>event contributions</h><br><br>
 </div>
 <br>
 <div class='blfheadalt' id='ntifs'></div>

@@ -1,8 +1,9 @@
 <?php
+//poll page to show user. will generate actual poll from user_poll
 //do not require user account
 $defaultAllowNoUser = true;
 require("garage/passport.php"); 
-//poll page to show user. will generate actual poll from user_poll
+
  $ppaccesscode = mysqli_real_escape_string($conne, $_POST['authkey']);
 if($ppaccesscode > ""){
 $pollref = mysqli_real_escape_string($conne, $_GET['id']); #turn ref into ordinary text

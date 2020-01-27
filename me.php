@@ -261,7 +261,7 @@ header("Location: index");
 <html lang="en">
 <head>
 <?php
-if ($cookie > ""){echo "<title> $fullname | Vrixe</title>"; }
+if ($cookie > ""){echo "<title> $fullname - @$username | Vrixe </title>"; }
 else {echo "<title>No User Found</title>";}#redirect would have hanled this
 ?>
 <meta name='description' content='Monitor your Events and grow your audience with your Vrixe account'>
@@ -373,12 +373,15 @@ echo "<div class='postcen'>
 <img src='$picture' class='profilephoto' alt='$username'><br><br>
 <div id='pwb'>
 $fullname<br><div id='cateuser'> @$username </div>
-<p class='minis' style='width:96%;margin:auto'>$bio</p>
+<p class='minis' style='width:96%;margin:auto'>$bio<br>
 
-<a href='https://$link'><small class='profilemini'> $link </small></a>
+<a href='https://$link' class='underlink'> $link </a>
+</p>
 
 
-<br><br><br>
+
+
+<br><br>
 <div id='locationfl'><i class='material-icons' style='font-size: 17px;vertical-align: sub;'>location_on</i> $location</div>
 <div title='Share Link. vrixe.com/profile/$username' id='usernamefl'></div>
 </div>
@@ -407,7 +410,7 @@ $altgotyourevents = 1; $popviews = $altrow2['views']; $whichpopviews = $altrow2[
 echo"<div id='galert'>Having verification troubles? <a href='help/feedbacks'><button style='width:auto' aria-label='view invites' class='gboxit'><i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
   }
   else if ($gotinvite == 1){
- echo"<div id='galert'><a href='account/profile_analytics#ntifs'>You have an invite waiting <button style='width:auto' aria-label='view invites' class='gboxit'><i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
+ echo"<div id='galert'><a href='account/notifications'>You have an invite waiting <button style='width:auto' aria-label='view invites' class='gboxit'><i class='material-icons' style='font-size:16px;vertical-align:middle'>arrow_forward</i></button></a></div>";
   }
   else if($altgotyourevents == 1 and $gotinvite == 0){
     if($smartstatus == "plan" or $smartstatus == "invite"){
@@ -508,15 +511,15 @@ if($status == 'invite'){
 <button class='cardsactions' style='width:auto'><i class='material-icons'>swap_horizontal_circle</i><br>move to plan</button>
 </form>";}
 else if($status == 'plan'){ 
-  echo"<button class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>this plan is in progress</button>";
+  echo"<button disabled class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>this plan is in progress</button>";
 }
  else{
-       echo"<button class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>event approved</button>";
+       echo"<button disabled class='cardsactions' style='width:auto;color:#5bc2ec;margin-top:17px'><br>event approved</button>";
  }
 
      
-if ($elent > 21){
-$newee = substr($eem, 0, 20);
+if ($elent > 18){
+$newee = substr($eem, 0, 17);
 $shortee = "$newee...";
 }
 else { $shortee = $eem;
@@ -530,9 +533,9 @@ echo "<a href='event/$r'>
 if ($dlent > 26){
 $ndescri = substr($description, 0, 25);
 $descr = "$ndescri...";
-echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>$kilas - $status - $views views</h>";}
+echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
      
-else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <h class='cardsdescription' style='text-decoration:underline;text-underline-position: under;'>$kilas - $status - $views views</h>";}
+else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
 
 
 

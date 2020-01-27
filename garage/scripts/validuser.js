@@ -150,7 +150,7 @@ document.getElementById(elem).style.width="98%";
   else if(dbid == "unverifieduser"){
     var closer = 'close this';
   var button = "<i class='material-icons' style='font-size:14px;vertical-align:middle'>help</i> How To Verify";
-  var buttonlink = '/help/faq#privatepoll';
+  var buttonlink = '/help/faq?q=accounts_on_polls';
   var title = 'Please verify your account';
   var text = "Private polls need a verified account<br>Having issues verifying your account? <a href='/help/feedbacks' style='text-decoration:underline'> Send us a feedback <i class='material-icons' style='font-size:14px;vertical-align:middle'>arrow_forward</i></a>";
   callabsolunia(title, text, button, buttonlink, closer);
