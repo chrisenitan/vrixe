@@ -235,7 +235,7 @@ else{
 echo"<br>
 <b><h class='bottoms'>$views $acceptedsofar</h></b>";
 if($class == 'private'){
-  echo "<br><h class='miniss'>Your private access key is <b>$authkey</b></h>";
+  echo "<br><h class='miniss'>Your invite's access code is <b>$authkey</b></h>";
 }
 
 echo"<br><br>

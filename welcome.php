@@ -111,6 +111,7 @@ header('Location: index');
 </head>
 <body>
 <div id="gtr" onclick="closecloseb()"></div>
+  <?php require("./garage/absolunia.php"); ?>
 <?php require("garage/deskhead.php");
   require("garage/desksearch.php");
   require("garage/deskpop.php"); 
@@ -141,11 +142,10 @@ header('Location: index');
   
 else if ($saveUserStatus == "save"){
 echo "<div class='pagecen'><div class='pef'>
-<div class='blfhead'>Profile Created</div><br>
-<div class='lifted' id='sdsfj' onclick='sdsfj()'><b>We added cookies!</b><br>...cookies help us know it's you and gives you seamless access to vrixe.<br><br><button class='copele'>Cookies Are Ok</button> <a href='app/terms.html#cookies'><button class='control'>Delete Cookies</button></a></div><br><br>
+<div class='blfhead'>Profile Created</div><br><br>
 
  <img alt='Account Created' src='images/essentials/contacts.svg' class='everybodyimg'><br><br>
-<br><h class='sword'>Your account has been created and we emailed you for verification</h><br>
+<h class='sword'>Your account has been created and we emailed you for verification</h><br>
 ";
 //send mail
   //pure signup email
@@ -202,11 +202,16 @@ echo "<h class='miniss'>Your account was created with a secure password, but you
 <br>
 
 </div>";
-  //hide cookie
+  //show cookies dis via absolnia
 echo "<script>
-function sdsfj(){
-document.getElementById('sdsfj').style.display='none';
-}
+window.addEventListener('load', function(){
+  var closer = 'cookies are fine';
+  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">delete_outline</i> Delete Cookies ';
+  var buttonlink = 'app/terms.html#cookies';
+  var title = 'We just saved cookies';
+  var text = 'To help us remember you on this device and give you seamless access to Vrixe, we added some domain secured cookies to this device';
+  callabsolunia(title, text, button, buttonlink, closer);
+});
 </script>";
 
 }

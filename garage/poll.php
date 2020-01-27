@@ -105,20 +105,20 @@ echo"
 
  <div class='blfhead'>Add a poll</div><br>
  
- <input name='pollquestion' id='pollquestion' type='text' class='grivinput' placeholder='poll question...' autocapitalize='characters'>
+ <input name='pollquestion' id='pollquestion' type='text' class='grivinput' placeholder='your poll question here...' autocapitalize='characters'>
  <br><br>
  
- <h class='petd'>add up to 5 choices</h><br><br>
  <button class='sobox' type='button' onclick='addoninput(thirteen)' style='border-top-left-radius: 50px;border-bottom-left-radius: 50px;'><h>1</h></button>
  
  <button class='sobox' type='button' onclick='addoninput(fourteen)'><h>2</h></button>
   
  <button class='sobox' type='button' onclick='addoninput(fifthteen)'><h>3</h></button>
    
-  <button class='sobox' type='button' onclick='addoninput(sixteen)'><h>4</h></button>
+ <button class='sobox' type='button' onclick='addoninput(sixteen)'><h>4</h></button>
     
-  <button class='sobox' type='button' onclick='addoninput(seventeen)' style='border-top-right-radius: 50px;border-bottom-right-radius: 50px;'><h>5</h></button>
- <br>
+  <button class='sobox' type='button' onclick='addoninput(seventeen)' style='border-top-right-radius: 50px;border-bottom-right-radius: 50px;'><h>5</h></button><br>
+
+<h class='petd'>add up to 5 choice options</h><br><br>
  
  
 <div class='proginput' id='thirteen'>

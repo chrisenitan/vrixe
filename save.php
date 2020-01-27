@@ -155,7 +155,7 @@ else {
 <div class='blfhead'>Invite Created.</div><br>
 <div class='eventimage'>$event</div><br>
 
-  <h class='miniss'>Added anyone to edit with? See if the accepted or not<br>...and you can start planning together.</h><br><br>
+  <h class='miniss'>Added anyone to edit with? See if they accepted or not<br>...and you can start planning together.</h><br><br>
 
   <form style='display:inline' action='invitation.php' method='post'>
 <input type='text' class='rates' value='$string' name='iv'>
@@ -212,7 +212,7 @@ if($phpurl == 'vrixe-enn'){
   //do not push
    }
 
-echo"<h class='sword'>Your private access code is: </h><h id='string'>$authkey</h><br><br>
+echo"<h class='sword'>Your invite's access code is: </h><h id='string'>$authkey</h><br><br>
 <h class='sword'>Share your invite</h>
 <br><h class='minis' style='color:#778899' id='clonetext'>vrixe.com/event/$string</h><br><br>
 

@@ -355,7 +355,7 @@ width:45%;
 <br>
 
 <h class='blf'>Venue Landmark<span class='asterik'>*</span></h><br>
-<input onchange='var weidalt=\"wholandmark\";allwho(weidalt)' type='text' value=\"$landmark\" class='privinput' id='evldm' name='landmark' required placeholder='... .... ...'><br>
+<input onchange='var weidalt=\"wholandmark\";allwho(weidalt)' type='text' value=\"$landmark\" class='privinput' id='evldm' name='landmark' required placeholder='behind the..., 2nd floor of...'><br>
 <input type='text' id='wholandmark' value='$wholandmark' class='rates' name='wholandmark' required>
 <div class='whoedit'>$wholandmark</div><br><br>
 
@@ -372,7 +372,7 @@ width:45%;
 <div class='whoedit'>$whokeynote</div><br><br>
 
 <h class='blf'>Dress Code</h><br>
-<input onchange='var weidalt=\"whodresscode\";allwho(weidalt)' type='text' value=\"$dress\" class='privinput' id='evdrc' name='dresscode' placeholder='... .... ...'><br>
+<input onchange='var weidalt=\"whodresscode\";allwho(weidalt)' type='text' value=\"$dress\" class='privinput' id='evdrc' name='dresscode' placeholder='Casual, ...'><br>
 <input type='text' id='whodresscode' value='$whodresscode' class='rates' name='whodresscode' required>
 <div class='whoedit'>$whodresscode</div><br><br>
 
@@ -568,7 +568,7 @@ echo"
 <p id='formerror'>Select 'Notify' to update everyone on your changes.<br><b><a href='account/settings' target='_blank'>Notification settings <i class='material-icons' style='vertical-align:text-top;font-size:17px'>arrow_forward</i></a></b></p>
 
 <span id='usercnotif' style='display:none'>
-<textarea style='height:70px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
+<textarea style='height:70px;padding-top:5px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
 <h class='petd' id='plicate'>notify your team with a custom message</h><br><br>
 </span>
 
