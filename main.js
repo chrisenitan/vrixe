@@ -303,10 +303,28 @@ function allclass(chjs){
 }
 
 //add to invite
-function toin(des, pes, ces, push){
+function toin(username, mail, userpic, pushid){
   //if person field isfilled, move to next
   
-	var userName = document.getElementById("ua").value; //name
+	var user1 = document.getElementById("user1"); 
+  var user2 = document.getElementById("user2"); 
+  var user3 = document.getElementById("user3"); 
+  var user4 = document.getElementById("user4"); 
+  var user5 = document.getElementById("user5"); 
+  var user6 = document.getElementById("user6"); 
+  
+  //create string
+  var userData = `${username}, ${mail}, ${userpic}, ${pushid}`; 
+  
+  //inser value function
+  let insert = (userData, elementPosition) =>{
+   document.getElementById(elementPosition).value=userData; 
+  }
+  
+  //check and count positions
+  
+  
+  //name
 	var upic = document.getElementById("pa").value;//image
   var umail = document.getElementById("ma").value;//email
   var pushid = document.getElementById("os").value;//push id

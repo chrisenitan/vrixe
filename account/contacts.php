@@ -32,10 +32,12 @@ require("../garage/passport.php");
 if ($mycontacts > ""){
   echo"<div class='blfhead'>...select contacts to invite</div>
 <form style='width:100%;' action='/invite.php' method='post'>
-<input class='rates' id='ua' name='ua' required>
-<input class='rates' id='pa' name='pa' required>
-<input class='rates' id='ma' name='ma' required>
-<input class='rates' id='os' name='os' required>
+<input class='rates' id='user1' name='user1' required>
+<input class='rates' id='user2' name='user2' required>
+<input class='rates' id='user3' name='user3' required>
+<input class='rates' id='user4' name='user4' required>
+<input class='rates' id='user5' name='user5' required>
+<input class='rates' id='user6' name='user6' required>
 <div id='clist'>
 <button id='invitelist' class='sil' type='button' style='width:10%'></button>
 <button title='Delete list' class='sil' id='xsil' type='button' onclick='refreshtoin()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>
@@ -58,13 +60,12 @@ $usercid = $row['cid'];//for delete
 
 echo "
 <script>
-var iv$usercid = 'or cid = $usercid ';
-var cu$usercid = '$username';
+var userid$usercid = '$usercid ';
+var username$usercid = '$username';
 var req$usercid = 'delete contact';
-var toi$usercid = '$user';
-var poi$usercid = '$userpic';
-var co$usercid = '$mail';
-var os$usercid = '$pushid';
+var useremail$usercid = '$mail';
+var userimage$usercid = '$userpic';
+var userpush$usercid = '$pushid';
 </script>
 
 <div id='id$user' class='cards' style='background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%);'>
@@ -76,7 +77,7 @@ var os$usercid = '$pushid';
 <span style='font-size:13px'>@$user</span></a><br><br>
 
 
-<button class='allcopele' title='Add to Invite list' onclick='toin(toi$usercid, poi$usercid, co$usercid, os$usercid);'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+<button class='allcopele' title='Add to Invite list' onclick='toin(\"$username\", \"$mail\", \"$userpic\", \"$pushid\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
 </div>
 
 ";
