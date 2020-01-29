@@ -302,84 +302,82 @@ function allclass(chjs){
 
 }
 
-//add to invite
-function toin(username, mail, userpic, pushid){
-  //if person field isfilled, move to next
-  
-	var user1 = document.getElementById("user1"); 
-  var user2 = document.getElementById("user2"); 
-  var user3 = document.getElementById("user3"); 
-  var user4 = document.getElementById("user4"); 
-  var user5 = document.getElementById("user5"); 
-  var user6 = document.getElementById("user6"); 
+//add to invite from contact
+function addToInviteList(username, mail, userpic, pushid){
+  //get all field values  
+	var user1 = document.getElementById("user1").value; 
+  var user2 = document.getElementById("user2").value; 
+  var user3 = document.getElementById("user3").value; 
+  var user4 = document.getElementById("user4").value; 
+  var user5 = document.getElementById("user5").value; 
+  var user6 = document.getElementById("user6").value; 
   
   //create string
   var userData = `${username}, ${mail}, ${userpic}, ${pushid}`; 
   
-  //inser value function
-  let insert = (userData, elementPosition) =>{
+   //insert value function
+   let insertData = (userData, elementPosition, count, userId) =>{
    document.getElementById(elementPosition).value=userData; 
-  }
+   document.getElementById("invitelist").innerHTML=count;    
+      //style the selected user
+      var userId = document.getElementById(userId);
+      userId.style.background="none";
+      userId.style.backgroundColor="#372538";
+    }
   
-  //check and count positions
-  
-  
-  //name
-	var upic = document.getElementById("pa").value;//image
-  var umail = document.getElementById("ma").value;//email
-  var pushid = document.getElementById("os").value;//push id
-	//find if value exists and stop readding
-	var fr = userName.search(des);
-	if(fr == -1){} else{return false;}
-
-	//count list
-	var counts = document.getElementById("ua").value;
-	var count = (counts.split(",").length - 1);
-	var ct = count + 1;
-  //if users added are more than 5, user must be 6
-   if(count > 5){
-     //call absolunia
-  var closer = 'close';
-  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">mail</i> Contact Us';
-  var buttonlink = 'mailto:contact@vrixe.com';
-  var title = 'Maximum invitees reached';
-  var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
-  callabsolunia(title, text, button, buttonlink, closer);
-     return false;
-   }
-   else{
-     //write number of users added
-   	document.getElementById("invitelist").innerHTML=ct;
-   }
-	//add the comma behind the firstname
-	if(userName == ""){var newUserName = des + ","; var newUserPic = pes + ","; var newUserMail = ces + ","; var newPushid = push + ",";}
-  
-  //add the old contentthen a comma and later details
-	else{
-    var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
-	document.getElementById("ua").value=newUserName; //set names
-	document.getElementById("pa").value=newUserPic; //set pics	
-  document.getElementById("ma").value=newUserMail; //set mail	
-  document.getElementById("os").value=newPushid; //set push id
-  
-  //style the adding div
-	document.getElementById("clist").style.top='140px';
-	
-  //style the selected user
-	var iddes = document.getElementById(`id${des}`);
-  iddes.style.background="none";
-	iddes.style.backgroundColor="#372538";
+        //check and count positions
+        if (user1 == ""){
+            var elementPosition = "user1";
+            //insert, userdata, which field, countnumber, div id to style
+            insertData(userData, elementPosition, "1", `id${username}`);
+            //display count div once
+            document.getElementById("clist").style.top='140px';	
+        }
+        else if(user2 == ""){
+            var elementPosition = "user2";
+            insertData(userData, elementPosition, "2", `id${username}`);
+        }
+          else if(user3 == ""){
+            var elementPosition = "user3";
+            insertData(userData, elementPosition, "3", `id${username}`);
+        }
+          else if(user4 == ""){
+            var elementPosition = "user4";
+            insertData(userData, elementPosition, "4", `id${username}`);
+        }
+          else if(user5 == ""){
+            var elementPosition = "user5";
+            insertData(userData, elementPosition, "5", `id${username}`);
+        }
+          else if(user6 == ""){
+            var elementPosition = "user6";
+            insertData(userData, elementPosition, "6", `id${username}`);
+        }
+        else{
+          //call absolunia
+        var closer = 'close';
+        var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">mail</i> Contact Us';
+        var buttonlink = 'mailto:contact@vrixe.com';
+        var title = 'Maximum invitees reached';
+        var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
+        callabsolunia(title, text, button, buttonlink, closer);
+           return false;
+        }
   
 }
 
 //clear invite list/contact
-function refreshtoin(){
-	document.getElementById("ua").value="";
-	document.getElementById("pa").value="";
-	document.getElementById("invitelist").innerHTML="";
-  document.getElementById("ma").value="";
-  document.getElementById("os").value="";
-	document.getElementById("clist").style.top='1400vh';//hide count
+function clearInviteList(){
+  //remove all values
+  document.getElementById("user1").value=""; 
+  document.getElementById("user2").value=""; 
+  document.getElementById("user3").value=""; 
+  document.getElementById("user4").value=""; 
+  document.getElementById("user5").value=""; 
+  document.getElementById("user6").value="";   
+  //hide count div
+	document.getElementById("clist").style.top='1400vh';
+  //reset all elemet styling
 	var callpc;
 	var allpc = document.querySelectorAll(".cards");
 	for (callpc = 0; callpc < allpc.length; callpc++) {

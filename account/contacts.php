@@ -40,7 +40,7 @@ if ($mycontacts > ""){
 <input class='rates' id='user6' name='user6' required>
 <div id='clist'>
 <button id='invitelist' class='sil' type='button' style='width:10%'></button>
-<button title='Delete list' class='sil' id='xsil' type='button' onclick='refreshtoin()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>
+<button title='Delete list' class='sil' id='xsil' type='button' onclick='clearInviteList()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>
 <button title='Create invite' class='sil' id='addsil'><i class='material-icons' style='font-size:17px;vertical-align:sub'>how_to_reg</i> Invite</button>
 </div>
 </form>
@@ -59,15 +59,6 @@ $userpic = $row['picture'];
 $usercid = $row['cid'];//for delete
 
 echo "
-<script>
-var userid$usercid = '$usercid ';
-var username$usercid = '$username';
-var req$usercid = 'delete contact';
-var useremail$usercid = '$mail';
-var userimage$usercid = '$userpic';
-var userpush$usercid = '$pushid';
-</script>
-
 <div id='id$user' class='cards' style='background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%);'>
 <button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
 
@@ -77,7 +68,7 @@ var userpush$usercid = '$pushid';
 <span style='font-size:13px'>@$user</span></a><br><br>
 
 
-<button class='allcopele' title='Add to Invite list' onclick='toin(\"$username\", \"$mail\", \"$userpic\", \"$pushid\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+<button class='allcopele' title='Add to Invite list' onclick='addToInviteList(\"$user\", \"$mail\", \"$userpic\", \"$pushid\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
 </div>
 
 ";
