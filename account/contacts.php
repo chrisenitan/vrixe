@@ -33,11 +33,11 @@ if ($mycontacts > ""){
   echo"<div class='blfhead'>...select contacts to invite</div>
 <form style='width:100%;' action='/invite.php' method='post'>
 <input class='rates' id='user1' name='user1' required>
-<input class='rates' id='user2' name='user2' required>
-<input class='rates' id='user3' name='user3' required>
-<input class='rates' id='user4' name='user4' required>
-<input class='rates' id='user5' name='user5' required>
-<input class='rates' id='user6' name='user6' required>
+<input class='rates' id='user2' name='user2' >
+<input class='rates' id='user3' name='user3' >
+<input class='rates' id='user4' name='user4' >
+<input class='rates' id='user5' name='user5' >
+<input class='rates' id='user6' name='user6' >
 <div id='clist'>
 <button id='invitelist' class='sil' type='button' style='width:10%'></button>
 <button title='Delete list' class='sil' id='xsil' type='button' onclick='clearInviteList()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>

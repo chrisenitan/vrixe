@@ -366,9 +366,7 @@ function addToInviteList(username, mail, userpic, pushid){
         var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
         callabsolunia(title, text, button, buttonlink, closer);
            return false;
-        }
-  
-}
+        }}
 
 //remove single user from invite list
 function removeFromInviteList(username, removeruser){
@@ -400,29 +398,27 @@ function removeFromInviteList(username, removeruser){
     //set value to null
     removeData("user1",`remove${username}`);
     break;
- case (user2):
+  case (user2):
     //set value to null
     removeData("user2",`remove${username}`);
     break;
- case (user3):
+  case (user3):
     //set value to null
     removeData("user3",`remove${username}`);
     break;
- case (user4):
+  case (user4):
     //set value to null
     removeData("user4",`remove${username}`);
     break;
- case (user5):
+  case (user5):
     //set value to null
     removeData("user5",`remove${username}`);
     break;
- case (user6):
+  case (user6):
     //set value to null
     removeData("user6",`remove${username}`);
     break;
-}
- 
-}
+}}
 
 
 //clear invite list/contact

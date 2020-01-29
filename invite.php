@@ -18,10 +18,13 @@ require("garage/passport.php");
 
 $sql="DELETE FROM  `events` WHERE  `event` = ''";
 
-  $invitelist = mysqli_real_escape_string($conne, $_POST['ua']);
-  $invitelistpics = mysqli_real_escape_string($conne, $_POST['pa']);
-  $invitelistmail = mysqli_real_escape_string($conne, $_POST['ma']);
-  $invitelistpush = mysqli_real_escape_string($conne, $_POST['os']);
+   //get invitees data from contact page
+   $inviteUser1 = mysqli_real_escape_string($conne, $_POST['user1']);
+   $inviteUser2 = mysqli_real_escape_string($conne, $_POST['user2']);
+   $inviteUser3 = mysqli_real_escape_string($conne, $_POST['user3']);
+   $inviteUser4 = mysqli_real_escape_string($conne, $_POST['user4']);
+   $inviteUser5 = mysqli_real_escape_string($conne, $_POST['user5']);
+   $inviteUser6 = mysqli_real_escape_string($conne, $_POST['user6']);
 
 if (!mysqli_query($conne,$sql))
   {
@@ -238,23 +241,26 @@ if($cut == ""){
 </div>
 <br>
 <?php
-//explode string into array
-$invitearray = explode(",", $invitelist);//from contact names
-$invitemailarray = explode(",", $invitelistmail); //from contact mails 
-$invitepicarray = explode(",", $invitelistpics); //from contact pictures
-$invitepusharray = explode(",", $invitelistpush); //from contact mails 
 
 //show empty or prefilled boxes
 
-if($invitearray[0] > ""){
+if($inviteUser1 > ""){
+    //explode string into array
+    $inviteUser1Array = explode(",", $inviteUser1);//from contact names
+    $inviteUser1Image = $inviteUser1Array[2];
+    $inviteUser1Username = $inviteUser1Array[0];
+    $inviteUser1Pushid = $inviteUser1Array[3];
+  
   echo"
     <div id='boxaa' class='lilput' style='display:inline-block;'>
-    <img src='$invitepicarray[0]' class='lilprofilephoto'><div class='jal'></div><h id='boxa'>@$invitearray[0]</h>    
-<input type='text' name='cua' id='cua' value='$invitearray[0]' class='rates'>
+    <img src='$inviteUser1Image' class='lilprofilephoto'><div class='jal'></div><h id='boxa'>@$inviteUser1Username</h>    
+<input type='text' name='cua' id='cua' value='$inviteUser1Username' class='rates'>
   </div>
   ";
 }
 else{
+  //set a default push id
+  $inviteUser1Pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
   echo"
    <div id='boxaa' class='lilput'>
     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoa'><div class='jal'></div><h id='boxa'></h>    
@@ -264,15 +270,22 @@ else{
 }
 
 
-if($invitearray[1] > ""){
+if($inviteUser2 > ""){
+   //explode string into array
+    $inviteUser2Array = explode(",", $inviteUser2);//from contact names
+    $inviteUser2Image = $inviteUser2Array[2];
+    $inviteUser2Username = $inviteUser2Array[0];
+    $inviteUser2Pushid = $inviteUser2Array[3];
   echo"
     <div id='boxba' class='lilput' style='display:inline-block;'>
-    <img src='$invitepicarray[1]' class='lilprofilephoto'><div class='jal'></div><h id='boxb'>@$invitearray[1]</h>    
-<input type='text' name='cub' id='cub' value='$invitearray[1]' class='rates'>
+    <img src='$inviteUser2Image' class='lilprofilephoto'><div class='jal'></div><h id='boxb'>@$inviteUser2Username</h>    
+<input type='text' name='cub' id='cub' value='$inviteUser2Username' class='rates'>
   </div>
   ";
 }
 else{
+  //set a default push id
+  $inviteUser2Pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
   echo"
 <div id='boxba' class='lilput'>
     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynob'><div class='jal'></div><h id='boxb'></h>    
@@ -282,15 +295,22 @@ else{
 }
 
 
-if($invitearray[2] > ""){
+if($inviteUser3 > ""){
+   //explode string into array
+    $inviteUser3Array = explode(",", $inviteUser3);//from contact names
+    $inviteUser3Image = $inviteUser3Array[2];
+    $inviteUser3Username = $inviteUser3Array[0];
+    $inviteUser3Pushid = $inviteUser3Array[3];
   echo"
     <div id='boxca' class='lilput' style='display:inline-block;'>
-    <img src='$invitepicarray[2]' class='lilprofilephoto'><div class='jal'></div><h id='boxc'>@$invitearray[2]</h>    
-<input type='text' name='cuc' id='cuc' value='$invitearray[2]' class='rates'>
+    <img src='$inviteUser3Image' class='lilprofilephoto'><div class='jal'></div><h id='boxc'>@$inviteUser3Username</h>    
+<input type='text' name='cuc' id='cuc' value='$inviteUser3Username' class='rates'>
   </div>
   ";
 }
 else{
+  //set a default push id
+  $inviteUser3Pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
   echo"
 <div id='boxca' class='lilput'>
     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoc'><div class='jal'></div><h id='boxc'></h>    
@@ -300,15 +320,22 @@ else{
 }
 
 
-if($invitearray[3] > ""){
+if($inviteUser4 > ""){
+   //explode string into array
+    $inviteUser4Array = explode(",", $inviteUser4);//from contact names
+    $inviteUser4Image = $inviteUser4Array[2];
+    $inviteUser4Username = $inviteUser4Array[0];
+    $inviteUser4Pushid = $inviteUser4Array[3];
   echo"
     <div id='boxda' class='lilput' style='display:inline-block;'>
-    <img src='$invitepicarray[3]' class='lilprofilephoto'><div class='jal'></div><h id='boxd'>@$invitearray[3]</h>    
-<input type='text' name='cud' id='cud' value='$invitearray[3]' class='rates'>
+    <img src='$inviteUser4Image' class='lilprofilephoto'><div class='jal'></div><h id='boxd'>@$inviteUser4Username</h>    
+<input type='text' name='cud' id='cud' value='$inviteUser4Username' class='rates'>
   </div>
   ";
 }
 else{
+  //set a default push id
+  $inviteUser4Pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
   echo"
 <div id='boxda' class='lilput'>
     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynod'><div class='jal'></div><h id='boxd'></h>    
@@ -319,15 +346,22 @@ else{
 
 
 
-if($invitearray[4] > ""){
+if($inviteUser5 > ""){
+   //explode string into array
+    $inviteUser5Array = explode(",", $inviteUser5);//from contact names
+    $inviteUser5Image = $inviteUser5Array[2];
+    $inviteUser5Username = $inviteUser5Array[0];
+    $inviteUser5Pushid = $inviteUser5Array[3];
   echo"
     <div id='boxea' class='lilput' style='display:inline-block;'>
-    <img src='$invitepicarray[4]' class='lilprofilephoto'><div class='jal'></div><h id='boxe'>@$invitearray[4]</h>    
-<input type='text' name='cue' id='cue' value='$invitearray[4]' class='rates'>
+    <img src='$inviteUser5Image' class='lilprofilephoto'><div class='jal'></div><h id='boxe'>@$inviteUser5Username</h>    
+<input type='text' name='cue' id='cue' value='$inviteUser5Username' class='rates'>
   </div>
   ";
 }
 else{
+  //set a default push id
+  $inviteUser5Pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
   echo"
 <div id='boxea' class='lilput'>
     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynoe'><div class='jal'></div><h id='boxe'></h>    
@@ -338,15 +372,22 @@ else{
 
 
 
-if($invitearray[5] > ""){
+if($inviteUser6 > ""){
+   //explode string into array
+    $inviteUser6Array = explode(",", $inviteUser6);//from contact names
+    $inviteUser6Image = $inviteUser6Array[2];
+    $inviteUser6Username = $inviteUser6Array[0];
+    $inviteUser6Pushid = $inviteUser6Array[3];
   echo"
     <div id='boxfa' class='lilput' style='display:inline-block;'>
-    <img src='$invitepicarray[5]' class='lilprofilephoto'><div class='jal'></div><h id='boxf'>@$invitearray[5]</h>    
-<input type='text' name='cuf' id='cuf' value='$invitearray[5]' class='rates'>
+    <img src='$inviteUser6Image' class='lilprofilephoto'><div class='jal'></div><h id='boxf'>@$inviteUser6Username</h>    
+<input type='text' name='cuf' id='cuf' value='$inviteUser6Username' class='rates'>
   </div>
   ";
 }
 else{
+  //set a default push id
+  $inviteUser6Pushid = "66666666-36f0-432b-9f5d-4bfeec61fa81";
   echo"
 <div id='boxfa' class='lilput'>
     <img src='https://vrixe.com/images/profiles/profilethumbs/user.png' class='lilprofilephoto' id='dynof'><div class='jal'></div><h id='boxf'></h>    
@@ -354,7 +395,10 @@ else{
   </div>
   ";
 }
-
+      
+ //set push list. find better way to do this
+ $invitelistpush = "$inviteUser1Pushid,$inviteUser2Pushid,$inviteUser3Pushid,$inviteUser4Pushid,$inviteUser5Pushid,$inviteUser6Pushid";
+ $invitelistmail = "";
 ?>
 
 
