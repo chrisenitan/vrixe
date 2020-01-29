@@ -68,7 +68,9 @@ echo "
 <span style='font-size:13px'>@$user</span></a><br><br>
 
 
-<button class='allcopele' title='Add to Invite list' onclick='addToInviteList(\"$user\", \"$mail\", \"$userpic\", \"$pushid\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+<button class='allcopele' id='add$user' title='Add to Invite list' onclick='addToInviteList(\"$user\", \"$mail\", \"$userpic\", \"$pushid\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+
+<button class='allcopele rates' id='remove$user' title='Remove from Invite list' onclick='removeFromInviteList(\"$user\", \"remove$user\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add_disabled</i> Remove from invite</button>
 </div>
 
 ";

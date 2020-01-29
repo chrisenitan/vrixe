@@ -316,42 +316,46 @@ function addToInviteList(username, mail, userpic, pushid){
   var userData = `${username}, ${mail}, ${userpic}, ${pushid}`; 
   
    //insert value function
-   let insertData = (userData, elementPosition, count, userId) =>{
+   let insertData = (userData, elementPosition, userId) =>{
    document.getElementById(elementPosition).value=userData; 
-   document.getElementById("invitelist").innerHTML=count;    
+      //increase the counter by 1
+      document.getElementById("invitelist").innerHTML = Number(document.getElementById("invitelist").innerHTML) + 1;   
       //style the selected user
       var userId = document.getElementById(userId);
       userId.style.background="none";
       userId.style.backgroundColor="#372538";
+     //display remove button and show add button
+      document.getElementById(`remove${username}`).style.display="block";
+      document.getElementById(`add${username}`).style.display="none";
     }
   
-        //check and count positions
+        //check positions
         if (user1 == ""){
             var elementPosition = "user1";
             //insert, userdata, which field, countnumber, div id to style
-            insertData(userData, elementPosition, "1", `id${username}`);
+            insertData(userData, elementPosition, `id${username}`);
             //display count div once
             document.getElementById("clist").style.top='140px';	
         }
         else if(user2 == ""){
             var elementPosition = "user2";
-            insertData(userData, elementPosition, "2", `id${username}`);
+            insertData(userData, elementPosition, `id${username}`);
         }
           else if(user3 == ""){
             var elementPosition = "user3";
-            insertData(userData, elementPosition, "3", `id${username}`);
+            insertData(userData, elementPosition, `id${username}`);
         }
           else if(user4 == ""){
             var elementPosition = "user4";
-            insertData(userData, elementPosition, "4", `id${username}`);
+            insertData(userData, elementPosition, `id${username}`);
         }
           else if(user5 == ""){
             var elementPosition = "user5";
-            insertData(userData, elementPosition, "5", `id${username}`);
+            insertData(userData, elementPosition, `id${username}`);
         }
           else if(user6 == ""){
             var elementPosition = "user6";
-            insertData(userData, elementPosition, "6", `id${username}`);
+            insertData(userData, elementPosition, `id${username}`);
         }
         else{
           //call absolunia
@@ -365,6 +369,61 @@ function addToInviteList(username, mail, userpic, pushid){
         }
   
 }
+
+//remove single user from invite list
+function removeFromInviteList(username, removeruser){
+  //get all user names  
+	var user1 = document.getElementById("user1").value.split(",")[0]; 
+  var user2 = document.getElementById("user2").value.split(",")[0]; 
+  var user3 = document.getElementById("user3").value.split(",")[0]; 
+  var user4 = document.getElementById("user4").value.split(",")[0]; 
+  var user5 = document.getElementById("user5").value.split(",")[0]; 
+  var user6 = document.getElementById("user6").value.split(",")[0]; 
+  
+  //remove data function
+  let removeData = (userField, userDiv) =>{
+      //remove value
+      document.getElementById(userField).value="";
+      //undo style the selected user
+      var userId = document.getElementById(`id${username}`);
+      userId.style.background="linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
+      //hide remove button and show add to invite button
+      document.getElementById(`remove${username}`).style.display="none";
+      document.getElementById(`add${username}`).style.display="block";
+      //reduce the counter by 1
+      document.getElementById("invitelist").innerHTML = document.getElementById("invitelist").innerHTML - 1;
+  }
+  
+  //get which user to act on
+  switch(username){
+  case (user1):
+    //set value to null
+    removeData("user1",`remove${username}`);
+    break;
+ case (user2):
+    //set value to null
+    removeData("user2",`remove${username}`);
+    break;
+ case (user3):
+    //set value to null
+    removeData("user3",`remove${username}`);
+    break;
+ case (user4):
+    //set value to null
+    removeData("user4",`remove${username}`);
+    break;
+ case (user5):
+    //set value to null
+    removeData("user5",`remove${username}`);
+    break;
+ case (user6):
+    //set value to null
+    removeData("user6",`remove${username}`);
+    break;
+}
+ 
+}
+
 
 //clear invite list/contact
 function clearInviteList(){
