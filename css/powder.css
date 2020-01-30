@@ -638,6 +638,10 @@ input{
 background-color: #f2f2f8;
 color: #dd4b54;
 }
+.altallcopele{
+    background-color: ghostwhite !important;
+    color: #372538 !important;
+}
 .allcopele{
      width: 90%;
     padding-left: 6%;
