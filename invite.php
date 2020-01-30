@@ -248,6 +248,7 @@ if($inviteUser1 > ""){
     //explode string into array
     $inviteUser1Array = explode(",", $inviteUser1);//from contact names
     $inviteUser1Image = $inviteUser1Array[2];
+    $inviteUser1Email = $inviteUser1Array[1] . ",";
     $inviteUser1Username = $inviteUser1Array[0];
     $inviteUser1Pushid = $inviteUser1Array[3];
   
@@ -274,6 +275,7 @@ if($inviteUser2 > ""){
    //explode string into array
     $inviteUser2Array = explode(",", $inviteUser2);//from contact names
     $inviteUser2Image = $inviteUser2Array[2];
+    $inviteUser2Email = $inviteUser2Array[1] . ",";
     $inviteUser2Username = $inviteUser2Array[0];
     $inviteUser2Pushid = $inviteUser2Array[3];
   echo"
@@ -299,6 +301,7 @@ if($inviteUser3 > ""){
    //explode string into array
     $inviteUser3Array = explode(",", $inviteUser3);//from contact names
     $inviteUser3Image = $inviteUser3Array[2];
+    $inviteUser3Email = $inviteUser3Array[1] . ",";
     $inviteUser3Username = $inviteUser3Array[0];
     $inviteUser3Pushid = $inviteUser3Array[3];
   echo"
@@ -324,6 +327,7 @@ if($inviteUser4 > ""){
    //explode string into array
     $inviteUser4Array = explode(",", $inviteUser4);//from contact names
     $inviteUser4Image = $inviteUser4Array[2];
+    $inviteUser4Email = $inviteUser4Array[1] . ",";
     $inviteUser4Username = $inviteUser4Array[0];
     $inviteUser4Pushid = $inviteUser4Array[3];
   echo"
@@ -350,6 +354,7 @@ if($inviteUser5 > ""){
    //explode string into array
     $inviteUser5Array = explode(",", $inviteUser5);//from contact names
     $inviteUser5Image = $inviteUser5Array[2];
+    $inviteUser5Email = $inviteUser5Array[1] . ",";
     $inviteUser5Username = $inviteUser5Array[0];
     $inviteUser5Pushid = $inviteUser5Array[3];
   echo"
@@ -376,6 +381,7 @@ if($inviteUser6 > ""){
    //explode string into array
     $inviteUser6Array = explode(",", $inviteUser6);//from contact names
     $inviteUser6Image = $inviteUser6Array[2];
+    $inviteUser6Email = $inviteUser6Array[1] . ",";
     $inviteUser6Username = $inviteUser6Array[0];
     $inviteUser6Pushid = $inviteUser6Array[3];
   echo"
@@ -398,7 +404,7 @@ else{
       
  //set push list. find better way to do this
  $invitelistpush = "$inviteUser1Pushid,$inviteUser2Pushid,$inviteUser3Pushid,$inviteUser4Pushid,$inviteUser5Pushid,$inviteUser6Pushid";
- $invitelistmail = "";
+ $invitelistmail = "$inviteUser1Email$inviteUser2Email$inviteUser3Email$inviteUser4Email$inviteUser5Email$inviteUser6Email null";
 ?>
 
 

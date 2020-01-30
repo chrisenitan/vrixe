@@ -432,13 +432,18 @@ function clearInviteList(){
   document.getElementById("user6").value="";   
   //hide count div
 	document.getElementById("clist").style.top='1400vh';
+  //reset the counter to 0
+  document.getElementById("invitelist").innerHTML = 0;
   //reset all elemet styling
 	var callpc;
 	var allpc = document.querySelectorAll(".cards");
+  var allRemoveButtons = document.querySelectorAll(".altallcopele");
+  var allAddButtons = document.querySelectorAll(".allcopele");
 	for (callpc = 0; callpc < allpc.length; callpc++) {
     allpc[callpc].style.background="linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
-}
-}
+     allAddButtons[callpc].style.display="block";//show all add button
+     allRemoveButtons[callpc].style.display="none";//hide all remove buttons
+   }}
 
 //remove user form invite desk
 function junkuser(user, box){
