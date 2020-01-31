@@ -225,7 +225,7 @@ let deleteContact = (cu, dbid) =>{
   var button = "<i class='material-icons' style='font-size:16px;vertical-align:middle'>delete</i> Delete";
   var buttonlink = "#";
   var title = "Delete Contact?";
-  var text = "Are you sure you want to remove this contact<br> Your actions are kept private. Want to send a report? <a style='text-decoration:underline;text-underline-position:under' href='/help/feedbacks' target='_blank'>Click here</a>";
+  var text = "Are you sure you want to remove this contact<br> No updates will be sent to this user. Want to report something instead? <a style='text-decoration:underline;text-underline-position:under' href='/help/feedbacks' target='_blank'>Click here</a>";
   callabsolunia(title, text, button, buttonlink, closer);
     document.getElementById('absolunia_button').addEventListener('click', function(){
 process("delete contact", cu, dbid);

@@ -49,7 +49,7 @@ if ($mycontacts > ""){
   
 $de = mysqli_query($conne,"SELECT * FROM profiles WHERE $mycontacts ");
 
-  while ($row = mysqli_fetch_array($de)){
+ while ($row = mysqli_fetch_array($de)){
 
 $pushid = $row['pushid'];
 $mail = $row['email'];
@@ -60,7 +60,7 @@ $usercid = $row['cid'];//for delete
 
 echo "
 <div id='id$user' class='cards' style='background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%);'>
-<button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
+<button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(\"or cid = $usercid \", \"$username\")'><i class='material-icons'>delete</i></button>
 
 
 <a href='/profile/$user'><img src='$userpic' class='contactphoto'>
