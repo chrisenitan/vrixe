@@ -1,6 +1,6 @@
 garage/visa.php
 junk/
-OneSignalSDKUpdaterWorker.js
+mail/
 images/eventnails/
 images/events/
 images/profiles/
@@ -12,6 +12,7 @@ mail/dnu_updates.php
 mail/dnu_verify.php
 .htaccess
 htaccess
+OneSignalSDKUpdaterWorker.js
 OneSignalSDKWorker.js
 php.ini
 robots.txt
