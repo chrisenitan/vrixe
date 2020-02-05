@@ -702,8 +702,11 @@ window.addEventListener("load", function(){
       //get code and 
      var req = "getContributors";
      var refs = document.getElementById("contributorsListCode").value;       
-      //send request
-      mainsprocess("contributorsList",req, refs);      
+      //send request if its first time getContributorsHype will be published by movers return #savedata
+       if(document.getElementById("getContributorsHype")){ }
+       else{//first code run, fetch users & images
+        mainsprocess("contributorsList",req, refs); 
+          }     
       //hide menia for event pageXOffset
       if(document.getElementById('menia')){
          document.getElementById('menia').style.height='0';
