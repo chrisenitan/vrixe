@@ -774,7 +774,7 @@ $gotContributors = false;
 $imageH = $gotH['picture'];
 }
 //ECHO RESULT
-echo "<a class='poslik' href='/profile/$hype'><div class='lilput' style='display: inline-block;'>
+echo "<a class='poslik' href='/profile/$hype'><div class='lilput' style='display: inline-block;' id='getContributorsHype'>
 <img src='$imageH' class='lilprofilephoto'><h style='display: inline-block;'><h class='lilputTitle'>$hypeTask</h><br>@$hype</h></div></a>
  ";
     
