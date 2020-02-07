@@ -447,8 +447,8 @@ function clearInviteList(){
 
 //remove user form invite desk
 function junkuser(user, box){
-	document.getElementById(user).value="";
-	document.getElementById(box).style.display="none";
+document.getElementById(user).value="";
+document.getElementById(box).style.display="none";
 }
 
 //add to calendar ajax cod. this is seprate cus we need it to output to meniassss

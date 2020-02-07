@@ -78,8 +78,7 @@ echo "
 }
 
 else{
-     echo "
- <div class='pef'><div class='blfhead'>...your contacts on vrixe</div><br>
+     echo "<div class='pef'><div class='blfhead'>...your contacts on vrixe</div><br>
  <h>Know someone you'd like here?</h><br><br><br>
  <img alt='invite' src='/images/essentials/inviteuser.png' class='everybodyimg'>
  <br><br><button class='copele' onclick='customshare();'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Invite To Vrixe</button><br>
