@@ -32,7 +32,7 @@ require("../garage/passport.php");
 if ($mycontacts > ""){
   echo"<div class='blfhead'>...select contacts to invite</div>
 <form style='width:100%;' action='/invite.php' method='post'>
-<input class='rates' id='user1' name='user1' required>
+<input class='rates' id='user1' name='user1' >
 <input class='rates' id='user2' name='user2' >
 <input class='rates' id='user3' name='user3' >
 <input class='rates' id='user4' name='user4' >
