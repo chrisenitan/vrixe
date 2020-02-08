@@ -572,7 +572,7 @@ function callabsolunia(title, text, button, buttonlink, closer){
   //check if the close buton should be custominsed
   if (typeof closer === "undefined"){document.getElementById("absolunia_closer").innerHTML="close";} else{document.getElementById("absolunia_closer").innerHTML=closer;}
   //show the div
-    document.getElementById("absolunia").style.height="225px"; document.getElementById("absolunia").style.paddingTop="2%"; document.getElementById("absolunia").style.paddingBottom="2%"; document.getElementById("absolunia").style.boxShadow="rgb(204, 201, 201) 0px 20px 20px 2px";
+  document.getElementById("absolunia").style.height="225px"; document.getElementById("absolunia").style.paddingTop="2%";      document.getElementById("absolunia").style.paddingBottom="2%"; document.getElementById("absolunia").style.boxShadow="rgb(204, 201, 201) 0px 20px 20px 2px";
 }
 
 //hide universal prompt

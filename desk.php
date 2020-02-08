@@ -558,8 +558,7 @@ if ($username == $hype){
 else{
 }
 
-echo"
-<div class='classholder' style='clear:both'>
+echo"<div class='classholder' style='clear:both'>
       <input type='text' name='notifstat' value='false' id='notifyid' class='rates'>
 
       <div class='classholdertext'><i class='material-icons' style='vertical-align:bottom;font-size:17px'>notifications</i> NOTIFY</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='notifyclassbtn' onclick='var chjs=\"notify\";allclass(chjs)'><i class='material-icons' style='vertical-align:sub;font-size:16px'>notifications</i></button>
@@ -568,7 +567,7 @@ echo"
 <p id='formerror'>Select 'Notify' to update everyone on your changes.<br><b><a href='account/settings' target='_blank'>Notification settings <i class='material-icons' style='vertical-align:text-top;font-size:17px'>arrow_forward</i></a></b></p>
 
 <span id='usercnotif' style='display:none'>
-<textarea style='height:70px;padding-top:5px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
+<textarea style='height:70px;padding-top:10px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
 <h class='petd' id='plicate'>notify your team with a custom message</h><br><br>
 </span>
 
