@@ -808,13 +808,11 @@ if ($wapweb > ""){
 else {echo "";}
 
 if ($phone > ""){
-echo "<a href='tel:$phone'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>phone</i> Phone";
-echo "</button></a><br><br>";}
+echo "<a href='tel:$phone'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>phone</i> Phone</button></a><br><br>";}
 else {echo "";}
   
 if ($rsvpmail > ""){
-echo "<a href='mailto:$rsvpmail'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>contact_mail</i> Email Team";
-echo "</button></a><br><br>";}
+echo "<a href='mailto:$rsvpmail'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>contact_mail</i> Email Team</button></a><br><br>";}
 else {echo "";}
 
 if ($programcheck > ""){

@@ -98,7 +98,23 @@ echo"<title>$event ON VRIXE</title>";
 
 <?php require("garage/mobilehead.php"); ?>
 <?php require("garage/subhead.php");?>
-<?php require("garage/thesearch.php"); ?>
+<?php require("garage/thesearch.php"); 
+  
+    echo"<button class='floatBtn floatAddonBtn'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>poll</i></button>
+    
+    <button class='floatBtn floatAddonBtn' style='bottom:19%'><i class='material-icons' style='font-size: 23px;vertical-align: text-bottom;'>event_note</i></button>";
+  
+ echo"<script>
+  window.addEventListener('load', function(){
+  var floatButton = document.querySelectorAll('.floatAddonBtn');
+  var inc;
+  for (inc = 0; inc < floatButton.length; inc++) {
+    floatButton[inc].style.transform = 'Scale(0.99)';
+}});
+</script>";
+  
+  
+  ?>
 
 
 
@@ -248,13 +264,9 @@ echo "<b class='gnttops'>Landmark</b><br>";
 echo "<h>Behind...</h><br><br></div>";
 
 
-echo "<div class='gntright'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>message</i> Connect to Chat</button><br><br>";
-
-
-
-echo "<button class='gntbtnalt' id='clean'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>event_note</i> Add an agenda</button><br><br>
-<button class='gntbtnalt' id='clean'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>poll</i> Take a poll</button>";
-
+echo "<div class='gntright'><button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>message</i> Group Chat</button><br><br>";
+  
+echo "<button class='gntbtnalt'><i class='material-icons' style='font-size: 15px;vertical-align: sub;'>phone</i> Phone</button><br><br>";
 
 echo "</div></div>";
 
