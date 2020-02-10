@@ -166,6 +166,13 @@ $year = substr($row2['year'], 0,4);
 $imagename = $row2['imgthumb'];
 $kilas = $row2['class'];
 $views = $row2['views'];
+   $cua = $row2['cua'];
+   $cub = $row2['cub'];
+   $cuc = $row2['cuc'];
+   $cud = $row2['cud'];
+   $cue = $row2['cue'];
+   $cuf = $row2['cuf'];
+   
 $elent = strlen($eem);
      
 //image background set
@@ -174,8 +181,14 @@ if($imagename == "default.png"){
  }else{
        $cardBack = "background-image:url(\"/images/eventnails/$imagename\")";
  }
+   
 echo "<div class='cards' style='$cardBack'><br>
-    <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";    
+    <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";  
+   
+   //if user has edit access
+ if($username == $cua or $username == $cub or $username == $cud or $username == $cue or $username == $cuf){
+   echo"<a href='desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>";
+ }  
 if ($elent > 18){
 $newee = substr($eem, 0, 17);
 $shortee = "$newee...";

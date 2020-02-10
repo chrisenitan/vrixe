@@ -491,10 +491,8 @@ echo "<div class='cards' style='$cardBack' id='$r'><br>
 <a href='desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>
 ";
 }
-echo"
-     <button onclick='share$r()' type='button' class='cardsactions' title='Share Event'><i class='material-icons'>share</i><br>share</button>
+echo"<button onclick='share$r()' type='button' class='cardsactions' title='Share Event'><i class='material-icons'>share</i><br>share</button>
      <button onclick='a$r()' type='button' class='cardsactions' title='Delete Event'><i class='material-icons'>delete</i><br>delete</button>
-     
      ";
      
 if($status == 'invite'){
@@ -530,7 +528,6 @@ $descr = "$ndescri...";
 echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
      
 else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
-
 
 
 echo "
