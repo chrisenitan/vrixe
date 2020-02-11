@@ -100,7 +100,7 @@ echo "<div class='cards' style='$cardBack'><br>
     if($poster != $username){
     
   echo"
-<button class='cardsactions checks' id='r_c$r' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>
+<button class='cardsactions' id='r_c$r' onclick='checks(\"r_c$r\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>
 <script>
   document.getElementById('Picks').addEventListener('click', function(){
     var closer = 'no, stay';
