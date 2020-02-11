@@ -231,3 +231,12 @@ let deleteContact = (cu, dbid) =>{
 process("delete contact", cu, dbid);
   });
 }
+
+
+//leave a plan
+document.querySelector(".checks").addEventListener('click', function(){
+ var id = this.id;
+  alert(id);
+});
+  
+
