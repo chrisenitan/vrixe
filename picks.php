@@ -100,7 +100,7 @@ echo "<div class='cards' style='$cardBack'><br>
     if($poster != $username){
     
   echo"
-<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
+<button class='cardsactions' id='$r' onclick='leavePlan(\"$r, $username, $userposition\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
   }
   
   

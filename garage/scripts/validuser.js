@@ -234,7 +234,7 @@ process("delete contact", cu, dbid);
 
 
 //leave a plan
-let leavePlan = (id) =>{  
+let leavePlan = (id, userName, userPosition) =>{  
     var closer = 'no, stay';
   var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">person_add_disabled</i> Yes Exit';
   var buttonlink = '#';
@@ -245,9 +245,9 @@ let leavePlan = (id) =>{
   //prepare cta to send delete request
   document.getElementById('absolunia_button').onclick= function(){
   var req = 'leaveevent';
-  var leaveid = '$r';
-  var leaveuser = '$username';
-  var dbid = '$userposition';
+  var leaveid = id;
+  var leaveuser = userName;
+  var dbid = userPosition;
   process(req, leaveid, leaveuser, dbid);
 
   revabsolunia();
