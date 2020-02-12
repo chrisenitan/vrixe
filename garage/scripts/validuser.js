@@ -234,9 +234,7 @@ process("delete contact", cu, dbid);
 
 
 //leave a plan
-let checks = (id) =>{
-  alert(id)
-  
+let leavePlan = (id) =>{  
     var closer = 'no, stay';
   var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">person_add_disabled</i> Yes Exit';
   var buttonlink = '#';
@@ -244,14 +242,15 @@ let checks = (id) =>{
   var text = 'Are you sure you want to leave this plan?<br> You will no longer get updates but your last changes will be visible.';
   callabsolunia(title, text, button, buttonlink, closer);
   
+  //prepare cta to send delete request
   document.getElementById('absolunia_button').onclick= function(){
   var req = 'leaveevent';
-var leaveid = '$r';
-var leaveuser = '$username';
-var dbid = '$userposition';
+  var leaveid = '$r';
+  var leaveuser = '$username';
+  var dbid = '$userposition';
   process(req, leaveid, leaveuser, dbid);
 
-  revabsolunia();}; 
-}
+  revabsolunia();
+  }}
   
 

@@ -100,28 +100,7 @@ echo "<div class='cards' style='$cardBack'><br>
     if($poster != $username){
     
   echo"
-<button class='cardsactions' id='r_c$r' onclick='checks(\"r_c$r\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>
-<script>
-  document.getElementById('Picks').addEventListener('click', function(){
-    var closer = 'no, stay';
-  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">person_add_disabled</i> Yes Exit';
-  var buttonlink = '#';
-  var title = 'Exit this group plan?';
-  var text = 'Are you sure you want to leave this plan?<br> You will no longer get updates but your last changes will be visible.';
-  callabsolunia(title, text, button, buttonlink, closer);
-  
-  document.getElementById('absolunia_button').onclick= function(){
-  var req = 'leaveevent';
-var leaveid = '$r';
-var leaveuser = '$username';
-var dbid = '$userposition';
-  process(req, leaveid, leaveuser, dbid);
-
-  revabsolunia();}; 
-
-});
-
-</script>";
+<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
   }
   
   
