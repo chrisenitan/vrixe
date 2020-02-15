@@ -443,7 +443,6 @@ echo "<i class='material-icons' style='font-size: 13px;vertical-align: sub;'>aut
   else if ($req == "leaveevent"){
 $axevent = mysqli_query($conne,"SELECT * FROM events WHERE refs = '$id' ");
 $got = 0;
-
     
 while($row = mysqli_fetch_array($axevent)) {
  $got = 1;

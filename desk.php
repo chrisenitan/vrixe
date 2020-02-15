@@ -1174,13 +1174,13 @@ echo "<div class='postcen'> <br><br>
   <form style='width:auto;display:inline' action='/invitation.php' method='post'>
 <input type='text' class='rates' value='$code' name='iv'>
 <input type='text' class='rates' value='contributor' name='claim'>
-  <button class='copele'>VIEW INVITATION</button>
+  <button class='copele'>View Invitation</button>
   </form> <br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a progressive Web App<br>
 
 <i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 
