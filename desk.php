@@ -1167,7 +1167,7 @@ $ifcontcuf =  $ifcont['cuf']; $ifcontricuf = htmlspecialchars($ifcontcuf, ENT_QU
   $founds = 1;
 echo "<div class='postcen'> <br><br>
   <div class='pef' style='display:inline-block'>
-    <div class='blfhead'>Decision required</div><br><br>
+    <div class='blfhead'>Your decision is required</div><br><br>
 
   <img alt='$code' src='images/essentials/confirm.svg' class='everybodyimg'><br><br>
   <h class='miniss'>What is happening here?</h><br><h class='disl'>...you need to accept the invitation before you can edit this plan.</h><br><br>
