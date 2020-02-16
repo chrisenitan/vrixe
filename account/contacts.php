@@ -32,13 +32,15 @@ require("../garage/passport.php");
 if ($mycontacts > ""){
   echo"<div class='blfhead'>...select contacts to invite</div>
 <form style='width:100%;' action='/invite.php' method='post'>
-<input class='rates' id='ua' name='ua' required>
-<input class='rates' id='pa' name='pa' required>
-<input class='rates' id='ma' name='ma' required>
-<input class='rates' id='os' name='os' required>
+<input class='rates' id='user1' name='user1' >
+<input class='rates' id='user2' name='user2' >
+<input class='rates' id='user3' name='user3' >
+<input class='rates' id='user4' name='user4' >
+<input class='rates' id='user5' name='user5' >
+<input class='rates' id='user6' name='user6' >
 <div id='clist'>
 <button id='invitelist' class='sil' type='button' style='width:10%'></button>
-<button title='Delete list' class='sil' id='xsil' type='button' onclick='refreshtoin()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>
+<button title='Delete list' class='sil' id='xsil' type='button' onclick='clearInviteList()'><i class='material-icons' style='font-size:17px;vertical-align:sub'>delete_sweep</i> Clear all</button>
 <button title='Create invite' class='sil' id='addsil'><i class='material-icons' style='font-size:17px;vertical-align:sub'>how_to_reg</i> Invite</button>
 </div>
 </form>
@@ -47,7 +49,7 @@ if ($mycontacts > ""){
   
 $de = mysqli_query($conne,"SELECT * FROM profiles WHERE $mycontacts ");
 
-  while ($row = mysqli_fetch_array($de)){
+ while ($row = mysqli_fetch_array($de)){
 
 $pushid = $row['pushid'];
 $mail = $row['email'];
@@ -57,18 +59,8 @@ $userpic = $row['picture'];
 $usercid = $row['cid'];//for delete
 
 echo "
-<script>
-var iv$usercid = 'or cid = $usercid ';
-var cu$usercid = '$username';
-var req$usercid = 'delete contact';
-var toi$usercid = '$user';
-var poi$usercid = '$userpic';
-var co$usercid = '$mail';
-var os$usercid = '$pushid';
-</script>
-
 <div id='id$user' class='cards' style='background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%);'>
-<button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(iv$usercid, cu$usercid)'><i class='material-icons'>delete</i></button>
+<button id='alt$user' class='cardsCornerActions' title='Delete Contact' onclick='deleteContact(\"or cid = $usercid \", \"$username\")'><i class='material-icons'>delete</i></button>
 
 
 <a href='/profile/$user'><img src='$userpic' class='contactphoto'>
@@ -76,7 +68,9 @@ var os$usercid = '$pushid';
 <span style='font-size:13px'>@$user</span></a><br><br>
 
 
-<button class='allcopele' title='Add to Invite list' onclick='toin(toi$usercid, poi$usercid, co$usercid, os$usercid);'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+<button class='allcopele' id='add$user' title='Add to Invite list' onclick='addToInviteList(\"$user\", \"$mail\", \"$userpic\", \"$pushid\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add</i> Add to invite</button>
+
+<button class='altallcopele rates' id='remove$user' title='Remove from Invite list' onclick='removeFromInviteList(\"$user\", \"remove$user\");'><i class='material-icons' style='font-size:17px;vertical-align: text-top;'>person_add_disabled</i> Remove from invite</button>
 </div>
 
 ";
@@ -84,8 +78,7 @@ var os$usercid = '$pushid';
 }
 
 else{
-     echo "
- <div class='pef'><div class='blfhead'>...your contacts on vrixe</div><br>
+     echo "<div class='pef'><div class='blfhead'>...your contacts on vrixe</div><br>
  <h>Know someone you'd like here?</h><br><br><br>
  <img alt='invite' src='/images/essentials/inviteuser.png' class='everybodyimg'>
  <br><br><button class='copele' onclick='customshare();'><i class='material-icons' style='vertical-align:sub;font-size:17px'>person_add</i> Invite To Vrixe</button><br>

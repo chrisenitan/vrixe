@@ -7,7 +7,7 @@ if (isset($_GET['refs'])){
 $visitedProfile = mysqli_real_escape_string($conne, $_GET['refs']); //make ref a var
 
 //check if user is same as ref requested if so send to profile page instead
-if ($visitedProfile == $username){ 
+if ($visitedProfile == $username){
 header('Location: /me');
 }}
 else{}
@@ -166,7 +166,22 @@ $year = substr($row2['year'], 0,4);
 $imagename = $row2['imgthumb'];
 $kilas = $row2['class'];
 $views = $row2['views'];
+   $cua = $row2['cua'];
+   $cub = $row2['cub'];
+   $cuc = $row2['cuc'];
+   $cud = $row2['cud'];
+   $cue = $row2['cue'];
+   $cuf = $row2['cuf'];
 $elent = strlen($eem);
+   
+     //get user position
+    //set update position to where who uploaded what are you in cahrge of
+      if ($username == $cua){$userposition = "cua";}
+     else if ($username == $cub){$userposition = "cub";}
+     else if ($username == $cuc){$userposition = "cuc";}
+     else if ($username == $cud){$userposition = "cud";}
+     else if ($username == $cue){$userposition = "cue";}
+     else if ($username == $cuf){$userposition = "cuf";}
      
 //image background set
 if($imagename == "default.png"){
@@ -174,8 +189,16 @@ if($imagename == "default.png"){
  }else{
        $cardBack = "background-image:url(\"/images/eventnails/$imagename\")";
  }
+   
 echo "<div class='cards' style='$cardBack'><br>
-    <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";    
+    <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";  
+   
+   //if user has edit access
+ if($username == $cua or $username == $cub or $username == $cud or $username == $cue or $username == $cuf){
+   echo"<a href='/desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>";
+     
+echo"<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\", \"$username\", \"$userposition\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
+ } 
 if ($elent > 18){
 $newee = substr($eem, 0, 17);
 $shortee = "$newee...";

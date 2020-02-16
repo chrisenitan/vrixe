@@ -558,8 +558,7 @@ if ($username == $hype){
 else{
 }
 
-echo"
-<div class='classholder' style='clear:both'>
+echo"<div class='classholder' style='clear:both'>
       <input type='text' name='notifstat' value='false' id='notifyid' class='rates'>
 
       <div class='classholdertext'><i class='material-icons' style='vertical-align:bottom;font-size:17px'>notifications</i> NOTIFY</div><div class='classholderdiv'></div><button class='classholdertick' type='button' id='notifyclassbtn' onclick='var chjs=\"notify\";allclass(chjs)'><i class='material-icons' style='vertical-align:sub;font-size:16px'>notifications</i></button>
@@ -568,7 +567,7 @@ echo"
 <p id='formerror'>Select 'Notify' to update everyone on your changes.<br><b><a href='account/settings' target='_blank'>Notification settings <i class='material-icons' style='vertical-align:text-top;font-size:17px'>arrow_forward</i></a></b></p>
 
 <span id='usercnotif' style='display:none'>
-<textarea style='height:70px;padding-top:5px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
+<textarea style='height:70px;padding-top:10px' id='source' oninput='countkeys()' type='text' class='privinput' name='customnotifmsg' placeholder='Edited the address...' maxlength='105' autocomplete='nope'></textarea><br>
 <h class='petd' id='plicate'>notify your team with a custom message</h><br><br>
 </span>
 
@@ -1168,20 +1167,20 @@ $ifcontcuf =  $ifcont['cuf']; $ifcontricuf = htmlspecialchars($ifcontcuf, ENT_QU
   $founds = 1;
 echo "<div class='postcen'> <br><br>
   <div class='pef' style='display:inline-block'>
-    <div class='blfhead'>Decision required</div><br><br>
+    <div class='blfhead'>Your decision is required</div><br><br>
 
   <img alt='$code' src='images/essentials/confirm.svg' class='everybodyimg'><br><br>
   <h class='miniss'>What is happening here?</h><br><h class='disl'>...you need to accept the invitation before you can edit this plan.</h><br><br>
   <form style='width:auto;display:inline' action='/invitation.php' method='post'>
 <input type='text' class='rates' value='$code' name='iv'>
 <input type='text' class='rates' value='contributor' name='claim'>
-  <button class='copele'>VIEW INVITATION</button>
+  <button class='copele'>View Invitation</button>
   </form> <br><br>
 
-   <h class='miniss'>More?<br>
+   <h class='miniss'>We have a progressive Web App<br>
 
 <i class='material-icons' style='vertical-align:bottom;font-size:17px;color:#065cff'>add_to_home_screen</i><br>
-<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> INSTALL WEB APP</button></a></h><br><br>
+<h class='miniss'>Keep Vrixe with you <br><a href='/app/pwa.html'><button class='control'> Install Web App</button></a></h><br><br>
 
   <div class='blfheadalt'></div>
 

@@ -136,7 +136,6 @@ else{//user posted something check if old is ours
     if($picture != "https://vrixe.com/images/profiles/user.png"){
   //if its not ours unhook
  unlink("images/profiles/$pictureWithoutUrl");
-unlink("images/profiles/profilethumbs/$pictureWithoutUrl");
 }else{//nothing ah
 }
   
@@ -167,7 +166,6 @@ elseif($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "
 if ($uploadOk == 0) {
   $newimage = "https://vrixe.com/images/profiles/user.png"; 
   unlink("images/profiles/$giby");
-unlink("images/profiles/profilethumbs/$giby");
  echo "<div id='valert' onclick='closealert()'>Could not compress image</div>";
 }
     
@@ -200,7 +198,6 @@ unlink("images/profiles/profilethumbs/$giby");
           //square image  
           $setimage = imagecrop($image, ['x' => $widthwidth, 'y' => 0, 'width' => $newwidths, 'height' => $newwidths]); 
           imagejpeg($setimage, $target_file, 10); $thumbpass = "true";
-          $dest = "images/profiles/profilethumbs/$giby"; imagejpeg($setimage, $dest, 1);
         }
        
          else if($heights > $widths and ($heights - $widths) > ($heights / 3)){ //potrait crop
@@ -210,12 +207,10 @@ unlink("images/profiles/profilethumbs/$giby");
           //square image  
           $setimage = imagecrop($image, ['x' => 0, 'y' => $heightheight, 'width' => $newheights, 'height' => $newheights]); 
           imagejpeg($setimage, $target_file, 10); $thumbpass = "true";
-              $dest = "images/profiles/profilethumbs/$giby"; imagejpeg($setimage, $dest, 1);
         }
        else {//wow no crop needed
          $setimage = imagecrop($image, ['x' => 0, 'y' => 0, 'width' => $widths, 'height' => $heights]); 
-         imagejpeg($setimage, $target_file, 10); $thumbpass = "true"; 
-            $dest = "images/profiles/profilethumbs/$giby"; imagejpeg($setimage, $dest, 1); 
+         imagejpeg($setimage, $target_file, 10); $thumbpass = "true";  
        }
         
         
@@ -225,7 +220,6 @@ unlink("images/profiles/profilethumbs/$giby");
     } else {
          $newimage = "https://vrixe.com/images/profiles/user.png";
      unlink("images/profiles/$giby");
-     unlink("images/profiles/profilethumbs/$giby");
      echo "<div id='valert' onclick='closealert()'>Error with image format.</div>";
     }
      }//end of uploadok safe to save
@@ -497,10 +491,8 @@ echo "<div class='cards' style='$cardBack' id='$r'><br>
 <a href='desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>
 ";
 }
-echo"
-     <button onclick='share$r()' type='button' class='cardsactions' title='Share Event'><i class='material-icons'>share</i><br>share</button>
+echo"<button onclick='share$r()' type='button' class='cardsactions' title='Share Event'><i class='material-icons'>share</i><br>share</button>
      <button onclick='a$r()' type='button' class='cardsactions' title='Delete Event'><i class='material-icons'>delete</i><br>delete</button>
-     
      ";
      
 if($status == 'invite'){
@@ -536,7 +528,6 @@ $descr = "$ndescri...";
 echo "<a href='event/$r'><h class='cardsdescription'>$descr</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
      
 else {echo "<a href='event/$r'><h class='cardsdescription'>$description</h></a><br> <h class='cardsdescription underlink'>$kilas - $status - $views views</h>";}
-
 
 
 echo "

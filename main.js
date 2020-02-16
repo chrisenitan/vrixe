@@ -302,77 +302,153 @@ function allclass(chjs){
 
 }
 
-//add to invite
-function toin(des, pes, ces, push){
-  //if person field isfilled, move to next
+//add to invite from contact
+function addToInviteList(username, mail, userpic, pushid){
+  //get all field values  
+	var user1 = document.getElementById("user1").value; 
+  var user2 = document.getElementById("user2").value; 
+  var user3 = document.getElementById("user3").value; 
+  var user4 = document.getElementById("user4").value; 
+  var user5 = document.getElementById("user5").value; 
+  var user6 = document.getElementById("user6").value; 
   
-	var userName = document.getElementById("ua").value; //name
-	var upic = document.getElementById("pa").value;//image
-  var umail = document.getElementById("ma").value;//email
-  var pushid = document.getElementById("os").value;//push id
-	//find if value exists and stop readding
-	var fr = userName.search(des);
-	if(fr == -1){} else{return false;}
+  //create string
+  var userData = `${username}, ${mail}, ${userpic}, ${pushid}`; 
+  
+   //insert value function
+   let insertData = (userData, elementPosition, userId) =>{
+   document.getElementById(elementPosition).value=userData; 
+      //increase the counter by 1
+      document.getElementById("invitelist").innerHTML = Number(document.getElementById("invitelist").innerHTML) + 1;   
+      //style the selected user
+      var userId = document.getElementById(userId);
+      userId.style.background="none";
+      userId.style.backgroundColor="#372538";
+     //display remove button and show add button
+      document.getElementById(`remove${username}`).style.display="block";
+      document.getElementById(`add${username}`).style.display="none";
+    }
+  
+        //check positions
+        if (user1 == ""){
+            var elementPosition = "user1";
+            //insert, userdata, which field, countnumber, div id to style
+            insertData(userData, elementPosition, `id${username}`);
+            //display count div once
+            document.getElementById("clist").style.top='140px';	
+        }
+        else if(user2 == ""){
+            var elementPosition = "user2";
+            insertData(userData, elementPosition, `id${username}`);
+        }
+          else if(user3 == ""){
+            var elementPosition = "user3";
+            insertData(userData, elementPosition, `id${username}`);
+        }
+          else if(user4 == ""){
+            var elementPosition = "user4";
+            insertData(userData, elementPosition, `id${username}`);
+        }
+          else if(user5 == ""){
+            var elementPosition = "user5";
+            insertData(userData, elementPosition, `id${username}`);
+        }
+          else if(user6 == ""){
+            var elementPosition = "user6";
+            insertData(userData, elementPosition, `id${username}`);
+        }
+        else{
+          //call absolunia
+        var closer = 'close';
+        var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">mail</i> Contact Us';
+        var buttonlink = 'mailto:contact@vrixe.com';
+        var title = 'Maximum invitees reached';
+        var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
+        callabsolunia(title, text, button, buttonlink, closer);
+           return false;
+        }}
 
-	//count list
-	var counts = document.getElementById("ua").value;
-	var count = (counts.split(",").length - 1);
-	var ct = count + 1;
-  //if users added are more than 5, user must be 6
-   if(count > 5){
-     //call absolunia
-  var closer = 'close';
-  var button = '<i class=\"material-icons\" style=\"font-size: 18px;vertical-align:sub;\">mail</i> Contact Us';
-  var buttonlink = 'mailto:contact@vrixe.com';
-  var title = 'Maximum invitees reached';
-  var text = "For now, you can only add up to 6 contributors to an event. Planning something with more people? Please text us for a custom plan.";
-  callabsolunia(title, text, button, buttonlink, closer);
-     return false;
-   }
-   else{
-     //write number of users added
-   	document.getElementById("invitelist").innerHTML=ct;
-   }
-	//add the comma behind the firstname
-	if(userName == ""){var newUserName = des + ","; var newUserPic = pes + ","; var newUserMail = ces + ","; var newPushid = push + ",";}
+//remove single user from invite list
+function removeFromInviteList(username, removeruser){
+  //get all user names  
+	var user1 = document.getElementById("user1").value.split(",")[0]; 
+  var user2 = document.getElementById("user2").value.split(",")[0]; 
+  var user3 = document.getElementById("user3").value.split(",")[0]; 
+  var user4 = document.getElementById("user4").value.split(",")[0]; 
+  var user5 = document.getElementById("user5").value.split(",")[0]; 
+  var user6 = document.getElementById("user6").value.split(",")[0]; 
   
-  //add the old contentthen a comma and later details
-	else{
-    var newUserName = userName + des + ","; var newUserPic = upic + pes + ","; var newUserMail = umail + ces + ","; var newPushid = pushid + push + ",";}
-	document.getElementById("ua").value=newUserName; //set names
-	document.getElementById("pa").value=newUserPic; //set pics	
-  document.getElementById("ma").value=newUserMail; //set mail	
-  document.getElementById("os").value=newPushid; //set push id
+  //remove data function
+  let removeData = (userField, userDiv) =>{
+      //remove value
+      document.getElementById(userField).value="";
+      //undo style the selected user
+      var userId = document.getElementById(`id${username}`);
+      userId.style.background="linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
+      //hide remove button and show add to invite button
+      document.getElementById(`remove${username}`).style.display="none";
+      document.getElementById(`add${username}`).style.display="block";
+      //reduce the counter by 1
+      document.getElementById("invitelist").innerHTML = document.getElementById("invitelist").innerHTML - 1;
+  }
   
-  //style the adding div
-	document.getElementById("clist").style.top='140px';
-	
-  //style the selected user
-	var iddes = document.getElementById(`id${des}`);
-  iddes.style.background="none";
-	iddes.style.backgroundColor="#372538";
-  
-}
+  //get which user to act on
+  switch(username){
+  case (user1):
+    //set value to null
+    removeData("user1",`remove${username}`);
+    break;
+  case (user2):
+    //set value to null
+    removeData("user2",`remove${username}`);
+    break;
+  case (user3):
+    //set value to null
+    removeData("user3",`remove${username}`);
+    break;
+  case (user4):
+    //set value to null
+    removeData("user4",`remove${username}`);
+    break;
+  case (user5):
+    //set value to null
+    removeData("user5",`remove${username}`);
+    break;
+  case (user6):
+    //set value to null
+    removeData("user6",`remove${username}`);
+    break;
+}}
+
 
 //clear invite list/contact
-function refreshtoin(){
-	document.getElementById("ua").value="";
-	document.getElementById("pa").value="";
-	document.getElementById("invitelist").innerHTML="";
-  document.getElementById("ma").value="";
-  document.getElementById("os").value="";
-	document.getElementById("clist").style.top='1400vh';//hide count
+function clearInviteList(){
+  //remove all values
+  document.getElementById("user1").value=""; 
+  document.getElementById("user2").value=""; 
+  document.getElementById("user3").value=""; 
+  document.getElementById("user4").value=""; 
+  document.getElementById("user5").value=""; 
+  document.getElementById("user6").value="";   
+  //hide count div
+	document.getElementById("clist").style.top='1400vh';
+  //reset the counter to 0
+  document.getElementById("invitelist").innerHTML = 0;
+  //reset all elemet styling
 	var callpc;
 	var allpc = document.querySelectorAll(".cards");
+  var allRemoveButtons = document.querySelectorAll(".altallcopele");
+  var allAddButtons = document.querySelectorAll(".allcopele");
 	for (callpc = 0; callpc < allpc.length; callpc++) {
     allpc[callpc].style.background="linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
-}
-}
+     allAddButtons[callpc].style.display="block";//show all add button
+     allRemoveButtons[callpc].style.display="none";//hide all remove buttons
+   }}
 
 //remove user form invite desk
 function junkuser(user, box){
-	document.getElementById(user).value="";
-	document.getElementById(box).style.display="none";
+document.getElementById(user).value="";
+document.getElementById(box).style.display="none";
 }
 
 //add to calendar ajax cod. this is seprate cus we need it to output to meniassss
@@ -496,7 +572,7 @@ function callabsolunia(title, text, button, buttonlink, closer){
   //check if the close buton should be custominsed
   if (typeof closer === "undefined"){document.getElementById("absolunia_closer").innerHTML="close";} else{document.getElementById("absolunia_closer").innerHTML=closer;}
   //show the div
-    document.getElementById("absolunia").style.height="225px"; document.getElementById("absolunia").style.paddingTop="2%"; document.getElementById("absolunia").style.paddingBottom="2%"; document.getElementById("absolunia").style.boxShadow="rgb(204, 201, 201) 0px 20px 20px 2px";
+  document.getElementById("absolunia").style.height="225px"; document.getElementById("absolunia").style.paddingTop="2%";      document.getElementById("absolunia").style.paddingBottom="2%"; document.getElementById("absolunia").style.boxShadow="rgb(204, 201, 201) 0px 20px 20px 2px";
 }
 
 //hide universal prompt
@@ -626,8 +702,11 @@ window.addEventListener("load", function(){
       //get code and 
      var req = "getContributors";
      var refs = document.getElementById("contributorsListCode").value;       
-      //send request
-      mainsprocess("contributorsList",req, refs);      
+      //send request if its first time getContributorsHype will be published by movers return #savedata
+       if(document.getElementById("getContributorsHype")){ }
+       else{//first code run, fetch users & images
+        mainsprocess("contributorsList",req, refs); 
+          }     
       //hide menia for event pageXOffset
       if(document.getElementById('menia')){
          document.getElementById('menia').style.height='0';
