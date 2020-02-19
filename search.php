@@ -33,7 +33,9 @@ else {echo "<title>Empty - Vrixe Search</title>";}
 
 <div id="gtr" onclick="closecloseb()"></div>
 
-<?php require("garage/deskhead.php"); 
+<?php 
+  require("./garage/validuser.php"); 
+  require("garage/deskhead.php"); 
   require("garage/desksearch.php"); 
   require("garage/deskpop.php"); ?>
 
@@ -75,6 +77,24 @@ $elent = strlen($ee);
 $imagenamerow = $row['imgthumb'];
 $evorganiser = $row['organiser'];
 $poster = $row['hype'];
+ $cua = $row['cua'];
+ $cub = $row['cub'];
+ $cuc = $row['cuc'];
+ $cud = $row['cud'];
+ $cue = $row['cue'];
+ $cuf = $row['cuf'];
+    
+    //set update position to where who uploaded what are you in cahrge of and get user position
+      if ($username == $cua){$userposition = "cua";}
+     else if ($username == $cub){$userposition = "cub";}
+     else if ($username == $cuc){$userposition = "cuc";}
+     else if ($username == $cud){$userposition = "cud";}
+     else if ($username == $cue){$userposition = "cue";}
+     else if ($username == $cuf){$userposition = "cuf";}
+ //check if user is authorised to edit event
+      if($username == $cua and $username > "" or $username == $cub and $username > "" or $username == $cud and $username > "" or $username == $cue and $username > "" or $username == $cuf and $username > ""){
+        $governorOnPage = true;
+      }
     
       //image background set
      if($imagenamerow == "default.png"){
@@ -82,10 +102,18 @@ $poster = $row['hype'];
      }else{
        $cardBack = "background-image:url(\"images/eventnails/$imagename\")";
      }
-
-    echo "<div class='cards' style='$cardBack'><br>
+ 
+ echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>
-    ";    
+    ";
+
+    if($governorOnPage == true){
+echo"<a href='/desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>";
+     
+echo"<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\", \"$username\", \"$userposition\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
+    }
+    
+
     
     if ($elent > 18){
 $newee = substr($ee, 0, 17);
