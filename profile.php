@@ -183,7 +183,7 @@ $elent = strlen($eem);
      else if ($username == $cuf){$userposition = "cuf";}
    
     //check if user is authorised to edit event
-      if($username == $cua and $username > "" or $username == $cub and $username > "" or $username == $cud and $username > "" or $username == $cue and $username > "" or $username == $cuf and $username > ""){
+      if($username > "" and $username == $cua or $username > "" and $username == $cub or $username > "" and $username == $cuc or $username > "" and $username == $cud or $username > "" and $username == $cue or $username > "" and $username == $cuf){
         $governorOnPage = true;
       }
      
