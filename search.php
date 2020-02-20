@@ -174,7 +174,8 @@ $locala = mysqli_query($conne,"SELECT * FROM events WHERE day = 'Friday' AND cla
 $founda = 0;
 
   while($lowa = mysqli_fetch_array($locala))
-   {$founda=1;
+   {
+ $founda=1;
 $rla = $lowa['refs'];
 $statein = $lowa['zip'];
 $weekday = $lowa['day'];
@@ -201,10 +202,11 @@ $poster = $lowa['hype'];
      else if ($username == $cud){$userposition = "cud";}
      else if ($username == $cue){$userposition = "cue";}
      else if ($username == $cuf){$userposition = "cuf";}
+    else{$username = $poster;}
     //check if user is authorised to edit event
       if($username > "" and $username == $cua or $username > "" and $username == $cub or $username > "" and $username == $cuc or $username > "" and $username == $cud or $username > "" and $username == $cue or $username > "" and $username == $cuf){
         $governorOnPage = true;
-      }
+      }else{$governorOnPage = false;}
          //image background set
      if($imagenamea == "default.png"){
        $cardBack = "background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";

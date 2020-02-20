@@ -185,7 +185,7 @@ $elent = strlen($eem);
     //check if user is authorised to edit event
       if($username > "" and $username == $cua or $username > "" and $username == $cub or $username > "" and $username == $cuc or $username > "" and $username == $cud or $username > "" and $username == $cue or $username > "" and $username == $cuf){
         $governorOnPage = true;
-      }
+      }else{$governorOnPage = false;}
      
 //image background set
 if($imagename == "default.png"){
