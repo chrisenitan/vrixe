@@ -380,7 +380,7 @@ $poster = $mowa['hype'];
        $cardBack = "background-image:url(\"images/eventnails/$imagename\")";
      }
     
-            echo "<div class='cards' style='$cardBack'><br>
+echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$rla()' title='Share Event'><i class='material-icons'>share</i><br>share</button>
     ";    
        
