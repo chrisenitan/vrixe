@@ -33,7 +33,9 @@ else {echo "<title>Empty - Vrixe Search</title>";}
 
 <div id="gtr" onclick="closecloseb()"></div>
 
-<?php require("garage/deskhead.php"); 
+<?php 
+  require("./garage/validuser.php"); 
+  require("garage/deskhead.php"); 
   require("garage/desksearch.php"); 
   require("garage/deskpop.php"); ?>
 
@@ -75,6 +77,24 @@ $elent = strlen($ee);
 $imagenamerow = $row['imgthumb'];
 $evorganiser = $row['organiser'];
 $poster = $row['hype'];
+ $cua = $row['cua'];
+ $cub = $row['cub'];
+ $cuc = $row['cuc'];
+ $cud = $row['cud'];
+ $cue = $row['cue'];
+ $cuf = $row['cuf'];
+    
+    //set update position to where who uploaded what are you in cahrge of and get user position
+    if ($username == $cua){$userposition = "cua";}
+     else if ($username == $cub){$userposition = "cub";}
+     else if ($username == $cuc){$userposition = "cuc";}
+     else if ($username == $cud){$userposition = "cud";}
+     else if ($username == $cue){$userposition = "cue";}
+     else if ($username == $cuf){$userposition = "cuf";}
+ //check if user is authorised to edit event
+      if($username == $cua and $username > "" or $username == $cub and $username > "" or $username == $cud and $username > "" or $username == $cue and $username > "" or $username == $cuf and $username > ""){
+        $governorOnPage = true;
+      }
     
       //image background set
      if($imagenamerow == "default.png"){
@@ -82,12 +102,20 @@ $poster = $row['hype'];
      }else{
        $cardBack = "background-image:url(\"images/eventnails/$imagename\")";
      }
-
-    echo "<div class='cards' style='$cardBack'><br>
+ 
+ echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>
-    ";    
+    ";
+
+    if($governorOnPage == true){
+echo"<a href='/desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>
+
+<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\", \"$username\", \"$userposition\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
+    }
     
-    if ($elent > 18){
+
+    
+ if ($elent > 18){
 $newee = substr($ee, 0, 17);
 $shortee = "$newee...";
 }
@@ -133,11 +161,11 @@ echo "<br>";
 
   else{# V WAS NOT PASSED start normal search
 
-if ($sech == "Weekend" or $sech == "weekend" or $sech == "the weekend" or $sech == "weekends" or $sech == "The Weekend" or $sech == "WEEKEND"){
+if ($sech == "weekend" or $sech == "the weekend" or $sech == "weekends" or $sech == "events on weekend"){
 
   echo "<div class='yalert'>Showing results for '$sech'</div><br>";
 
-  $locala = mysqli_query($conne,"SELECT * FROM events WHERE day = 'Friday' AND class = 'public' AND zip = '$z' OR day = 'Saturday' AND class = 'public' AND zip = '$z' OR day = 'Sunday' AND class = 'public' AND zip = '$z' ORDER BY dates ASC  LIMIT 10");
+$locala = mysqli_query($conne,"SELECT * FROM events WHERE day = 'Friday' AND class = 'public' OR day = 'Saturday' AND class = 'public' OR day = 'Sunday' AND class = 'public' ORDER BY year DESC LIMIT 10");
 
   #<!--  "SELECT * FROM events WHERE day = 'Friday' AND zip = '$z' OR day = 'Tuesday' AND zip = '$z' ORDER BY dates ASC  LIMIT 10" 
 
@@ -146,7 +174,8 @@ if ($sech == "Weekend" or $sech == "weekend" or $sech == "the weekend" or $sech 
 $founda = 0;
 
   while($lowa = mysqli_fetch_array($locala))
-   {$founda=1;
+   {
+ $founda=1;
 $rla = $lowa['refs'];
 $statein = $lowa['zip'];
 $weekday = $lowa['day'];
@@ -159,7 +188,25 @@ $elent = strlen($eew);
 $dlent = strlen($description);
 $evorganiser = $lowa['organiser'];
 $poster = $lowa['hype'];
+ $cua = $lowa['cua'];
+ $cub = $lowa['cub'];
+ $cuc = $lowa['cuc'];
+ $cud = $lowa['cud'];
+ $cue = $lowa['cue'];
+ $cuf = $lowa['cuf'];
     
+    //set update position to where who uploaded what are you in cahrge of and get user position
+    if ($username == $cua){$userposition = "cua";}
+     else if ($username == $cub){$userposition = "cub";}
+     else if ($username == $cuc){$userposition = "cuc";}
+     else if ($username == $cud){$userposition = "cud";}
+     else if ($username == $cue){$userposition = "cue";}
+     else if ($username == $cuf){$userposition = "cuf";}
+    else{$username = $poster;}
+    //check if user is authorised to edit event
+      if($username > "" and $username == $cua or $username > "" and $username == $cub or $username > "" and $username == $cuc or $username > "" and $username == $cud or $username > "" and $username == $cue or $username > "" and $username == $cuf){
+        $governorOnPage = true;
+      }else{$governorOnPage = false;}
          //image background set
      if($imagenamea == "default.png"){
        $cardBack = "background: linear-gradient(45deg, #252b38 0%, #252b38 44%,rgb(43, 52, 67) 44%, rgb(43, 52, 67) 45%,rgb(43, 52, 67) 61%, rgb(43, 52, 67) 67%,#0298ad 67%, #0298ad 100%)";
@@ -167,10 +214,14 @@ $poster = $lowa['hype'];
        $cardBack = "background-image:url(\"images/eventnails/$imagename\")";
      }
  
-    
-        echo "<div class='cards' style='$cardBack'><br>
+echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$rla()' title='Share Event'><i class='material-icons'>share</i><br>share</button>
-    ";    
+    ";
+    if($governorOnPage == true){
+ echo"<a href='/desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>
+
+<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\", \"$username\", \"$userposition\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
+    }
        
     if($username > "" and $username == $poster){
       echo"<a href='desk?code=$rla'><button class='cardsactions'><i class='material-icons'>edit</i><br>edit</button></a>";
@@ -329,7 +380,7 @@ $poster = $mowa['hype'];
        $cardBack = "background-image:url(\"images/eventnails/$imagename\")";
      }
     
-            echo "<div class='cards' style='$cardBack'><br>
+echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$rla()' title='Share Event'><i class='material-icons'>share</i><br>share</button>
     ";    
        

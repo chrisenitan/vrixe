@@ -166,22 +166,26 @@ $year = substr($row2['year'], 0,4);
 $imagename = $row2['imgthumb'];
 $kilas = $row2['class'];
 $views = $row2['views'];
-   $cua = $row2['cua'];
-   $cub = $row2['cub'];
-   $cuc = $row2['cuc'];
-   $cud = $row2['cud'];
-   $cue = $row2['cue'];
-   $cuf = $row2['cuf'];
 $elent = strlen($eem);
+ $cua = $row2['cua'];
+ $cub = $row2['cub'];
+ $cuc = $row2['cuc'];
+ $cud = $row2['cud'];
+ $cue = $row2['cue'];
+ $cuf = $row2['cuf'];
    
-     //get user position
-    //set update position to where who uploaded what are you in cahrge of
+    //set update position to where who uploaded what are you in cahrge of and get user position
       if ($username == $cua){$userposition = "cua";}
      else if ($username == $cub){$userposition = "cub";}
      else if ($username == $cuc){$userposition = "cuc";}
      else if ($username == $cud){$userposition = "cud";}
      else if ($username == $cue){$userposition = "cue";}
      else if ($username == $cuf){$userposition = "cuf";}
+   
+    //check if user is authorised to edit event
+      if($username > "" and $username == $cua or $username > "" and $username == $cub or $username > "" and $username == $cuc or $username > "" and $username == $cud or $username > "" and $username == $cue or $username > "" and $username == $cuf){
+        $governorOnPage = true;
+      }else{$governorOnPage = false;}
      
 //image background set
 if($imagename == "default.png"){
@@ -194,7 +198,7 @@ echo "<div class='cards' style='$cardBack'><br>
     <button class='cardsactions' onclick='share$r()' title='Share Event'><i class='material-icons'>share</i><br>share</button>";  
    
    //if user has edit access
- if($username == $cua or $username == $cub or $username == $cud or $username == $cue or $username == $cuf){
+ if($governorOnPage){
    echo"<a href='/desk.php?code=$r'><button class='cardsactions' title='Edit Event'><i class='material-icons'>edit</i><br>edit</button></a>";
      
 echo"<button class='cardsactions' id='$r' onclick='leavePlan(\"$r\", \"$username\", \"$userposition\")' title='Remove yourself from an event. Your last changes will still apply'><i class='material-icons'>indeterminate_check_box</i><br>Leave</button>";
