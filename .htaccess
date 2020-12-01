@@ -10,3 +10,4 @@ RewriteRule profile/(.*)\.php /profile?refs=$1
 
 RewriteRule poll/(.*)\.php /poll?id=$1
 </IfModule>
+
