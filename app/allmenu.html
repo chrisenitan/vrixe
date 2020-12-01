@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Menu</title>
+<link rel="manifest" href="../manifest.json">
+<meta http-equiv="Cache-control: no-transform">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/><meta name="description" content="Useful links on Vrixe">
+<meta name="theme-color" content="#fffaf0"/>
+<link rel="icon" sizes="192x192" href="/app/vlogpwa.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../app/vlogpwa.png">
+<link rel="apple-touch-startup-image" href="../app/vlogpwa.png">
+<link rel="apple-touch-icon" href="../app/vlog4x.png">
+<meta name="apple-mobile-web-app-title" content="Vrixe">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>
+function gos(){window.history.back();}
+
+ window.addEventListener('load', function()
+{
+setInterval(function(){
+if (navigator.onLine != true){
+	document.getElementById('offline').style.display='block';
+}
+else{
+	document.getElementById('offline').style.display='none';
+}}, 3000);
+});
+
+var csp;
+ var cst;
+var csl;
+
+ function setivalue(){
+	  var csp = 'One place for all event plans';
+    var cst = 'Vrixe is the new easy way we can create and edit plans together. Sign up and add me on vrixe.com';
+    var csl = 'https://vrixe.com';
+customshareforallmenu(csp, cst, csl);
+}
+
+function customshareforallmenu(csp, cst, csl){  console.log(cst + " link: " + csl);
+  if(navigator.share){
+    navigator.share({
+    title: csp,
+    text: cst + '.',
+    url: csl
+  }).then(() => console.log('Successful share'))
+  .catch(error => console.log('Error sharing:', error));
+  }
+  else{
+    
+  }
+}
+</script>
+</head>
+<style>
+a{text-decoration:none;color: #00ff97;}a:hover{color:#93f1cb;text-decoration: underline;text-underline-position: under;}
+body{
+margin: 0px;background-color: #2b3445; 
+font-family: Titillium Web, Roboto, Noto, sans-serif;
+}
+@font-face{
+font-family: 'Titillium Web';src: url('/app/fonts/gg.ttf') format('truetype');
+}
+#offline{height: auto;
+    padding-top: 15px;padding-bottom: 15px;
+    width: 50%;position: fixed;
+    border-radius: 5px;margin-left: 25%;
+    z-index: 999;display: none;
+    text-align: center;bottom: 3%;
+    background-color: #252b38;color: #9ba9c5;
+}
+.up{color: #00ffff;
+    width: 100%;background-color: #2b3445;
+}
+.essm{font-size: 14px;
+	color: #ffffff;
+}
+.essm:hover{
+    color: #00ffff;
+}
+#title{background-color: #2b3445;
+	width: 100%;font-size: 20px;
+	color: #ffffff;padding-top: 2%;
+	text-align: center;padding-bottom: 2%;
+	height: auto;
+	margin-top: 20px;
+}
+#menuc{width: 80%;
+	max-width: 450px;margin:auto;
+	padding-top: 4%;padding-right: 1%;
+	padding-left: 8%;
+}
+</style>
+<body>
+
+
+<div id="title">Options</div>
+<div id="menuc">
+
+<a href="/account/settings.php">MY SETTINGS</a><br>
+<h class="essm">manage web-app settings</h>
+<br><br>
+
+<a href="/app/why_we_dont_have_apps.html">Why we don't have Apps</a><br>
+<h class="essm">try the <a href="/app/pwa.html">PWA</a></h>
+<br><br>
+
+<a href="/aboutvrixe.php">Product Tour</a><br>
+<h class="essm">explore the <a href="/aboutvrixe#sample">demo</a></h>
+<br><br>
+
+<a href="/help/faq.php">Help & FAQs</a>
+<br><br>
+
+<a href="/help/feedbacks.php">Feedbacks</a><br>
+<h class="essm">looking for <a href="/jobs">jobs</a></h>
+<br><br>
+
+<a href="/app/api.html">Third Party APIs</a><br>
+<h class="essm">resources and libraries</h>
+<br><br>
+
+<a href="/app/terms.html">Terms & Privacy Policy</a>
+<br><br>
+
+<a href="/app/pwalog.html">Change Log</a>
+<br><br>
+
+<h class="essm" onclick="setivalue();">Invite a Friend</h>
+<br><br>
+
+<h class="essm" onclick="gos()"> << GO BACK</h><br><br><br>
+
+</div>
+
+<div id="offline" onclick="document.getElementById('offline').style.display='none';">Offline!<br><span style="font-size: 11px;">Some features will not be available</span></div>
+</body>
+</html>

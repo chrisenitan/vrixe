@@ -1,0 +1,40 @@
+{
+	"name": "Vrixe",
+	"description": "Create, edit and plan event projects with your team and get the details to guests. ",
+	"background_color": "#acb1b9",
+	"short_name": "Vrixe",
+	"theme_color": "#f8f8ff",
+	"lang": "en_US",
+	"icons": [
+		{
+		  "src": "/app/vlogreq.png",
+		  "sizes": "512x512",
+		  "type": "image/png",
+		  "density": 5.0
+		},
+		{
+		  "src": "/app/vlogpwa.png",
+		  "sizes": "192x192",
+		  "type": "image/png",
+		  "density": 4.0
+		},
+		{
+		  "src": "/app/vlogfour.png",
+		  "sizes": "144x144",
+		  "type": "image/png",
+		  "density": 3.0
+		},
+		{
+		  "src": "/app/vlog4x.png",
+		  "sizes": "58x57",
+		  "type": "image/png",
+		  "density": 1.0
+		}
+	], 
+	"start_url": "/app/pwa.html",
+	"display": "standalone",
+	"orientation": "portrait",
+	"scope": "/",
+    "gcm_sender_id": "482941778795",
+  "gcm_sender_id_comment": "Do not change the GCM Sender ID"
+}
