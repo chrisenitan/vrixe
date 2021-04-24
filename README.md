@@ -1,7 +1,7 @@
 # vrixe
 Vrixe is an event sharing and collaborative planning web application built with PHP, MYSQL and JS
 
-*Current Status* <br>
+## Current Status <br>
 <ul>
 <li>Vrixe was pulled from deployment on March 26 due to the reduction in usage that seems to be from the Corona virus outbreak and I have decided to take this time to polish the code and think about proper deployment on a scaleable server and environment.</li><br>
 
@@ -11,3 +11,5 @@ Vrixe is an event sharing and collaborative planning web application built with 
 <li>Currently working on something new that might be more remote friendly, check out the repo here https://github.com/chrisenitan/qboard</li> 
 </ul>
 
+## Read about us
+[Crozdesk](https://crozdesk.com/operations-management/event-management-software/vrixe)
