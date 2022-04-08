@@ -11,7 +11,7 @@ Vrixe is an event sharing and collaborative planning web application built with 
 <li>I have also decided to make the code available for contribution so feel free to reach out if youre interested.</li>
 
 
-<li>Currently working on something new that might be more remote friendly, check out the repo here https://github.com/chrisenitan/qboard</li> 
+<li>Currently working on something new that might be more remote friendly, check out the repo here https://github.com/chrisenitan/dotta</li> 
 </ul>
 
 ## Read about us
